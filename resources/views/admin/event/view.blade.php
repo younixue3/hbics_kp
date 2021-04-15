@@ -51,9 +51,9 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Jumlah Peserta</th>
+							<th>Jumlah Karya/ Peserta</th>
 							<td>
-								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> 0 Peserta</a>
+								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->karyas->count()}} Peserta</a>
 							</td>
 						</tr>
 					</table>

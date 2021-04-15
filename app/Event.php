@@ -21,4 +21,8 @@ class Event extends Model
     {
         return $this->hasMany('App\Timeline');
     }
+    public function karyas()
+    {
+        return $this->hasMany('App\Karya');
+    }
 }

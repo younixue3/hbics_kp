@@ -42,4 +42,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('timelines/{event_id}/{id}/edit', 'TimelineController@edit');
     Route::patch('timelines/{event_id}/{id}', 'TimelineController@update');
     Route::get('timelines/{event_id}/{id}/{slug}', 'TimelineController@show');
+    // KARYA/PESERTA
+    Route::get('pesertas/{event_id}', 'PesertaController@index');
+    Route::get('pesertas/{event_id}/create', 'PesertaController@create');
+    Route::post('pesertas/{event_id}', 'PesertaController@store');
+    Route::get('pesertas/{event_id}/{user_id}/edit', 'PesertaController@edit');
+    Route::patch('pesertas/{event_id}/{user_id}', 'PesertaController@update');
+    Route::get('pesertas/{event_id}/{user_id}/{slug}', 'PesertaController@show');
 });
