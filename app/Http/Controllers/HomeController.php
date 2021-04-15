@@ -26,7 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        $user = Auth::user();
+        if($user->role == 'admin')
+        {
+            return view('admin.profil');
+        }
+        else
+        {
+            return redirect('beranda');
+        }
     }
     public function profil()
     {

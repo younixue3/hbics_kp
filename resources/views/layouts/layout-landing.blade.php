@@ -73,7 +73,10 @@
                     </li>
                     @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')
                     <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('logout')}}">Logout</a>
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                     @else
                     <li class="nav-item dropdown {{Request::is('profil') ? 'active' : ''}}">
