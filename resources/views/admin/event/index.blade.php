@@ -50,14 +50,14 @@
 						@foreach($datas as $data)									
 							<tr>
 								<td>{{ $no++ }}</td>
-								<td><img style="width:100px;" class="img-responsive" src="{{asset('uploads/logoEvent'.$data->foto)}}" alt=""></td>
+								<td><img style="width:50px;" class="img-responsive" src="{{asset('uploads/events/'.$data->logo)}}" alt=""></td>
 								<td>{{ $data->tagline }}</td>
 								<td>
 									<a href="{{ url('events/'.$data->id.'/status') }}">
 									@if($data->status == 1)
-										<span class="alert alert-info warning-sm">Aktif</span>
+										<span class="alert alert-info alert-sm">Aktif</span>
 									@elseif($data->status == 0)
-										<span class="alert alert-warning warning-sm">Nonaktif</span>
+										<span class="alert alert-warning alert-sm">Nonaktif</span>
 									@endif
 									</a>
 								</td>

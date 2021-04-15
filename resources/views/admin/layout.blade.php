@@ -30,6 +30,27 @@
             background-color: #f2f2f2 !important;
             border-left:3px solid black !important;
         }
+        .lama
+        {
+            background-color: #f2f2f2;
+            padding: 20px;
+            font-size: 13px;
+            color: #929292
+        }
+        .lama img
+        {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+        }
+        .tabledetail th
+        {
+            width: 20%;
+        }
+        .alert-sm
+        {
+            padding: 5px 15px;
+        }
     </style>
 </head>
 <body class="fixed-left">

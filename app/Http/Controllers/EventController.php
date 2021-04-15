@@ -28,7 +28,6 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.event.create');
     }
 
@@ -40,7 +39,41 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // masukkan semua request ke array input
+        $input = $request->all();
+        //validasi data yang masuk dulu
+        $validatedData = $request->validate([
+            'logo' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
+            'tagline' => 'required',
+            'deskripsi' => 'required',
+            'status' => 'required',
+            ]);
+        // check data foto ada atau gak
+        if($request->has('logo')){
+            // memanggil data file
+            $logo = $input['logo'];
+            // memberi nama file
+            $logoname = 'logo-'.md5(\Carbon\Carbon::now().$logo->getClientOriginalName()).'.'.$logo->getClientOriginalExtension();
+            // memindahkan file ke public/uploads
+            $logo->move('uploads/events', $logoname);
+            // memasukan nama file ke array input untuk di create 
+            $input['logo'] = $logoname;
+        }
+        //kasih case aja kalo foto ga diupload
+        else{
+            $input['logo'] = 'nopict.jpg';
+        }
+        // create data
+        $data = Event::create($input);
+        // redirect
+        if($data)
+        {
+            return redirect('events')->with('success', 'Data berhasil diupload ke server');
+        }
+        else
+        {
+            return redirect('events')->with('fail', 'Data gagal diupload ke server');
+        }
     }
 
     /**
@@ -52,6 +85,8 @@ class EventController extends Controller
     public function show($id)
     {
         //
+        $data = Event::findOrFail($id);
+        return view('admin.event.view', compact('data'));
     }
 
     /**
@@ -63,6 +98,8 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        $data = Event::findOrFail($id);
+        return view('admin.event.edit', compact('data'));
     }
 
     /**
@@ -75,6 +112,33 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input = $request->all();
+        $validatedData = $request->validate([
+            'logo' => 'mimes:jpeg,bmp,png,jpg|max:2000',
+            'tagline' => 'required',
+            'deskripsi' => 'required',
+            'status' => 'required',
+            ]);
+        $find = Event::findOrFail($id);
+        if($request->has('logo')){
+            $this->deletelogo($find->logo);
+            $logo = $input['logo'];
+            $logoname = 'logo-'.md5(\Carbon\Carbon::now().$logo->getClientOriginalName()).'.'.$logo->getClientOriginalExtension();
+            $logo->move('uploads/events', $logoname);
+            $input['logo'] = $logoname;        }
+        else{
+            $input['logo'] = $find->logo;
+        }
+        $find->update($input);
+        $find->save();
+        if($find)
+        {
+            return redirect('events')->with('success', 'Data berhasil diupdate di server');
+        }
+        else
+        {
+            return redirect('events')->with('fail', 'Data gagal diupdate di server');
+        }
     }
 
     /**
@@ -86,5 +150,13 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function deletelogo($logoname){
+        // path folder
+        $path = 'uploads/events';
+        // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
+        if(\File::delete($path.$logoname)){
+            return true;
+        }
     }
 }

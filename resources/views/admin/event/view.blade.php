@@ -3,7 +3,7 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<h2 class="title-1" style="margin-bottom:20px;">Preview data postingan</h2>
+				<h2 class="title-1" style="margin-bottom:20px;">Detail Data Event</h2>
 			</div>
 		</div>
 	</div>
@@ -11,16 +11,46 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
-				<div class="col-md-12 pdless"><img src="{{ asset('uploads/'.$data->foto) }}" style="max-height:400px;margin:auto;display:block;"></div>	
-				<br>
-				<div class="col-md-12 pdless"><br><h4>{{ $data->judul }}</h4></div>	
-				<br>
-				<div class="col-md-12 pdless"><p style="font-size:13px;">{{ $data->created_at->format('d, M Y : h:m') }} - View {{ $data->view }}</p></div>	
-				<br>
-				<div class="col-md-12 pdless">{!!$data->isi!!}</div>
-				<br>
-				<br>
-          		<a class="btn btn-warning" href="{{url('post')}}">Kembali</a>
+					<a class="btn btn-warning" href="{{url('events')}}">Kembali</a>
+					<br>
+					<h3>Event : {{$data->tagline}}</h3>
+					<br>
+					<table class="table tabledetail">
+						<tr>
+							<th>Logo</th>
+							<td><img src="{{asset('uploads/events/'.$data->logo)}}" style="width: 50px;" alt=""></td>
+						</tr>
+						<tr>
+							<th>Deskripsi</th>
+							<td>{!!$data->deskripsi!!}</td>
+						</tr>
+						<tr>
+							<th>Status</th>
+							<td>
+								<span href="{{ url('events/'.$data->id.'/status') }}">
+									@if($data->status == 1)
+										<span class="alert alert-info alert-sm">Aktif</span>
+									@elseif($data->status == 0)
+										<span class="alert alert-warning alert-sm">Nonaktif</span>
+									@endif
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<th>Jumlah Juri</th>
+							<td>0 Juri
+								<br>
+								<a href="">+ kelola data juri</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Jumlah Peserta</th>
+							<td>0 Peserta
+								<br>
+								<a href="">+ kelola data peserta</a>
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

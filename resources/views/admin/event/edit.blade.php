@@ -3,7 +3,7 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<h2 class="title-1" style="margin-bottom:20px;">Berita / Edit</h2>
+				<h2 class="title-1" style="margin-bottom:20px;">Event / Edit</h2>
 			</div>
 		</div>
 	</div>
@@ -11,39 +11,59 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
-					<form action="{{ url('post/'.$data->id) }}" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="_method" value="PATCH">
+					@if(session('success'))
+						<div class="alert alert-success">
+							{{ session('success') }}
+						</div>
+					@endif
+					@if(session('fail'))
+						<div class="alert alert-danger">
+							{{ session('fail') }}
+						</div>
+					@endif
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					<br>
+					<form action="{{ url('events/'.$data->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
+						<input type="hidden" name="_method" value="PATCH">
 						<div class="form-group">
-							<input type="hidden" name="view" value="{{$data->view}}">
-							<input type="hidden" name="jenis" value="{{$data->jenis}}">
+							<div class="lama">
+								logo sebelumnya:
+								<img src="{{asset('uploads/events/'.$data->logo)}}" alt="">
+							</div>
+							<label>Logo baru (Jika ada)</label>
+							<input type="file" style="display:block;" name="logo">
 						</div>
 						<div class="form-group">
-							<label>Judul</label>
-							<input type="text" placeholder="Masukkan Judul Berita" value="{{ $data->judul }}" class="form-control" name="judul">
+							<label>Tagline</label>
+							<input type="text" required placeholder="Masukkan Tagline Event" class="form-control" name="tagline" value="{{$data->tagline}}">
 						</div>
 						<div class="form-group">
-							<label>Jenis</label>
-							<select name="jenis" class="form-control">
-								<option @if($data->jenis == 'Berita') selected @endif value="Berita">Berita</option>
-								<option @if($data->jenis == 'Artikel') selected @endif value="Artikel">Artikel</option>
-								<option @if($data->jenis == 'Tips') selected @endif value="Tips">Tips</option>
+							<label>Deskripsi</label>
+							<textarea id="summernote" required placeholder="Tulis Isi Postingan" class="form-control" name="deskripsi">{{$data->deskripsi}}</textarea>
+						</div>
+						<div class="form-group">
+							<label>Status</label>
+							<select name="status" class="form-control">
+								<option value="1" @if ($data->status == 1)
+									selected
+								@endif>Aktif</option>
+								<option value="0" @if ($data->status == 0)
+									selected
+								@endif>No-naktif</option>
 							</select>
-						</div>
-						<div class="form-group">
-							<label>Isi</label>
-							<textarea id="summernote" class="form-control" name="isi">{{ $data->isi }}</textarea>
-						</div>
-						<div class="file-lama">
-							<img src="{{ asset('uploads/'.$data->foto) }}" width="300px;" class="text-center" alt="">
-						</div>
-						<div class="form-group">
-							<label>Foto Baru *opsional</label>
-							<input type="file" style="display:block;" name="foto">
 						</div>
 						<br>
 						<div class="form-group">
-							<a href="{{url('post')}}" class="btn btn-warning">Batal</a>
+							<a href="{{url('events')}}" class="btn btn-warning">Batal</a>
 							<input type="submit" value="Update" class="btn btn-primary" name="submit">
 						</div>
 					</form>

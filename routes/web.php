@@ -23,4 +23,8 @@ Route::middleware(['auth'])->group(function(){
     // EVENT
     Route::get('events', 'EventController@index');
     Route::get('events/create', 'EventController@create');
+    Route::post('events', 'EventController@store');
+    Route::get('events/{id}/edit', 'EventController@edit');
+    Route::patch('events/{id}', 'EventController@update');
+    Route::get('events/{id}/{slug}', 'EventController@show');
 });

@@ -31,16 +31,16 @@
 						</div>
 					@endif
 					<br>
-					<form action="{{ url('post') }}" method="POST" enctype="multipart/form-data">
+					<form action="{{ url('events') }}" method="POST" enctype="multipart/form-data">
 						@csrf
-						<input type="hidden" name="status" value="0">
-						<div class="form-group">
-							<label>Tagline</label>
-							<input type="text" required placeholder="Masukkan Tagline Event" class="form-control" name="tagline">
-						</div>
+
 						<div class="form-group">
 							<label>Logo</label>
 							<input type="file" required style="display:block;" name="logo">
+						</div>
+						<div class="form-group">
+							<label>Tagline</label>
+							<input type="text" required placeholder="Masukkan Tagline Event" class="form-control" name="tagline">
 						</div>
 						<div class="form-group">
 							<label>Deskripsi</label>
@@ -48,9 +48,9 @@
 						</div>
 						<div class="form-group">
 							<label>Status</label>
-							<select name="jenis" class="form-control">
-								<option value="aktif" selected>Aktif</option>
-								<option value="nonaktif">No-naktif</option>
+							<select name="status" class="form-control">
+								<option value="1" selected>Aktif</option>
+								<option value="0">No-naktif</option>
 							</select>
 						</div>
 						<br>
