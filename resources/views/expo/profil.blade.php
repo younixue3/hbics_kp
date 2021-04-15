@@ -31,7 +31,7 @@
                         <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
                         <div class="apaitu-mid">
                           <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                            <i class="icofont-people"></i> {{$karya->nama}}
+                            <i class="icofont-people"></i> {{$karya->nama_tim}}
                           </p>   
                           <a href="#" data-toggle="modal" data-target="#anggotatim" class="button-text wow fadeInUp" data-wow-delay="1s">Edit Nama tim <i class="icofont-pencil-alt-1"></i></a>
                           <div class="modal fade" id="anggotatim" tabindex="-1" role="dialog" aria-labelledby="anggotatimLabel" aria-hidden="true">
@@ -48,7 +48,7 @@
                                         @csrf
                                         <input type="hidden" name="_method" value="PATCH">
                                     </form>
-                                    <textarea form="f-karya-namaTim" name="nama" rows="10" placeholder="Masukkan nama tim">{{$karya->nama}}</textarea>
+                                    <textarea form="f-karya-namaTim" name="nama_tim" rows="10" placeholder="Masukkan nama tim">{{$karya->nama_tim}}</textarea>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -171,19 +171,19 @@
         </div>
     </div>
 </div>
-{{-- <div class="container-fluid">
+<div class="container-fluid">
   <div class="row frame">
-    @if (count($user->karya->product_images()))
-      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('image/'.$user->karya->product_images()[0])}}');background-size:cover;">
+    @if ($karya->fotos->count() != 0)
+      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}');background-size:cover;">
     @else
       <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
     @endif
     </div>
     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
       <div class="deskripsi text-center">
-        <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s" style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$user->karya->product_name ?? 'Nama produk belum diatur'}}</p>
+        <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s" style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$karya->nama}}</p>
         <p class="deskripsi-text wow fadeInUp" data-wow-delay="2s">
-            {{$user->karya->product_description}}
+            {{$karya->deskripsi}}
         </p>
         <a href="#" data-toggle="modal" data-target="#deskripsiproduk" class="button-text wow fadeInUp" data-wow-delay="1.5s">Edit produk <i class="icofont-pencil-alt-1"></i></a>
         <div class="modal fade" id="deskripsiproduk" tabindex="-1" role="dialog" aria-labelledby="deskripsiprodukLabel" aria-hidden="true">
@@ -202,10 +202,10 @@
                     <input type="hidden" name="_method" value="PATCH">
                 </form>
                 <label for="">Nama Produk</label>
-                <input form="form-product" name="product_name" style="padding-top: 15px;" value="{{$user->karya->product_name}}" type="text" class="form-control" placeholder="Masukkan nama produk">
+                <input form="form-product" name="nama" style="padding-top: 15px;" value="{{$karya->nama}}" type="text" class="form-control" placeholder="Masukkan nama produk">
                 <br>
                 <label for="">Deskripsi (sisa <span id="word_count_deskripsi"></span> karakter)</label>
-                <textarea form="form-product" id="textarea_deskripsi" name="product_description" maxlength="350" rows="10" placeholder="Masukkan deskripsi">{{$user->karya->product_description}}</textarea>
+                <textarea form="form-product" id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi">{{$user->karya->deskripsi}}</textarea>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -217,10 +217,10 @@
       </div>
     </div>
   </div>
-</div> --}}
-{{-- <div class="container-fluid">
+</div>
+<div class="container-fluid wow fadeInUp" data-wow-delay="1s">
   <div class="row frame4 text-center" style="position: relative">
-    @if (count($user->karya->product_images()) >= 10)
+    @if ($karya->fotos->count() >= 10)
       <a class="button-text button-foto">Sudah mencapai maksimal 10 foto <i class="icofont-image"></i></a>        
     @else
       <a href="#" data-toggle="modal" data-target="#fotoMass" class="button-text button-foto">Tambah foto produk <i class="icofont-image"></i></a>
@@ -235,33 +235,25 @@
                 </button>
             </div>
             <div class="modal-body text-left">
-              <form id="form-image-product" action="{{url('karya')}}" method="POST" enctype="multipart/form-data">
+              <form id="f-karya-foto" action="{{url('karya/foto')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
-                <input type="hidden" name="_method" value="PATCH">
               </form>
               <label for="">Upload foto</label>
-              <input form="form-image-product" type="file" name="image_product[]">
+              <input form="f-karya-foto" type="file" name="foto">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button form="form-image-product" type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                <button form="f-karya-foto" type="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
             </div>
         </div>
     </div>
     <div class="row owl-carousel owl-theme" style="margin: 0px;">
-      @forelse ($user->karya->product_images() as $imageId)
+      @forelse ($karya->fotos as $foto)
       <div class="item">
         <div class="slide">
-          <img src="{{url('image/'.$imageId)}}" class="slide-image" alt="">
-          <form id="form-image-product-delete-{{$imageId}}" action="{{url('karya')}}" method="POST">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="_method" value="PATCH">
-          </form>
-          <input form="form-image-product-delete-{{$imageId}}" type="hidden" name="image_product_delete[]" value="{{$imageId}}">
-          <button form="form-image-product-delete-{{$imageId}}" type="submit" class="btn btn-danger btn-hapus">Hapus</button>  
+          <img src="{{asset('uploads/karyafotos/'.$foto->foto)}}" class="slide-image" alt="">
+          <a href="{{url('karya/foto/'.$foto->id)}}" class="btn btn-danger btn-hapus">Hapus</a>  
         </div>
       </div>
       @empty
@@ -271,7 +263,7 @@
       @endforelse
     </div>
   </div>
-</div> --}}
+</div>
 <div class="container-fluid">
     <div class="row frame">
         <div class="container">
@@ -523,7 +515,7 @@
                     </p>
                     <div class="panel panel-default" style="border: 1px solid #e4e4e4; background-color:white; padding: 20px;">
                       <div class="panel-body">
-                        <form action="{{url('profil/update')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{url('profil')}}" method="POST" enctype="multipart/form-data">
                           @csrf
                           <input type="hidden" name="_method" value="PATCH">
                           <label for="">Username</label>
@@ -533,7 +525,7 @@
                           <input style="padding-top: 15px;" type="text" class="form-control" name="email" value="{{$user->email}}" placeholder="Email baru">
                           <br>
                           <label for="">Password</label>
-                          <input style="padding-top: 15px;" type="text" class="form-control" name="password" placeholder="Password baru">
+                          <input style="padding-top: 15px;" type="password" class="form-control" name="password" placeholder="Password baru">
                           <br>
                           <div class="alert alert-warning">
                             <i class="icofont-warning"></i> Isi kolom password hanya jika ingin mengganti password

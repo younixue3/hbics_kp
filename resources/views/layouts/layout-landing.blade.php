@@ -68,8 +68,8 @@
                     <li class="nav-item {{Request::is('galeri') || Request::is('galeri/*') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('galeri')}}">Galeri</a>
                     </li>
-                    <li class="nav-item {{Request::is('berita') || Request::is('berita/*/*') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('berita')}}">Berita</a>
+                    <li class="nav-item {{Request::is('post') || Request::is('post/*/*') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('post')}}">Berita</a>
                     </li>
                     @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')
                     <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
@@ -81,8 +81,11 @@
                           Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
-                          <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
+                            <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                     @endif

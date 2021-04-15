@@ -215,15 +215,15 @@
                                 </div>
                                 <div class="col-md-9 news-title-frame wow fadeInUp" data-wow-delay="1s">
                                     <div>
-                                        <a href="{{url('berita/'.$berita->id.'/'.str_replace(' ', '-', $berita->judul))}}" class="news-title">
+                                        <a href="{{url('post/'.$berita->id.'/'.str_replace(' ', '-', $berita->judul))}}" class="news-title">
                                             {{$berita->judul}}
                                         </a>
                                         <div class="news-info">
                                             <span class="news-ket"><i class="icofont-calendar"></i> {{$berita->created_at->format('d, M Y')}}</span>
                                             &nbsp;&nbsp;
-                                            <span class="news-ket"><i class="icofont-sand-clock"></i> {{$berita->durasi}} menit</span>    
+                                            <span class="news-ket"><i class="icofont-sand-clock"></i> {{$berita->waktu}} menit</span>    
                                         </div>
-                                        <a href="{{url('berita/'.$berita->id.'/'.str_replace(' ', '-', $berita->judul))}}" class="news-link">Baca Selengkapnya</a>
+                                        <a href="{{url('post/'.$berita->id.'/'.str_replace(' ', '-', $berita->judul))}}" class="news-link">Baca Selengkapnya</a>
                                         <hr>
                                     </div>
                                 </div>

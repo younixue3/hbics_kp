@@ -72,8 +72,20 @@ Route::middleware(['auth'])->group(function(){
     // MENU NON ADMIN
     // LANDING
     Route::get('beranda', 'LandingController@beranda');
+    Route::get('tentang-kami', 'LandingController@tentangKami');
+    Route::get('timeline', 'LandingController@timeline');
+    Route::get('kategori', 'LandingController@kategori');
+    Route::get('juri', 'LandingController@juri');
+    Route::get('galeri', 'LandingController@galeri');
+    Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
+    Route::get('post', 'LandingController@post');
+    Route::get('post/{id}/{slug}', 'LandingController@postDetail');
+    Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
+    Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
     // EXPO
     Route::get('profil', 'ExpoController@profil');
     Route::patch('profil', 'ExpoController@profilUpdate');
     Route::patch('karya', 'ExpoController@karyaUpdate');
+    Route::post('karya/foto', 'ExpoController@karyaFoto');
+    Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
 });

@@ -20,7 +20,8 @@ class Karya extends Model
         'link_profil',
         'link_presentation',
         'link_mockup',
-        'proposal'
+        'proposal',
+        'nama_tim'
     ];
     public function event()
     {
@@ -37,5 +38,9 @@ class Karya extends Model
     public function likers()
     {
         return $this->hasMany('App\Komentar')->where('liked', 'true');
+    }
+    public function fotos()
+    {
+        return $this->hasMany('App\KaryaFoto');
     }
 }

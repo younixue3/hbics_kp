@@ -1,9 +1,5 @@
 @extends('layouts.layout-landing')
 @section('content')
-@php
-    $event_active_id = \Modules\Core\Entities\Param::getValue('event_active_id');
-    $event = \Modules\Event\Entities\Event::findOrFail($event_active_id);
-@endphp
 <a class="logo logo--stuck" href="{{url('/')}}">
     <img src="{{asset('images/logo.png')}}"/>
 </a>
@@ -19,7 +15,7 @@
                     <div class="apaitu-text apaitu-text--important wow fadeInUp" data-wow-delay="1s">
                         {{-- {{strip_tags($event->note)}} --}}
                         {{-- {!!str_replace('style', 'chan', $event->note)!!} --}}
-                        {!!str_replace(['style', 'font-size', 'color', 'face'], 'w', $event->note)!!}
+                        {!!str_replace(['style', 'font-size', 'color', 'face'], 'w', $event->deskripsi)!!}
                         {{-- {!!$event->note!!} --}}
                         {{-- {{$event->note}} --}}
                     </div>

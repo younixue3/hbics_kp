@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Event;
 use App\Post;
 use App\Karya;
+use App\KaryaFoto;
+use App\User;
 
 class ExpoController extends Controller
 {
@@ -23,6 +26,44 @@ class ExpoController extends Controller
         // echo $karya->likers->count();
         // exit;
         return view('expo.profil', compact('user', 'event', 'karya'));
+    }
+    public function profilUpdate(Request $request)
+    {
+        //
+        $input = $request->all();
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            ]);
+        $user = User::findOrFail(Auth::user()->id);
+        $cekemail = User::where('email', $input['email'])->where('id', '!=' ,$user->id)->get();
+        if($cekemail->count() == 0)
+        {
+            if($input['password'] == '')
+            {
+                $input['password'] = $user->password;
+            }
+            else
+            {
+                $input['password'] = Hash::make($input['password']);
+            }
+            $user->password = $input['password'];
+            $user->email = $input['email'];
+            $user->name = $input['name'];
+            $user->save();
+            if($user)
+            {
+                return redirect('profil')->with('success', 'Data berhasil diupdate di server');
+            }
+            else
+            {
+                return redirect('profil')->with('fail', 'Data gagal diupdate di server');
+            }
+        }
+        else
+        {
+            return redirect('profil')->with('fail', 'Data gagal diupdate di server, email telah terdaftar di akun lainnya');
+        }
     }
     public function karyaUpdate(Request $request)
     {
@@ -84,9 +125,54 @@ class ExpoController extends Controller
             return redirect('profil')->with('fail', 'Data gagal diupdate di server');
         }
     }
+    public function karyaFoto(Request $request)
+    {
+        $input = $request->all();
+        $validatedData = $request->validate([
+            'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
+        ]);
+        $user = Auth::user();
+        $karya = Karya::where('user_id', $user->id)->latest()->first();
+        $foto = $input['foto'];
+        $fotoname = 'foto-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
+        $foto->move('uploads/karyafotos', $fotoname);
+        $input['foto'] = $fotoname;
+        $input['karya_id'] = $karya->id;
+        $data = KaryaFoto::create($input);
+        if($data)
+        {
+            return redirect('profil')->with('success', 'Foto berhasil diupload di server');
+        }
+        else
+        {
+            return redirect('profil')->with('fail', 'Foto gagal diupload di server');
+        }
+    }
+    public function karyaFotoDelete($id)
+    {
+        $data = KaryaFoto::findOrFail($id);
+        $this->deletekaryafoto($data->foto);
+        $data->delete();
+        if($data)
+        {
+            return redirect('profil')->with('success', 'Data berhasil diupdate di server');
+        }
+        else
+        {
+            return redirect('profil')->with('fail', 'Data gagal diupdate di server');
+        }
+    }
     public function deletefoto($fotoname){
         // path folder
         $path = 'uploads/karyas/';
+        // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
+        if(\File::delete($path.$fotoname)){
+            return true;
+        }
+    }
+    public function deletekaryafoto($fotoname){
+        // path folder
+        $path = 'uploads/karyafotos/';
         // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
         if(\File::delete($path.$fotoname)){
             return true;

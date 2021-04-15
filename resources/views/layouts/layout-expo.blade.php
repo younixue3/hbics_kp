@@ -48,13 +48,16 @@
                         <a class="nav-link" href="{{url('logout')}}">Logout</a>
                     </li>
                     @else
-                    <li class="nav-item dropdown {{Request::is('profil/*') ? 'active' : ''}}">
+                    <li class="nav-item dropdown {{Request::is('profil') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{{url('profil/smp/desain-grafis')}}">Profil</a>
-                          <a class="dropdown-item" href="{{url('logout')}}">Logout</a>
+                            <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                     @endif

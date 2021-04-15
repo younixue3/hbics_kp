@@ -21,15 +21,15 @@
                     @php
                         $no = 1;
                     @endphp
-                    @forelse ($event->schedules as $jadwal)
+                    @forelse ($event->timelines as $timeline)
                     <div class="timeline wow fadeInUp" data-wow-delay="1s">
                         <div class="timeline-number">
                             <span>0{{$no++}}.</span>
                         </div>
                         <div class="timeline-content">
-                            <p class="timeline-title">{{$jadwal->title}}</p>
-                            <p class="timeline-deadline">Tanggal Buka : {{$jadwal->start->format('d, M Y')}} - Tanggal Tutup : {{$jadwal->end->format('d, M Y')}}</p>
-                            <p class="timeline-text">{{$jadwal->description}}</p>
+                            <p class="timeline-title">{{$timeline->nama}}</p>
+                            <p class="timeline-deadline">Tanggal Buka : {{$timeline->tanggal_mulai->format('d, M Y')}} - Tanggal Tutup : {{$timeline->tanggal_selesai->format('d, M Y')}}</p>
+                            <p class="timeline-text">{{$timeline->keterangan}}</p>
                         </div>
                     </div>
                     @empty

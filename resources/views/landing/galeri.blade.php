@@ -9,21 +9,16 @@
         <div class="container">
             <div class="row">
                 @forelse ($galeris as $galeri)
-                    @php
-                        $images = json_decode($galeri->images);
-                    @endphp
-                    @if (count($images) > 0)
-                        <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
-                            <div class="galeri">
-                                <div class="galeri-imageframe">
-                                    <a href="{{url('galeri/'.$galeri->id.'/'.str_replace(' ', '', $galeri->year))}}">
-                                        <img src="{{asset('image/'.$images[0]->image_id)}}" alt="" class="galeri-image">
-                                    </a>
-                                    <p class="galeri-text">{{$galeri->year}}</p>
-                                </div>
+                    <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
+                        <div class="galeri">
+                            <div class="galeri-imageframe">
+                                <a href="{{url('galeri/'.$galeri->id.'/'.str_replace(' ', '', $galeri->folder))}}">
+                                    <img src="{{asset('uploads/galeris/'.$galeri->fotos->first()->foto)}}" alt="" class="galeri-image">
+                                </a>
+                                <p class="galeri-text">{{$galeri->folder}}</p>
                             </div>
-                        </div>                  
-                    @endif
+                        </div>
+                    </div>                  
                 @empty
                 <div class="col-md-12">
                     Data Kosong

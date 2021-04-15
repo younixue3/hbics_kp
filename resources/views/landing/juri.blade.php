@@ -17,14 +17,14 @@
         </div>
         <div class="container">
             <div class="row">
-                @forelse ($juris as $juri)
+                @forelse ($event->juris as $juri)
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
                     <a class="juri" href="" data-toggle="modal" data-target="#juri-video{{$juri->id}}">
                         <div class="juri-image-frame">
-                            <img src="{{asset('image/'.$juri->image_id)}}" alt="" class="juri-image">
+                            <img src="{{asset('uploads/juris/'.$juri->foto)}}" alt="" class="juri-image">
                         </div>
                         <img src="{{asset('images/gif/7.gif')}}" class="juri-name-frame" alt="">
-                        <p class="juri-name">{{$juri->name}}</p>
+                        <p class="juri-name">{{$juri->nama}}</p>
                         <p class="juri-text text-center">
                             {{$juri->quote}}
                         </p>
@@ -37,7 +37,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                          <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $juri->link_profile)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $juri->url_profil)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                       </div>
                     </div>

@@ -25,4 +25,8 @@ class Event extends Model
     {
         return $this->hasMany('App\Karya');
     }
+    public function expo()
+    {
+        return $this->hasMany('App\Timeline')->where('kode', '#06');
+    }
 }

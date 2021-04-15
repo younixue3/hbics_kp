@@ -14,18 +14,18 @@
                 <div class="col-md-8">
                     <div class="post">
                         <div class="post-imageframe">
-                            <img src="{{asset('image/'.$berita->image_id)}}" alt="" class="post-image" style="border-radius: 20px">
+                            <img src="{{asset('uploads/posts/'.$data->foto)}}" alt="" class="post-image" style="border-radius: 20px">
                         </div>
                         <div class="post-content">
-                            <a class="post-title">{{$berita->judul}} </a>
+                            <a class="post-title">{{$data->judul}} </a>
                             <br>
                             <div class="post-info">
-                                <span class="post-ket"><i class="icofont-calendar"></i> {{$berita->created_at->format('d, M Y')}}</span>
+                                <span class="post-ket"><i class="icofont-calendar"></i> {{$data->created_at->format('d, M Y')}}</span>
                                 &nbsp;&nbsp;
-                                <span class="post-ket"><i class="icofont-sand-clock"></i> {{$berita->durasi}} menit</span>
+                                <span class="post-ket"><i class="icofont-sand-clock"></i> {{$data->waktu}} menit</span>
                             </div>
                             <div class="post-text">
-                                {!!$berita->konten!!}
+                                {!!$data->isi!!}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     <div id="share-buttons">
                         Bagikan berita ini : <br>
                         <!-- Email -->
-                        <a href="mailto:?Subject={{$berita->judul}}&amp;Body={{$berita->judul}} https://simplesharebuttons.com">
+                        <a href="mailto:?Subject={{$data->judul}}&amp;Body={{$data->judul}} https://simplesharebuttons.com">
                             <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
                         </a>
                      
@@ -69,13 +69,13 @@
                         <div class="col-md-12">
                             <div class="post post--sm">
                                 <div class="post-content">
-                                    <a href="{{url('berita/'.$item->id.'/'.str_replace(' ', '-', $item->judul))}}" class="post-title">{{$item->judul}} </a>
+                                    <a href="{{url('post/'.$item->id.'/'.str_replace(' ', '-', $item->judul))}}" class="post-title">{{$item->judul}} </a>
                                     <div>
                                         <span class="post-ket"><i class="icofont-calendar"></i> {{$item->created_at->format('d, M Y')}}</span>
                                         &nbsp;&nbsp;
                                         <span class="post-ket"><i class="icofont-sand-clock"></i> {{$item->durasi}} menit</span>
                                     </div>
-                                    <a href="{{url('berita/'.$item->id.'/'.str_replace(' ', '-', $item->judul))}}" class="post-link"><i>Baca Selengkapnya</i></a>
+                                    <a href="{{url('post/'.$item->id.'/'.str_replace(' ', '-', $item->judul))}}" class="post-link"><i>Baca Selengkapnya</i></a>
                                     <hr>
                                 </div>
                             </div>
