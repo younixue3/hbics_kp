@@ -140,6 +140,18 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+        $data = Event::findOrFail($id);
+        if($data->juris->count() != 0 && $data->timelines->count() != 0 && $data->karyas->count() != 0) 
+        {
+            return redirect('events')->with('fail', 'Data gagal dihapus di server');
+        } 
+        else 
+        {
+            $this->deletelogo($data->logo);
+            $data->delete();
+            return redirect('events')->with('success', 'Data berhasil dihapus di server');
+        }
+        
     }
     public function deletelogo($logoname){
         // path folder

@@ -65,7 +65,11 @@
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('events/'.$data->id.'/'.str_Replace(' ', '-', $data->tagline)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('events/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('events/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>									
+									@if ($data->juris->count() == 0 && $data->timelines->count() == 0 && $data->karyas->count() == 0)
+										<a class="btn btn-sm btn-danger" href="{{ url('events/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									@else
+										<a class="btn btn-sm disabled"><i class="fas fa-trash"></i></a>
+									@endif
 								</td>
 							</tr>
 						@endforeach

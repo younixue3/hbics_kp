@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('events', 'EventController@store');
     Route::get('events/{id}/edit', 'EventController@edit');
     Route::patch('events/{id}', 'EventController@update');
+    Route::get('events/{id}/delete', 'EventController@destroy');
     Route::get('events/{id}/{slug}', 'EventController@show');
     // JURI
     Route::get('juris/{event_id}', 'JuriController@index');
@@ -49,4 +50,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('pesertas/{event_id}/{user_id}/edit', 'PesertaController@edit');
     Route::patch('pesertas/{event_id}/{user_id}', 'PesertaController@update');
     Route::get('pesertas/{event_id}/{user_id}/{slug}', 'PesertaController@show');
+    // EVENT
+    Route::get('posts', 'PostController@index');
+    Route::get('posts/create', 'PostController@create');
+    Route::post('posts', 'PostController@store');
+    Route::get('posts/{id}/edit', 'PostController@edit');
+    Route::patch('posts/{id}', 'PostController@update');
+    Route::get('posts/{id}/delete', 'PostController@destroy');
+    Route::get('posts/{id}/{slug}', 'PostController@show');
 });

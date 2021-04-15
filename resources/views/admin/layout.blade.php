@@ -76,6 +76,10 @@
                         <li>
                             <a href="{{url('profils')}}" class="waves-effect {{Request::is('profils') ? 'act' : ''}}"><i class="icofont-user"></i><span> Profil </span></a>
                         </li>
+                        <li class="menu-title">Landing</li>
+                        <li>
+                            <a href="{{url('posts')}}" class="waves-effect {{Request::is('posts') || Request::is('posts/*') ? 'act' : ''}}"><i class="icofont-newspaper"></i><span> Postingan </span></a>
+                        </li>
                         <li class="menu-title">Event Menu</li>
                         <li>
                             <a href="{{url('events')}}" class="waves-effect {{Request::is('events') || Request::is('events/*') || Request::is('timelines/*') || Request::is('juris/*') || Request::is('pesertas/*') ? 'act' : ''}}"><i class="icofont-mega-phone"></i><span> Event </span></a>
