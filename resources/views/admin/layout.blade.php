@@ -48,6 +48,32 @@
         {
             padding: 5px 15px;
         }
+        .imagegaleri
+        {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+        .imagegaleri-delete
+        {
+            font-size: 10px;
+            background-color: rgb(240, 72, 72);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline;
+            position: absolute;
+            margin-top: 20px;
+            margin-left: 30px;
+            color: white;
+            left: 0;
+            transition: 0.5s;
+        }
+        .imagegaleri-delete:hover
+        {
+            color: white;
+            background-color: rgb(207, 24, 24);
+        }
     </style>
 </head>
 <body class="fixed-left">
@@ -79,6 +105,9 @@
                         <li class="menu-title">Landing</li>
                         <li>
                             <a href="{{url('posts')}}" class="waves-effect {{Request::is('posts') || Request::is('posts/*') ? 'act' : ''}}"><i class="icofont-newspaper"></i><span> Postingan </span></a>
+                        </li>
+                        <li>
+                            <a href="{{url('galeris')}}" class="waves-effect {{Request::is('galeris') || Request::is('galeris/*') ? 'act' : ''}}"><i class="icofont-image"></i><span> Galeri </span></a>
                         </li>
                         <li class="menu-title">Event Menu</li>
                         <li>

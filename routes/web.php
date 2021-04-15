@@ -58,4 +58,15 @@ Route::middleware(['auth'])->group(function(){
     Route::patch('posts/{id}', 'PostController@update');
     Route::get('posts/{id}/delete', 'PostController@destroy');
     Route::get('posts/{id}/{slug}', 'PostController@show');
+    // FOLDER GALERI
+    Route::get('galeris', 'GaleriController@index');
+    Route::get('galeris/create', 'GaleriController@create');
+    Route::post('galeris', 'GaleriController@store');
+    Route::get('galeris/{id}/edit', 'GaleriController@edit');
+    Route::patch('galeris/{id}', 'GaleriController@update');
+    Route::get('galeris/{id}/delete', 'GaleriController@destroy');
+    Route::get('galeris/{id}/{slug}', 'GaleriController@show');
+    // FOTOS
+    Route::get('fotos/{id}/delete', 'GaleriController@fotoDestroy');
+    Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
 });
