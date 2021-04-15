@@ -30,7 +30,15 @@ class HomeController extends Controller
     }
     public function profil()
     {
-        return view('admin.profil');
+        $user = Auth::user();
+        if($user->role == 'admin')
+        {
+            return view('admin.profil');
+        }
+        else
+        {
+            return redirect('beranda');
+        }
     }
     public function profilUpdate(Request $request)
     {

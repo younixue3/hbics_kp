@@ -69,4 +69,11 @@ Route::middleware(['auth'])->group(function(){
     // FOTOS
     Route::get('fotos/{id}/delete', 'GaleriController@fotoDestroy');
     Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
+    // MENU NON ADMIN
+    // LANDING
+    Route::get('beranda', 'LandingController@beranda');
+    // EXPO
+    Route::get('profil', 'ExpoController@profil');
+    Route::patch('profil', 'ExpoController@profilUpdate');
+    Route::patch('karya', 'ExpoController@karyaUpdate');
 });
