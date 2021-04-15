@@ -30,4 +30,12 @@ class Karya extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function komentars()
+    {
+        return $this->hasMany('App\Komentar');
+    }
+    public function likers()
+    {
+        return $this->hasMany('App\Komentar')->where('liked', 'true');
+    }
 }

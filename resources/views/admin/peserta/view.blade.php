@@ -160,6 +160,18 @@
 								</span>
 							</td>
 						</tr>
+						<tr>
+							<th>Total Komentar</th>
+							<td>
+								{{$data->karya->komentars->count()}}
+							</td>
+						</tr>
+						<tr>
+							<th>Total Likes</th>
+							<td>
+								{{$data->karya->likers->count()}}
+							</td>
+						</tr>
 					</table>
 					<hr>
 					<a class="btn btn-warning" href="{{url('pesertas/'.$event_id)}}">Kembali</a>
