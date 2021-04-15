@@ -39,7 +39,7 @@
 								<th>Logo</th>
 								<th>Tagline</th>
 								<th>Status</th>
-								<th>Detail</th>
+								<th>Tanggal dibuat</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -61,7 +61,7 @@
 									@endif
 									</a>
 								</td>
-								<td>-</td>
+								<td>{{$data->created_at->format('d, M Y')}}</td>
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('events/'.$data->id.'/'.str_Replace(' ', '-', $data->tagline)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('events/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>

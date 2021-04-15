@@ -18,14 +18,6 @@
 							<td>{{$data->nama}}</td>
 						</tr>
 						<tr>
-							<th>Email</th>
-							<td>{{$data->user->email}}</td>
-						</tr>
-						<tr>
-							<th>Password (Terengkripsi)</th>
-							<td>{{$data->user->password}}</td>
-						</tr>
-						<tr>
 							<th>Foto</th>
 							<td><img src="{{asset('uploads/juris/'.$data->foto)}}" style="width: 300px;" alt=""></td>
 						</tr>

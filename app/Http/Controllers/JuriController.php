@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Event;
 use App\Juri;
+use App\User;
 
 class JuriController extends Controller
 {
@@ -48,6 +49,8 @@ class JuriController extends Controller
         $validatedData = $request->validate([
             'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
             'nama' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
             'url_profil' => 'required',
             'quote' => 'required',
             ]);
@@ -60,6 +63,13 @@ class JuriController extends Controller
         else{
             $input['foto'] = 'nopict.jpg';
         }
+        $newuser = new User();
+        $newuser->name = $input['nama'];
+        $newuser->role = 'juri';
+        $newuser->email = $input['email'];
+        $newuser->password = Hash::make($input['password']);
+        $newuser->save();
+        $input['user_id'] = $newuser->id;
         $input['event_id'] = $event->id;
         $data = Juri::create($input);
         if($data)
@@ -70,7 +80,6 @@ class JuriController extends Controller
         {
             return redirect('juris/'.$event->id)->with('fail', 'Data gagal diupload ke server');
         }
-
     }
 
     /**
@@ -79,9 +88,11 @@ class JuriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($event_id, $id)
     {
         //
+        $data = Juri::findOrFail($id);
+        return view('admin.juri.view', compact('data'));
     }
 
     /**
@@ -111,28 +122,49 @@ class JuriController extends Controller
         $validatedData = $request->validate([
             'foto' => 'mimes:jpeg,bmp,png,jpg|max:2000',
             'nama' => 'required',
+            'email' => 'required',
             'url_profil' => 'required',
             'quote' => 'required',
             ]);
         $find = Juri::findOrFail($id);
-        if($request->has('foto')){
-            $this->deletefoto($find->foto);
-            $foto = $input['foto'];
-            $fotoname = 'juri-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
-            $foto->move('uploads/juris', $fotoname);
-            $input['foto'] = $fotoname;        }
-        else{
-            $input['foto'] = $find->foto;
-        }
-        $find->update($input);
-        $find->save();
-        if($find)
+        $cekemail = User::where('email', $input['email'])->where('id', '!=' ,$find->user_id)->get();
+        if($cekemail->count() == 0)
         {
-            return redirect('juris/'.$event_id)->with('success', 'Data berhasil diupdate di server');
+            if($input['password'] == '')
+            {
+                $input['password'] = $find->user->password;
+            }
+            else
+            {
+                $input['password'] = Hash::make($input['password']);
+            }
+            $user = User::findOrFail($find->user_id);
+            $user->password = $input['password'];
+            $user->email = $input['email'];
+            $user->save();
+            if($request->has('foto')){
+                $this->deletefoto($find->foto);
+                $foto = $input['foto'];
+                $fotoname = 'juri-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
+                $foto->move('uploads/juris', $fotoname);
+                $input['foto'] = $fotoname;        }
+            else{
+                $input['foto'] = $find->foto;
+            }
+            $find->update($input);
+            $find->save();
+            if($find)
+            {
+                return redirect('juris/'.$event_id)->with('success', 'Data berhasil diupdate di server');
+            }
+            else
+            {
+                return redirect('juris/'.$event_id)->with('fail', 'Data gagal diupdate di server');
+            }
         }
         else
         {
-            return redirect('juris/'.$event_id)->with('fail', 'Data gagal diupdate di server');
+            return redirect('juris/'.$event_id)->with('fail', 'Data gagal diupdate di server, email telah terdaftar di akun lainnya');
         }
     }
 

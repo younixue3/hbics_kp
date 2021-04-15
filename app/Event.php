@@ -17,4 +17,8 @@ class Event extends Model
     {
         return $this->hasMany('App\Juri');
     }
+    public function timelines()
+    {
+        return $this->hasMany('App\Timeline');
+    }
 }

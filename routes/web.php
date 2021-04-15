@@ -35,4 +35,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('juris/{event_id}/{id}/edit', 'JuriController@edit');
     Route::patch('juris/{event_id}/{id}', 'JuriController@update');
     Route::get('juris/{event_id}/{id}/{slug}', 'JuriController@show');
+    // TIMELINE
+    Route::get('timelines/{event_id}', 'TimelineController@index');
+    Route::get('timelines/{event_id}/create', 'TimelineController@create');
+    Route::post('timelines/{event_id}', 'TimelineController@store');
+    Route::get('timelines/{event_id}/{id}/edit', 'TimelineController@edit');
+    Route::patch('timelines/{event_id}/{id}', 'TimelineController@update');
+    Route::get('timelines/{event_id}/{id}/{slug}', 'TimelineController@show');
 });

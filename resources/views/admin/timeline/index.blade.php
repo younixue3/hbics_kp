@@ -3,8 +3,8 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<a style="float:right" href="{{url('juris/'.$event->id.'/create')}}" class="btn btn-primary">+ Tambah data</a>
-				<h2 class="title-1" style="margin-bottom:20px;">Data Juri</h2>
+				<a style="float:right" href="{{url('timelines/'.$event->id.'/create')}}" class="btn btn-primary">+ Tambah data</a>
+				<h2 class="title-1" style="margin-bottom:20px;">Data Timeline</h2>
 			</div>
 		</div>
 	</div>
@@ -43,10 +43,9 @@
 						<thead >
 							<tr>
 								<th>No</th>
-								<th>Foto</th>
-								<th>Nama/ Akun</th>
-								<th>Url Profil</th>
-								<th>Quote</th>
+								<th>Nama</th>
+								<th>Keterangan</th>
+								<th>Tanggal</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
@@ -54,25 +53,16 @@
 						@php
 							$no = 1;
 						@endphp
-						@foreach($event->juris as $data)									
+						@foreach($event->timelines as $data)									
 							<tr>
 								<td>{{ $no++ }}</td>
-								<td><img style="width:50px;" class="img-responsive" src="{{asset('uploads/juris/'.$data->foto)}}" alt=""></td>
+								<td>{{ $data->nama }}</td>
+								<td>{{ $data->keterangan }}</td>
+								<td>{{ $data->tanggal_mulai->format('d, M Y')}} - {{ $data->tanggal_selesai->format('d, M Y')}}</td>
 								<td>
-									{{ $data->nama }}
-									<span style="font-size: 12px;opacity: 0.5;">
-										<br>
-										{{ $data->user->email }}
-									</span>
-								</td>
-								<td>
-									<a href="{{$data->url_profil}}" target="_blank">{{$data->url_profil}}</a>
-								</td>
-								<td>{{$data->quote}}</td>
-								<td>
-									<a class="btn btn-sm btn-success" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
-									<a class="btn btn-sm btn-info" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('juris/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									<a class="btn btn-sm btn-success" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-sm btn-info" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
+									<a class="btn btn-sm btn-danger" href="{{ url('timelines/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 						@endforeach

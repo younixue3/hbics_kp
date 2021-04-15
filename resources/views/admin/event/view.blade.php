@@ -39,6 +39,12 @@
 							</td>
 						</tr>
 						<tr>
+							<th>Jumlah Timeline</th>
+							<td>
+								<a href="{{url('timelines/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->timelines->count()}} Timeline</a>
+							</td>
+						</tr>
+						<tr>
 							<th>Jumlah Juri</th>
 							<td>
 								<a href="{{url('juris/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->juris->count()}} Juri</a>
