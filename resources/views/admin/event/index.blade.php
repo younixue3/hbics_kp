@@ -63,7 +63,7 @@
 								</td>
 								<td>-</td>
 								<td>
-									<a class="btn btn-sm btn-success" href="{{ url('events/'.$data->id) }}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-sm btn-success" href="{{ url('events/'.$data->id.'/'.str_Replace(' ', '-', $data->tagline)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('events/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
 									<a class="btn btn-sm btn-danger" href="{{ url('events/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>									
 								</td>

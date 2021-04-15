@@ -13,16 +13,13 @@
     <link rel="shortcut icon" href="{{asset('tadmin/images/favicon.ico')}}">
     <link href="{{asset('tadmin/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('tadmin/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
-
     <!--calendar css-->
     <link href="../plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet" />
-
     <!--Summernote-->
     <link href="{{asset('summernote/dist/summernote.css')}}" rel="stylesheet" type="text/css">
-
     <!-- Basic Css files -->
     <link href="{{asset('tadmin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('tadmin/css/icons.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{asset('icofont/icofont.min.css')}}">
     <link href="{{asset('tadmin/css/style.css')}}" rel="stylesheet" type="text/css">
     <style>
         .act
@@ -77,11 +74,11 @@
 
                         <li class="menu-title">Profil Akun</li>
                         <li>
-                            <a href="{{url('profils')}}" class="waves-effect {{Request::is('profils') ? 'act' : ''}}"><i class="mdi mdi-cube-outline"></i><span> Profil </span></a>
+                            <a href="{{url('profils')}}" class="waves-effect {{Request::is('profils') ? 'act' : ''}}"><i class="icofont-user"></i><span> Profil </span></a>
                         </li>
                         <li class="menu-title">Event Menu</li>
                         <li>
-                            <a href="{{url('events')}}" class="waves-effect {{Request::is('events') ? 'act' : ''}}"><i class="mdi mdi-cube-outline"></i><span> Event </span></a>
+                            <a href="{{url('events')}}" class="waves-effect {{Request::is('events') ? 'act' : ''}}"><i class="icofont-mega-phone"></i><span> Event </span></a>
                         </li>
                     </ul>
                 </div>
@@ -145,14 +142,10 @@
             <footer class="footer">
                 ©2020 all rights reserved
             </footer>
-
         </div>
         <!-- End Right content here -->
-
     </div>
     <!-- END wrapper -->
-
-
     <!-- jQuery  -->
     <script src="{{asset('tadmin/js/jquery.min.js')}}"></script>
     <script src="{{asset('tadmin/js/bootstrap.bundle.min.js')}}"></script>
@@ -161,10 +154,8 @@
     <script src="{{asset('tadmin/js/waves.js')}}"></script>
     <script src="{{asset('tadmin/js/jquery.nicescroll.js')}}"></script>
     <script src="{{asset('tadmin/js/jquery.scrollTo.min.js')}}"></script>
-
     <!-- Jquery-Ui -->
     <script src="{{asset('summernote/dist/summernote.min.js')}}"></script>
-
     <!-- App js -->
     <script src="{{asset('tadmin/js/app.js')}}"></script>
 </body>

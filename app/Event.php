@@ -13,4 +13,8 @@ class Event extends Model
         'deskripsi',
         'status'
     ];
+    public function juris()
+    {
+        return $this->hasMany('App\Juri');
+    }
 }

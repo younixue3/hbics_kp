@@ -11,16 +11,15 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
-					<a class="btn btn-warning" href="{{url('events')}}">Kembali</a>
-					<br><br>
+					<br>
 					<table class="table tabledetail">
-						<tr>
-							<th>Logo</th>
-							<td><img src="{{asset('uploads/events/'.$data->logo)}}" style="width: 50px;" alt=""></td>
-						</tr>
 						<tr>
 							<th>Tagline</th>
 							<td>{{$data->tagline}}</td>
+						</tr>
+						<tr>
+							<th>Logo</th>
+							<td><img src="{{asset('uploads/events/'.$data->logo)}}" style="width: 50px;" alt=""></td>
 						</tr>
 						<tr>
 							<th>Deskripsi</th>
@@ -40,17 +39,21 @@
 						</tr>
 						<tr>
 							<th>Jumlah Juri</th>
-							<td>
-								<a href="{{url('juris/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->juris->count()}} Juri</a>
+							<td>0 Juri
+								<br>
+								<a href="">+ kelola data juri</a>
 							</td>
 						</tr>
 						<tr>
 							<th>Jumlah Peserta</th>
-							<td>
-								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> 0 Peserta</a>
+							<td>0 Peserta
+								<br>
+								<a href="">+ kelola data peserta</a>
 							</td>
 						</tr>
 					</table>
+					<hr>
+					<a class="btn btn-warning" href="{{url('events')}}">Kembali</a>
 				</div>
 			</div>
 		</div>

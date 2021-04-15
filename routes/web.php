@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('profils', 'HomeController@profil');
     Route::patch('profils/update', 'HomeController@profilUpdate');
+    // DISCLAIMER KENAPA GA PAKE RECOURCE? BECAUSE IM PRO
     // EVENT
     Route::get('events', 'EventController@index');
     Route::get('events/create', 'EventController@create');
@@ -27,4 +28,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('events/{id}/edit', 'EventController@edit');
     Route::patch('events/{id}', 'EventController@update');
     Route::get('events/{id}/{slug}', 'EventController@show');
+    // JURI
+    Route::get('juris/{event_id}', 'JuriController@index');
+    Route::get('juris/{event_id}/create', 'JuriController@create');
+    Route::post('juris/{event_id}', 'JuriController@store');
+    Route::get('juris/{event_id}/{id}/edit', 'JuriController@edit');
+    Route::patch('juris/{event_id}/{id}', 'JuriController@update');
+    Route::get('juris/{event_id}/{id}/{slug}', 'JuriController@show');
 });

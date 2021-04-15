@@ -39,33 +39,23 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        // masukkan semua request ke array input
         $input = $request->all();
-        //validasi data yang masuk dulu
         $validatedData = $request->validate([
             'logo' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
             'tagline' => 'required',
             'deskripsi' => 'required',
             'status' => 'required',
             ]);
-        // check data foto ada atau gak
         if($request->has('logo')){
-            // memanggil data file
             $logo = $input['logo'];
-            // memberi nama file
             $logoname = 'logo-'.md5(\Carbon\Carbon::now().$logo->getClientOriginalName()).'.'.$logo->getClientOriginalExtension();
-            // memindahkan file ke public/uploads
             $logo->move('uploads/events', $logoname);
-            // memasukan nama file ke array input untuk di create 
             $input['logo'] = $logoname;
         }
-        //kasih case aja kalo foto ga diupload
         else{
             $input['logo'] = 'nopict.jpg';
         }
-        // create data
         $data = Event::create($input);
-        // redirect
         if($data)
         {
             return redirect('events')->with('success', 'Data berhasil diupload ke server');
@@ -153,7 +143,7 @@ class EventController extends Controller
     }
     public function deletelogo($logoname){
         // path folder
-        $path = 'uploads/events';
+        $path = 'uploads/events/';
         // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
         if(\File::delete($path.$logoname)){
             return true;
