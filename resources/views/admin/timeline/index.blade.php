@@ -43,6 +43,7 @@
 						<thead >
 							<tr>
 								<th>No</th>
+								<th>Kode</th>
 								<th>Nama</th>
 								<th>Keterangan</th>
 								<th>Tanggal</th>
@@ -56,13 +57,14 @@
 						@foreach($event->timelines as $data)									
 							<tr>
 								<td>{{ $no++ }}</td>
+								<td><b>{{ $data->kode }}</b></td>
 								<td>{{ $data->nama }}</td>
 								<td>{{ $data->keterangan }}</td>
 								<td>{{ $data->tanggal_mulai->format('d, M Y')}} - {{ $data->tanggal_selesai->format('d, M Y')}}</td>
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('timelines/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									<a class="btn btn-sm btn-danger" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 						@endforeach

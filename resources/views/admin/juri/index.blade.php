@@ -68,11 +68,11 @@
 								<td>
 									<a href="{{$data->url_profil}}" target="_blank">{{$data->url_profil}}</a>
 								</td>
-								<td>{{$data->quote}}</td>
+								<td>{{strip_tags($data->quote)}}</td>
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('juris/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									<a class="btn btn-sm btn-danger" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 						@endforeach

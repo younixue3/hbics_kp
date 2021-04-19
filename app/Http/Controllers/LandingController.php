@@ -53,9 +53,34 @@ class LandingController extends Controller
         {
             if($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-baverage' || $kategori == 'fashion' || $kategori == 'kriya')
             {
+                switch ($jenjang) {
+                    case 'smp':
+                        $cjenjang = 'SMP/MTS';
+                        break;
+                    case 'sma':
+                        $cjenjang = 'SMA/SMK/MAN';
+                        break;
+                }
+                switch ($kategori) {
+                    case 'kriya':
+                        $ckategori = 'Kriya';
+                        break;
+                    case 'fashion':
+                        $ckategori = 'Fashion';
+                        break;
+                    case 'food-and-baverage':
+                        $ckategori = 'Food and Baverage';
+                        break;
+                    case 'aplikasi-dan-game':
+                        $ckategori = 'Aplikasi dan Game';
+                        break;
+                    case 'desain-grafis':
+                        $ckategori = 'Desain Grafis';
+                        break;
+                }
                 $event = Event::where('status', 1)->latest()->first();
                 $now = \Carbon\Carbon::now();
-                $karyas = Karya::where('event_id', $event->id)->where('jenjang', $jenjang)->where('kategori', strtolower(str_replace('-', ' ', $kategori)))->get();
+                $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
                 return view('expo.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
             }
             else
@@ -67,6 +92,42 @@ class LandingController extends Controller
         {
             abort(404);
         }
+    }
+    public function expoDetailProduct($jenjang, $kategori, $id, $slug)
+    {
+        $data = Karya::findOrFail($id);
+        $karyas = Karya::where('jenjang', $data->jenjang)->where('kategori', $data->kategori)->where('id', '!=', $id)->get();
+        switch ($data->jenjang) {
+            case 'SMP/MTS':
+                $jenjang = 'smp';
+                break;
+            case 'SMA/SMK/MAN':
+                $jenjang = 'sma';
+                break;
+        }
+        switch ($data->kategori) {
+            case 'Kriya':
+                $kategori = 'kriya';
+                break;
+            case 'Fashion':
+                $kategori = 'fashion';
+                break;
+            case 'Food and Baverage':
+                $kategori = 'food-and-baverage';
+                break;
+            case 'Aplikasi dan Game':
+                $kategori = 'aplikasi-dan-game';
+                break;
+            case 'Desain Grafis':
+                $kategori = 'desain-grafis';
+                break;
+        }
+        return view('expo.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas'));
+    }
+    public function expoKomentar(Request $request, $id, $slug)
+    {
+        $karya = Karya::findOrFail($id);
+
     }
     public function tentangKami()
     {
@@ -89,7 +150,7 @@ class LandingController extends Controller
     }
     public function galeri()
     {
-        $galeris = GaleriTahun::paginate(6);
+        $galeris = GaleriTahun::orderBy('folder', 'desc')->paginate(6);
         return view('landing.galeri', compact('galeris'));
     }
     public function galeriDetail($id)

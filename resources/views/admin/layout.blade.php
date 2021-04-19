@@ -8,7 +8,7 @@
     <meta content="Admin Dashboard" name="description" />
     <meta content="Themesbrand" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" href="{{asset('images/dinas.png')}}" type="image/png">
+    <link rel="icon" href="{{asset('images/logo.png')}}" type="image/png">
     <!-- App Icons -->
     <link rel="shortcut icon" href="{{asset('tadmin/images/favicon.ico')}}">
     <link href="{{asset('tadmin/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
@@ -74,6 +74,21 @@
             color: white;
             background-color: rgb(207, 24, 24);
         }
+        .hidee
+        {
+            display: none !important;
+            visibility: hidden;
+        }
+        .btn-default
+        {
+            background-color: #e4e4e4;
+            color: #929292;
+        }
+        .btn-default:hover
+        {
+            color: #929292;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="fixed-left">
@@ -90,7 +105,7 @@
             <div class="topbar-left">
                 <div class="">
                     <!--<a href="index.html" class="logo text-center">Admiria</a>-->
-                    <a href="index.html" class="logo"><img src="{{asset('images/dinas.png')}}" height="36" alt="logo"></a>
+                    <a href="index.html" class="logo"><img src="{{asset('images/logo-white.png')}}" height="36" alt="logo"></a>
                 </div>
             </div>
 
@@ -191,6 +206,23 @@
     <script src="{{asset('summernote/dist/summernote.min.js')}}"></script>
     <!-- App js -->
     <script src="{{asset('tadmin/js/app.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300,
+                placeholder: 'Masukkan teks di sini',
+                toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+                ]
+            });
+            $('.popover-content').hide();
+        });
+    </script>
 </body>
 </html>
 <!-- end document-->

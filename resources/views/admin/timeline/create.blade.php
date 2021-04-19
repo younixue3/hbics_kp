@@ -30,7 +30,13 @@
 							</ul>
 						</div>
 					@endif
-					<br>
+					<br><br>
+					<table class="table tabledetail">
+						<tr>
+							<td><img src="{{asset('uploads/events/'.$event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$event->tagline}}</td>
+						</tr>
+					</table>
 					<form action="{{ url('timelines/'.$event->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="form-group">
@@ -59,7 +65,7 @@
 							<input type="date" required placeholder="Masukkan Tanggal Mulai" class="form-control col-md-2" name="tanggal_mulai">
 						</div>
 						<div class="form-group">
-							<label>Tanggal Mulai</label>
+							<label>Tanggal Selesai</label>
 							<input type="date" required placeholder="Masukkan Tanggal Selesai" class="form-control col-md-2" name="tanggal_selesai">
 						</div>
 						<br>

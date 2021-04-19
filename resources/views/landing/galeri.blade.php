@@ -15,7 +15,7 @@
                                 <a href="{{url('galeri/'.$galeri->id.'/'.str_replace(' ', '', $galeri->folder))}}">
                                     <img src="{{asset('uploads/galeris/'.$galeri->fotos->first()->foto)}}" alt="" class="galeri-image">
                                 </a>
-                                <p class="galeri-text">{{$galeri->folder}}</p>
+                                <p class="galeri-text">{{$galeri->folder}} <span style="font-size: 12px;">{{$galeri->fotos->count()}} foto</span></p>
                             </div>
                         </div>
                     </div>                  

@@ -3,7 +3,11 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<a style="float:right" href="{{url('pesertas/'.$event->id.'/create')}}" class="btn btn-primary">+ Tambah data</a>
+				@if ($event->pendaftaran)
+					<a style="float:right" href="{{url('pesertas/'.$event->id.'/create')}}" class="btn btn-primary">+ Tambah data</a>
+				@else
+					<a style="float:right" href="#" class="btn btn-default">Bukan fase pendaftaran</a>
+				@endif
 				<h2 class="title-1" style="margin-bottom:20px;">Data Peserta</h2>
 			</div>
 		</div>
@@ -62,7 +66,7 @@
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/'.str_replace([' ', '.'], '-', $data->user->name)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('pesertas/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									<a class="btn btn-sm btn-danger" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 						@endforeach

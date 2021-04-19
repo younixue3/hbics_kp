@@ -11,7 +11,14 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
-					<br>
+					<a class="btn btn-warning" href="{{url('juris/'.$data->event->id)}}">Kembali</a>
+					<br><br>
+					<table class="table tabledetail">
+						<tr>
+							<td><img src="{{asset('uploads/events/'.$data->event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$data->event->tagline}}</td>
+						</tr>
+					</table>
 					<table class="table tabledetail">
 						<tr>
 							<th>Nama</th>
@@ -39,7 +46,6 @@
 						</tr>
 					</table>
 					<hr>
-					<a class="btn btn-warning" href="{{url('juris/'.$data->event_id)}}">Kembali</a>
 				</div>
 			</div>
 		</div>

@@ -460,7 +460,7 @@ a.page-link:hover
         width: 400px;
         height: 400px;
         margin: auto;
-        margin-top: -50px;
+        margin-top: 100px;
         position: relative;
         display: block;
         border-radius: 50%;
@@ -617,7 +617,7 @@ a.page-link:hover
         width: 100%;
         text-align: center;
         font-weight: bold;
-        font-size: 13px;
+        font-size: 15px;
         margin-top: -207px;
     }
     .juri-text
@@ -870,8 +870,11 @@ a.page-link:hover
         padding: 12px 30px;
         font-size: 20px;
         border-radius: 20px 17px;
-        position: relative;
-        margin-top: -200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 40px;
+        margin-top: 20px;
     }
     .galeri:hover .galeri-text
     {
@@ -1319,6 +1322,7 @@ a.page-link:hover
 {
     font-size: 40px;
     font-weight: bold;
+    margin-bottom: 0px !important;
 }
 @media (max-width: 1200px) {
 

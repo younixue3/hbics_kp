@@ -141,8 +141,12 @@ class TimelineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($event_id, $id)
     {
         //
+        $timeline = Timeline::findOrFail($id);
+        $event = Event::findOrFail($event_id); 
+        $timeline->delete();
+        return redirect('timelines/'.$event->id)->with('success', 'Data berhasil dihapus di server');
     }
 }

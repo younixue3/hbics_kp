@@ -30,6 +30,12 @@
 							</ul>
 						</div>
 					@endif
+					<table class="table tabledetail">
+						<tr>
+							<td><img src="{{asset('uploads/events/'.$data->event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$data->event->tagline}}</td>
+						</tr>
+					</table>
 					<br>
 					<form action="{{ url('juris/'.$data->event_id.'/'.$data->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf

@@ -30,7 +30,12 @@
 							</ul>
 						</div>
 					@endif
-					<br>
+					<table class="table tabledetail">
+						<tr>
+							<td><img src="{{asset('uploads/events/'.$data->event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$data->event->tagline}}</td>
+						</tr>
+					</table>
 					<form action="{{ url('timelines/'.$data->event_id.'/'.$data->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						<input type="hidden" name="_method" value="PATCH">
@@ -60,12 +65,12 @@
 							<input type="date" required value="{{$data->tanggal_mulai->format('Y-m-d')}}" placeholder="Masukkan Tanggal Mulai" class="form-control col-md-2" name="tanggal_mulai">
 						</div>
 						<div class="form-group">
-							<label>Tanggal Mulai</label>
+							<label>Tanggal Selesai</label>
 							<input type="date" required value="{{$data->tanggal_selesai->format('Y-m-d')}}" placeholder="Masukkan Tanggal Selesai" class="form-control col-md-2" name="tanggal_selesai">
 						</div>
-						<br>
+						<hr>
 						<div class="form-group">
-							<a href="{{url('juris/'.$data->event_id)}}" class="btn btn-warning">Batal</a>
+							<a href="{{url('timelines/'.$data->event_id.'/'.str_replace(' ', '-', $data->tagline))}}" class="btn btn-warning">Batal</a>
 							<input type="submit" value="Update" class="btn btn-primary" name="submit">
 						</div>
 					</form>

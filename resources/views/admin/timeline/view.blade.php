@@ -11,27 +11,37 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
-					<br>
+					<a class="btn btn-warning" href="{{url('timelines/'.$data->event_id.'/'.str_replace(' ', '-', $data->tagline))}}">Kembali</a>
+					<br><br>
 					<table class="table tabledetail">
 						<tr>
-							<th>Nama</th>
+							<td><img src="{{asset('uploads/events/'.$data->event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$data->event->tagline}}</td>
+						</tr>
+					</table>
+					<table class="table tabledetail">
+						<tr>
+							<th>Nama Timeline</th>
 							<td>{{$data->nama}}</td>
 						</tr>
 						<tr>
-							<th>Foto</th>
-							<td><img src="{{asset('uploads/juris/'.$data->foto)}}" style="width: 300px;" alt=""></td>
+							<th>Keterangan</th>
+							<td>{{$data->keterangan}}</td>
 						</tr>
 						<tr>
-							<th>URL Profil</th>
-							<td>{{$data->url_profil}}</td>
+							<th>Kode</th>
+							<td>{{$data->kode}}</td>
 						</tr>
 						<tr>
-							<th>Quote</th>
-							<td>{{$data->quote}}</td>
+							<th>Tanggal Mulai</th>
+							<td>{{$data->tanggal_mulai->format('d, M Y')}}</td>
+						</tr>
+						<tr>
+							<th>Tanggal Selesai</th>
+							<td>{{$data->tanggal_selesai->format('d, M Y')}}</td>
 						</tr>
 					</table>
 					<hr>
-					<a class="btn btn-warning" href="{{url('juris/'.$data->event_id)}}">Kembali</a>
 				</div>
 			</div>
 		</div>

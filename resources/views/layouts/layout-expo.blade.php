@@ -91,19 +91,19 @@
 <div id="navbreaker"></div>
 <!-- /logo -->
 @yield('content')
-<div class="container-fluid wow fadeIn" data-wow-delay="1s">
+<div class="container-fluid wow fadeIn">
     <div class="row frame footer text-left" style="padding-bottom: 150px">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="footer-title wow fadeInUp" data-wow-delay="1s"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2021.</p>
-                    <p class="footer-text wow fadeInUp" data-wow-delay="1s">
+                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2021.</p>
+                    <p class="footer-text wow fadeInUp">
                         <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo - Indonesia
                     </p>
-                    <p class="footer-text wow fadeInUp" data-wow-delay="1s">
+                    <p class="footer-text wow fadeInUp">
                         <i class="icofont-phone"></i> Telephone : +62542 8510 111
                     </p>
-                    <p class="footer-text wow fadeInUp" data-wow-delay="1s">
+                    <p class="footer-text wow fadeInUp">
                         <i class="icofont-ui-dial-phone"></i> Telephone : +62812 5051 5333
                     </p>
                     <br>
@@ -112,20 +112,20 @@
                     <a href="https://www.youtube.com/channel/UCHJ9hdRwx7ZD-VZBL_GX8Kw" target="_blank" class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-youtube-play"></i></a>
                 </div>
                 <div class="col-md-3 text-left">
-                    <p class="footer-title wow fadeInUp" data-wow-delay="1s"><i class="icofont-link"></i> Link Terkait.</p>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Website, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Academic System, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Parents System, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Alumni.</a>
+                    <p class="footer-title wow fadeInUp"><i class="icofont-link"></i> Link Terkait.</p>
+                    <a href="" class="footer-text wow fadeInUp">Website, </a>
+                    <a href="" class="footer-text wow fadeInUp">Academic System, </a>
+                    <a href="" class="footer-text wow fadeInUp">Parents System, </a>
+                    <a href="" class="footer-text wow fadeInUp">Alumni.</a>
                 </div>
                 <div class="col-md-3 text-left">
-                    <p class="footer-title wow fadeInUp" data-wow-delay="1s"><i class="icofont-location-arrow"></i> Navigasi.</p>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Beranda, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Penyelenggara, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Kompetisi, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Galeri, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Berita, </a>
-                    <a href="" class="footer-text wow fadeInUp" data-wow-delay="1s">Bantuan.</a>
+                    <p class="footer-title wow fadeInUp"><i class="icofont-location-arrow"></i> Navigasi.</p>
+                    <a href="" class="footer-text wow fadeInUp">Beranda, </a>
+                    <a href="" class="footer-text wow fadeInUp">Penyelenggara, </a>
+                    <a href="" class="footer-text wow fadeInUp">Kompetisi, </a>
+                    <a href="" class="footer-text wow fadeInUp">Galeri, </a>
+                    <a href="" class="footer-text wow fadeInUp">Berita, </a>
+                    <a href="" class="footer-text wow fadeInUp">Bantuan.</a>
                 </div>
             </div>
         </div>

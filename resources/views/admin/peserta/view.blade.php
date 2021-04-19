@@ -11,6 +11,14 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body card-block">
+					<a class="btn btn-warning" href="{{url('pesertas/'.$event_id)}}">Kembali</a>
+					<br><br>
+					<table class="table tabledetail">
+						<tr>
+							<td><img src="{{asset('uploads/events/'.$data->karya->event->logo)}}" style="width: 50px;" alt=""></td>
+							<td>{{$data->karya->event->tagline}}</td>
+						</tr>
+					</table>
 					<br>
 					<table class="table tabledetail">
 						<tr>
@@ -59,7 +67,7 @@
 									@if($data->karya->foto_tim == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->foto_tim}}
+										<a href="{{asset('uploads/karyas/'.$data->karya->foto_tim)}}" target="_blank">{{$data->karya->foto_tim}}</a>
 									@endif
 								</span>
 							</td>
@@ -71,7 +79,7 @@
 									@if($data->karya->foto_poster == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->foto_poster}}
+										<a href="{{asset('uploads/karyas/'.$data->karya->foto_poster)}}" target="_blank">{{$data->karya->foto_poster}}</a>
 									@endif
 								</span>
 							</td>
@@ -119,7 +127,7 @@
 									@if($data->karya->link_profil == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->link_profil}}
+										<a href="{{$data->karya->link_profil}}" target="_blank">{{$data->karya->link_profil}}</a>
 									@endif
 								</span>
 							</td>
@@ -131,7 +139,7 @@
 									@if($data->karya->link_presentation == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->link_presentation}}
+										<a href="{{$data->karya->link_presentation}}" target="_blank">{{$data->karya->link_presentation}}</a>
 									@endif
 								</span>
 							</td>
@@ -143,7 +151,7 @@
 									@if($data->karya->link_mockup == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->link_mockup}}
+										<a href="{{$data->karya->link_mockup}}" target="_blank">{{$data->karya->link_mockup}}</a>
 									@endif
 								</span>
 							</td>
@@ -155,7 +163,7 @@
 									@if($data->karya->proposal == '') 
 										<i class="icofont-close-circled"></i>
 									@else 
-										{{$data->karya->proposal}}
+										<a href="{{asset('uploads/karyas/'.$data->karya->proposal)}}" target="_blank">{{$data->karya->proposal}}</a>
 									@endif
 								</span>
 							</td>
@@ -174,7 +182,6 @@
 						</tr>
 					</table>
 					<hr>
-					<a class="btn btn-warning" href="{{url('pesertas/'.$event_id)}}">Kembali</a>
 				</div>
 			</div>
 		</div>

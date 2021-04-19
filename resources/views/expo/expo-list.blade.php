@@ -7,8 +7,8 @@
     <div class="row frame frame2" style="min-height:100vh;">
         <div class="container">
             <div class="row">
-                @if ($event->expo->count() != 0)
-                    @if ($now >= $event->expo->first()->tanggal_mulai && $now <= $event->expo->first()->tanggal_selesai)
+                @if ($event->expo)
+                    @if ($now >= $event->expo->tanggal_mulai && $now <= $event->expo->tanggal_selesai)
                     <div class="col-md-12">
                         <p class="kategoritext" style="position: relative">
                             <a href="#" id="drop-t">
@@ -29,10 +29,11 @@
                             </div>
                         </p>
                         @forelse($event->timelines as $timeline)
-                            @if ($now >= $timeline->tanggal_mulai && $now <= $timeline->end)
+                            @if ($now >= $timeline->tanggal_mulai && $now <= $timeline->tanggal_selesai)
                                 <div class="status">
                                     <p class="status-text"><span class="status-grey"><i class="icofont-ui-calendar"></i> Fase Lomba Saat Ini :</span> {{$timeline->nama}} <span class="status-blue">({{$timeline->tanggal_mulai->format('d M Y')}} - {{$timeline->tanggal_selesai->format('d M Y')}})</span></p>
                                 </div>
+                                <br>
                             @endif
                         @empty
                         <div class="status">
@@ -47,19 +48,19 @@
                                 @forelse ($karyas as $karya)
                                     <div class="list">
                                         <div class="list-imageframe">
-                                            @if (count($karya->product_images()) > 0)
-                                                <img src="{{url('image/'.$karya->product_images()[0])}}" alt="" class="list-image">
+                                            @if ($karya->fotos->count() > 0)
+                                                <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">
                                             @else
                                                 <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
                                             @endif
                                         </div>
                                         <div class="list-content">
-                                            <a style="margin-bottom: 0px;" href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->product_name))}}" class="list-title">{{$karya->product_name}}</a>
-                                            <p class="list-keterangan">{{$karya->product_description}}</p>
-                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{count($karya->product_likers())}} orang</span>
-                                            <span class="list-likers"><i class="icofont-comment"></i> {{count($karya->comments)}} Komentar</span>
+                                            <a style="margin-bottom: 0px;" href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>
+                                            <p class="list-keterangan">{{$karya->deskripsi}}</p>
+                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>
+                                            <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>
                                             <br>
-                                            <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->product_name))}}" class="list-button">Lihat selengkapnya</a>
+                                            <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>
                                         </div>
                                     </div>
                                 @empty
@@ -70,22 +71,22 @@
                     </div>  
                     @else
                     <div class="col-md-12 text-center">
-                        <div class="news-info" style="padding: 20px 30px">
+                        <div class="news-info wow fadeInUp" style="padding: 20px 30px">
                             <p class="apaitu-title" style="margin-bottom:0px;font-size: 25px;">
-                                VIRTUAL EXPO AKAN HADIR DI TANGGAL:<br> {{$event->expo->start->format('d, M Y')}} - {{$event->expo->end->format('d, M Y')}}
+                                VIRTUAL EXPO AKAN HADIR DI TANGGAL:<br> {{$event->expo->tanggal_mulai->format('d, M Y')}} - {{$event->expo->tanggal_selesai->format('d, M Y')}}
                             </p>
                         </div>
-                        <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image" alt="">
+                        <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.2s" alt="">
                     </div>
                     @endif
                 @else
                     <div class="col-md-12 text-center">
-                        <div class="news-info" style="padding: 20px 30px">
+                        <div class="news-info wow fadeInUp" style="padding: 20px 30px">
                             <p class="apaitu-title" style="margin-bottom:0px;font-size: 25px;">
                                 VIRTUAL EXPO AKAN HADIR SEGERA
                             </p>
                         </div>
-                        <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image" alt="">
+                        <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" alt="">
                     </div>
                 @endif
             </div>

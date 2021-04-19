@@ -43,7 +43,7 @@
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" required placeholder="Masukkan Password Peserta" class="form-control" name="password">
+							<input type="password" value="EPIK2K21" required placeholder="Masukkan Password Peserta" class="form-control" name="password">
 						</div>
 						<br>
 						<div class="form-group">

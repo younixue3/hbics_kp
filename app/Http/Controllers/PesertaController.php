@@ -150,8 +150,47 @@ class PesertaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($event_id, $id)
     {
         //
+        $event = Event::findOrFail($event_id);
+        $user = User::findOrFail($id);
+        $karya = Karya::where('user_id', $user->id)->latest()->first();
+        if($karya->foto_tim != '')
+        {
+            $this->deletefoto($karya->foto_tim);
+        }
+        if($karya->foto_poster != '')
+        {
+            $this->deletefoto($karya->foto_poster);
+        }
+        if($karya->proposal != '')
+        {
+            $this->deletefoto($karya->proposal);
+        }
+        foreach($karya->fotos as $foto)
+        {
+            $this->deletekaryafoto($foto->foto);
+            $foto->delete();
+        }
+        $karya->delete();
+        $user->delete();
+        return redirect('events'.$event->id.'/'.str_replace(' ', '-', $event->tagline))->with('success', 'Data berhasil dihapus di server');
+    }
+    public function deletefoto($fotoname){
+        // path folder
+        $path = 'uploads/karyas/';
+        // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
+        if(\File::delete($path.$fotoname)){
+            return true;
+        }
+    }
+    public function deletekaryafoto($fotoname){
+        // path folder
+        $path = 'uploads/karyafotos/';
+        // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
+        if(\File::delete($path.$fotoname)){
+            return true;
+        }
     }
 }

@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('juris/{event_id}', 'JuriController@store');
     Route::get('juris/{event_id}/{id}/edit', 'JuriController@edit');
     Route::patch('juris/{event_id}/{id}', 'JuriController@update');
+    Route::get('juris/{event_id}/{id}/delete', 'JuriController@destroy');
     Route::get('juris/{event_id}/{id}/{slug}', 'JuriController@show');
     // TIMELINE
     Route::get('timelines/{event_id}', 'TimelineController@index');
@@ -42,6 +43,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('timelines/{event_id}', 'TimelineController@store');
     Route::get('timelines/{event_id}/{id}/edit', 'TimelineController@edit');
     Route::patch('timelines/{event_id}/{id}', 'TimelineController@update');
+    Route::get('timelines/{event_id}/{id}/delete', 'TimelineController@destroy');
     Route::get('timelines/{event_id}/{id}/{slug}', 'TimelineController@show');
     // KARYA/PESERTA
     Route::get('pesertas/{event_id}', 'PesertaController@index');
@@ -49,6 +51,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('pesertas/{event_id}', 'PesertaController@store');
     Route::get('pesertas/{event_id}/{user_id}/edit', 'PesertaController@edit');
     Route::patch('pesertas/{event_id}/{user_id}', 'PesertaController@update');
+    Route::get('pesertas/{event_id}/{user_id}/delete', 'PesertaController@destroy');
     Route::get('pesertas/{event_id}/{user_id}/{slug}', 'PesertaController@show');
     // EVENT
     Route::get('posts', 'PostController@index');
@@ -80,8 +83,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
     Route::get('post', 'LandingController@post');
     Route::get('post/{id}/{slug}', 'LandingController@postDetail');
+    Route::get('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
     Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
     Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
+    Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
     // EXPO
     Route::get('profil', 'ExpoController@profil');
     Route::patch('profil', 'ExpoController@profilUpdate');

@@ -174,9 +174,18 @@ class JuriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($event_id, $id)
     {
         //
+        $juri = Juri::findOrFail($id);
+        $user = User::findOrFail($juri->user_id);
+        if($juri->foto != '')
+        {
+            $this->deletefoto($juri->foto);
+        }
+        $juri->delete();
+        $user->delete();
+        return redirect('juris/'.$event_id)->with('success', 'Data berhasil dihapus di server');
     }
     public function deletefoto($fotoname){
         // path folder
