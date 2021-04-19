@@ -15,6 +15,11 @@ class PesertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function visitor()
+    {
+        $datas = User::where('role', 'pengunjung')->paginate(20);
+        return view('admin.visitor.index', compact('datas'));
+    }
     public function index($event_id)
     {
         //

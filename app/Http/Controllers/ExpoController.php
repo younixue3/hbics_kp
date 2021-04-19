@@ -10,6 +10,7 @@ use App\Post;
 use App\Karya;
 use App\KaryaFoto;
 use App\User;
+use App\Komentar;
 
 class ExpoController extends Controller
 {
@@ -21,6 +22,10 @@ class ExpoController extends Controller
     public function profil()
     {
         $user = Auth::user();
+        if($user->role == 'admin' || $user->role == 'pengunjung')
+        {
+            abort(404);
+        }
         $karya = $user->karya;
         $event = Event::where('status', 1)->latest()->first();
         // echo $karya->likers->count();
@@ -176,6 +181,139 @@ class ExpoController extends Controller
         // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
         if(\File::delete($path.$fotoname)){
             return true;
+        }
+    }
+    public function virtualexpo()
+    {
+        if (Auth::user()->role == 'admin') 
+        {
+            $jenjang = 'smp';
+            $kategori = 'kriya';
+            switch ($jenjang) {
+                case 'smp':
+                    $cjenjang = 'SMP/MTS';
+                    break;
+                case 'sma':
+                    $cjenjang = 'SMA/SMK/MAN';
+                    break;
+            }
+            switch ($kategori) {
+                case 'kriya':
+                    $ckategori = 'Kriya';
+                    break;
+                case 'fashion':
+                    $ckategori = 'Fashion';
+                    break;
+                case 'food-and-baverage':
+                    $ckategori = 'Food and Baverage';
+                    break;
+                case 'aplikasi-dan-game':
+                    $ckategori = 'Aplikasi dan Game';
+                    break;
+                case 'desain-grafis':
+                    $ckategori = 'Desain Grafis';
+                    break;
+            }
+            $now = \Carbon\Carbon::now();
+            $event = Event::where('status', 1)->latest()->first();
+            $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
+            return view('expo.simulasi.expo-list', compact('event', 'karyas', 'jenjang', 'kategori', 'now'));
+        } 
+        else 
+        {
+            abort(404);
+        }
+    }
+    public function expoJenjangKategori($jenjang, $kategori)
+    {
+        if (Auth::user()->role == 'admin') 
+        {
+            if($jenjang == 'smp' || $jenjang == 'sma')
+            {
+                if($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-baverage' || $kategori == 'fashion' || $kategori == 'kriya')
+                {
+                    switch ($jenjang) {
+                        case 'smp':
+                            $cjenjang = 'SMP/MTS';
+                            break;
+                        case 'sma':
+                            $cjenjang = 'SMA/SMK/MAN';
+                            break;
+                    }
+                    switch ($kategori) {
+                        case 'kriya':
+                            $ckategori = 'Kriya';
+                            break;
+                        case 'fashion':
+                            $ckategori = 'Fashion';
+                            break;
+                        case 'food-and-baverage':
+                            $ckategori = 'Food and Baverage';
+                            break;
+                        case 'aplikasi-dan-game':
+                            $ckategori = 'Aplikasi dan Game';
+                            break;
+                        case 'desain-grafis':
+                            $ckategori = 'Desain Grafis';
+                            break;
+                    }
+                    $event = Event::where('status', 1)->latest()->first();
+                    $now = \Carbon\Carbon::now();
+                    $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
+                    return view('expo.simulasi.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
+                }
+                else
+                {
+                    abort(404);
+                }
+            }
+            else
+            {
+                abort(404);
+            }
+        }
+        else
+        {
+            abort(404);
+        }
+    }
+    public function expoDetailProduct($jenjang, $kategori, $id, $slug)
+    {
+        if (Auth::user()->role == 'admin') 
+            {
+            $data = Karya::findOrFail($id);
+            $karyas = Karya::where('jenjang', $data->jenjang)->where('kategori', $data->kategori)->where('id', '!=', $id)->get();
+            switch ($data->jenjang) {
+                case 'SMP/MTS':
+                    $jenjang = 'smp';
+                    break;
+                case 'SMA/SMK/MAN':
+                    $jenjang = 'sma';
+                    break;
+            }
+            switch ($data->kategori) {
+                case 'Kriya':
+                    $kategori = 'kriya';
+                    break;
+                case 'Fashion':
+                    $kategori = 'fashion';
+                    break;
+                case 'Food and Baverage':
+                    $kategori = 'food-and-baverage';
+                    break;
+                case 'Aplikasi dan Game':
+                    $kategori = 'aplikasi-dan-game';
+                    break;
+                case 'Desain Grafis':
+                    $kategori = 'desain-grafis';
+                    break;
+            }
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+            return view('expo.simulasi.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike'));
+        }
+        else
+        {
+            abort(404);
         }
     }
 }

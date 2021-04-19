@@ -72,6 +72,12 @@ Route::middleware(['auth'])->group(function(){
     // FOTOS
     Route::get('fotos/{id}/delete', 'GaleriController@fotoDestroy');
     Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
+    // EXTRAS
+    Route::get('visitors', 'PesertaController@visitor');
+    Route::get('virtualexpo', 'ExpoController@virtualexpo');
+    Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@expoJenjangKategori');
+    Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@expoDetailProduct');
+
     // MENU NON ADMIN
     // LANDING
     Route::get('beranda', 'LandingController@beranda');
@@ -83,8 +89,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
     Route::get('post', 'LandingController@post');
     Route::get('post/{id}/{slug}', 'LandingController@postDetail');
-    Route::get('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
+    // Route::post('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
     Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
+    Route::get('expo/likes/{id}', 'LandingController@expoLikes');
     Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
     Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
     // EXPO

@@ -9,6 +9,28 @@
             <a href="{{url('expo/'.$jenjang.'/'.$kategori)}}" class="btn btn-yellow wow fadeInUp"><i class="icofont-long-arrow-left"></i> Kembali</a>
             <br><br>
             <div class="row">
+                <div class="col-md-12">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if(session('fail'))
+                    <div class="alert alert-danger">
+                        {{ session('fail') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <br><br>
+                    @endif
+                </div>
                 <div class="col-md-8">
                     <div class="apaitu apaitu--profil">
                         <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
@@ -170,17 +192,27 @@
     <div class="row frame frame2">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="write">
+                <div class="col-md-12">
+                    @if ($statuslike)
+                        <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i> <i class="icofont-like"></i> Batal Sukai Karya Ini</a>                        
+                        <div class="total wow fadeInUp">
+                            <p><i class="icofont-like"></i> Anda dan {{$data->likers->count()-1}} Lainnya menyukai karya ini</p>
+                        </div>
+                    @else
+                        <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i class="icofont-like"></i> Sukai Karya Ini</a>
+                        <div class="total wow fadeInUp">
+                            <p><i class="icofont-like"></i> {{$data->likers->count()}} Menyukai karya ini</p>
+                        </div>
+                    @endif
+                    {{-- <div class="write wow fadeInUp">
                         <form action="{{url('expo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
                             @csrf
-                            <textarea rows="5" class="write-input" name="comment" placeholder="Tuliskan komentarmu"></textarea>
-                            <input type="checkbox"> Sukai karya ini
-                            <input type="submit" class="write-button" value="Kirim komentar">
+                            <textarea rows="5" class="write-input" name="komentar" placeholder="Tuliskan komentarmu"></textarea>
+                            <input type="submit" class="write-button" style="margin-left: 0px;" value="Kirim komentar">
                         </form>
                     </div>
                     @forelse ($data->komentars as $komen)
-                        <div class="komen">
+                        <div class="komen wow fadeInUp">
                             <img src="{{asset('images/chat.png')}}" alt="" class="komen-icon">
                             <div class="komen-content">
                                 <p class="komen-text">
@@ -189,28 +221,40 @@
                                 <p class="komen-info">
                                     <i class="icofont-user-alt-5"></i> {{$komen->user->name}}
                                     &nbsp;&nbsp;
-                                    <i class="icofont-calendar"></i> {{$komen->created_at->format('d, M Y - h:m')}}
+                                    <i class="icofont-calendar"></i> {{$komen->updated_at->format('d, M Y - H:i')}}
                                 </p>
                             </div>
                         </div>
                     @empty
                         Belum ada komentar pada karya ini
-                    @endforelse
+                    @endforelse --}}
                 </div>
-                <div class="col-md-4">
-                    <p class="headingtitle">
+                <div class="col-md-12">
+                    <p class="headingtitle wow fadeInUp">
                         <i>LIHAT KARYA LAINNYA</i>
                     </p>
                     @forelse ($karyas as $karya)
-                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="lainnya">
-                        @if ($karya->fotos->count() > 0)
-                            <img src="{{asset('uploads/karyafotos/'.$karya->fotos->first()->foto)}}">
-                        @else
-                            <img src="{{asset('images/sample2.png')}}">
-                        @endif
-                    </a>
+                        <div class="list">
+                            <div class="list-imageframe">
+                                @if ($karya->fotos->count() > 0)
+                                    <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">
+                                @else
+                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
+                                @endif
+                            </div>
+                            <div class="list-content">
+                                <a style="margin-bottom: 0px;" href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>
+                                <p class="list-keterangan">{{$karya->deskripsi}}</p>
+                                <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>
+                                <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>
+                                <br>
+                                <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>
+                            </div>
+                        </div>
                     @empty
-                    Tidak ada karya lainnya
+                    <div class="wow fadeInUp">
+                        Tidak ada karya lainnya
+                    </div>
                     @endforelse
                 </div>
             </div>

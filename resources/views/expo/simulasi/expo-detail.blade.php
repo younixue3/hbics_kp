@@ -6,64 +6,53 @@
     </a> --}}
     <div class="row frame">
         <div class="container">
+            <a href="{{url('virtualexpo/'.$jenjang.'/'.$kategori)}}" class="btn btn-yellow wow fadeInUp"><i class="icofont-long-arrow-left"></i> Kembali</a>
+            <br><br>
             <div class="row">
+                <div class="col-md-12">
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if(session('fail'))
+                    <div class="alert alert-danger">
+                        {{ session('fail') }}
+                    </div>
+                    @endif
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <br><br>
+                    @endif
+                </div>
                 <div class="col-md-8">
                     <div class="apaitu apaitu--profil">
                         <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
                         <div class="apaitu-mid">
                             <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                                <i class="icofont-people"></i> {{$creation->participant_names}}
+                                <i class="icofont-people"></i> {{$data->nama_tim}}
                             </p>   
                             <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
                                 TENTANG KAMI
                             </p>
                             <p class="namateam wow fadeInUp" data-wow-delay="2s">
-                                @php
-                                    $jenjang = null;
-                                    $kategori = null;
-                                    switch ($creation->level) {
-                                        case 2:
-                                            $jenjang = 'SMP/MTS';
-                                            break;
-    
-                                        case 3:
-                                            $jenjang = 'SMA/SMK/MAN';
-                                            break;
-                                    }
-    
-                                    switch ($creation->category) {
-                                        case 1:
-                                            $kategori = 'Desain Grafis';
-                                            break;
-    
-                                        case 2:
-                                            $kategori = 'Aplikasi dan Game';
-                                            break;
-    
-                                        case 3:
-                                            $kategori = 'Food and Baverage';
-                                            break;
-    
-                                        case 4:
-                                            $kategori = 'Fashion';
-                                            break;
-    
-                                        case 5:
-                                            $kategori = 'Kriya';
-                                            break;
-                                    }
-                                @endphp
-                                <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($jenjang) ?? 'Belum diatur'}}, Kategori: {{$kategori ?? 'Belum diatur'}}
+                                <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{$data->jenjang}}, Kategori: {{$data->kategori}}
                             </p>
                             <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
-                                {{$creation->about_team}}
+                                {{$data->tentang_tim}}
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
-                    @if ($creation->image_team_id)
-                      <img src="{{url('image/'.$creation->image_team_id)}}" class="apaitu-profilpict" alt="">
+                    @if ($data->foto_tim != '')
+                      <img src="{{url('uploads/karyas/'.$data->foto_tim)}}" class="apaitu-profilpict" alt="">
                     @else
                       <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                     @endif
@@ -74,18 +63,18 @@
 </div>
 <div class="container-fluid">
     <div class="row frame">
-        @if (count($creation->product_images()))
-            <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('image/'.$creation->product_images()[0])}}');background-size:cover;">
+        @if ($data->fotos->count() != 0)
+            <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('uploads/karyafotos/'.$data->fotos->first()->foto)}}');background-size:cover;">
         @else
             <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
         @endif
         </div>
         <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
             <div class="deskripsi text-center">
-                <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s" style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$creation->product_name ?? 'Nama produk belum diatur'}}</p>
+                <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s" style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$data->nama}}</p>
                 {{-- <p class="deskripsi-title wow fadeInUp" data-wow-delay="1.5s" style="font-size: 25px"></p> --}}
                 <p class="deskripsi-text wow fadeInUp" data-wow-delay="1.5s">
-                    {{$creation->product_description}}
+                    {{$data->deskripsi}}
                 </p>
             </div>
         </div>
@@ -94,12 +83,10 @@
 <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
     <div class="row frame4 text-center" style="position: relative">
         <div class="row owl-carousel owl-theme" style="margin: 0px;">
-            @forelse ($creation->product_images() as $imageId)
+            @forelse ($data->fotos as $foto)
             <div class="item">
               <div class="slide">
-                <img src="{{url('image/'.$imageId)}}" class="slide-image" alt="">
-                <form id="form-image-product-delete-{{$imageId}}" action="{{url('creation')}}" method="POST">
-                </form>
+                <img src="{{url('uploads/karyafotos/'.$foto->foto)}}" class="slide-image" alt="">
               </div>
             </div>
             @empty
@@ -132,7 +119,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $creation->link_profile)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_profil)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                   </div>
                                 </div>
                               </div>
@@ -149,7 +136,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $creation->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                   </div>
                                 </div>
                               </div>
@@ -166,7 +153,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $creation->link_mockup)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_mockup)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                   </div>
                                 </div>
                               </div>
@@ -175,8 +162,8 @@
                         <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="2.5s">
                             <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
                             {{-- BAIKIN PROPOSAL FILE --}}
-                            <a href="{{url('document/'.$creation->proposal_id)}}" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                            <a href="{{url('document/'.$creation->proposal_id)}}" target="_blank" class="kenali-title">PROPOSAL</a>
+                            <a href="{{asset('uploads/karyas/'.$data->proposal)}}" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
+                            <a href="{{asset('uploads/karyas/'.$data->proposal)}}" target="_blank" class="kenali-title">PROPOSAL</a>
                         </div>
                         <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
                             <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
@@ -189,7 +176,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <img style="width: 100%; height:auto;" src="{{url('image/'.$creation->image_poster_id)}}" alt="">
+                                    <img style="width: 100%; height:auto;" src="{{asset('uploads/karyas/'.$data->foto_poster)}}" alt="">
                                   </div>
                                 </div>
                               </div>
@@ -205,87 +192,86 @@
     <div class="row frame frame2">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="write">
-                        <form action="{{url('creation/comment')}}" enctype="multipart/form-data" method="POST">
+                <div class="col-md-12">
+                    @if ($statuslike)
+                        <a href="#" class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i> <i class="icofont-like"></i> Batal Sukai Karya Ini</a>                        
+                        <div class="total wow fadeInUp">
+                            <p><i class="icofont-like"></i> Anda dan {{$data->likers->count()-1}} Lainnya menyukai karya ini</p>
+                        </div>
+                    @else
+                        <a href="#" class="likesbutton wow fadeInUp"><i class="icofont-like"></i> Sukai Karya Ini</a>
+                        <div class="total wow fadeInUp">
+                            <p><i class="icofont-like"></i> {{$data->likers->count()}} Menyukai karya ini</p>
+                        </div>
+                    @endif
+                    {{-- <div class="write wow fadeInUp">
+                        <form action="{{url('virtualexpo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
                             @csrf
-                            <textarea rows="5" class="write-input" name="comment" placeholder="Tuliskan komentarmu"></textarea>
-                            {{-- <input type="checkbox" class="write-like" name="liked"> Sukai karya ini <i class="icofont-like"></i> --}}
-                            <input type="hidden" name="creation_id" value="{{$creation->id}}">
-                            <input type="submit" class="write-button" value="Kirim komentar">
+                            <textarea rows="5" class="write-input" name="komentar" placeholder="Tuliskan komentarmu"></textarea>
+                            <input type="submit" class="write-button" style="margin-left: 0px;" value="Kirim komentar">
                         </form>
                     </div>
-                    @forelse ($creation->comments as $komen)
-                        <div class="komen">
+                    @forelse ($data->komentars as $komen)
+                        <div class="komen wow fadeInUp">
                             <img src="{{asset('images/chat.png')}}" alt="" class="komen-icon">
                             <div class="komen-content">
                                 <p class="komen-text">
-                                    {{$komen->comment}}
+                                    {{$komen->komentar}}
                                 </p>
                                 <p class="komen-info">
-                                    <i class="icofont-user-alt-5"></i> {{$komen->visitor->name}}
+                                    <i class="icofont-user-alt-5"></i> {{$komen->user->name}}
                                     &nbsp;&nbsp;
-                                    <i class="icofont-calendar"></i> {{$komen->created_at->format('d, M Y - h:m')}}
+                                    <i class="icofont-calendar"></i> {{$komen->updated_at->format('d, M Y - H:i')}}
                                 </p>
                             </div>
                         </div>
                     @empty
                         Belum ada komentar pada karya ini
-                    @endforelse
+                    @endforelse --}}
                 </div>
-                <div class="col-md-4">
-                    @php
-                        $jenjang = null;
-                        $kategori = null;
-                        switch ($creation->level) {
-                            case 2:
-                                $jenjang = 'smp';
-                                break;
-
-                            case 3:
-                                $jenjang = 'sma';
-                                break;
-                        }
-
-                        switch ($creation->category) {
-                            case 1:
-                                $kategori = 'desain-grafis';
-                                break;
-
-                            case 2:
-                                $kategori = 'aplikasi-dan-game';
-                                break;
-
-                            case 3:
-                                $kategori = 'food-and-baverage';
-                                break;
-
-                            case 4:
-                                $kategori = 'fashion';
-                                break;
-
-                            case 5:
-                                $kategori = 'kriya';
-                                break;
-                        }
-                    @endphp
-                    <p class="headingtitle">
+                <div class="col-md-12">
+                    <p class="headingtitle wow fadeInUp">
                         <i>LIHAT KARYA LAINNYA</i>
                     </p>
                     @forelse ($karyas as $karya)
-                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->product_name))}}" class="lainnya">
-                        @if (count($karya->product_images()) > 0)
-                            <img src="{{url('image/'.$karya->product_images()[0])}}">
-                        @else
-                            <img src="{{asset('images/sample2.png')}}">
-                        @endif
-                    </a>
+                        <div class="list">
+                            <div class="list-imageframe">
+                                @if ($karya->fotos->count() > 0)
+                                    <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">
+                                @else
+                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
+                                @endif
+                            </div>
+                            <div class="list-content">
+                                <a style="margin-bottom: 0px;" href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>
+                                <p class="list-keterangan">{{$karya->deskripsi}}</p>
+                                <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>
+                                <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>
+                                <br>
+                                <a href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>
+                            </div>
+                        </div>
                     @empty
-                    Tidak ada karya lainnya
+                    <div class="wow fadeInUp">
+                        Tidak ada karya lainnya
+                    </div>
                     @endforelse
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script>
+  $("#c-video").on('hidden.bs.modal', function (e) {
+      $("#c-video iframe").attr("src", $("#c-video iframe").attr("src"));
+  });
+  $("#c-presentasi").on('hidden.bs.modal', function (e) {
+      $("#c-presentasi iframe").attr("src", $("#c-presentasi iframe").attr("src"));
+  });
+  $("#c-mockup").on('hidden.bs.modal', function (e) {
+      $("#c-mockup iframe").attr("src", $("#c-mockup iframe").attr("src"));
+  });
+</script>
 @endsection

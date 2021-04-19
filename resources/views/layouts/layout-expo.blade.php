@@ -23,6 +23,40 @@
     <!-- font-family: 'Hind', sans-serif; -->
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
+    <style>
+        .likesbutton
+        {
+            float: right;
+            border: 1px solid #ffbb55;
+            padding: 7px 15px 8px 19px;
+            color: #ffbb55;
+            background-color: #ffbb5523;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 12px;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 16px;
+            transition: 0.5s;
+        }
+        .likesbutton:hover
+        {
+            transform: scale(1.2)rotate(2deg);
+            float: right;
+            color: #ffb23d;
+            background-color: #ffbb555b;
+        }
+        .likesbutton--batal
+        {
+            border: 1px solid #ff7d55;
+            color: #ff7d55;
+            background-color: #ff7d5523;
+        }
+        .likesbutton--batal:hover
+        {
+            color: #ff6b3d;
+            background-color: #ff7d555b;
+        }
+        
+    </style>
 </head>
 <body class="light">
 <div class="container-fluid">
@@ -39,7 +73,7 @@
                     <li class="nav-item {{Request::is('beranda') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('beranda')}}">Beranda</a>
                     </li>
-                    <li class="nav-item {{Request::is('expo/*') ? 'active' : ''}}">
+                    <li class="nav-item {{Request::is('expo/*') || Request::is('virtualexpo/*') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('expo/smp/desain-grafis')}}">Virtual Expo</a>
                         {{-- <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a> --}}
                     </li>

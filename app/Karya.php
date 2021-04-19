@@ -33,11 +33,11 @@ class Karya extends Model
     }
     public function komentars()
     {
-        return $this->hasMany('App\Komentar');
+        return $this->hasMany('App\Komentar')->where('komentar', '!=', '');
     }
     public function likers()
     {
-        return $this->hasMany('App\Komentar')->where('liked', 'true');
+        return $this->hasMany('App\Komentar')->where('liked', 1);
     }
     public function fotos()
     {

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Karya;
 use App\Post;
+use App\Komentar;
 use App\GaleriTahun;
+use Auth;
 
 class LandingController extends Controller
 {
@@ -122,12 +124,78 @@ class LandingController extends Controller
                 $kategori = 'desain-grafis';
                 break;
         }
-        return view('expo.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas'));
+        $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+        return view('expo.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike'));
     }
     public function expoKomentar(Request $request, $id, $slug)
     {
         $karya = Karya::findOrFail($id);
-
+        $user = Auth::user();
+        $validatedData = $request->validate([
+            'komentar' => 'required|max:255',
+            ]);
+        $cekkomen = Komentar::where('user_id', $user->id)->latest()->first();
+        $input = $request->all();
+        if($cekkomen)
+        {
+            $cekkomen->komentar = $input['komentar'];
+            $cekkomen->save();
+            return redirect()->back()->with('success', 'Komentar anda berhasil diupdate');
+        }
+        else
+        {
+            $input['user_id'] = $user->id;
+            $input['karya_id'] = $karya->id;
+            $input['liked'] = 0;
+            $input['status'] = 1;
+            $data = Komentar::create($input);
+            if($data)
+            {
+                return redirect()->back()->with('success', 'Komentar anda berhasil dikirimkan');
+            }
+            else
+            {
+                return redirect()->back()->with('fail', 'Data gagal diupdate di server');
+            }
+        }
+    }
+    public function expoLikes($id)
+    {
+        $karya = Karya::find($id);
+        $user = Auth::user();
+        $cekkomen = Komentar::where('user_id', $user->id)->latest()->first();
+        if($cekkomen)
+        {
+            if($cekkomen->liked == 1)
+            {
+                $cekkomen->liked = 0;
+                $cekkomen->save();
+                return redirect()->back()->with('success', 'Anda telah batal menyukai karya ini');
+            }
+            else
+            {
+                $cekkomen->liked = 1;
+                $cekkomen->save();
+                return redirect()->back()->with('success', 'Anda telah menyukai karya ini');
+            }
+        }
+        else
+        {
+            $input['user_id'] = $user->id;
+            $input['karya_id'] = $karya->id;
+            $input['liked'] = 1;
+            $input['status'] = 1;
+            $input['komentar'] = '';
+            $data = Komentar::create($input);
+            if($data)
+            {
+                return redirect()->back()->with('success', 'Komentar anda berhasil dikirimkan');
+            }
+            else
+            {
+                return redirect()->back()->with('fail', 'Data gagal diupdate di server');
+            }
+        }
     }
     public function tentangKami()
     {

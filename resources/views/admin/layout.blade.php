@@ -128,6 +128,13 @@
                         <li>
                             <a href="{{url('events')}}" class="waves-effect {{Request::is('events') || Request::is('events/*') || Request::is('timelines/*') || Request::is('juris/*') || Request::is('pesertas/*') ? 'act' : ''}}"><i class="icofont-mega-phone"></i><span> Event </span></a>
                         </li>
+                        <li class="menu-title">Extras</li>
+                        <li>
+                            <a href="{{url('visitors')}}" class="waves-effect {{Request::is('visitors') || Request::is('visitors/*') ? 'act' : ''}}"><i class="icofont-people"></i><span> Visitor </span></a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="{{url('virtualexpo')}}" class="waves-effect {{Request::is('virtualexpo') || Request::is('virtualexpo/*') ? 'act' : ''}}"><i class="icofont-children-care"></i><span> Virtual Expo </span></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
