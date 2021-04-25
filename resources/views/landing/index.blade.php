@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center wow fadeInUp" data-wow-delay="0.5s">
-                    <a href="#">
+                    <a class="arrowbottom">
                         <img src="{{asset('images/gif/row-bottom.gif')}}" class="arrow" alt="">
                     </a>
                 </div>
@@ -49,7 +49,7 @@
                     <img src="{{asset('images/thinking.png')}}" class="icon-150" alt="">
                 </div>
                 <div class="col-md-4 text-center arrow-top-150 wow fadeInUp" data-wow-delay="1.5s">
-                    <a href="">
+                    <a class="arrowbottom">
                         <img src="{{asset('images/gif/row-bottom.gif')}}" class="arrow" alt="">
                     </a>
                 </div>
@@ -115,7 +115,7 @@
                     </a>
                     <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2s">
                         <img src="{{asset('images/kategori/h-fnb.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Food & Baverage</p>
+                        <p class="kategori-text">Food & beverage</p>
                     </a>
                     <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2.5s">
                         <img src="{{asset('images/kategori/h-fashion.png')}}" alt="" class="kategori-icon">
@@ -254,7 +254,13 @@
             }
         });
         $(".modal").on('hidden.bs.modal', function (e) {
-      $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
-  });
+            $(".modal iframe").attr("src", $(".modal iframe").attr("src"));
+        });
+        var scrollTop = $(window).scrollTop(),
+            divOffset = $('.arrowbottom').offset().top,
+            dist = (divOffset - scrollTop);
+        $(".arrowbottom").click(function(event){
+            $('html, body').animate({scrollTop: '+='+dist+'px'}, 800);
+        });
     </script>
 @endsection

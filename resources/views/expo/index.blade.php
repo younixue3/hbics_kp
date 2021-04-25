@@ -27,9 +27,9 @@
                         <p class="kategori-text wow fadeInUp">Aplikasi & Game</p>
                     </a>
                     {{-- @endif --}}
-                    <a href="{{url('expo/'.$jenjang.'/food-and-baverage')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1.5s">
+                    <a href="{{url('expo/'.$jenjang.'/food-and-beverage')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1.5s">
                         <img src="{{asset('images/kategori/h-fnb.png')}}" alt="" class="kategori-icon wow fadeInUp">
-                        <p class="kategori-text wow fadeInUp">Food & Baverage</p>
+                        <p class="kategori-text wow fadeInUp">Food & beverage</p>
                     </a>
                     <a href="{{url('expo/'.$jenjang.'/fashion')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1.8s">
                         <img src="{{asset('images/kategori/h-fashion.png')}}" alt="" class="kategori-icon wow fadeInUp" data-wow-delay="1s">

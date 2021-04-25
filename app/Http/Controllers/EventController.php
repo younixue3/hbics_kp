@@ -56,6 +56,15 @@ class EventController extends Controller
             $input['logo'] = 'nopict.jpg';
         }
         $data = Event::create($input);
+        if($data->status == 1)
+        {
+            $all = Event::where('status', 1)->where('id', '!=', $data->id)->get();
+            foreach($all as $event)
+            {
+                $event->status = 0;
+                $event->save();
+            }
+        }
         if($data)
         {
             return redirect('events')->with('success', 'Data berhasil diupload ke server');
@@ -91,7 +100,33 @@ class EventController extends Controller
         $data = Event::findOrFail($id);
         return view('admin.event.edit', compact('data'));
     }
-
+    public function status($id)
+    {
+        //
+        $data = Event::findOrFail($id);
+        if($data->status == 1)
+        {
+            $data->status = 0;
+            $data->save();
+            $latest = Event::latest()->first();
+            $latest->status = 1;
+            $latest->save();
+            return redirect('events')->with('success', 'Data berhasil diupdate menjadi non-aktif. Event aktif otomatis digeser pada data event terbaru');
+        }
+        else
+        {
+            $all = Event::where('status', 1)->get();
+            foreach($all as $event)
+            {
+                $event->status = 0;
+                $event->save();
+            }
+            $data->status = 1;
+            $data->save();
+            return redirect('events')->with('success', 'Data berhasil diupdate menjadi aktif. Event aktif sebelumnya otomatis digeser menjadi non-aktif');
+        }
+        return view('admin.event.edit', compact('data'));
+    }
     /**
      * Update the specified resource in storage.
      *

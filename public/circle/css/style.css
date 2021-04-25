@@ -1289,11 +1289,15 @@ a.page-link:hover
         font-size: 18px;
         line-height: 30px;
     }
+.arrowbottom:hover
+{
+    cursor: pointer;
+}
 .drop
 {
     position: absolute;
     background-color: rgb(255, 255, 255);
-    display: inline-block;
+    display: block;
     padding: 20px;
     border-radius: 20px;
     z-index: 100000;
@@ -1302,8 +1306,8 @@ a.page-link:hover
     -webkit-box-shadow: 5px 5px 72px -37px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 5px 72px -37px rgba(0,0,0,0.75);
     box-shadow: 5px 5px 72px -37px rgba(0,0,0,0.75);
-    margin-left: 15px;
-    margin-top: -10px;
+    margin-top: -5px;
+    min-width: 200px !important;
 }
     .drop.drop--hide
     {

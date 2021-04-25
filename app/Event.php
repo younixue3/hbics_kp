@@ -23,37 +23,8 @@ class Event extends Model
     }
     public function karyas()
     {
-        return $this->hasMany('App\Karya');
+        return $this->hasMany('App\Karya')->orderBy('created_at', 'desc');
     }
-    // public function karyaFiltered($jenjang, $kategori)
-    // {
-    //     switch ($jenjang) {
-    //         case 'smp':
-    //             $jenjang = 'SMP/MTS';
-    //             break;
-    //         case 'sma':
-    //             $jenjang = 'SMA/SMK/MAN';
-    //             break;
-    //     }
-    //     switch ($kategori) {
-    //         case 'kriya':
-    //             $kategori = 'Kriya';
-    //             break;
-    //         case 'fashion':
-    //             $kategori = 'Fashion';
-    //             break;
-    //         case 'food-and-baverage':
-    //             $kategori = 'Food and Baverage';
-    //             break;
-    //         case 'aplikasi-dan-game':
-    //             $kategori = 'Aplikasi dan Game';
-    //             break;
-    //         case 'desain-grafis':
-    //             $kategori = 'Desain Grafis';
-    //             break;
-    //     }
-    //     return $this->hasMany('App\Karya')->where('jenjang', $jenjang)->where('kategori', $kategori);
-    // }
     public function pendaftaran()
     {
         return $this->hasOne('App\Timeline')->where('kode', '#01');

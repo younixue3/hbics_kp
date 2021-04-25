@@ -168,12 +168,12 @@
 								</span>
 							</td>
 						</tr>
-						<tr>
+						{{-- <tr>
 							<th>Total Komentar</th>
 							<td>
 								{{$data->karya->komentars->count()}}
 							</td>
-						</tr>
+						</tr> --}}
 						<tr>
 							<th>Total Likes</th>
 							<td>

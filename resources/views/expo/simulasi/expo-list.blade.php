@@ -9,24 +9,31 @@
             <div class="row">
                 @if ($event->expo)
                     <div class="col-md-12">
-                        <p class="kategoritext" style="position: relative">
+                        <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="drop-t">
+                                <b>{{$jenjang}}</b>
                                 <i class="icofont-rounded-down"></i>
-                                <b>Jenjang "{{$jenjang}}" - Kategori "{{$kategori}}"</b>
                             </a>
                             <div id="drop-c" class="drop drop--hide">
-                                <a href="{{url('virtualexpo/smp/'.$kategori)}}" class="drop-link">SMP</a>
-                                <a href="{{url('virtualexpo/sma/'.$kategori)}}" class="drop-link">SMA</a>
-                                <hr>
+                                <a href="{{url('virtualexpo/smp/'.$kategori)}}" class="drop-link">SMP/MADRASAH</a>
+                                <a href="{{url('virtualexpo/sma/'.$kategori)}}" class="drop-link">SMA/SMK/MAN</a>
+                            </div>
+                        </span>
+                        <span class="kategoritext wow fadeInUp" style="position: relative;">
+                            <a href="#" id="dropp-t">
+                                <b>{{$kategori}}</b>
+                                <i class="icofont-rounded-down"></i>
+                            </a>
+                            <div id="dropp-c" class="drop drop--hide">
                                 <a href="{{url('virtualexpo/'.$jenjang.'/desain-grafis')}}" class="drop-link">Desain Grafis</a>
                                 {{-- @if ($jenjang == 'smp') --}}
                                 <a href="{{url('virtualexpo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>
                                 {{-- @endif --}}
-                                <a href="{{url('virtualexpo/'.$jenjang.'/food-and-baverage')}}" class="drop-link">Food & Baverage</a>
+                                <a href="{{url('virtualexpo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & beverage</a>
                                 <a href="{{url('virtualexpo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>
                                 <a href="{{url('virtualexpo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>
                             </div>
-                        </p>
+                        </span>
                         @forelse($event->timelines as $timeline)
                             @if ($now >= $timeline->tanggal_mulai && $now <= $timeline->tanggal_selesai)
                                 <div class="status">
@@ -87,6 +94,11 @@
 <script>    
     $('#drop-t').on('click', function(){
         $('#drop-c').toggleClass('drop--hide');
+        $('#dropp-c').addClass('drop--hide');
+    });
+    $('#dropp-t').on('click', function(){
+        $('#dropp-c').toggleClass('drop--hide');
+        $('#drop-c').addClass('drop--hide');
     });
 </script>
 @endsection

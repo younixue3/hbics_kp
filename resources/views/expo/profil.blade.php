@@ -106,7 +106,7 @@
                                   {{-- <option value="" selected disabled>- Jenjang -</option> --}}
                                   <option @if($karya->kategori == 'Desain Grafis') selected @endif value="Desain Grafis">Desain Grafis</option>
                                   <option @if($karya->kategori == 'Aplikasi dan Game') selected @endif value="Aplikasi dan Game">Aplikasi dan Game</option>
-                                  <option @if($karya->kategori == 'Food and Baverage') selected @endif value="Food and Baverage">Food and Baverage</option>
+                                  <option @if($karya->kategori == 'Food and beverage') selected @endif value="Food and beverage">Food and beverage</option>
                                   <option @if($karya->kategori == 'Fashion') selected @endif value="Fashion">Fashion</option>
                                   <option @if($karya->kategori == 'Kriya') selected @endif value="Kriya">Kriya</option>
                                 </select>
@@ -528,27 +528,8 @@
           <div class="row">
               <div class="col-md-8">
                 <div class="total wow fadeInUp" data-wow-delay="1s">
-                    <p><i class="icofont-like"></i> total likes : {{$karya->likers->count()}}, <i class="icofont-comment"></i> total komentar : {{$karya->komentars->count()}}</p>
+                    <p><i class="icofont-like"></i> total likes : {{$karya->likers->count()}}</p>
                 </div>
-                @forelse ($karya->komentars as $komentar)
-                <div class="komen wow fadeInUp" data-wow-delay="1.5s">
-                  <img src="{{asset('images/chat.png')}}" alt="" class="komen-icon">
-                  <div class="komen-content">
-                      <p class="komen-text">
-                          {{$komentar->komentar}}
-                      </p>
-                      <p class="komen-info">
-                          <i class="icofont-user-alt-5"></i> {{$komentar->user->name}}
-                          &nbsp;&nbsp;
-                          <i class="icofont-calendar"></i> {{$komentar->created_at->format('d, M Y - h:m')}}
-                      </p>
-                      <br>
-                      <a href="" class="button-text button-sm button-red">Sembunyikan komentar ini <i class="icofont-close"></i></a>
-                  </div>
-                </div>
-                @empty
-                    Data komentar Kosong
-                @endforelse
               </div>
               <div class="col-md-4 wow fadeInUp" data-wow-delay="1.5s">
                   <p class="headingtitle">

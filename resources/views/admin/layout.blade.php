@@ -48,6 +48,12 @@
         {
             padding: 5px 15px;
         }
+        .alert-xs
+        {
+            padding: 0px 3px 0px 0px;
+            font-size: 12px;
+            background-color: transparent;
+        }
         .imagegaleri
         {
             width: 100%;

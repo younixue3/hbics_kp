@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('events/{id}/edit', 'EventController@edit');
     Route::patch('events/{id}', 'EventController@update');
     Route::get('events/{id}/delete', 'EventController@destroy');
+    Route::get('events/{id}/status', 'EventController@status');
     Route::get('events/{id}/{slug}', 'EventController@show');
     // JURI
     Route::get('juris/{event_id}', 'JuriController@index');
@@ -53,7 +54,7 @@ Route::middleware(['auth'])->group(function(){
     Route::patch('pesertas/{event_id}/{user_id}', 'PesertaController@update');
     Route::get('pesertas/{event_id}/{user_id}/delete', 'PesertaController@destroy');
     Route::get('pesertas/{event_id}/{user_id}/{slug}', 'PesertaController@show');
-    // EVENT
+    // POSTINGAN
     Route::get('posts', 'PostController@index');
     Route::get('posts/create', 'PostController@create');
     Route::post('posts', 'PostController@store');
@@ -75,8 +76,8 @@ Route::middleware(['auth'])->group(function(){
     // EXTRAS
     Route::get('visitors', 'PesertaController@visitor');
     Route::get('virtualexpo', 'ExpoController@virtualexpo');
-    Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@expoJenjangKategori');
-    Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@expoDetailProduct');
+    Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@virtualexpoJenjangKategori');
+    Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@virtualexpoDetailProduct');
 
     // MENU NON ADMIN
     // LANDING

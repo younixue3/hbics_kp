@@ -24,7 +24,9 @@ class PesertaController extends Controller
     {
         //
         $event = Event::findOrFail($event_id);
-        return view('admin.peserta.index', compact('event'));
+        $karyas = $event->karyas()->paginate(20);
+        $jumlah = $karyas->count();
+        return view('admin.peserta.index', compact('event', 'karyas', 'jumlah'));
     }
 
     /**
@@ -180,7 +182,7 @@ class PesertaController extends Controller
         }
         $karya->delete();
         $user->delete();
-        return redirect('events'.$event->id.'/'.str_replace(' ', '-', $event->tagline))->with('success', 'Data berhasil dihapus di server');
+        return redirect('pesertas/'.$event->id)->with('success', 'Data berhasil dihapus di server');
     }
     public function deletefoto($fotoname){
         // path folder

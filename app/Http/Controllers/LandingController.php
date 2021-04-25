@@ -53,7 +53,7 @@ class LandingController extends Controller
     {
         if($jenjang == 'smp' || $jenjang == 'sma')
         {
-            if($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-baverage' || $kategori == 'fashion' || $kategori == 'kriya')
+            if($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-beverage' || $kategori == 'fashion' || $kategori == 'kriya')
             {
                 switch ($jenjang) {
                     case 'smp':
@@ -70,8 +70,8 @@ class LandingController extends Controller
                     case 'fashion':
                         $ckategori = 'Fashion';
                         break;
-                    case 'food-and-baverage':
-                        $ckategori = 'Food and Baverage';
+                    case 'food-and-beverage':
+                        $ckategori = 'Food and beverage';
                         break;
                     case 'aplikasi-dan-game':
                         $ckategori = 'Aplikasi dan Game';
@@ -114,8 +114,8 @@ class LandingController extends Controller
             case 'Fashion':
                 $kategori = 'fashion';
                 break;
-            case 'Food and Baverage':
-                $kategori = 'food-and-baverage';
+            case 'Food and beverage':
+                $kategori = 'food-and-beverage';
                 break;
             case 'Aplikasi dan Game':
                 $kategori = 'aplikasi-dan-game';

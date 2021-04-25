@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-5">
                     <div class="text">
-                        <p class="text-bg wow fadeInUp" data-wow-delay="0.5s"><i class="icofont-login"></i> Kidspreneruship</p>
+                        <p class="text-bg wow fadeInUp" data-wow-delay="0.5s"><i class="icofont-login"></i> Kidspreneurship</p>
                         <p class="text-sm wow fadeInUp" data-wow-delay="1s">Festival EPIK 2K21 “Enterpreneur Pelajar Indonesia Kreatif” <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf

@@ -3,7 +3,7 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<h2 class="title-1" style="margin-bottom:20px;">Timeline / Edit</h2>
+				<h2 class="title-1" style="margin-bottom:20px;">Peserta / Edit</h2>
 			</div>
 		</div>
 	</div>
@@ -48,7 +48,7 @@
 						</div>
 						<br>
 						<div class="form-group">
-							<a href="{{url('juris/'.$data->event_id)}}" class="btn btn-warning">Batal</a>
+							<a href="{{url('pesertas/'.$event_id)}}" class="btn btn-warning">Batal</a>
 							<input type="submit" value="Update" class="btn btn-primary" name="submit">
 						</div>
 					</form>

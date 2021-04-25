@@ -67,7 +67,7 @@
                                         break;
 
                                     case 3:
-                                        $kategori = 'Food and Baverage';
+                                        $kategori = 'Food and beverage';
                                         break;
 
                                     case 4:
@@ -109,7 +109,7 @@
                                       {{-- <option value="" selected disabled>- Jenjang -</option> --}}
                                       <option value="1">Desain Grafis</option>
                                       <option value="2">Aplikasi dan Game</option>
-                                      <option value="3">Food and Baverage</option>
+                                      <option value="3">Food and beverage</option>
                                       <option value="4">Fashion</option>
                                       <option value="5">Kriya</option>
                                     </select>
