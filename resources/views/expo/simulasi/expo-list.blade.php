@@ -1,4 +1,4 @@
-@extends('layouts.layout-expo')
+@extends('layouts.layout-simulasi')
 @section('content')
 <div class="container-fluid">
     {{-- <a class="logo logo--stuck" href="{{url('beranda')}}">
@@ -11,7 +11,7 @@
                     <div class="col-md-12">
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="drop-t">
-                                <b>{{$jenjang}}</b>
+                                <b>{{strToUpper($jenjang)}}</b>
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="drop-c" class="drop drop--hide">
@@ -21,7 +21,7 @@
                         </span>
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="dropp-t">
-                                <b>{{$kategori}}</b>
+                                <b>{{strToUpper(str_replace('-', ' ', $kategori))}}</b>
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
@@ -34,6 +34,7 @@
                                 <a href="{{url('virtualexpo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>
                             </div>
                         </span>
+                        <br/>
                         @forelse($event->timelines as $timeline)
                             @if ($now >= $timeline->tanggal_mulai && $now <= $timeline->tanggal_selesai)
                                 <div class="status">

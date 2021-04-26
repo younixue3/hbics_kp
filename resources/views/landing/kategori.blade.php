@@ -71,7 +71,7 @@
                             <img src="{{asset('images/kategori/h-fnb.png')}}" alt="" class="category-image">
                         </div>
                         <div class="category-content">
-                            <p class="category-name">Kategori Food and beverage</p>
+                            <p class="category-name">Kategori Food and Beverage</p>
                             <p class="category-teks">
                                 Kegiatan usaha dibidang boga adalah kegiatan yang terkait dengan produksi, pemasaran dan penjualan produk makanan serta minuman. Produk yang dikompetisikan merupakan pengolahan makanan atau minuman Siap Masak (Ready to Cook) seperti aneka roti, aneka kudapan kering dan kue basah dan makanan atau minuman Siap Saji (Ready to Eat & Drink).  
                             </p>

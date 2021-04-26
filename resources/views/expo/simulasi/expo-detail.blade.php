@@ -1,4 +1,4 @@
-@extends('layouts.layout-expo')
+@extends('layouts.layout-simulasi')
 @section('content')
 <div class="container-fluid">
     {{-- <a class="logo logo--stuck" href="{{url('/')}}">

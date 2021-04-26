@@ -106,7 +106,7 @@
                                   {{-- <option value="" selected disabled>- Jenjang -</option> --}}
                                   <option @if($karya->kategori == 'Desain Grafis') selected @endif value="Desain Grafis">Desain Grafis</option>
                                   <option @if($karya->kategori == 'Aplikasi dan Game') selected @endif value="Aplikasi dan Game">Aplikasi dan Game</option>
-                                  <option @if($karya->kategori == 'Food and beverage') selected @endif value="Food and beverage">Food and beverage</option>
+                                  <option @if($karya->kategori == 'Food and beverage') selected @endif value="Food and beverage">Food and Beverage</option>
                                   <option @if($karya->kategori == 'Fashion') selected @endif value="Fashion">Fashion</option>
                                   <option @if($karya->kategori == 'Kriya') selected @endif value="Kriya">Kriya</option>
                                 </select>

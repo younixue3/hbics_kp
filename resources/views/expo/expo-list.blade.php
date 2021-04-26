@@ -12,7 +12,7 @@
                     <div class="col-md-12">
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="drop-t">
-                                <b>{{$jenjang}}</b>
+                                <b>{{strToUpper($jenjang)}}</b>
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="drop-c" class="drop drop--hide">
@@ -22,7 +22,7 @@
                         </span>
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="dropp-t">
-                                <b>{{$kategori}}</b>
+                                <b>{{strToUpper(str_replace('-', ' ', $kategori))}}</b>
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
@@ -30,7 +30,7 @@
                                 {{-- @if ($jenjang == 'smp') --}}
                                 <a href="{{url('expo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>
                                 {{-- @endif --}}
-                                <a href="{{url('expo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & beverage</a>
+                                <a href="{{url('expo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & Beverage</a>
                                 <a href="{{url('expo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>
                                 <a href="{{url('expo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>
                             </div>

@@ -60,7 +60,7 @@
 								<td><b>{{ $data->kode }}</b></td>
 								<td>{{ $data->nama }}</td>
 								<td>{{ $data->keterangan }}</td>
-								<td>{{ $data->tanggal_mulai->format('d, M Y')}} - {{ $data->tanggal_selesai->format('d, M Y')}}</td>
+								<td>{{ $data->tanggal_mulai->format('d, M Y - h:i:s')}} - {{ $data->tanggal_selesai->format('d, M Y - h:i:s')}}</td>
 								<td>
 									<a class="btn btn-sm btn-success" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('timelines/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>

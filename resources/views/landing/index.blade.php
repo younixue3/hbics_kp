@@ -115,7 +115,7 @@
                     </a>
                     <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2s">
                         <img src="{{asset('images/kategori/h-fnb.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Food & beverage</p>
+                        <p class="kategori-text">Food & Beverage</p>
                     </a>
                     <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2.5s">
                         <img src="{{asset('images/kategori/h-fashion.png')}}" alt="" class="kategori-icon">
