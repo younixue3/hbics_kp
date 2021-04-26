@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    dd(\App\Auth::user());
-    return view('auth.login');
-});
-
+Route::get('/', 'LoginController@index');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
