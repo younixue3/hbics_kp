@@ -12,11 +12,12 @@
 */
 
 Route::get('/', function () {
+    dd(\App\Auth::user());
     return view('auth.login');
 });
 
 Auth::routes();
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('profils', 'HomeController@profil');
     Route::patch('profils/update', 'HomeController@profilUpdate');
@@ -78,7 +79,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('virtualexpo', 'ExpoController@virtualexpo');
     Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@virtualexpoJenjangKategori');
     Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@virtualexpoDetailProduct');
-
+});
+Route::middleware(['auth', 'visitor'])->group(function(){
     // MENU NON ADMIN
     // LANDING
     Route::get('beranda', 'LandingController@beranda');
@@ -96,9 +98,11 @@ Route::middleware(['auth'])->group(function(){
     Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
     Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
     // EXPO
-    Route::get('profil', 'ExpoController@profil');
-    Route::patch('profil', 'ExpoController@profilUpdate');
-    Route::patch('karya', 'ExpoController@karyaUpdate');
-    Route::post('karya/foto', 'ExpoController@karyaFoto');
-    Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
+    Route::middleware(['peserta'])->group(function(){
+        Route::get('profil', 'ExpoController@profil');
+        Route::patch('profil', 'ExpoController@profilUpdate');
+        Route::patch('karya', 'ExpoController@karyaUpdate');
+        Route::post('karya/foto', 'ExpoController@karyaFoto');
+        Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
+    });
 });
