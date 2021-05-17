@@ -96,20 +96,26 @@
         </div>
     </nav>
 </div>
-{{-- <div class="container-fluid">
-    <div class="row sponsor">
-        <div class="container">
-            <p class="sponsor-title">
-                Support by:
-            </p>
-            <div class="sponsor-frame">
+@php
+    $active = App\Event::where('status', 1)->latest()->first();
+@endphp
+@if ($active)
+<div class="sponsor">
+    <div class="container">
+        <p class="sponsor-title">
+            Support by:
+        </p>
+        <div class="sponsor-frame">
+            @forelse ($active->sponsors as $sponsor)
                 <div class="sponsor-image-frame">
-                    <img src="{{asset('images/sample.png')}}" alt="" class="sponsor-image">
+                    <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
-            </div>
+            @empty                
+            @endforelse
         </div>
     </div>
-</div> --}}
+</div>
+@endif
 <div id="navbreaker"></div>
 <!-- /logo -->
 @yield('content')

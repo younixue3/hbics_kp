@@ -370,15 +370,14 @@ a.page-link:hover
     }
 .sponsor
 {
-    display: none;
-    background-color: #048488;
+    background-color: #047988;
     position: fixed;
     width: 100%;
     bottom: 0;
     z-index: 100000;
     padding: 20px 0px;
     transition: 0.5s;
-    background-image: url('../../images/bg.png');
+    background-image: url('../../images/bgblue.png');
     background-size: cover;
 }
     .sponsor-title
@@ -386,7 +385,7 @@ a.page-link:hover
         font-weight: bold;
         color: white;
         text-align: center;
-        margin-bottom: 0px;
+        margin-bottom: 10px;
         font-size: 10px;
     }
     .sponsor-frame
@@ -397,14 +396,15 @@ a.page-link:hover
     }
     .sponsor-image-frame
     {
-        width: 20%;
         height: auto;
         overflow: hidden;
+        padding-right: 10px;
+        padding-left: 10px;
     }
     .sponsor-image
     {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
         max-height: 50px;
     }
 .apaitu
