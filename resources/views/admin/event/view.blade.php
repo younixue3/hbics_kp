@@ -56,6 +56,12 @@
 								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->karyas->count()}} Peserta</a>
 							</td>
 						</tr>
+						<tr>
+							<th>Jumlah Sponsor</th>
+							<td>
+								<a href="{{url('sponsors/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->sponsors->count()}} Sponsor</a>
+							</td>
+						</tr>
 					</table>
 				</div>
 			</div>

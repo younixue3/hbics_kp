@@ -1328,6 +1328,18 @@ a.page-link:hover
     font-weight: bold;
     margin-bottom: 0px !important;
 }
+.navbar-sec--none
+{
+    display: none;
+}
+.navbar-toggler
+{
+    border-radius: 15px;
+}
+.navbar-toggler:focus
+{
+    outline: none;
+}
 @media (max-width: 1200px) {
 
 }
@@ -1761,6 +1773,7 @@ a.page-link:hover
             width: 80%;
             height: auto;
             z-index: 10000;
+            margin: 0px;
             margin-bottom: 20px;
         }
         .kenali-title
@@ -1804,5 +1817,21 @@ a.page-link:hover
         margin-top: 15px;
         display: inline-block;
         z-index: 10000 !important;
+    }
+    .navbar
+    {
+        padding-bottom: 30px;
+    }
+    .navbar-brand
+    {
+        margin-bottom: 20px;
+    }
+    .navbar-sec
+    {
+        display: inline;
+    }
+    .navbar-sec2
+    {
+        display: none;
     }
 }

@@ -25,6 +25,10 @@ class Event extends Model
     {
         return $this->hasMany('App\Karya')->orderBy('created_at', 'desc');
     }
+    public function sponsors()
+    {
+        return $this->hasMany('App\Sponsor')->orderBy('created_at', 'desc');
+    }
     public function pendaftaran()
     {
         return $this->hasOne('App\Timeline')->where('kode', '#01');

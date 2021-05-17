@@ -10,11 +10,107 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
+            <p style="font-size: 12px; color: grey;">
+              <b>Kelengkapan data profil: </b> <br>
+              Jenjang
+              <span class="alert alert-xs @if($karya->jenjang == '') alert-danger @else alert-success @endif">
+                @if($karya->jenjang == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,  
+              Kategori
+              <span class="alert alert-xs @if($karya->kategori == '') alert-danger @else alert-success @endif">
+                @if($karya->kategori == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Foto Tim
+              <span class="alert alert-xs @if($karya->foto_tim == '') alert-danger @else alert-success @endif">
+                @if($karya->foto_tim == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Foto Poster
+              <span class="alert alert-xs @if($karya->foto_poster == '') alert-danger @else alert-success @endif">
+                @if($karya->foto_poster == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Tentang Tim
+              <span class="alert alert-xs @if($karya->tentang_tim == '') alert-danger @else alert-success @endif">
+                @if($karya->tentang_tim == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Nama
+              <span class="alert alert-xs @if($karya->nama == '') alert-danger @else alert-success @endif">
+                @if($karya->nama == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Deskripsi
+              <span class="alert alert-xs @if($karya->deskripsi == '') alert-danger @else alert-success @endif">
+                @if($karya->deskripsi == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Link Profil
+              <span class="alert alert-xs @if($karya->link_profil == '') alert-danger @else alert-success @endif">
+                @if($karya->link_profil == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Link Presentasi
+              <span class="alert alert-xs @if($karya->link_presentation == '') alert-danger @else alert-success @endif">
+                @if($karya->link_presentation == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Link Mockup
+              <span class="alert alert-xs @if($karya->link_mockup == '') alert-danger @else alert-success @endif">
+                @if($karya->link_mockup == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>,
+              Proposal
+              <span class="alert alert-xs @if($karya->proposal == '') alert-danger @else alert-success @endif">
+                @if($karya->proposal == '') 
+                  <i class="icofont-close-circled"></i>
+                @else 
+                  <i class="icofont-checked"></i>
+                @endif
+              </span>.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <div class="status">
                 <p class="status-text"><span class="status-grey"><i class="icofont-ui-calendar"></i> Waktu pengisian profil :</span> <span class="status-blue">{{$pengisian->tanggal_mulai->format('d M Y')}} - {{$pengisian->tanggal_selesai->format('d M Y')}}</span></p>
             </div>
           </div>
-      </div>
+        </div>
+        <br>
         <div class="row">
           <div class="col-md-12">
             @if(session('success'))
@@ -603,5 +699,6 @@
     word_count_deskripsi.innerHTML = 350 - textarea_deskripsi.length;
     console.log(textarea_deskripsi.length);
   })
+  $('#status').modal('show');
 </script>
 @endsection

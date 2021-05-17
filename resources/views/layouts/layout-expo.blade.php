@@ -55,7 +55,14 @@
             color: #ff6b3d;
             background-color: #ff7d555b;
         }
-        
+        .alert-xs
+        {
+            padding: 1px;
+            line-height: 0.8rem;
+            font-size: 10px;
+            background-color: transparent;
+            border: 0px solid transparent;
+        }
     </style>
 </head>
 <body class="light">
@@ -64,6 +71,7 @@
         <div class="container">
             <a class="navbar-brand" id="navbrand" href="{{url('beranda')}}">
                 <img src="{{asset('images/logo.png')}}"/>
+                <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -99,7 +107,7 @@
                     </li>
                     @endif
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav navbar-sec2">
                     <li class="nav-item">
                         <img style="height: 80px;" src="{{asset('images/sbhb.png')}}"/>
                     </li>

@@ -35,6 +35,14 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::patch('juris/{event_id}/{id}', 'JuriController@update');
     Route::get('juris/{event_id}/{id}/delete', 'JuriController@destroy');
     Route::get('juris/{event_id}/{id}/{slug}', 'JuriController@show');
+    // SPONSOR
+    Route::get('sponsors/{event_id}', 'SponsorController@index');
+    Route::get('sponsors/{event_id}/create', 'SponsorController@create');
+    Route::post('sponsors/{event_id}', 'SponsorController@store');
+    Route::get('sponsors/{event_id}/{id}/edit', 'SponsorController@edit');
+    Route::patch('sponsors/{event_id}/{id}', 'SponsorController@update');
+    Route::get('sponsors/{event_id}/{id}/delete', 'SponsorController@destroy');
+    Route::get('sponsors/{event_id}/{id}/{slug}', 'SponsorController@show');
     // TIMELINE
     Route::get('timelines/{event_id}', 'TimelineController@index');
     Route::get('timelines/{event_id}/create', 'TimelineController@create');
