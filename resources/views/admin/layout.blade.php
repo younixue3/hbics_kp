@@ -118,12 +118,14 @@
             <div class="sidebar-inner slimscrollleft">
                 <div id="sidebar-menu">
                     <ul>
-
                         <li class="menu-title">Profil Akun</li>
                         <li>
                             <a href="{{url('profils')}}" class="waves-effect {{Request::is('profils') ? 'act' : ''}}"><i class="icofont-user"></i><span> Profil </span></a>
                         </li>
-                        <li class="menu-title">Landing</li>
+                        <li>
+                            <a href="{{asset('panduan.pdf')}}" target="_blank" class="waves-effect"><i class="icofont-book"></i><span> Panduan </span></a>
+                        </li>
+                        <li class="menu-title">Halaman Publik</li>
                         <li>
                             <a href="{{url('posts')}}" class="waves-effect {{Request::is('posts') || Request::is('posts/*') ? 'act' : ''}}"><i class="icofont-newspaper"></i><span> Postingan </span></a>
                         </li>
@@ -136,7 +138,7 @@
                         </li>
                         <li class="menu-title">Extras</li>
                         <li>
-                            <a href="{{url('visitors')}}" class="waves-effect {{Request::is('visitors') || Request::is('visitors/*') ? 'act' : ''}}"><i class="icofont-people"></i><span> Visitor </span></a>
+                            <a href="{{url('visitors')}}" class="waves-effect {{Request::is('visitors') || Request::is('visitors/*') ? 'act' : ''}}"><i class="icofont-people"></i><span> Data Pengunjung </span></a>
                         </li>
                         <li>
                             <a target="_blank" href="{{url('virtualexpo')}}" class="waves-effect {{Request::is('virtualexpo') || Request::is('virtualexpo/*') ? 'act' : ''}}"><i class="icofont-children-care"></i><span> Virtual Expo </span></a>

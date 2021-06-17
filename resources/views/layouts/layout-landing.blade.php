@@ -22,6 +22,13 @@
     <!-- font-family: 'Hind', sans-serif; -->
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
+    <style>
+        .labeltext
+        {
+            font-size: 10px;
+            color: rgb(153, 153, 153);
+        }
+    </style>
 </head>
 
 <body class="light">
@@ -106,14 +113,14 @@
     $active = App\Event::where('status', 1)->latest()->first();
 @endphp
 @if ($active)
-<div class="sponsor">
+<div class="sponsor wow fadeInUp" data-wow-delay="1s">
     <div class="container">
         <p class="sponsor-title">
             Support by:
         </p>
         <div class="sponsor-frame">
             @forelse ($active->sponsors as $sponsor)
-                <div class="sponsor-image-frame">
+                <div class="sponsor-image-frame wow fadeInUp" data-wow-delay="1.3s">
                     <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
             @empty                

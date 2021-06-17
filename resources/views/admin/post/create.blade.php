@@ -3,7 +3,7 @@
 	<div class="row page-content-wrapper">
 		<div class="col-md-12">
 			<div class="overview-wrap">
-				<h2 class="title-1" style="margin-bottom:20px;">Tambah Data Event</h2>
+				<h2 class="title-1" style="margin-bottom:20px;">Tambah Data Postingan</h2>
 			</div>
 		</div>
 	</div>
@@ -30,7 +30,6 @@
 							</ul>
 						</div>
 					@endif
-					<br>
 					<form action="{{ url('posts') }}" method="POST" enctype="multipart/form-data">
 						@csrf
 						<div class="form-group">
@@ -52,7 +51,7 @@
 						<br>
 						<div class="form-group">
 							<a href="{{url('posts')}}" class="btn btn-warning">Batal</a>
-							<input type="submit" value="Posting" class="btn btn-primary" name="submit">
+							<input type="submit" value="Simpan" class="btn btn-primary" name="submit">
 						</div>
 					</form>
 				</div>

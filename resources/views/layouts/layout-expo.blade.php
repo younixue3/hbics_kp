@@ -120,14 +120,14 @@
     $active = App\Event::where('status', 1)->latest()->first();
 @endphp
 @if ($active)
-<div class="sponsor">
+<div class="sponsor wow fadeInUp" data-wow-delay="1s">
     <div class="container">
         <p class="sponsor-title">
             Support by:
         </p>
         <div class="sponsor-frame">
             @forelse ($active->sponsors as $sponsor)
-                <div class="sponsor-image-frame">
+                <div class="sponsor-image-frame wow fadeInUp" data-wow-delay="1.3s">
                     <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
             @empty                

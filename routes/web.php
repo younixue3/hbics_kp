@@ -105,6 +105,7 @@ Route::middleware(['auth', 'visitor'])->group(function(){
     Route::middleware(['peserta'])->group(function(){
         Route::get('profil', 'ExpoController@profil');
         Route::patch('profil', 'ExpoController@profilUpdate');
+        Route::get('profil/simulasi', 'ExpoController@profilSimulasi');
         Route::patch('karya', 'ExpoController@karyaUpdate');
         Route::post('karya/foto', 'ExpoController@karyaFoto');
         Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');

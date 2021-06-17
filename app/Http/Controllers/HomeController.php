@@ -48,6 +48,18 @@ class HomeController extends Controller
             return redirect('beranda');
         }
     }
+    public function panduan()
+    {
+        $user = Auth::user();
+        if($user->role == 'admin')
+        {
+            return view('admin.panduan');
+        }
+        else
+        {
+            return redirect('beranda');
+        }
+    }
     public function profilUpdate(Request $request)
     {
         $input = $request->all();

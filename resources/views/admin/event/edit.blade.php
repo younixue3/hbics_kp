@@ -64,7 +64,7 @@
 						<br>
 						<div class="form-group">
 							<a href="{{url('events')}}" class="btn btn-warning">Batal</a>
-							<input type="submit" value="Update" class="btn btn-primary" name="submit">
+							<input type="submit" value="Simpan" class="btn btn-primary" name="submit">
 						</div>
 					</form>
 				</div>

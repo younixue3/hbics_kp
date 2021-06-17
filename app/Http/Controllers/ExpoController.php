@@ -70,19 +70,31 @@ class ExpoController extends Controller
             return redirect('profil')->with('fail', 'Data gagal diupdate di server, email telah terdaftar di akun lainnya');
         }
     }
+    public function profilSimulasi()
+    {
+        $user = Auth::user();
+        if($user->role == 'admin' || $user->role == 'pengunjung')
+        {
+            abort(404);
+        }
+        $karya = $user->karya;
+        $event = Event::where('status', 1)->latest()->first();
+        // echo $karya->likers->count();
+        // exit;
+        return view('expo.profil-simulasi', compact('user', 'event', 'karya'));
+    }
     public function karyaUpdate(Request $request)
     {
         $input = $request->all();
-        $validatedData = $request->validate([
-            'foto_tim' => 'mimes:jpeg,bmp,png,jpg|max:2000',
-            'foto_poster' => 'mimes:jpeg,bmp,png,jpg|max:2000',
-            'proposal' => 'mimes:docx,doc,pdf|max:2000',
-        ]);
         $user = Auth::user();
         $karya = Karya::where('user_id', $user->id)->latest()->first();
+        dd($input);
         // FOTO TIM
         if($request->has('foto_tim'))
         {
+            $validatedData = $request->validate([
+                'foto_tim' => 'mimes:jpeg,bmp,png,jpg|max:2000',
+            ]);
             if($karya->foto_tim != '')
             {
                 $this->deletefoto($karya->foto_tim);
@@ -95,6 +107,9 @@ class ExpoController extends Controller
         // FOTO POSTER
         if($request->has('foto_poster'))
         {
+            $validatedData = $request->validate([
+                'foto_poster' => 'mimes:jpeg,bmp,png,jpg|max:2000',
+            ]);
             if($karya->foto_poster != '')
             {
                 $this->deletefoto($karya->foto_poster);
@@ -107,6 +122,9 @@ class ExpoController extends Controller
         // PROPOSAL
         if($request->has('proposal'))
         {
+            $validatedData = $request->validate([
+                'proposal' => 'mimes:docx,doc,pdf|max:2000',
+            ]);
             if($karya->proposal != '')
             {
                 $this->deletefoto($karya->proposal);

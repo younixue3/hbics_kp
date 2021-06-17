@@ -49,7 +49,7 @@
 							<label for="">Update Password<span style="opacity:0.5; color:red;"> *isi hanya jika ingin mengganti password</span></label>
 							<input type="password" name="password" placeholder="Masukkan Password Baru" class="form-control">
 						</div>
-						<input type="submit" value="Simpan Data" class="btn btn-warning">
+						<button type="submit" class="btn btn-primary">Simpan</button>
 					</form>
 				</div>
 			</div>

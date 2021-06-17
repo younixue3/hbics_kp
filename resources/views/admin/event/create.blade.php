@@ -30,7 +30,6 @@
 							</ul>
 						</div>
 					@endif
-					<br>
 					<form action="{{ url('events') }}" method="POST" enctype="multipart/form-data">
 						@csrf
 
@@ -53,10 +52,9 @@
 								<option value="0">No-naktif</option>
 							</select>
 						</div>
-						<br>
 						<div class="form-group">
 							<a href="{{url('events')}}" class="btn btn-warning">Batal</a>
-							<input type="submit" value="Posting" class="btn btn-primary" name="submit">
+							<input type="submit" value="Simpan" class="btn btn-primary" name="submit">
 						</div>
 					</form>
 				</div>

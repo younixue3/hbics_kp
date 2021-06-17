@@ -39,25 +39,25 @@
 							</td>
 						</tr>
 						<tr>
-							<th>Jumlah Timeline</th>
+							<th>Timeline</th>
 							<td>
 								<a href="{{url('timelines/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->timelines->count()}} Timeline</a>
 							</td>
 						</tr>
 						<tr>
-							<th>Jumlah Juri</th>
+							<th>Juri</th>
 							<td>
 								<a href="{{url('juris/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->juris->count()}} Juri</a>
 							</td>
 						</tr>
 						<tr>
-							<th>Jumlah Karya/ Peserta</th>
+							<th>Karya/ Peserta</th>
 							<td>
 								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->karyas->count()}} Peserta</a>
 							</td>
 						</tr>
 						<tr>
-							<th>Jumlah Sponsor</th>
+							<th>Sponsor</th>
 							<td>
 								<a href="{{url('sponsors/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->sponsors->count()}} Sponsor</a>
 							</td>
