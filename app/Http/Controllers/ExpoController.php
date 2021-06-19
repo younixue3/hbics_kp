@@ -27,10 +27,11 @@ class ExpoController extends Controller
             abort(404);
         }
         $karya = $user->karya;
+        $fotos = $karya->fotos;
         $event = Event::where('status', 1)->latest()->first();
         // echo $karya->likers->count();
         // exit;
-        return view('expo.profil', compact('user', 'event', 'karya'));
+        return view('expo.profil', compact('user', 'event', 'karya', 'fotos'));
     }
     public function profilUpdate(Request $request)
     {
@@ -88,7 +89,6 @@ class ExpoController extends Controller
         $input = $request->all();
         $user = Auth::user();
         $karya = Karya::where('user_id', $user->id)->latest()->first();
-        dd($input);
         // FOTO TIM
         if($request->has('foto_tim'))
         {
@@ -151,9 +151,9 @@ class ExpoController extends Controller
     public function karyaFoto(Request $request)
     {
         $input = $request->all();
-        $validatedData = $request->validate([
-            'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
-        ]);
+        // $validatedData = $request->validate([
+        //     'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
+        // ]);
         $user = Auth::user();
         $karya = Karya::where('user_id', $user->id)->latest()->first();
         $foto = $input['foto'];

@@ -1909,4 +1909,12 @@ a.page-link:hover
     {
         display: none;
     }
+    .gal-frame
+    {
+        width: 50%;
+    }
+    .navbar-brand img
+    {
+        height: 40px !important;
+    }
 }

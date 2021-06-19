@@ -83,87 +83,51 @@
         <div class="col-md-12">
           <div class="kenali">
             <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="1s">
-                <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                <a href="" data-toggle="modal" data-target="#c-video"><img src="{{asset('images/kenali/1.png')}}" alt="" class="kenali-logo"></a>
-                <a href="" data-toggle="modal" data-target="#c-video" class="kenali-title">VIDEO PROFIL @if($karya->link_profil != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>
-                <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="fotoLabel">Video Profil</h5>
+              <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
+              <a href="" data-toggle="modal" data-target="#c-video"><img src="{{asset('images/kenali/1.png')}}" alt="" class="kenali-logo"></a>
+              <a href="" data-toggle="modal" data-target="#c-video" class="kenali-title">VIDEO PROFIL @if($karya->link_profil != '') @endif</a>
+              <div class="modal fade" id="c-video" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body text-left">
-                        <form id="f-karya-linkProfil" action="{{url('karya')}}" method="POST">
-                          @csrf
-                          <input type="hidden" name="_method" value="PATCH">
-                        </form>
-                        <label for="">Link video profil</label>
-                        <input form="f-karya-linkProfil" name="link_profil" type="text" class="form-control" placeholder="Masukkan link youtube">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button form="f-karya-linkProfil" type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                      </div>
+                      <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_profil)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
             <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="1.5s">
-                <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                <a href="" data-toggle="modal" data-target="#c-presentasi"><img data-toggle="modal" data-target="#c-presentasi" src="{{asset('images/kenali/2.png')}}" alt="" class="kenali-logo"></a>
-                <a href="" data-toggle="modal" data-target="#c-presentasi" class="kenali-title">VIDEO PRESENTASI @if($karya->link_presentation != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>
-                <div class="modal fade" id="presentasi" tabindex="-1" role="dialog" aria-labelledby="presentasiLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="fotoLabel">Video Presentasi</h5>
+              <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
+              <a href="" data-toggle="modal" data-target="#c-presentasi"><img data-toggle="modal" data-target="#c-presentasi" src="{{asset('images/kenali/2.png')}}" alt="" class="kenali-logo"></a>
+              <a href="" data-toggle="modal" data-target="#c-presentasi" class="kenali-title">VIDEO PRESENTASI @if($karya->link_presentation != '') @endif</a>
+              <div class="modal fade" id="c-presentasi" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
-                      </div>
-                      <div class="modal-body text-left">
-                        <form id="f-karya-linkPresentasi" action="{{url('karya')}}" method="POST">
-                          @csrf
-                          <input type="hidden" name="_method" value="PATCH">
-                        </form>
-                        <label for="">Link video presentasi</label>
-                        <input form="f-karya-linkPresentasi" name="link_presentation" type="text" class="form-control" placeholder="Masukkan link youtube">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button form="f-karya-linkPresentasi" type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                      </div>
+                      <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
             <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="2s">
               <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
               <a href="" data-toggle="modal" data-target="#c-mockup" class="kenali-title"><img src="{{asset('images/kenali/3.png')}}" alt="" class="kenali-logo"></a>
-              <a href="" data-toggle="modal" data-target="#c-mockup" class="kenali-title">VIDEO MOCK-UP @if($karya->link_mockup != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>
-              <div class="modal fade" id="mockup" tabindex="-1" role="dialog" aria-labelledby="mockupLabel" aria-hidden="true">
+              <a href="" data-toggle="modal" data-target="#c-mockup" class="kenali-title">VIDEO MOCK-UP @if($karya->link_mockup != '') @endif</a>
+              <div class="modal fade" id="c-mockup" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="fotoLabel">Video Mockup</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body text-left">
-                      <form id="f-karya-linkMockup" action="{{url('karya')}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="_method" value="PATCH">
-                      </form>
-                      <label for="">Link video mockup</label>
-                      <input form="f-karya-linkMockup" name="link_mockup" type="text" class="form-control" placeholder="Masukkan link youtube">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button form="f-karya-linkMockup" type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                      <iframe style="width: 100%;z-index:9999;" height="315" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_mockup)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                   </div>
                 </div>
@@ -173,16 +137,16 @@
               <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
               @if ($karya->proposal != '')
                 <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>
+                <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
               @else
                 <a href="" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                <a href="" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>                            
+                <a href="" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>                            
               @endif
             </div>
             <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
               <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-              <a href="" data-toggle="modal" data-target="#c-poster"><img src="{{asset('images/kenali/5.png')}}" alt="" class="kenali-logo"></a>
-              <a href="" data-toggle="modal" data-target="#c-poster" class="kenali-title">POSTER @if($karya->foto_poster != '') <i class="icofont-check" style="color: rgb(15, 177, 15); position:absolute;"></i> @endif</a>
+              <a href="{{asset('uploads/karyas/'.$karya->foto_poster)}}" data-lightbox="foto_poster1" data-title="{{$karya->foto_poster}}"><img src="{{asset('images/kenali/5.png')}}" alt="" class="kenali-logo"></a>
+              <a href="{{asset('uploads/karyas/'.$karya->foto_poster)}}" data-lightbox="foto_poster2" data-title="{{$karya->foto_poster}}" class="kenali-title">POSTER @if($karya->foto_poster != '') @endif</a>
             </div>
           </div>
         </div>
@@ -194,36 +158,10 @@
   <div class="row frame frame2">
       <div class="container">
           <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-12 text-center">
                 <div class="total wow fadeInUp" data-wow-delay="1s">
                     <p><i class="icofont-like"></i> total likes : {{$karya->likers->count()}}</p>
                 </div>
-              </div>
-              <div class="col-md-4 wow fadeInUp" data-wow-delay="1.5s">
-                  <p class="headingtitle">
-                      <i>UBAH DATA LOGIN</i>
-                  </p>
-                  <div class="panel panel-default" style="border: 1px solid #e4e4e4; background-color:white; padding: 20px;">
-                    <div class="panel-body">
-                      <form action="{{url('profil')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="_method" value="PATCH">
-                        <label for="">Username</label>
-                        <input style="padding-top: 15px;" type="text" class="form-control" name="name" value="{{$user->name}}" placeholder="Username baru">
-                        <br>
-                        <label for="">Email</label>
-                        <input style="padding-top: 15px;" type="text" class="form-control" name="email" value="{{$user->email}}" placeholder="Email baru">
-                        <br>
-                        <label for="">Password</label>
-                        <input style="padding-top: 15px;" type="password" class="form-control" name="password" placeholder="Password baru">
-                        <br>
-                        <div class="alert alert-warning">
-                          <i class="icofont-warning"></i> Isi kolom password hanya jika ingin mengganti password
-                        </div>
-                        <input type="submit" name="submit" class="btn btn-yellow" value="Simpan perubahan">
-                      </form>
-                    </div>
-                  </div>
               </div>
           </div>
       </div>

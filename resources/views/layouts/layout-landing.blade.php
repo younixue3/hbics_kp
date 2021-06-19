@@ -37,6 +37,7 @@
         <div class="container">
             <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('beranda')}}">
                 <img src="{{asset('images/logo.png')}}"/>
+                <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
