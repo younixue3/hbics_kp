@@ -5,7 +5,7 @@
   $today = \Carbon\Carbon::now();
 @endphp
 @if ($pengisian)
-  @if ($today >= $pengisian->tanggal_mulai || $today <= $pengisian->tanggal_selesai)
+  @if ($today >= $pengisian->tanggal_mulai && $today <= $pengisian->tanggal_selesai)
     <div class="container-fluid">
       <div class="row frame frame2">
           <div class="container">
@@ -302,7 +302,7 @@
                       @forelse ($karya->fotos as $foto)
                         <div class="gal-frame">
                           <img src="{{asset('uploads/karyafotos/'.$foto->foto)}}" alt="">
-                          @if ($today >= $pengisian->tanggal_mulai || $today <= $pengisian->tanggal_selesai)
+                          @if ($today >= $pengisian->tanggal_mulai && $today <= $pengisian->tanggal_selesai)
                             <a href="{{url('karya/foto/'.$foto->id)}}" class="btn btn-danger btn-del">Hapus</a>
                           @endif
                         </div>
