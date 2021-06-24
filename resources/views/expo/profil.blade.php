@@ -488,15 +488,12 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <br><br>
+                    <br>
                     <h4><i class="icofont-paint"></i> Data Produk</h4>
-                    <form action="{{url('karya')}}" method="POST" enctype="multipart/form-data">
-                      @csrf
-                      <input type="hidden" name="_method" value="PATCH">
                       <label class="mt10">Nama Produk</label>
-                      <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya->nama}}">
+                      <input type="text" class="form-control2" readonly value="{{$karya->nama}}">
                       <label class="mt10">Deskripsi Produk (sisa <span id="word_count_deskripsi"></span> karakter)</label>
-                      <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi 'produk'" class="form-control2">{{$karya->deskripsi}}</textarea>
+                      <textarea id="textarea_deskripsi" readonly maxlength="350" rows="10" class="form-control2">{{$karya->deskripsi}}</textarea>
                       <div class="row">
                         <div class="col-md-6">
                           <label class="mt10">Proposal
@@ -504,7 +501,7 @@
                               <a style="color: rgb(41, 91, 228)" href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank">Lihat proposal saat ini <i class="icofont-paper"></i></a>
                             @endif
                           </label>
-                          <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya->proposal}}">
+                          <input type="text" class="form-control2" readonly value="{{$karya->proposal}}">
                         </div>
                         <div class="col-md-6">
                           <label class="mt10">Foto Poster
@@ -512,16 +509,15 @@
                               <a style="color: rgb(41, 91, 228)" href="{{asset('uploads/karyas/'.$karya->foto_poster)}}" data-lightbox="foto_poster" data-title="{{$karya->foto_poster}}">Lihat foto saat ini <i class="icofont-image"></i></a>
                             @endif
                           </label>
-                          <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya->foto_poster}}">
+                          <input type="text"  class="form-control2" readonly value="{{$karya->foto_poster}}">
                         </div>
                       </div>
                       <label class="mt10">Link Profil</label>
-                      <input type="text" name="link_profil" placeholder="Masukkan Link Profil" class="form-control2" value="{{$karya->link_profil}}">
+                      <input type="text" name="link_profil" readonly class="form-control2" value="{{$karya->link_profil}}">
                       <label class="mt10">Link Presentasi</label>
-                      <input type="text" name="link_presentation" placeholder="Masukkan Link presentation" class="form-control2" value="{{$karya->link_presentation}}">
+                      <input type="text" name="link_presentation" readonly class="form-control2" value="{{$karya->link_presentation}}">
                       <label class="mt10">Link Mockup</label>
-                      <input type="text" name="link_mockup" placeholder="Masukkan Link mockup" class="form-control2" value="{{$karya->link_mockup}}">
-                    </form>
+                      <input type="text" name="link_mockup" readonly class="form-control2" value="{{$karya->link_mockup}}">
                   </div>
                 </div>
                 <div class="row">

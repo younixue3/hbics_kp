@@ -346,17 +346,17 @@ a.page-link:hover
     {
         margin: 0px;
     }
-    .login
-    {
-        width: 100%;
-        display: flex;
-        min-height: 100vh;
-        align-items: center;
-        background-image: url('../../images/bg-pattern-transparent.png');
-        background-size: cover;
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
+.login
+{
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    background-image: url('../../images/bg-pattern-transparent.png');
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
     .login-logo
     {
         display: flex;
@@ -1917,4 +1917,28 @@ a.page-link:hover
     {
         height: 40px !important;
     }
+    .login
+    {
+        width: 100%;
+        display: block;
+        min-height: 100vh;
+        padding: 50px 20px;
+        margin: 0px;
+    }
+        .login-logo
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-logo img
+        {
+            width: 100px;
+            margin-bottom: 30px;
+        }
+        .login .text p
+        {
+            text-align: center;
+            font-size: 17px;
+        }
 }
