@@ -445,6 +445,10 @@ a.page-link:hover
         height: 100%;
         max-height: 50px;
     }
+.tapaitu
+{
+    display: flex;
+}
 .apaitu
 {
     display: block;
@@ -462,6 +466,11 @@ a.page-link:hover
         width: 100%;
         padding: 0px 200px;
         margin-top: -500px;
+    }
+    .apaitu--profil
+    {
+        flex-grow: 1;
+        padding-right: 30px;
     }
     .apaitu--profil .apaitu-mid
     {
@@ -495,14 +504,11 @@ a.page-link:hover
     }
     .apaitu-profilpict
     {
-        width: 400px;
-        height: 400px;
-        margin: auto;
-        margin-top: 100px;
-        position: relative;
-        display: block;
+        width: 300px;
+        height: 300px;
         border-radius: 50%;
-        margin-bottom: 30px;
+        align-self: center;
+        margin-top: 100px;
     }
 .expo
 {
@@ -1931,4 +1937,18 @@ a.page-link:hover
             text-align: center;
             font-size: 17px;
         }
+    .tapaitu
+    {
+        display: block;
+    }
+    .apaitu-profilpict
+    {
+        width: 150px;
+        height: 150px;
+    }
+    .apaitu--profil
+    {
+        flex-grow: unset;
+        padding-right: 0px;
+    }
 }

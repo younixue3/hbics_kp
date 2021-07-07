@@ -20,14 +20,14 @@ class LandingController extends Controller
     public function beranda()
     {
         $event = Event::where('status', 1)->latest()->first();
-        $beritas = Post::take(4)->get();
+        $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         // echo $event;
         // exit;
         return view('landing.index', compact('event', 'beritas'));
     }
     public function post()
     {
-        $datas = Post::paginate(5);
+        $datas = Post::orderBy('created_at', 'desc')->paginate(5);
         // echo $event;
         // exit;
         return view('landing.berita', compact('datas'));
@@ -35,7 +35,7 @@ class LandingController extends Controller
     public function postDetail($id)
     {
         $data = Post::findOrFail($id);
-        $beritas = Post::take(4)->get();
+        $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         return view('landing.berita-detail', compact('data', 'beritas'));
     }
     public function expoJenjang($jenjang)

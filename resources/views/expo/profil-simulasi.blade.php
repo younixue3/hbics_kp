@@ -4,26 +4,55 @@
   <div class="row frame frame2">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-12">
+            <div class="tapaitu">
               <div class="apaitu apaitu--profil">
-                  <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
-                  <div class="apaitu-mid">
-                    <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                      <i class="icofont-people"></i> {{$karya->nama_tim}}
-                    </p>
-                    <br>
-                    <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
-                        TENTANG KAMI
-                    </p>
-                    <p class="namateam wow fadeInUp" data-wow-delay="2s">
-                      <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
-                    </p>   
-                    <br>  
-                    <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
-                        {{$karya->tentang_tim}}
-                    </p>
-                  </div>
+                <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
+                <div class="apaitu-mid">
+                  <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
+                    <i class="icofont-people"></i> {{$karya->nama_tim}}
+                  </p>
+                  <br>
+                  <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
+                      TENTANG KAMI
+                  </p>
+                  <p class="namateam wow fadeInUp" data-wow-delay="2s">
+                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
+                  </p>   
+                  <br>  
+                  <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
+                    {{$karya->tentang_tim}}
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae repellendus magnam, officiis quaerat rem in animi ratione commodi nihil necessitatibus vero repudiandae et accusantium consequatur soluta ullam, quae libero fuga?
+                  </p>
+                </div>
               </div>
+              @if ($karya->foto_tim != '')
+                <img src="{{asset('uploads/karyas/'.$karya->foto_tim)}}" class="apaitu-profilpict wow fadeInUp" data-wow-delay="1s" alt="">
+              @else
+                <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict wow fadeInUp" data-wow-delay="1s" alt="">
+              @endif
+            </div>
+          </div>
+          {{-- <div class="col-md-8">
+            <div class="apaitu apaitu--profil">
+              <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
+              <div class="apaitu-mid">
+                <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
+                  <i class="icofont-people"></i> {{$karya->nama_tim}}
+                </p>
+                <br>
+                <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
+                    TENTANG KAMI
+                </p>
+                <p class="namateam wow fadeInUp" data-wow-delay="2s">
+                  <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
+                </p>   
+                <br>  
+                <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
+                  {{$karya->tentang_tim}}
+                </p>
+              </div>
+            </div>
           </div>
           <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
               @if ($karya->foto_tim != '')
@@ -31,7 +60,7 @@
               @else
                 <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
               @endif
-          </div>
+          </div> --}}
         </div>
       </div>
   </div>
