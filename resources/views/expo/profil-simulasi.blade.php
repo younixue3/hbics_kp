@@ -22,7 +22,6 @@
                   <br>  
                   <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
                     {{$karya->tentang_tim}}
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae repellendus magnam, officiis quaerat rem in animi ratione commodi nihil necessitatibus vero repudiandae et accusantium consequatur soluta ullam, quae libero fuga?
                   </p>
                 </div>
               </div>
