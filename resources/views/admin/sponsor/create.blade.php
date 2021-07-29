@@ -33,7 +33,6 @@
 					<br>
 					<form action="{{ url('sponsors/'.$event->id) }}" method="POST" enctype="multipart/form-data">
 						@csrf
-						<input type="hidden" name="event_id" value="0">
 						<div class="form-group">
 							<label>Logo</label>
 							<input type="file" required style="display:block;" name="logo">

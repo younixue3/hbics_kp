@@ -38,6 +38,7 @@ class SponsorController extends Controller
         //
         $event = Event::findOrFail($event_id);
         $input = $request->all();
+        $input['event_id'] = $event->id;
         $validatedData = $request->validate([
             'logo' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
             'keterangan' => 'required',
@@ -51,7 +52,6 @@ class SponsorController extends Controller
         else{
             $input['logo'] = 'nopict.jpg';
         }
-        $input['event_id'] = $event_id;
         $data = Sponsor::create($input);
         if($data)
         {
