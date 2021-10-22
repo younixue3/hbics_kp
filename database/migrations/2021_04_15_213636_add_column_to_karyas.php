@@ -15,7 +15,7 @@ class AddColumnToKaryas extends Migration
     {
         Schema::table('karyas', function (Blueprint $table) {
             //
-            $table->string('nama_tim')->default('');
+            $table->string('nama_tim');
         });
     }
 

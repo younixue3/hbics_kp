@@ -19,9 +19,10 @@ class LandingController extends Controller
     }
     public function beranda()
     {
+        // dd('masukdong');
         $event = Event::where('status', 1)->latest()->first();
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
-        // echo $event;
+        echo $event;
         // exit;
         return view('landing.index', compact('event', 'beritas'));
     }

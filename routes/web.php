@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LandingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +12,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/testing', 'LandingController@beranda');
 
 Route::get('/', 'LoginController@index');
 Auth::routes();

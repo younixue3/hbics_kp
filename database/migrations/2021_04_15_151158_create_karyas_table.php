@@ -17,17 +17,17 @@ class CreateKaryasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('event_id');
-            $table->string('jenjang')->default('');
-            $table->string('kategori')->default('');
-            $table->text('foto_tim')->default('');
-            $table->text('foto_poster')->default('');
-            $table->text('tentang_tim')->default('');
-            $table->string('nama')->default('');
-            $table->text('deskripsi')->default('');
-            $table->string('link_profil')->default('');
-            $table->string('link_presentation')->default('');
-            $table->string('link_mockup')->default('');
-            $table->text('proposal')->default('');
+            $table->string('jenjang');
+            $table->string('kategori');
+            $table->text('foto_tim');
+            $table->text('foto_poster');
+            $table->text('tentang_tim');
+            $table->string('nama');
+            $table->text('deskripsi');
+            $table->string('link_profil');
+            $table->string('link_presentation');
+            $table->string('link_mockup');
+            $table->text('proposal');
             $table->timestamps();
         });
     }
