@@ -40,12 +40,9 @@
 							</tr>
 						</thead>
 						<tbody>
-						@php
-							$no = 1;
-						@endphp
-						@foreach($datas as $data)									
+						@foreach($datas as $key => $data)
 							<tr>
-								<td>{{ $no++ }}</td>
+								<td>{{ ++$key }}</td>
 								<td>{{ $data->name }}</td>
 								<td>{{ $data->email }}</td>
 								<td>{{ $data->created_at->format('d, M Y - H:i:s')}}</td>

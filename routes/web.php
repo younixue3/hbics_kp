@@ -13,8 +13,10 @@ use App\Http\Controllers\LandingController;
 |
 */
 
-Route::get('/testing', 'LandingController@beranda');
-
+Route::get('/logout', function() {
+    Auth::logout();
+    return redirect('login');
+});
 Route::get('/', 'LoginController@index');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
