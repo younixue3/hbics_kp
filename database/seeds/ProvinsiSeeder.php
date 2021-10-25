@@ -42,8 +42,7 @@ class ProvinsiSeeder extends Seeder
             ['provinsi' => 'Sulawesi Barat'],
             ['provinsi' => 'Sulawesi Selatan'],
             ['provinsi' => 'Sulawesi Tengah'],
-            ['provinsi' => 'Sulawesi Tenggara'],
-            ['provinsi' => 'Sulawesi Timur'],
+            ['provinsi' => 'Sulawesi Tenggara']
         ]);
     }
 }
