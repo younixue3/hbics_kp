@@ -30,16 +30,16 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ url('/'.$data->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('update_visitor', $data->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="_method" value="PATCH">
+                        @method('PUT')
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" value="{{$data->name}}" required placeholder="Masukkan Judul Postingan" class="form-control" name="judul">
+                            <input type="text" value="{{$data->name}}" required placeholder="Masukkan Judul Postingan" class="form-control" name="name">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" value="{{$data->email}}" required placeholder="Masukkan Waktu Baca Postingan" class="form-control" name="waktu">
+                            <input type="text" value="{{$data->email}}" required placeholder="Masukkan Waktu Baca Postingan" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                             <a href="{{url()->previous()}}" class="btn btn-warning">Batal</a>

@@ -96,6 +96,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
     // VISITORS
     Route::get('visitors', 'PesertaController@visitor')->name('visitor');
     Route::get('pengunjung/{id}', 'PesertaController@show_visitor')->name('show_visitor');
+    Route::put('pengunjung/update/{id}', 'PesertaController@update_visitor')->name('update_visitor');
     // PANITIA
     Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
 });

@@ -38,14 +38,13 @@ class PesertaController extends Controller
     public function update_visitor(Request $request, $id)
     {
         $data = User::findOrFail($id);
-        $data->name = $request->name;
-        $data->email = $request->email;
-        return $data->save();
+        $data->update(['name' => $request->name, 'email' => $request->email]);
+        $data->save();
+        return redirect('visitors');
     }
 
     public function index($event_id)
     {
-        //
         $event = Event::findOrFail($event_id);
         $karyas = $event->karyas()->paginate(20);
         $jumlah = $karyas->count();
