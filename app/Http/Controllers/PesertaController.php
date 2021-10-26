@@ -15,11 +15,21 @@ class PesertaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function visitor()
+    public function visitor(Request $request)
     {
-        $datas = User::where('role', 'pengunjung')->paginate(20);
+        if ($request->cari != null) {
+            $datas = User::where('email', 'like', '%'.$request->cari)->orWhere('name', 'like', '%'.$request->cari.'%')->where('role', 'pengunjung')->paginate(20);
+        } else {
+            $datas = User::where('role', 'pengunjung')->paginate(20);
+        }
         return view('admin.visitor.index', compact('datas'));
     }
+
+    public function edit_visitor(Request $request)
+    {
+
+    }
+
     public function index($event_id)
     {
         //

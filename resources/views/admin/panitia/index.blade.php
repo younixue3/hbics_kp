@@ -5,7 +5,7 @@
 			<div class="overview-wrap">
 				<h2 class="title-1" style="margin-bottom:20px;">Data Visitor</h2>
                 <div style="float: right;margin-bottom: 10px;">
-                    <form action="{{route('visitor')}}">
+                    <form action="{{route('panitia')}}">
                         <span>
                             <label for="cari"><i class="fas fa-search" style="font-size: 18px; margin-right: 5px;"></i></label>
                             <input type="text" name="cari">
@@ -48,7 +48,6 @@
 								<th>Nama</th>
 								<th>Email</th>
 								<th>Tanggal Registrasi</th>
-                                <th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,18 +57,6 @@
 								<td>{{ $data->name }}</td>
 								<td>{{ $data->email }}</td>
 								<td>{{ $data->created_at->format('d, M Y - H:i:s')}}</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Aksi
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="">Hapus</a>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Jadikan Admin</a>
-                                        </div>
-                                    </div>
-                                </td>
 							</tr>
 						@endforeach
 						</tbody>

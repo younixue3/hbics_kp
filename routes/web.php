@@ -20,6 +20,8 @@ Route::get('/logout', function() {
 });
 Route::get('/', 'LoginController@index');
 Route::get('/daftar', 'AuthLocal\RegisterController@index');
+Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
+Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
@@ -88,10 +90,12 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('fotos/{id}/delete', 'GaleriController@fotoDestroy');
     Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
     // EXTRAS
-    Route::get('visitors', 'PesertaController@visitor');
+    Route::get('visitors', 'PesertaController@visitor')->name('visitor');
     Route::get('virtualexpo', 'ExpoController@virtualexpo');
     Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@virtualexpoJenjangKategori');
     Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@virtualexpoDetailProduct');
+    // PANITIA
+    Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
 });
 Route::middleware(['auth', 'visitor'])->group(function(){
     // MENU NON ADMIN

@@ -61,7 +61,7 @@
                                         {{ __('Login') }} <i class="icofont-hand-right"></i>
                                     </button>
                                     <br>
-                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('register')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>
+                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('daftar')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>
                                 </div>
                             </div>
                         </form>
