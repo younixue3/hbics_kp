@@ -39,6 +39,8 @@ class PesertaController extends Controller
     {
         $data = User::findOrFail($id);
         $data->name = $request->name;
+        $data->email = $request->email;
+        return $data->save();
     }
 
     public function index($event_id)
