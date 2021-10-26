@@ -32,6 +32,18 @@
 @yield('script')
 <script>
     new WOW().init();
+
+    $('#provinsi').change(function () {
+        var value = $(this).val();
+        $.get("http://hbics_kp.tiaka/get_kota?provinsi=" + value, function (data) {
+            // console.log(obj.kota)
+            $('#kota').html('<option disabled>Pilih Kota/Kabupaten</option>')
+            $.each(data, function (index, obj) {
+                $('#kota').append('<option>'+ obj.kota +'</option')
+            })
+        })
+    })
+
 </script>
 </body>
 </html>

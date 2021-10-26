@@ -44,7 +44,6 @@
                                     @enderror
                                 </div>
                             </div> --}}
-                            <input type="hidden" name="role" value="pengunjung">
                             <div class="form-group row">
                                 <label for="email" class="col-md-12 col-form-label wow fadeInUp"><i class="icofont-email"></i> {{ __('Email') }}</label>
                                 <br>
@@ -55,6 +54,26 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="provinsi" class="col-md-12 col-form-label wow fadeInUp"><i class=""></i> {{ __('Provinsi') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="provinsi" class="form-control2 wow fadeInUp" id="provinsi">
+                                        @foreach($provinsi as $value)
+                                            <option value="{{$value->id}}">{{$value->provinsi}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="kota" class="col-md-12 col-form-label wow fadeInUp"><i class=""></i> {{ __('Kota') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="kota" class="form-control2 wow fadeInUp" id="kota">
+                                        <option disabled selected>Pilih Kota/Kabupaten</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -176,3 +195,7 @@
     </div>
 </div>
 @endsection --}}
+@yield('script')
+<script>
+
+</script>

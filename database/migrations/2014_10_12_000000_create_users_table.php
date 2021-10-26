@@ -16,10 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('role');
+            $table->enum('role', ['pengunjung', 'admin'])->default('pengunjung');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->BigInteger('provinsi_id')->nullable();
+            $table->BigInteger('kota_kab_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

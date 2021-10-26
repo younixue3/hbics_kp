@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LandingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,8 @@ Route::get('/logout', function() {
     return redirect('login');
 });
 Route::get('/', 'LoginController@index');
+Route::get('/daftar', 'AuthLocal\RegisterController@index');
+Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');

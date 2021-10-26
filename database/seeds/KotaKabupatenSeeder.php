@@ -489,7 +489,6 @@ class KotaKabupatenSeeder extends Seeder
             [ 'kota' => 'Kab. Wakatobi', 'provinsi_id' => 30 ],
             [ 'kota' => 'Kota Baubau', 'provinsi_id' => 30 ],
             [ 'kota' => 'Kota Kendari', 'provinsi_id' => 30 ],
-            [ 'kota' => 'Kota Kendari', 'provinsi_id' => 31 ],
         ]);
     }
 }

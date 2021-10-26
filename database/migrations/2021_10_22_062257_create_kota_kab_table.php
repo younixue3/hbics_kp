@@ -16,9 +16,9 @@ class CreateKotaKabTable extends Migration
         Schema::create('kota_kab', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('kota');
+            $table->timestamps();
             $table->unsignedBigInteger('provinsi_id');
             $table->foreign('provinsi_id')->references('id')->on('provinsi');
-            $table->timestamps();
         });
     }
 
