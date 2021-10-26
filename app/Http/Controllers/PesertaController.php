@@ -22,12 +22,23 @@ class PesertaController extends Controller
         } else {
             $datas = User::where('role', 'pengunjung')->paginate(20);
         }
+
+
         return view('admin.visitor.index', compact('datas'));
     }
 
-    public function edit_visitor(Request $request)
+    public function show_visitor (Request $request, $id)
     {
+//        dd('terima');
+        $data = User::findOrFail($id);
+        $datas = compact('data');
+        return view('admin.visitor.edit', $datas);
+    }
 
+    public function update_visitor(Request $request, $id)
+    {
+        $data = User::findOrFail($id);
+        $data->name = $request->name;
     }
 
     public function index($event_id)

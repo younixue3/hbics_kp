@@ -90,10 +90,12 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('fotos/{id}/delete', 'GaleriController@fotoDestroy');
     Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
     // EXTRAS
-    Route::get('visitors', 'PesertaController@visitor')->name('visitor');
     Route::get('virtualexpo', 'ExpoController@virtualexpo');
     Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@virtualexpoJenjangKategori');
     Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@virtualexpoDetailProduct');
+    // VISITORS
+    Route::get('visitors', 'PesertaController@visitor')->name('visitor');
+    Route::get('pengunjung/{id}', 'PesertaController@show_visitor')->name('show_visitor');
     // PANITIA
     Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
 });
