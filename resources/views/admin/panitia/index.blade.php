@@ -48,6 +48,7 @@
 								<th>Nama</th>
 								<th>Email</th>
 								<th>Tanggal Registrasi</th>
+                                <th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,6 +58,18 @@
 								<td>{{ $data->name }}</td>
 								<td>{{ $data->email }}</td>
 								<td>{{ $data->created_at->format('d, M Y - H:i:s')}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Aksi
+                                        </button>
+                                        <div class="dropdown-menu" style="padding: 0; margin-top: 5px !important;" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item bg-danger text-white" href="{{route('delete_visitor', $data->id)}}">Hapus</a>
+                                            <a class="dropdown-item bg-warning text-white" href="{{route('show_visitor', $data->id)}}">Edit</a>
+                                            <a class="dropdown-item bg-primary text-white" href="{{route('change_role_panitia', $data->id)}}">Jadikan Pengunjung</a>
+                                        </div>
+                                    </div>
+                                </td>
 							</tr>
 						@endforeach
 						</tbody>

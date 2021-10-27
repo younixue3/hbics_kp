@@ -50,9 +50,11 @@ class DataPanitiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_panitia($id)
     {
-        //
+        $data = User::where('role', 'admin')->findOrFail($id);
+        $datas = compact('data');
+        return view('admin.panitia.edit', $datas);
     }
 
     /**
@@ -73,9 +75,12 @@ class DataPanitiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_panitia(Request $request, $id)
     {
-        //
+        $data = User::where('role', 'admin')->findOrFail($id);
+        $data->update(['name' => $request->name, 'email' => $request->email]);
+        $data->save();
+        return redirect('panitia');
     }
 
     /**
@@ -84,8 +89,18 @@ class DataPanitiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete_panitia($id)
     {
-        //
+        $data = User::where('role', 'admin')->findOrFail($id);
+        $data->delete();
+        return redirect('panitia');
+    }
+
+    public function change_role_panitia(Request $request, $id)
+    {
+        $data = User::where('role', 'admin')->findOrFail($id);
+        $data->update(['role' => 'pengunjung']);
+        $data->save();
+        return redirect('panitia');
     }
 }

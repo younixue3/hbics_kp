@@ -60,13 +60,13 @@
 								<td>{{ $data->created_at->format('d, M Y - H:i:s')}}</td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Aksi
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="">Hapus</a>
-                                            <a class="dropdown-item" href="{{route('show_visitor', $data->id)}}">Edit</a>
-                                            <a class="dropdown-item" href="#">Jadikan Admin</a>
+                                        <div class="dropdown-menu" style="padding: 0; margin-top: 5px !important;" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item bg-danger text-white" href="{{route('delete_visitor', $data->id)}}">Hapus</a>
+                                            <a class="dropdown-item bg-warning text-white" href="{{route('show_visitor', $data->id)}}">Edit</a>
+                                            <a class="dropdown-item bg-primary text-white" href="{{route('change_role_pengunjung', $data->id)}}">Jadikan Admin</a>
                                         </div>
                                     </div>
                                 </td>

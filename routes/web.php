@@ -97,8 +97,14 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('visitors', 'PesertaController@visitor')->name('visitor');
     Route::get('pengunjung/{id}', 'PesertaController@show_visitor')->name('show_visitor');
     Route::put('pengunjung/update/{id}', 'PesertaController@update_visitor')->name('update_visitor');
+    Route::get('pengunjung/delete/{id}', 'PesertaController@delete_visitor')->name('delete_visitor');
+    Route::get('pengunjung/change_role/{id}', 'PesertaController@change_role_visitor')->name('change_role_pengunjung');
     // PANITIA
     Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
+    Route::get('panitia/{id}', 'DataPanitiaController@show_panitia')->name('show_panitia');
+    Route::put('panitia/update/{id}', 'DataPanitiaController@update_panitia')->name('update_panitia');
+    Route::get('panitia/delete/{id}', 'DataPanitiaController@delete_panitia')->name('delete_panitia');
+    Route::get('panitia/change_role/{id}', 'DataPanitiaController@change_role_panitia')->name('change_role_panitia');
 });
 Route::middleware(['auth', 'visitor'])->group(function(){
     // MENU NON ADMIN

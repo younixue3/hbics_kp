@@ -22,24 +22,37 @@ class PesertaController extends Controller
         } else {
             $datas = User::where('role', 'pengunjung')->paginate(20);
         }
-
-
-        return view('admin.visitor.index', compact('datas'));
+        $data = compact('datas');
+        return view('admin.visitor.index', $data);
     }
 
-    public function show_visitor (Request $request, $id)
+    public function show_visitor ($id)
     {
-//        dd('terima');
-        $data = User::findOrFail($id);
+        $data = User::where('role', 'pengunjung')->findOrFail($id);
         $datas = compact('data');
         return view('admin.visitor.edit', $datas);
     }
 
     public function update_visitor(Request $request, $id)
     {
-        $data = User::findOrFail($id);
+        $data = User::where('role', 'pengunjung')->findOrFail($id);
         $data->update(['name' => $request->name, 'email' => $request->email]);
         $data->save();
+        return redirect('visitors');
+    }
+
+    public function change_role_visitor(Request $request, $id)
+    {
+        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data->update(['role' => 'admin']);
+        $data->save();
+        return redirect('visitors');
+    }
+
+    public function delete_visitor($id)
+    {
+        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data->delete();
         return redirect('visitors');
     }
 
