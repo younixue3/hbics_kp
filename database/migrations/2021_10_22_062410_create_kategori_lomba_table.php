@@ -16,6 +16,7 @@ class CreateKategoriLombaTable extends Migration
         Schema::create('kategori_lomba', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('kategori');
+            $table->text('photo');
             $table->timestamps();
         });
     }
