@@ -8,6 +8,7 @@ use App\Karya;
 use App\Post;
 use App\Komentar;
 use App\GaleriTahun;
+use App\KategoriLomba;
 use Auth;
 
 class LandingController extends Controller
@@ -21,9 +22,10 @@ class LandingController extends Controller
     {
         $event = Event::where('status', 1)->latest()->first();
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
+        $kategori = KategoriLomba::get();
         // echo $event;
         // exit;
-        return view('landing.index', compact('event', 'beritas'));
+        return view('landing.index', compact('event', 'beritas', 'kategori'));
     }
     public function post()
     {

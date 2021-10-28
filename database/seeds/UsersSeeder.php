@@ -19,12 +19,16 @@ class UsersSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin'),
                 'role' => 'admin',
+                'provinsi_id' => 12,
+                'kota_kab_id' => 189
             ],
             [
                 'name' => 'ricko',
                 'email' => 'ricko@gmail.com',
                 'password' => Hash::make('ricko'),
                 'role' => 'pengunjung',
+                'provinsi_id' => 12,
+                'kota_kab_id' => 189
             ]
         ]);
     }

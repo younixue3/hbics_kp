@@ -67,7 +67,7 @@
                 <div class="expo-image-frame">
                     <p class="expo-title wow fadeInUp" data-wow-delay="0.5s">
                         VIRTUAL EXPO
-                    </p>    
+                    </p>
                     <img src="{{asset('images/expo.png')}}" alt="" class="expo-image wow fadeInUp" data-wow-delay="1s">
                 </div>
                 <img src="{{asset('images/gif/4.gif')}}" class="expoarrow wow fadeInUp" data-wow-delay="1s" alt="">
@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 <div class="container-fluid">
     <div class="row frame">
         <img src="{{asset('images/gif/2.gif')}}" class="arrow2 arrow2--top-right wow fadeInUp" data-wow-delay="1s" alt="">
@@ -105,26 +105,12 @@
                     <img src="{{asset('images/gif/6.gif')}}" alt="" class="petik petik--left-bottom wow fadeIn" data-wow-delay="4s">
                     <img src="{{asset('images/gif/6.gif')}}" alt="" class="petik petik--right-top wow fadeIn" data-wow-delay="4s">
                     <img src="{{asset('images/gif/6.gif')}}" alt="" class="petik petik--right-bottom wow fadeIn" data-wow-delay="4s">
-                    <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1s">
-                        <img src="{{asset('images/kategori/h-desain.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Desain Grafis</p>
-                    </a>
-                    <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1.5s">
-                        <img src="{{asset('images/kategori/h-aplikasi.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Aplikasi & Game</p>
-                    </a>
-                    <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2s">
-                        <img src="{{asset('images/kategori/h-fnb.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Food & Beverage</p>
-                    </a>
-                    <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="2.5s">
-                        <img src="{{asset('images/kategori/h-fashion.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Fashion</p>
-                    </a>
-                    <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="3s">
-                        <img src="{{asset('images/kategori/h-kriya.png')}}" alt="" class="kategori-icon">
-                        <p class="kategori-text">Kriya</p>
-                    </a>
+                    @foreach($kategori as $value)
+                        <a href="{{url('kategori')}}" class="kategori-icon-frame wow fadeInUp" data-wow-delay="1s">
+                            <img src="{{asset($value->photo)}}" alt="" class="kategori-icon">
+                            <p class="kategori-text">{{$value->kategori}}</p>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -221,7 +207,7 @@
                                         <div class="news-info">
                                             <span class="news-ket"><i class="icofont-calendar"></i> {{$berita->created_at->format('d, M Y')}}</span>
                                             &nbsp;&nbsp;
-                                            <span class="news-ket"><i class="icofont-sand-clock"></i> {{$berita->waktu}} menit</span>    
+                                            <span class="news-ket"><i class="icofont-sand-clock"></i> {{$berita->waktu}} menit</span>
                                         </div>
                                         <a href="{{url('post/'.$berita->id.'/'.str_replace(' ', '-', $berita->judul))}}" class="news-link">Baca Selengkapnya</a>
                                         <hr>
@@ -243,7 +229,7 @@
 @endsection
 @section('script')
     <script>
-        $(window).scroll(function() {    
+        $(window).scroll(function() {
             var scroll = $(window).scrollTop();
             if (scroll >= 500) {
                 $("#logo").removeClass("logo--hide");

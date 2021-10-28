@@ -17,6 +17,7 @@ class CreateKategoriLombaTable extends Migration
             $table->bigIncrements('id');
             $table->string('kategori');
             $table->text('photo');
+            $table->text('desc');
             $table->timestamps();
         });
     }
