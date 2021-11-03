@@ -72,7 +72,7 @@
                                 <br>
                                 <div class="col-md-12">
                                     <select name="kota" class="form-control2 wow fadeInUp" id="kota">
-                                        <option disabled selected>Pilih Kota/Kabupaten</option>
+                                        <option disabled>Pilih Kota/Kabupaten</option>
                                     </select>
                                 </div>
                             </div>

@@ -26,6 +26,7 @@ class RegisterController extends Controller
 
     public function insert(Request $request)
     {
+//        dd(intval($request->provinsi));
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -36,8 +37,8 @@ class RegisterController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'provinsi' => $request->provinsi,
-            'kota' => $request->kota,
+            'provinsi_id' => intval($request->provinsi),
+            'kota_kab_id' => intval($request->kota),
             'password' => Hash::make($request->password),
         ]);
         return redirect('/');
