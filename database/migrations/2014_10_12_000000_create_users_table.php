@@ -20,12 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->text('foto_profile');
+            $table->text('foto_profile')->nullable();
             $table->BigInteger('provinsi_id');
             $table->BigInteger('kota_kab_id');
             $table->BigInteger('event_id')->nullable();
             $table->unsignedBigInteger('kategori_lomba');
             $table->enum('kategori_peserta', ['individu', 'kelompok']);
+            $table->enum('pembayaran', ['verified', 'unverified']);
             $table->rememberToken();
             $table->timestamps();
 
