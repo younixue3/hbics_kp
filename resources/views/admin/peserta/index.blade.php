@@ -54,108 +54,105 @@
 							</tr>
 						</thead>
 						<tbody>
-						@php
-							$no = 1;
-						@endphp
-						@foreach($karyas as $data)									
+						@foreach($karyas as $key => $data)
 							<tr>
-								<td>{{ $no++ }}</td>
-								<td>{{ $data->user->name }}</td>
-								<td>{{ $data->user->email }}</td>
+								<td>{{ ++$key }}</td>
+								<td>{{ $data->name }}</td>
+								<td>{{ $data->email }}</td>
 								<td>{{ $data->created_at->format('d, M Y - h:i:s')}}</td>
 								<td>
-									<a class="btn btn-sm btn-success" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/'.str_replace([' ', '.'], '-', $data->user->name)) }}"><i class="fas fa-eye"></i></a>
-									<a class="btn btn-sm btn-info" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/edit') }}"><i class="fas fa-edit"></i></a>
-									<a class="btn btn-sm btn-danger" href="{{ url('pesertas/'.$data->event_id.'/'.$data->user->id.'/delete') }}"><i class="fas fa-trash"></i></a>
+									<a class="btn btn-sm btn-success" href="{{ url('pesertas/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->name)) }}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-sm btn-info" href="{{ url('pesertas/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
+									<a class="btn btn-sm btn-danger" href="{{ url('pesertas/'.$data->event_id.'/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>
 							</tr>
 							<tr>
 								<td colspan="5" style="font-size: 12px; color: grey;">
 									Jenjang
 									<span class="alert alert-xs @if($data->jenjang == '') alert-danger @else alert-success @endif">
-										@if($data->jenjang == '') 
+										@if($data->jenjang == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
-									</span>,  
+									</span>,
 									Kategori
 									<span class="alert alert-xs @if($data->kategori == '') alert-danger @else alert-success @endif">
-										@if($data->kategori == '') 
+										@if($data->kategori == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Foto Tim
 									<span class="alert alert-xs @if($data->foto_tim == '') alert-danger @else alert-success @endif">
-										@if($data->foto_tim == '') 
+										@if($data->foto_tim == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Foto Poster
 									<span class="alert alert-xs @if($data->foto_poster == '') alert-danger @else alert-success @endif">
-										@if($data->foto_poster == '') 
+										@if($data->foto_poster == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Tentang Tim
 									<span class="alert alert-xs @if($data->tentang_tim == '') alert-danger @else alert-success @endif">
-										@if($data->tentang_tim == '') 
+										@if($data->tentang_tim == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Nama
 									<span class="alert alert-xs @if($data->nama == '') alert-danger @else alert-success @endif">
-										@if($data->nama == '') 
+										@if($data->nama == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Deskripsi
 									<span class="alert alert-xs @if($data->deskripsi == '') alert-danger @else alert-success @endif">
-										@if($data->deskripsi == '') 
+										@if($data->deskripsi == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Link Profil
 									<span class="alert alert-xs @if($data->link_profil == '') alert-danger @else alert-success @endif">
-										@if($data->link_profil == '') 
+										@if($data->link_profil == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Link Presentasi
 									<span class="alert alert-xs @if($data->link_presentation == '') alert-danger @else alert-success @endif">
-										@if($data->link_presentation == '') 
+										@if($data->link_presentation == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Link Mockup
 									<span class="alert alert-xs @if($data->link_mockup == '') alert-danger @else alert-success @endif">
-										@if($data->link_mockup == '') 
+										@if($data->link_mockup == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>,
 									Proposal
 									<span class="alert alert-xs @if($data->proposal == '') alert-danger @else alert-success @endif">
-										@if($data->proposal == '') 
+										@if($data->proposal == '')
 											<i class="icofont-close-circled"></i>
-										@else 
+										@else
 											<i class="icofont-checked"></i>
 										@endif
 									</span>.
@@ -164,7 +161,7 @@
 						@endforeach
 						</tbody>
 					</table>
-					{{$karyas->links()}}
+{{--					{{$karyas->links()}}--}}
 				</div>
 			</div>
 		</div>

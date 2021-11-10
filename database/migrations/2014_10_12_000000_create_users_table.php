@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->BigInteger('provinsi_id');
             $table->BigInteger('kota_kab_id');
-            $table->BigInteger('event_id');
+            $table->BigInteger('event_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

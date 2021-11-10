@@ -20,7 +20,8 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('admin'),
                 'role' => 'admin',
                 'provinsi_id' => 12,
-                'kota_kab_id' => 189
+                'kota_kab_id' => 189,
+                'event_id' => null
             ],
             [
                 'name' => 'ricko',
@@ -28,7 +29,17 @@ class UsersSeeder extends Seeder
                 'password' => Hash::make('ricko'),
                 'role' => 'pengunjung',
                 'provinsi_id' => 12,
-                'kota_kab_id' => 189
+                'kota_kab_id' => 189,
+                'event_id' => 1
+            ],
+            [
+                'name' => 'ryan',
+                'email' => 'ryan@gmail.com',
+                'password' => Hash::make('ricko'),
+                'role' => 'peserta',
+                'provinsi_id' => 12,
+                'kota_kab_id' => 189,
+                'event_id' => 1
             ]
         ]);
     }
