@@ -45,7 +45,7 @@ class RegisterController extends Controller
             ]);
             dd($user->id);
             AnggotaKelompok::create([
-
+                
             ]);
         } else {
             User::create([
