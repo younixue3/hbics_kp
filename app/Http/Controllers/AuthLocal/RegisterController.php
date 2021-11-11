@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Provinsi;
 use App\KotaKab;
 use App\User;
+use App\AnggotaKelompok;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -26,7 +27,7 @@ class RegisterController extends Controller
 
     public function insert(Request $request)
     {
-//        dd(intval($request->provinsi));
+//        dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -34,13 +35,28 @@ class RegisterController extends Controller
             'kota' => ['required'],
             'password' => ['required', 'string', 'confirmed'],
         ]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'provinsi_id' => intval($request->provinsi),
-            'kota_kab_id' => intval($request->kota),
-            'password' => Hash::make($request->password),
-        ]);
+        if ($request->kategori_peserta == 'kelompok') {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'provinsi_id' => intval($request->provinsi),
+                'kota_kab_id' => intval($request->kota),
+                'password' => Hash::make($request->password),
+            ]);
+            dd($user->id);
+            AnggotaKelompok::create([
+
+            ]);
+        } else {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'provinsi_id' => intval($request->provinsi),
+                'kota_kab_id' => intval($request->kota),
+                'password' => Hash::make($request->password),
+            ]);
+        }
+//
         return redirect('/');
     }
 }
