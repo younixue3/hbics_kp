@@ -22,6 +22,7 @@ Route::get('/', 'LoginController@index');
 Route::get('/daftar', 'AuthLocal\RegisterController@index');
 Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
 Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
+Route::post('/daftar/anggota', 'AnggotaKelompok@index')->name('daftar/anggota');
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){

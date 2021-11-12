@@ -131,7 +131,7 @@
     <script>
         new WOW().init();
         var counter = 1;
-        var arr = [];
+        var arr = [{email: null, data:[]}];
 
         // $(document).ready(function(){
         var status = 1;
@@ -139,7 +139,7 @@
             if (status == 1) {
                 console.log(counter);
                 for (var i = 1; ; i++) {
-                    arr.push({name: $('#array-nama-anggota' + i).val(), email: $('#array-email-anggota' + i).val()})
+                    arr.data.push({name: $('#array-nama-anggota' + i).val(), email: $('#array-email-anggota' + i).val()})
                     if (i == counter) break;
                 }
                 status = 0;
@@ -147,12 +147,8 @@
             } else {
                 alert("data anda telah di input")
             }
-            $.get(window.location.origin + '/get_kota?provinsi=' + value, function (data) {
-                // console.log(obj.kota)
-                $('#kota').html('<option disabled>Pilih Kota/Kabupaten</option>')
-                $.each(data, function (index, obj) {
-                    $('#kota').append('<option value=' + obj.id + ' >' + obj.kota + '</option')
-                })
+            $.post(window.location.origin + '/daftar/anggota', arr {
+
             })
         });
         // });
