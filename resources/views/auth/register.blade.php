@@ -143,13 +143,14 @@
                     if (i == counter) break;
                 }
                 status = 0;
+                arr.email.push( $('#email').val());
                 // console.log(status)
             } else {
                 alert("data anda telah di input")
             }
-            $.post(window.location.origin + '/daftar/anggota', arr {
-
-            })
+            // $.post(window.location.origin + '/daftar/anggota', arr {
+            //
+            // })
         });
         // });
         $('#radio_individu').click(function () {
