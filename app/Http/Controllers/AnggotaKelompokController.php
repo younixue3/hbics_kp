@@ -8,6 +8,6 @@ class AnggotaKelompokController extends Controller
 {
     public function index(Request $request)
     {
-        return $request;
+        return dd($request);
     }
 }

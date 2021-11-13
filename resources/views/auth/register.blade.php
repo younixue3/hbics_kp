@@ -19,12 +19,11 @@
                             <p class="text-bg wow fadeInUp"><i class="icofont-light-bulb"></i> Kidspreneurship</p>
                             <p class="text-sm wow fadeInUp">Festival EPIK 2K21 “Enterpreneur Pelajar Indonesia Kreatif”
                                 <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
-                            <form method="POST" action="{{ route('daftar') }}">
-                                @csrf
+                            <div>
                                 <div class="radiobtn wow fadeInUp">
-                                    <input id="radio_kelompok" type="radio" name="kategori_peserta" value="kelompok">
+                                    <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta" value="kelompok">
                                     <label>Kelompok</label>
-                                    <input id="radio_individu" type="radio" name="kategori_peserta" value="individu">
+                                    <input id="radio_individu" class="radio-choose" type="radio" name="kategori_peserta" value="individu">
                                     <label>Individu</label>
                                 </div>
                                 <div id="nama_anggota">
@@ -78,7 +77,7 @@
                                             class=""></i> {{ __('Kota') }}</label>
                                     <br>
                                     <div class="col-md-12">
-                                        <select name="kota" class="form-control2 wow fadeInUp" id="kota">
+                                        <select name="kota" class="form-control2 wow fadeInUp" id="kota_kab">
                                             <option disabled>Pilih Kota/Kabupaten</option>
                                         </select>
                                     </div>
@@ -111,15 +110,15 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <button id="submit_storage" class="btn btn-blue btn-block wow fadeInUp">
+                                        <a href="#" id="submit_storage" class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
-                                        </button>
+                                        </a>
                                         <br>
                                         <a style="color: #0f868a" class="wow fadeInUp" href="{{url('/')}}">Sudah
                                             memiliki akun? <i class="icofont-rounded-right"></i></a>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,8 +129,24 @@
 @section('script')
     <script>
         new WOW().init();
+        $('#provinsi').change(function () {
+            var value = $(this).val();
+            $.get(window.location.origin + '/get_kota?provinsi=' + value, function (data) {
+
+                $('#kota_kab').html('<option disabled>Pilih Kota/Kabupaten</option>')
+                $.each(data, function (index, obj) {
+                    console.log(obj.kota)
+                    $('#kota_kab').append('<option value=' + obj.id + ' >' + obj.kota + '</option')
+                })
+            })
+        })
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         var counter = 1;
-        var arr = [{email: null, data:[]}];
+        var arr = {data:{email: 'test', anggota:[]}};
 
         // $(document).ready(function(){
         var status = 1;
@@ -139,18 +154,24 @@
             if (status == 1) {
                 console.log(counter);
                 for (var i = 1; ; i++) {
-                    arr.data.push({name: $('#array-nama-anggota' + i).val(), email: $('#array-email-anggota' + i).val()})
+                    arr.data.anggota.push({name: $('#array-nama-anggota' + i).val(), email: $('#array-email-anggota' + i).val()})
                     if (i == counter) break;
                 }
                 status = 0;
-                arr.email.push( $('#email').val());
-                // console.log(status)
+                arr.data.email = $('#email').val();
             } else {
                 alert("data anda telah di input")
             }
-            // $.post(window.location.origin + '/daftar/anggota', arr {
-            //
-            // })
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + '/daftar/insert',
+                data: {name:$('#name').val(),email:$('#email').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()}
+            });
+            $.ajax({
+                type: "POST",
+                url: window.location.origin + '/daftar/anggota',
+                data: arr
+            });
         });
         // });
         $('#radio_individu').click(function () {
@@ -177,16 +198,6 @@
                 });
             }
         });
-        $('#provinsi').change(function () {
-            var value = $(this).val();
-            $.get(window.location.origin + '/get_kota?provinsi=' + value, function (data) {
-                // console.log(obj.kota)
-                $('#kota').html('<option disabled>Pilih Kota/Kabupaten</option>')
-                $.each(data, function (index, obj) {
-                    $('#kota').append('<option value=' + obj.id + ' >' + obj.kota + '</option')
-                })
-            })
-        })
     </script>
 @endsection
 {{-- @extends('layouts.app')
