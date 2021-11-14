@@ -146,7 +146,7 @@
             }
         });
         var counter = 1;
-        var arr = {data:{email: 'test', anggota:[]}};
+        var arr = {data:{kelompok: null, anggota:[]}};
 
         // $(document).ready(function(){
         var status = 1;
@@ -158,15 +158,18 @@
                     if (i == counter) break;
                 }
                 status = 0;
-                arr.data.email = $('#email').val();
             } else {
                 alert("data anda telah di input")
             }
             $.ajax({
                 type: "POST",
                 url: window.location.origin + '/daftar/insert',
-                data: {name:$('#name').val(),email:$('#email').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()}
+                data: {name:$('#name').val(),email:$('#email').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()},
+                success: function(data) {
+                    arr.data.kelompok = data
+                }
             });
+            console.log(arr.data.kelompok)
             $.ajax({
                 type: "POST",
                 url: window.location.origin + '/daftar/anggota',

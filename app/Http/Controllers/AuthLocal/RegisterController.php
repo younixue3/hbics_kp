@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Provinsi;
 use App\KotaKab;
 use App\User;
-use App\AnggotaKelompok;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -33,7 +32,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'provinsi_id' => ['required'],
             'kota_kab_id' => ['required'],
-            'password' => ['required', 'string', 'confirmed'],
+            'password' => ['required', 'string'],
         ]);
         if ($request->kategori_peserta == 'kelompok') {
             $user = User::create([
@@ -43,7 +42,7 @@ class RegisterController extends Controller
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),
             ]);
-            dd($user->id);
+            return $user->id;
 //            AnggotaKelompok::create([
 //
 //            ]);

@@ -24,10 +24,9 @@ class CreateUsersTable extends Migration
             $table->BigInteger('provinsi_id');
             $table->BigInteger('kota_kab_id');
             $table->BigInteger('event_id')->nullable();
-            $table->unsignedBigInteger('kategori_lomba');
             $table->enum('kategori_peserta', ['individu', 'kelompok']);
-            $table->unsignedBigInteger('kelompok_id')->nullable();
             $table->enum('pembayaran', ['verified', 'unverified']);
+            $table->text('bukti_pembayaran')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AnggotaKelompok;
 
 class AnggotaKelompokController extends Controller
 {
     public function index(Request $request)
     {
-        return dd($request);
+        return dd($request->data);
+        foreach ($request->data['anggota'] as $key => $value) {
+            // return dd($value);
+            AnggotaKelompok::create([
+                'name' => $value['name'],
+                'email' => $value['email'],
+                'kelompok_id' => intval($request->data['kelompok'])
+            ]);
+        }
     }
 }
