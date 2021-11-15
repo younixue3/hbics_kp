@@ -23,6 +23,7 @@ class ExpoController extends Controller
     public function profil()
     {
         $user = Auth::user();
+
         return view('expo.profil', compact('user'));
     }
 

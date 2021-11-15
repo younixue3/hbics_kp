@@ -15,13 +15,9 @@ class CreateKaryasTable extends Migration
     {
         Schema::create('karyas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->string('jenjang');
+            $table->bigInteger('user_id');
             $table->unsignedBigInteger('kategori');
-            $table->text('foto_tim');
             $table->text('foto_poster');
-            $table->text('tentang_tim');
-            $table->string('nama');
             $table->text('deskripsi');
             $table->text('link_profil');
             $table->text('link_presentation');
