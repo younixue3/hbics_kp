@@ -166,15 +166,16 @@
                 url: window.location.origin + '/daftar/insert',
                 data: {name:$('#name').val(),email:$('#email').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()},
                 success: function(data) {
-                    arr.data.kelompok = data
+                    arr.data.kelompok = data;
+                    $.ajax({
+                        type: "POST",
+                        url: window.location.origin + '/daftar/anggota',
+                        data: arr
+                    });
                 }
             });
             console.log(arr.data.kelompok)
-            $.ajax({
-                type: "POST",
-                url: window.location.origin + '/daftar/anggota',
-                data: arr
-            });
+
         });
         // });
         $('#radio_individu').click(function () {

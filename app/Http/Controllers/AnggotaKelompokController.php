@@ -9,9 +9,7 @@ class AnggotaKelompokController extends Controller
 {
     public function index(Request $request)
     {
-        return dd($request->data);
         foreach ($request->data['anggota'] as $key => $value) {
-            // return dd($value);
             AnggotaKelompok::create([
                 'name' => $value['name'],
                 'email' => $value['email'],
