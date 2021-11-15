@@ -86,7 +86,7 @@ class EventController extends Controller
     {
         //
         $data = Event::findOrFail($id);
-        $peserta = User::where('event_id', $id)->count();
+        $peserta = User::where('event_id', $id)->where('pembayaran', 'verified')->count();
         $datas = compact('data', 'peserta');
         return view('admin.event.view', $datas);
     }

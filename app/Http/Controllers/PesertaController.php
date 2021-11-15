@@ -59,7 +59,7 @@ class PesertaController extends Controller
     public function index($event_id)
     {
         $event = Event::findOrFail($event_id);
-        $karyas = User::where('role', 'peserta')->where('event_id', $event_id)->get();
+        $karyas = User::where('role', 'peserta')->where('pembayaran', 'verified')->where('event_id', $event_id)->get();
         $jumlah = $karyas->count();
         return view('admin.peserta.index', compact('event', 'karyas', 'jumlah'));
     }
@@ -234,5 +234,13 @@ class PesertaController extends Controller
         if(\File::delete($path.$fotoname)){
             return true;
         }
+    }
+
+    public function verifikasi($id)
+    {
+        $user = User::findOrFail($id);
+        $user->pembayaran = 'verified';
+        $user->save();
+        return redirect(url('/visitors'));
     }
 }

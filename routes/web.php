@@ -24,6 +24,7 @@ Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
 Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
 Route::post('/daftar/anggota', 'AnggotaKelompokController@index')->name('daftar/anggota');
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
+Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');

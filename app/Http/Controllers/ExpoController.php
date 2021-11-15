@@ -22,16 +22,7 @@ class ExpoController extends Controller
     public function profil()
     {
         $user = Auth::user();
-        if($user->role == 'admin' || $user->role == 'pengunjung')
-        {
-            abort(404);
-        }
-        $karya = $user->karya;
-        $fotos = $karya->fotos;
-        $event = Event::where('status', 1)->latest()->first();
-        // echo $karya->likers->count();
-        // exit;
-        return view('expo.profil', compact('user', 'event', 'karya', 'fotos'));
+        return view('expo.profil', compact('user'));
     }
     public function profilUpdate(Request $request)
     {
@@ -203,7 +194,7 @@ class ExpoController extends Controller
     }
     public function virtualexpo()
     {
-        if (Auth::user()->role == 'admin') 
+        if (Auth::user()->role == 'admin')
         {
             $jenjang = 'smp';
             $kategori = 'kriya';
@@ -236,15 +227,15 @@ class ExpoController extends Controller
             $event = Event::where('status', 1)->latest()->first();
             $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
             return view('expo.simulasi.expo-list', compact('event', 'karyas', 'jenjang', 'kategori', 'now'));
-        } 
-        else 
+        }
+        else
         {
             abort(404);
         }
     }
     public function expoJenjangKategori($jenjang, $kategori)
     {
-        if (Auth::user()->role == 'admin') 
+        if (Auth::user()->role == 'admin')
         {
             if($jenjang == 'smp' || $jenjang == 'sma')
             {
@@ -297,7 +288,7 @@ class ExpoController extends Controller
     }
     public function virtualexpoJenjangKategori($jenjang, $kategori)
     {
-        if (Auth::user()->role == 'admin') 
+        if (Auth::user()->role == 'admin')
         {
             if($jenjang == 'smp' || $jenjang == 'sma')
             {
@@ -350,7 +341,7 @@ class ExpoController extends Controller
     }
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
-        if (Auth::user()->role == 'admin') 
+        if (Auth::user()->role == 'admin')
             {
             $data = Karya::findOrFail($id);
             $karyas = Karya::where('jenjang', $data->jenjang)->where('kategori', $data->kategori)->where('id', '!=', $id)->get();
@@ -389,7 +380,7 @@ class ExpoController extends Controller
     }
     public function virtualexpoDetailProduct($jenjang, $kategori, $id, $slug)
     {
-        if (Auth::user()->role == 'admin') 
+        if (Auth::user()->role == 'admin')
             {
             $data = Karya::findOrFail($id);
             $karyas = Karya::where('jenjang', $data->jenjang)->where('kategori', $data->kategori)->where('id', '!=', $id)->get();
