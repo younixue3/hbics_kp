@@ -22,6 +22,7 @@ class UsersSeeder extends Seeder
                 'provinsi_id' => 12,
                 'kota_kab_id' => 189,
                 'event_id' => null,
+                'created_at' => today()
             ],
         ]);
     }

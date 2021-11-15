@@ -18,12 +18,13 @@ class CostumerSeeder extends Seeder
                 'name' => 'ricko',
                 'email' => 'ricko@gmail.com',
                 'password' => Hash::make('ricko'),
-                'role' => 'pengunjung',
+                'role' => 'peserta',
                 'provinsi_id' => 12,
                 'kota_kab_id' => 189,
                 'event_id' => 1,
                 'kategori_peserta' => 'individu',
-                'pembayaran' => 'verified'
+                'pembayaran' => 'verified',
+                'created_at' => today()
             ],
             [
                 'name' => 'ryan',
@@ -34,7 +35,8 @@ class CostumerSeeder extends Seeder
                 'kota_kab_id' => 189,
                 'event_id' => 1,
                 'kategori_peserta' => 'kelompok',
-                'pembayaran' => 'unverified'
+                'pembayaran' => 'unverified',
+                'created_at' => today()
             ]
         ]);
     }

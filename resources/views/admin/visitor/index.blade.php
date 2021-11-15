@@ -48,6 +48,7 @@
 								<th>Nama</th>
 								<th>Email</th>
 								<th>Tanggal Registrasi</th>
+								<th>Pembayaran</th>
                                 <th>Aksi</th>
 							</tr>
 						</thead>
@@ -58,6 +59,21 @@
 								<td>{{ $data->name }}</td>
 								<td>{{ $data->email }}</td>
 								<td>{{ $data->created_at->format('d, M Y - H:i:s')}}</td>
+                                <td>
+                                    @if($data->pembayaran != 'verified')
+                                        <button type="button" class="btn-outline-danger btn" data-toggle="modal" data-target=".bd-example-modal-lg">{{$data->pembayaran}}</button>
+
+                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    ...
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <button type="button" class="btn-outline-primary btn">{{$data->pembayaran}}</button>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
