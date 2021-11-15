@@ -65,6 +65,19 @@
                                             class=""></i> {{ __('Provinsi') }}</label>
                                     <br>
                                     <div class="col-md-12">
+                                        <select name="event_id" class="form-control2 wow fadeInUp" id="event_id">
+                                            <option selected disabled>Pilih event yang anda ikuti</option>
+                                            @foreach($acara as $value)
+                                                <option value="{{$value->id}}">{{$value->tagline}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="provinsi" class="col-md-12 col-form-label wow fadeInUp"><i
+                                            class=""></i> {{ __('Provinsi') }}</label>
+                                    <br>
+                                    <div class="col-md-12">
                                         <select name="provinsi" class="form-control2 wow fadeInUp" id="provinsi">
                                             @foreach($provinsi as $value)
                                                 <option value="{{$value->id}}">{{$value->provinsi}}</option>
@@ -164,7 +177,7 @@
             $.ajax({
                 type: "POST",
                 url: window.location.origin + '/daftar/insert',
-                data: {name:$('#name').val(),email:$('#email').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()},
+                data: {name:$('#name').val(),email:$('#email').val(),event_id:$('#event_id').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()},
                 success: function(data) {
                     arr.data.kelompok = data;
                     $.ajax({

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Provinsi;
 use App\KotaKab;
 use App\User;
+use App\Event;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -14,8 +15,10 @@ class RegisterController extends Controller
     public function index()
     {
         $provinsi = Provinsi::get();
-        $data = compact('provinsi');
-        return view('auth.register', compact('provinsi'));
+        $acara = Event::get();
+//        dd($event);
+        $data = compact('provinsi', 'acara');
+        return view('auth.register', $data);
     }
 
     public function get_kota(Request $request)
@@ -30,6 +33,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'event_id' => ['required'],
             'provinsi_id' => ['required'],
             'kota_kab_id' => ['required'],
             'password' => ['required', 'string'],
@@ -38,18 +42,17 @@ class RegisterController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'event_id' => intval($request->event_id),
                 'provinsi_id' => intval($request->provinsi_id),
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),
             ]);
             return $user->id;
-//            AnggotaKelompok::create([
-//
-//            ]);
         } else {
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'event_id' => intval($request->event_id),
                 'provinsi_id' => intval($request->provinsi_id),
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),

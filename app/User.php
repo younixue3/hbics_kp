@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\AnggotaKelompok as AnggotaKelompok;
 
 class User extends Authenticatable
 {
@@ -44,4 +45,8 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Komentar');
     }
+//    public function anggota()
+//    {
+//        return $this->hasMany(AnggotaKelompok);
+//    }
 }

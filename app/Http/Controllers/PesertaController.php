@@ -20,7 +20,7 @@ class PesertaController extends Controller
         if ($request->cari != null) {
             $datas = User::where('email', 'like', '%'.$request->cari)->orWhere('name', 'like', '%'.$request->cari.'%')->where('role', 'pengunjung')->paginate(20);
         } else {
-            $datas = User::where('role', 'pengunjung')->paginate(20);
+            $datas = User::where('role', 'peserta')->paginate(20);
         }
         $data = compact('datas');
         return view('admin.visitor.index', $data);

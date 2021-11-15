@@ -53,7 +53,7 @@
 						<tr>
 							<th>Karya/ Peserta</th>
 							<td>
-								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$data->karyas->count()}} Peserta</a>
+								<a href="{{url('pesertas/'.$data->id)}}"><i class="icofont-rounded-right"></i> {{$peserta}} Peserta</a>
 							</td>
 						</tr>
 						<tr>

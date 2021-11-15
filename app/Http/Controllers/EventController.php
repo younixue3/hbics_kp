@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\Event;
+use App\User;
 
 class EventController extends Controller
 {
@@ -85,7 +86,9 @@ class EventController extends Controller
     {
         //
         $data = Event::findOrFail($id);
-        return view('admin.event.view', compact('data'));
+        $peserta = User::where('event_id', $id)->count();
+        $datas = compact('data', 'peserta');
+        return view('admin.event.view', $datas);
     }
 
     /**
@@ -176,17 +179,17 @@ class EventController extends Controller
     {
         //
         $data = Event::findOrFail($id);
-        if($data->juris->count() != 0 && $data->timelines->count() != 0 && $data->karyas->count() != 0) 
+        if($data->juris->count() != 0 && $data->timelines->count() != 0 && $data->karyas->count() != 0)
         {
             return redirect('events')->with('fail', 'Data gagal dihapus di server');
-        } 
-        else 
+        }
+        else
         {
             $this->deletelogo($data->logo);
             $data->delete();
             return redirect('events')->with('success', 'Data berhasil dihapus di server');
         }
-        
+
     }
     public function deletelogo($logoname){
         // path folder

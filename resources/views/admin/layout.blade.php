@@ -138,7 +138,7 @@
                         </li>
                         <li class="menu-title">Extras</li>
                         <li>
-                            <a href="{{url('visitors')}}" class="waves-effect {{Request::is('visitors') || Request::is('visitors/*') ? 'act' : ''}}"><i class="icofont-people"></i><span> Data Pengunjung </span></a>
+                            <a href="{{url('visitors')}}" class="waves-effect {{Request::is('visitors') || Request::is('visitors/*') ? 'act' : ''}}"><i class="icofont-people"></i><span> Data Peserta </span></a>
                         </li>
                         <li>
                             <a href="{{url('panitia')}}" class="waves-effect {{Request::is('panitia') || Request::is('panitia/*') ? 'act' : ''}}"><i class="icofont-user-suited"></i><span> Data Panitia </span></a>

@@ -107,7 +107,6 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('panitia/delete/{id}', 'DataPanitiaController@delete_panitia')->name('delete_panitia');
     Route::get('panitia/change_role/{id}', 'DataPanitiaController@change_role_panitia')->name('change_role_panitia');
 });
-Route::middleware(['auth', 'visitor'])->group(function(){
     // MENU NON ADMIN
     // LANDING
     Route::get('beranda', 'LandingController@beranda');
@@ -133,4 +132,3 @@ Route::middleware(['auth', 'visitor'])->group(function(){
         Route::post('karya/foto', 'ExpoController@karyaFoto');
         Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
     });
-});
