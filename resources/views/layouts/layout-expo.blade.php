@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
     <!-- font-family: 'Hind', sans-serif; -->
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
+
     <link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
     <style>
         .likesbutton
@@ -130,7 +132,7 @@
                 <div class="sponsor-image-frame wow fadeInUp" data-wow-delay="1.3s">
                     <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
-            @empty                
+            @empty
             @endforelse
         </div>
     </div>
@@ -205,7 +207,7 @@
             }
         }
     })
-    $(window).scroll(function() {    
+    $(window).scroll(function() {
     var scroll = $(window).scrollTop();
         if (scroll >= 500) {
             $(".navbarnya").addClass("fixed-top");
@@ -217,7 +219,7 @@
             $(".navbarnya").removeClass("navwhite");
             $("#navbreaker").removeClass("navbreaker--show");
         }
-    }); 
+    });
 </script>
 </body>
 </html>

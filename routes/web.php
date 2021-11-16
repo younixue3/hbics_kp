@@ -125,7 +125,8 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
     Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
     // EXPO
-    Route::middleware(['peserta'])->group(function(){
+Route::get('pembayaran', 'ExpoController@pembayaran')->name('bukti_pembayaran');
+Route::middleware(['peserta', 'pembayaran'])->group(function(){
         Route::get('profil', 'ExpoController@profil');
         Route::patch('profil', 'ExpoController@profilUpdate');
         Route::get('profil/simulasi', 'ExpoController@profilSimulasi');

@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
         'visitor' => \App\Http\Middleware\CekVisitor::class,
         'admin' => \App\Http\Middleware\CekAdmin::class,
         'peserta' => \App\Http\Middleware\CekPeserta::class,
+        'pembayaran' => \App\Http\Middleware\Pembayaran::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

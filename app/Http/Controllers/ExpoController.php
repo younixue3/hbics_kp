@@ -4,27 +4,50 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Post;
 use App\Karya;
 use App\KaryaFoto;
 use App\User;
 use App\Komentar;
+use Carbon\Carbon;
 
 class ExpoController extends Controller
 {
-    //
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function profil()
     {
         $user = Auth::user();
-
+//        dd($user);
+        if ($user->bukti_pembayaran == null) {
+            return view(route('bukti_pembayaran'), compact('user'));
+        }
         return view('expo.profil', compact('user'));
+    }
+
+    public function pembayaran()
+    {
+        $user = Auth::user();
+        $data = compact('user');
+        return view('expo.bukti_pembayaran', $data);
+    }
+
+    public function post_pembayaran($request)
+    {
+        $this->validate($request, [
+            'img' => 'required|mimes:jpeg,jpg,png,svg|dimensions: max_width = 2464, max_height = 2464|max:2500',
+        ]);
+
+        $user = User::findOrFail(Auth::user()->id);
+        dd($user);
+        $filename = today('')->format('Y-m-d').rand('00000','99999').'.png';
+        if ($request->image_content != null) {
+
+            Storage::disk('upload')->putFileAs('image_content', $request->bukti_pembayaran , $filename);
+
+            $gallery->bukti_pembayaran = $filename;
+        }
+        return view('expo.bukti_pembayaran', $data);
     }
 
     public function profilUpdate(Request $request)
