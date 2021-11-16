@@ -18,10 +18,6 @@ class ExpoController extends Controller
     public function profil()
     {
         $user = Auth::user();
-//        dd($user);
-        if ($user->bukti_pembayaran == null) {
-            return view(route('bukti_pembayaran'), compact('user'));
-        }
         return view('expo.profil', compact('user'));
     }
 
@@ -35,16 +31,15 @@ class ExpoController extends Controller
     public function post_pembayaran($request)
     {
         $user = User::findOrFail(Auth::user()->id);
-        dd($user);
         $filename = today('')->format('Y-m-d').rand('00000','99999').'.png';
         if ($request->bukti_pembayaran != null) {
 
             Storage::disk('upload')->putFileAs('image_content', $request->bukti_pembayaran , $filename);
 
-            $gallery->bukti_pembayaran = $filename;
+            $user->bukti_pembayaran = $filename;
             return redirect('/profil');
         } else {
-            return view('expo.bukti_pembayaran', $data);
+            return redirect(route('bukti_pembayaran'));
         }
     }
 
