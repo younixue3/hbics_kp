@@ -34,20 +34,18 @@ class ExpoController extends Controller
 
     public function post_pembayaran($request)
     {
-        $this->validate($request, [
-            'img' => 'required|mimes:jpeg,jpg,png,svg|dimensions: max_width = 2464, max_height = 2464|max:2500',
-        ]);
-
         $user = User::findOrFail(Auth::user()->id);
         dd($user);
         $filename = today('')->format('Y-m-d').rand('00000','99999').'.png';
-        if ($request->image_content != null) {
+        if ($request->bukti_pembayaran != null) {
 
             Storage::disk('upload')->putFileAs('image_content', $request->bukti_pembayaran , $filename);
 
             $gallery->bukti_pembayaran = $filename;
+            return redirect('/profil');
+        } else {
+            return view('expo.bukti_pembayaran', $data);
         }
-        return view('expo.bukti_pembayaran', $data);
     }
 
     public function profilUpdate(Request $request)
