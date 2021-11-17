@@ -38,16 +38,6 @@
                     <div class="col-md-10">
                       <p style="font-size: 12px; color: grey;">
                         <b>Kelengkapan data profil: </b> <br>
-                        Jenjang
-                        <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
-                        </span>,
-                        Kategori
-                        <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
-                        </span>,
                         Foto Tim
                         <span class="alert alert-xs">
                             <i class="icofont-close-circled"></i>
@@ -111,7 +101,7 @@
                         <label class="mt10">
                               <i style="color: green" class="icofont-check-circled"></i>
                           Nama Tim</label>
-                        <input type="text" name="nama_tim" class="form-control2" placeholder="Masukkan nama tim" value="">
+                        <input type="text" name="nama_tim" class="form-control2" placeholder="Masukkan nama tim" disabled value="{{Auth::user()->name}}">
                         <label class="mt10">
                               <i style="color: green" class="icofont-check-circled"></i>
                           Foto Tim
@@ -122,24 +112,6 @@
                               <i style="color: green" class="icofont-check-circled"></i>
                           Tentang Tim (sisa <span id="word_count_tentangkami"></span> karakter)</label>
                         <textarea id="textarea_tentangkami" name="tentang_tim" maxlength="360" rows="10" placeholder="Masukkan deskripsi 'tentang tim'" class="form-control2"></textarea>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label class="mt10">
-                                  <i style="color: green" class="icofont-check-circled"></i>
-                              Jenjang</label>
-                            <select name="jenjang" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
-                              {{-- <option value="" selected disabled>- Jenjang -</option> --}}
-                            </select>
-                          </div>
-                          <div class="col-md-6">
-                            <label class="mt10">
-                                  <i style="color: green" class="icofont-check-circled"></i>
-                              Kategori</label>
-                            <select name="kategori" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
-                              {{-- <option value="" selected disabled>- Jenjang -</option> --}}
-                            </select>
-                          </div>
-                        </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                       </form>
@@ -159,6 +131,16 @@
                             <i style="color: green" class="icofont-check-circled"></i>
                           Nama Produk</label>
                         <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label class="mt10">
+                                      <i style="color: green" class="icofont-check-circled"></i>
+                                      Kategori</label>
+                                  <select name="kategori" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
+                                      {{-- <option value="" selected disabled>- Jenjang -</option> --}}
+                                  </select>
+                              </div>
+                          </div>
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Deskripsi Produk (sisa <span id="word_count_deskripsi"></span> karakter)</label>
@@ -216,32 +198,6 @@
                   </div>
                   <div class="row">
                     <div class="gal">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="panel">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4><i class="icofont-user"></i> Data Login Akun</h4>
-                      <form action="{{url('profil')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="_method" value="PATCH">
-                        <label class="mt10">Username</label>
-                        <input type="text" class="form-control2" name="name" value="" placeholder="Username baru">
-                        <br>
-                        <label class="mt10">Email</label>
-                        <input type="text" class="form-control2" name="email" value="" placeholder="Email baru">
-                        <br>
-                        <label class="mt10">Password</label>
-                        <input type="password" class="form-control2" name="password" placeholder="Password baru">
-                        <br><br>
-                        <div class="alert alert-warning form-control2" style="border:0px solid transparent !important;">
-                          <i class="icofont-warning"></i> Isi kolom password hanya jika ingin mengganti password
-                        </div>
-                        <input type="submit" name="submit" class="btn btn-primary" value="Simpan perubahan">
-                      </form>
                     </div>
                   </div>
                 </div>

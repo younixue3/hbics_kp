@@ -12,6 +12,7 @@ use App\KaryaFoto;
 use App\User;
 use App\Komentar;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ExpoController extends Controller
 {
@@ -28,19 +29,27 @@ class ExpoController extends Controller
         return view('expo.bukti_pembayaran', $data);
     }
 
-    public function post_pembayaran($request)
+    public function postPembayaran(Request $request)
     {
+//        dd($request);
         $user = User::findOrFail(Auth::user()->id);
-        $filename = today('')->format('Y-m-d').rand('00000','99999').'.png';
+//        dd($user);
+        $filename = today()->format('Y-m-d').rand('00000','99999').'.png';
         if ($request->bukti_pembayaran != null) {
 
-            Storage::disk('upload')->putFileAs('image_content', $request->bukti_pembayaran , $filename);
+            Storage::disk('upload')->putFileAs('paidbill', $request->bukti_pembayaran , $filename);
 
             $user->bukti_pembayaran = $filename;
+            $user->save();
             return redirect('/profil');
         } else {
             return redirect(route('bukti_pembayaran'));
         }
+    }
+
+    public function tahap_validasi()
+    {
+        return view('expo.tahap_validasi');
     }
 
     public function profilUpdate(Request $request)

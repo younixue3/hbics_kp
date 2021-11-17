@@ -5,14 +5,16 @@
 </head>
 <body>
 <div class="card" style="width: 500px;margin: auto; top: 10%;">
-    <div class="card-body">
+    <form class="card-body" action="{{route('post_pembayaran')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input class="form-control" type="file" />
+            <input class="form-control" type="file" name="bukti_pembayaran" />
         </div>
         <img id="myImg" src="#" alt="your image" style="height: 500px;width: 400px; object-fit: cover;">
         <input type="submit" class="btn btn-success" style="margin-top: 10px">
-    </div>
+    </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script>

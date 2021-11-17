@@ -61,8 +61,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="provinsi" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class=""></i> {{ __('Provinsi') }}</label>
+                                    <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
+                                            class=""></i> {{ __('Jenjang') }}</label>
+                                    <br>
+                                    <div class="col-md-12">
+                                        <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
+                                            <option selected disabled>Pilih jenjang</option>
+                                            <option value="sd">SD</option>
+                                            <option value="smp">SMP</option>
+                                            <option value="sma">SMA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="event_id" class="col-md-12 col-form-label wow fadeInUp"><i
+                                            class=""></i> {{ __('Kategori Lomba') }}</label>
                                     <br>
                                     <div class="col-md-12">
                                         <select name="event_id" class="form-control2 wow fadeInUp" id="event_id">
@@ -123,7 +136,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <a href="#" id="submit_storage" class="btn btn-blue btn-block wow fadeInUp">
+                                        <a href="{{url('/login')}}" id="submit_storage" class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>
                                         <br>
@@ -177,7 +190,7 @@
             $.ajax({
                 type: "POST",
                 url: window.location.origin + '/daftar/insert',
-                data: {name:$('#name').val(),email:$('#email').val(),event_id:$('#event_id').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val()},
+                data: {name:$('#name').val(),email:$('#email').val(),event_id:$('#event_id').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val(), jenjang:$('#jenjang').val()},
                 success: function(data) {
                     arr.data.kelompok = data;
                     $.ajax({

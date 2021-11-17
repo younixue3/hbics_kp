@@ -18,7 +18,11 @@ class Pembayaran
     {
         if (Auth::User()->bukti_pembayaran == null) {
             return redirect(route('bukti_pembayaran'));
+        } else {
+            if (Auth::user()->pembayaran == 'unverified') {
+                return redirect(route('tahap_validasi'));
+            }
+            return $next($request);
         }
-        return $next($request);
     }
 }
