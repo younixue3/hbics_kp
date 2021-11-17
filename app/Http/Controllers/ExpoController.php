@@ -12,14 +12,44 @@ use App\KaryaFoto;
 use App\User;
 use App\Komentar;
 use Carbon\Carbon;
+use App\KategoriLomba;
 use Illuminate\Support\Facades\Storage;
 
 class ExpoController extends Controller
 {
+//    Another Public Function
+    public function update_profil_tim(Request $request)
+    {
+//        dd($request);
+        $user = User::findOrFail(Auth::user()->id);
+//        dd($user);
+        $filename = today()->format('Y-m-d').rand('00000','99999').'.png';
+        if ($request->foto_profile != null) {
+
+            Storage::disk('upload')->putFileAs('foto_profil', $request->foto_profile , $filename);
+
+            $user->desc = $request->desc;
+            $user->foto_profile = $filename;
+            $user->save();
+            return redirect('/profil');
+        } else {
+            return redirect(route('bukti_pembayaran'));
+        }
+    }
+
+    public function insert_karya($request)
+    {
+        dd($request);
+    }
+
+//////////////////////////////////
+
     public function profil()
     {
         $user = Auth::user();
-        return view('expo.profil', compact('user'));
+        $kategori_lomba = KategoriLomba::get();
+        $data = compact('user', 'kategori_lomba');
+        return view('expo.profil', $data);
     }
 
     public function pembayaran()

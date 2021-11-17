@@ -95,9 +95,9 @@
                   <div class="row">
                     <div class="col-md-12">
                       <h4><i class="icofont-user-alt-5"></i> Data Umum</h4>
-                      <form action="{{url('karya')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="_method" value="PATCH">
+                      <form action="{{route('profil_update')}}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          @method('PUT')
                         <label class="mt10">
                               <i style="color: green" class="icofont-check-circled"></i>
                           Nama Tim</label>
@@ -107,11 +107,11 @@
                           Foto Tim
                             <a style="color: rgb(41, 91, 228)" href="" data-lightbox="foto_poster" data-title="">Lihat foto saat ini <i class="icofont-image"></i></a>
                         </label>
-                        <input type="file" name="foto_tim" class="form-control2" placeholder="Masukkan foto tim">
+                        <input type="file" name="foto_profile" class="form-control2" placeholder="Masukkan foto tim">
                         <label class="mt10" id="tentangkamiLabel">
                               <i style="color: green" class="icofont-check-circled"></i>
                           Tentang Tim (sisa <span id="word_count_tentangkami"></span> karakter)</label>
-                        <textarea id="textarea_tentangkami" name="tentang_tim" maxlength="360" rows="10" placeholder="Masukkan deskripsi 'tentang tim'" class="form-control2"></textarea>
+                        <textarea id="textarea_tentangkami" name="desc" maxlength="360" rows="10" placeholder="Masukkan deskripsi 'tentang tim'" class="form-control2">{{Auth::User()->desc}}</textarea>
                         <br>
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                       </form>
@@ -124,7 +124,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <h4><i class="icofont-paint"></i> Data Produk</h4>
-                      <form action="{{url('karya')}}" method="POST" enctype="multipart/form-data">
+                      <form action="{{}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="_method" value="PATCH">
                         <label class="mt10">
@@ -137,7 +137,10 @@
                                       <i style="color: green" class="icofont-check-circled"></i>
                                       Kategori</label>
                                   <select name="kategori" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
-                                      {{-- <option value="" selected disabled>- Jenjang -</option> --}}
+                                      <option value="" selected disabled>Pilih Kategori</option>
+                                      @foreach($kategori_lomba as $key => $value)
+                                           <option value="{{$value->id}}">{{$value->kategori}}</option>
+                                      @endforeach
                                   </select>
                               </div>
                           </div>
