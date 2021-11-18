@@ -18,8 +18,8 @@
                   </p>
                   <p class="namateam wow fadeInUp" data-wow-delay="2s">
                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
-                  </p>   
-                  <br>  
+                  </p>
+                  <br>
                   <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
                     {{$karya->tentang_tim}}
                   </p>
@@ -45,8 +45,8 @@
                 </p>
                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                   <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
-                </p>   
-                <br>  
+                </p>
+                <br>
                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
                   {{$karya->tentang_tim}}
                 </p>
@@ -66,11 +66,8 @@
 </div>
 <div class="container-fluid">
   <div class="row frame">
-    @if ($karya->fotos->count() != 0)
-      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}');background-size:cover;">
-    @else
+      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('');background-size:cover;">
       <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
-    @endif
     </div>
     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
       <div class="deskripsi text-center">
@@ -85,17 +82,14 @@
 <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
 <div class="row frame4 text-center" style="position: relative">
   <div class="row owl-carousel owl-theme" style="margin: 0px;">
-    @forelse ($karya->fotos as $foto)
     <div class="item">
       <div class="slide">
-        <img src="{{asset('uploads/karyafotos/'.$foto->foto)}}" class="slide-image" alt="">
+        <img src="" class="slide-image" alt="">
       </div>
     </div>
-    @empty
     <div class="sliding">
       <img src="{{asset('images/sample2.png')}}" class="slide-image" alt="">
-    </div>
-    @endforelse
+    </div>=
   </div>
 </div>
 </div>
@@ -168,7 +162,7 @@
                 <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
               @else
                 <a href="" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                <a href="" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>                            
+                <a href="" target="_blank" class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
               @endif
             </div>
             <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
@@ -188,7 +182,7 @@
           <div class="row">
               <div class="col-md-12 text-center">
                 <div class="total wow fadeInUp" data-wow-delay="1s">
-                    <p><i class="icofont-like"></i> total likes : {{$karya->likers->count()}}</p>
+                    <p><i class="icofont-like"></i> total likes : </p>
                 </div>
               </div>
           </div>

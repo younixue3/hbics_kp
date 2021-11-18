@@ -58,7 +58,6 @@ class ExpoController extends Controller
     public function insert_karya(Request $request)
     {
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();
-//        dd($request);
         $foto_poster = $get_karya->foto_poster;
         $proposal = $get_karya->proposal;
         if ($request->foto_poster != null) {
@@ -82,11 +81,8 @@ class ExpoController extends Controller
                 'link_mockup' => $request->link_mockup
             ]
         );
-//        dd($karya);
         return redirect('/profil');
     }
-
-//////////////////////////////////
 
     public function profil()
     {
