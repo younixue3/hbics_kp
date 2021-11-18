@@ -23,10 +23,10 @@ class ExpoController extends Controller
 //        dd($request);
         $user = User::findOrFail(Auth::user()->id);
 //        dd($user);
-        $filename = today()->format('Y-m-d').rand('00000','99999').'.png';
+        $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
         if ($request->foto_profile != null) {
 
-            Storage::disk('upload')->putFileAs('foto_profil', $request->foto_profile , $filename);
+            Storage::disk('upload')->putFileAs('foto_profil', $request->foto_profile, $filename);
 
             $user->desc = $request->desc;
             $user->foto_profile = $filename;
@@ -43,14 +43,14 @@ class ExpoController extends Controller
         $foto_poster = null;
         $proposal = null;
         if ($request->foto_poster != null) {
-            $foto_poster = today()->format('Y-m-d').rand('00000','99999').'.png';
+            $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
             Storage::disk('upload')->putFileAs('foto_poster', $request->foto_poster, $foto_poster);
         }
         if ($request->proposal != null) {
-            $proposal = today()->format('Y-m-d').$request->proposal->GetClientOriginalName();
+            $proposal = today()->format('Y-m-d') . $request->proposal->GetClientOriginalName();
             Storage::disk('upload')->putFileAs('proposal', $request->proposal, $proposal);
         }
-            $karya = Karya::updateOrCreate(
+        $karya = Karya::updateOrCreate(
             ['user_id' => Auth::user()->id],
             [
                 'nama' => $request->nama,
@@ -89,10 +89,10 @@ class ExpoController extends Controller
 //        dd($request);
         $user = User::findOrFail(Auth::user()->id);
 //        dd($user);
-        $filename = today()->format('Y-m-d').rand('00000','99999').'.png';
+        $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
         if ($request->bukti_pembayaran != null) {
 
-            Storage::disk('upload')->putFileAs('paidbill', $request->bukti_pembayaran , $filename);
+            Storage::disk('upload')->putFileAs('paidbill', $request->bukti_pembayaran, $filename);
 
             $user->bukti_pembayaran = $filename;
             $user->save();
