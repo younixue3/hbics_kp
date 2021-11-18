@@ -63,7 +63,7 @@ class ExpoController extends Controller
                 'link_mockup' => $request->link_mockup
             ]
         );
-        dd($karya);
+//        dd($karya);
         return redirect('/profil');
     }
 
@@ -73,7 +73,8 @@ class ExpoController extends Controller
     {
         $user = Auth::user();
         $kategori_lomba = KategoriLomba::get();
-        $data = compact('user', 'kategori_lomba');
+        $karya = Karya::where('user_id', Auth::user()->id)->first();
+        $data = compact('user', 'kategori_lomba', 'karya');
         return view('expo.profil', $data);
     }
 

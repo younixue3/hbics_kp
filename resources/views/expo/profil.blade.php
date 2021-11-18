@@ -129,7 +129,7 @@
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Nama Produk</label>
-                        <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="">
+                        <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya->nama}}">
                           <div class="row">
                               <div class="col-md-6">
                                   <label class="mt10">
@@ -138,7 +138,7 @@
                                   <select name="kategori" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
                                       <option value="" selected disabled>Pilih Kategori</option>
                                       @foreach($kategori_lomba as $key => $value)
-                                           <option value="{{$value->id}}">{{$value->kategori}}</option>
+                                           <option {{$value->id === $karya->kategori ? 'selected' : ''}} value="{{$value->id}}">{{$value->kategori}}</option>
                                       @endforeach
                                   </select>
                               </div>
@@ -146,7 +146,7 @@
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Deskripsi Produk (sisa <span id="word_count_deskripsi"></span> karakter)</label>
-                        <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi 'produk'" class="form-control2"></textarea>
+                        <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi 'produk'" class="form-control2">{{$karya->deskripsi}}</textarea>
                         <div class="row">
                           <div class="col-md-6">
                             <label class="mt10">
