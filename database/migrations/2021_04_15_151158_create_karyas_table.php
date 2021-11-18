@@ -15,14 +15,15 @@ class CreateKaryasTable extends Migration
     {
         Schema::create('karyas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id');
-            $table->unsignedBigInteger('kategori');
-            $table->text('foto_poster');
-            $table->text('deskripsi');
-            $table->text('link_profil');
-            $table->text('link_presentation');
-            $table->text('link_mockup');
-            $table->text('proposal');
+            $table->string('nama')->nullable();
+            $table->bigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('kategori')->nullable();
+            $table->text('foto_poster')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->text('link_profil')->nullable();
+            $table->text('link_presentation')->nullable();
+            $table->text('link_mockup')->nullable();
+            $table->text('proposal')->nullable();
             $table->timestamps();
         });
     }

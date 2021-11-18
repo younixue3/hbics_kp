@@ -124,9 +124,8 @@
                   <div class="row">
                     <div class="col-md-12">
                       <h4><i class="icofont-paint"></i> Data Produk</h4>
-                      <form action="{{}}" method="POST" enctype="multipart/form-data">
+                      <form action="{{route('karya_insert')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="_method" value="PATCH">
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Nama Produk</label>

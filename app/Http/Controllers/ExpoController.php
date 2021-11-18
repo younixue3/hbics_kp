@@ -37,9 +37,34 @@ class ExpoController extends Controller
         }
     }
 
-    public function insert_karya($request)
+    public function insert_karya(Request $request)
     {
-        dd($request);
+//        dd($request);
+        $foto_poster = null;
+        $proposal = null;
+        if ($request->foto_poster != null) {
+            $foto_poster = today()->format('Y-m-d').rand('00000','99999').'.png';
+            Storage::disk('upload')->putFileAs('foto_poster', $request->foto_poster, $foto_poster);
+        }
+        if ($request->proposal != null) {
+            $proposal = today()->format('Y-m-d').$request->proposal->GetClientOriginalName();
+            Storage::disk('upload')->putFileAs('proposal', $request->proposal, $proposal);
+        }
+            $karya = Karya::updateOrCreate(
+            ['user_id' => Auth::user()->id],
+            [
+                'nama' => $request->nama,
+                'kategori' => $request->kategori,
+                'foto_poster' => $foto_poster,
+                'proposal' => $proposal,
+                'deskripsi' => $request->deskripsi,
+                'link_profil' => $request->link_profil,
+                'link_presentation' => $request->link_presentation,
+                'link_mockup' => $request->link_mockup
+            ]
+        );
+        dd($karya);
+        return redirect('/profil');
     }
 
 //////////////////////////////////
