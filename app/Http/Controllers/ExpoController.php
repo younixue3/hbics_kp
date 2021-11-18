@@ -39,9 +39,10 @@ class ExpoController extends Controller
 
     public function insert_karya(Request $request)
     {
+        $get_karya = Karya::where('user_id', Auth::user()->id)->first();
 //        dd($request);
-        $foto_poster = null;
-        $proposal = null;
+        $foto_poster = $get_karya->foto_poster;
+        $proposal = $get_karya->proposal;
         if ($request->foto_poster != null) {
             $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
             Storage::disk('upload')->putFileAs('foto_poster', $request->foto_poster, $foto_poster);
