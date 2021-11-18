@@ -189,7 +189,7 @@
                   <div class="row">
                     <div class="col-md-12">
                         <h4><i class="icofont-image"></i> Data Foto Produk</h4>
-                        <form action="{{url('karya/foto')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('foto_karya_insert')}}" method="POST" enctype="multipart/form-data">
                           @csrf
                           <label class="mt10">Foto Produk <span ></span></label>
                           <input type="file" required name="foto" class="form-control2">

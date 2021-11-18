@@ -37,6 +37,24 @@ class ExpoController extends Controller
         }
     }
 
+    public function insert_foto_karya(Request $request)
+    {
+        $get_karya = Karya::where('user_id', Auth::user()->id)->first();
+        $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
+
+        if ($request->foto_karya != null) {
+            $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
+            Storage::disk('upload')->putFileAs('foto_poster', $request->foto_karya, $filename);
+        }
+
+        $foto_karya = KaryaFoto::create([
+            'karya_id' => $get_karya->id,
+            'foto' => $filename
+        ]);
+
+        return redirect('/profil');
+    }
+
     public function insert_karya(Request $request)
     {
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();

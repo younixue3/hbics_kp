@@ -132,6 +132,7 @@ Route::middleware(['peserta', 'pembayaran'])->group(function(){
         Route::put('profil/update', 'ExpoController@update_profil_tim')->name('profil_update');
         Route::get('profil', 'ExpoController@profil');
         Route::post('karya/insert', 'ExpoController@insert_karya')->name('karya_insert');
+        Route::post('karya/foto/insert', 'ExpoController@insert_foto_karya')->name('foto_karya_insert');
         Route::get('profil/simulasi', 'ExpoController@profilSimulasi');
         Route::patch('karya', 'ExpoController@karyaUpdate');
         Route::post('karya/foto', 'ExpoController@karyaFoto');
