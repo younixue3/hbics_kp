@@ -197,8 +197,8 @@
                                 </div>
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="2.5s">
                                     <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                                    @if ($karya->proposal != '')
-                                        <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank"><img
+                                    @if ($karya->proposal != null)
+                                        <a href="{{asset('Upload/proposal/'.$karya->proposal)}}" target="_blank"><img
                                                 src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
                                         <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank"
                                            class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
@@ -211,26 +211,13 @@
                                 </div>
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
                                     <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                                    <a href="{{asset('uploads/karyas/'.$karya->foto_poster)}}"
+                                    <a href="{{asset('uploads/foto_poster/'.$karya->foto_poster)}}"
                                        data-lightbox="foto_poster1" data-title="{{$karya->foto_poster}}"><img
                                             src="{{asset('images/kenali/5.png')}}" alt="" class="kenali-logo"></a>
-                                    <a href="{{asset('uploads/karyas/'.$karya->foto_poster)}}"
+                                    <a href="{{asset('uploads/foto_poster/'.$karya->foto_poster)}}"
                                        data-lightbox="foto_poster2" data-title="{{$karya->foto_poster}}"
                                        class="kenali-title">POSTER @if($karya->foto_poster != '') @endif</a>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row frame frame2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <div class="total wow fadeInUp" data-wow-delay="1s">
-                                <p><i class="icofont-like"></i> total likes : </p>
                             </div>
                         </div>
                     </div>
