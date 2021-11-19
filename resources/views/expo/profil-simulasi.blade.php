@@ -10,14 +10,14 @@
                 <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
                 <div class="apaitu-mid">
                   <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                    <i class="icofont-people"></i> {{$karya->nama_tim}}
+                    <i class="icofont-people"></i> {{$user->name}}
                   </p>
                   <br>
                   <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
                       TENTANG KAMI
                   </p>
                   <p class="namateam wow fadeInUp" data-wow-delay="2s">
-                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$karya->kategori}}
+                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($user->jenjang)}}, Kategori: {{$kategori_lomba->where('id', $karya->kategori)->first()->kategori}}
                   </p>
                   <br>
                   <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
@@ -25,8 +25,8 @@
                   </p>
                 </div>
               </div>
-              @if ($karya->foto_tim != '')
-                <img src="{{asset('uploads/karyas/'.$karya->foto_tim)}}" class="apaitu-profilpict wow fadeInUp" data-wow-delay="1s" alt="">
+              @if ($user->foto_profile != '')
+                <img src="{{asset('uploads/karyas/'.$user->foto_profile)}}" class="apaitu-profilpict wow fadeInUp" data-wow-delay="1s" alt="">
               @else
                 <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict wow fadeInUp" data-wow-delay="1s" alt="">
               @endif
@@ -66,8 +66,13 @@
 </div>
 <div class="container-fluid">
   <div class="row frame">
-      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('');background-size:cover;">
-      <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
+{{--{{dd($foto_produk->first())}}--}}
+      @if($foto_produk->first() != null)
+                <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('Upload/karyafotos'). '/'.$foto_produk->first()->foto}}');background-size:cover;">
+      @else
+
+          <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
+          @endif
     </div>
     <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
       <div class="deskripsi text-center">
@@ -84,12 +89,12 @@
   <div class="row owl-carousel owl-theme" style="margin: 0px;">
     <div class="item">
       <div class="slide">
-        <img src="" class="slide-image" alt="">
+          @foreach($foto_produk->get() as $key => $value)
+                          <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+{{--              <img src="{{asset('images/sample2.png')}}" class="slide-image" alt="">--}}
+          @endforeach
       </div>
     </div>
-    <div class="sliding">
-      <img src="{{asset('images/sample2.png')}}" class="slide-image" alt="">
-    </div>=
   </div>
 </div>
 </div>

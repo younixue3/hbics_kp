@@ -192,7 +192,7 @@
                         <form action="{{route('foto_karya_insert')}}" method="POST" enctype="multipart/form-data">
                           @csrf
                           <label class="mt10">Foto Produk <span ></span></label>
-                          <input type="file" required name="foto" class="form-control2">
+                          <input type="file" required name="foto_karya" class="form-control2">
                           <br><br>
                           <button type="submit" class="btn btn-primary">Upload Foto</button>
                         </form>

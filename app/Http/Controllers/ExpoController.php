@@ -39,18 +39,19 @@ class ExpoController extends Controller
 
     public function insert_foto_karya(Request $request)
     {
+//        dd($request);
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();
         $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
 
         if ($request->foto_karya != null) {
             $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
-            Storage::disk('upload')->putFileAs('foto_poster', $request->foto_karya, $filename);
-        }
+            Storage::disk('upload')->putFileAs('karyafotos', $request->foto_karya, $filename);
 
-        $foto_karya = KaryaFoto::create([
-            'karya_id' => $get_karya->id,
-            'foto' => $filename
-        ]);
+            $foto_karya = KaryaFoto::create([
+                'karya_id' => $get_karya->id,
+                'foto' => $filename
+            ]);
+        }
 
         return redirect('/profil');
     }
@@ -159,11 +160,12 @@ class ExpoController extends Controller
         if ($user->role == 'admin' || $user->role == 'pengunjung') {
             abort(404);
         }
-        $karya = $user->karya;
         $event = Event::where('status', 1)->latest()->first();
-        // echo $karya->likers->count();
-        // exit;
-        return view('expo.profil-simulasi', compact('user', 'event', 'karya'));
+        $karya = Karya::where('user_id', $user->id)->first();
+        $foto_produk = KaryaFoto::where('karya_id', $karya->id)->latest();
+        $kategori_lomba = KategoriLomba::get();
+        $data = compact('user', 'event', 'karya', 'kategori_lomba', 'foto_produk');
+        return view('expo.profil-simulasi', $data);
     }
 
     public function karyaUpdate(Request $request)
