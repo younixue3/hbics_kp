@@ -16,13 +16,14 @@ class Pembayaran
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::User()->bukti_pembayaran == null) {
-            return redirect(route('bukti_pembayaran'));
-        } else {
-            if (Auth::user()->pembayaran == 'unverified') {
-                return redirect(route('tahap_validasi'));
-            }
-            return $next($request);
-        }
+//        if (Auth::user()->bukti_pembayaran == null) {
+//            return redirect(route('bukti_pembayaran'));
+//        } else {
+//            if (Auth::user()->pembayaran == 'unverified') {
+//                return redirect(route('tahap_validasi'));
+//            } else {
+//            }
+//        }
+        return $next($request);
     }
 }

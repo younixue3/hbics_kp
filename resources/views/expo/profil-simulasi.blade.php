@@ -62,13 +62,20 @@
         <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
-                    <div class="item">
-                        <div class="slide">
-                            @foreach($foto_produk->get() as $key => $value)
-                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+
+                            @foreach($foto_produk as $key => $value)
+{{--                                {{$value->foto}}--}}
+                                <div class="item">
+                                    <div class="slide">
+                                        <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+                                    </div>
+                                </div>
+{{--                                <div class="item">--}}
+{{--                                    <div class="slide">--}}
+{{--                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             @endforeach
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

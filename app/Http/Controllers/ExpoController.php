@@ -24,17 +24,17 @@ class ExpoController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 //        dd($user);
         $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
+        $user->desc = $request->desc;
         if ($request->foto_profile != null) {
 
             Storage::disk('upload')->putFileAs('foto_profil', $request->foto_profile, $filename);
 
-            $user->desc = $request->desc;
             $user->foto_profile = $filename;
-            $user->save();
-            return redirect('/profil');
-        } else {
-            return redirect(route('bukti_pembayaran'));
+
+
         }
+        $user->save();
+        return redirect('/profil');
     }
 
     public function insert_foto_karya(Request $request)
@@ -59,8 +59,13 @@ class ExpoController extends Controller
     public function insert_karya(Request $request)
     {
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();
-        $foto_poster = $get_karya->foto_poster;
-        $proposal = $get_karya->proposal;
+        if ($get_karya == null) {
+            $foto_poster = null;
+            $proposal = null;
+        } else {
+            $foto_poster = $get_karya->foto_poster;
+            $proposal = $get_karya->proposal;
+        }
         if ($request->foto_poster != null) {
             $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
             Storage::disk('upload')->putFileAs('foto_poster', $request->foto_poster, $foto_poster);
@@ -162,7 +167,7 @@ class ExpoController extends Controller
         }
         $event = Event::where('status', 1)->latest()->first();
         $karya = Karya::where('user_id', $user->id)->first();
-        $foto_produk = KaryaFoto::where('karya_id', $karya->id)->latest();
+        $foto_produk = KaryaFoto::where('karya_id', $karya->id)->latest()->get();
         $kategori_lomba = KategoriLomba::get();
         $data = compact('user', 'event', 'karya', 'kategori_lomba', 'foto_produk');
         return view('expo.profil-simulasi', $data);

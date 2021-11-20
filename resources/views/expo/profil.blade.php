@@ -40,48 +40,69 @@
                         <b>Kelengkapan data profil: </b> <br>
                         Foto Tim
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            {!!$user->foto_profile == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>'!!}
                         </span>,
                         Foto Poster
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->foto_poster == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Tentang Tim
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+{{--                            {{dd($user->desc == null)}}--}}
+                            {!!$user->desc == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>'!!}
                         </span>,
-                        Nama
+                        Nama Produk
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->nama == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Deskripsi
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->deskripsi == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Link Profil
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->link_profil == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Link Presentasi
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->link_presentation == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Link Mockup
                         <span class="alert alert-xs">
-                            <i class="icofont-close-circled"></i>
-                            <i class="icofont-checked"></i>
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->link_mockup == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
                         </span>,
                         Proposal
                         <span class="alert alert-xs">
-                        </span>,
-                        Foto karya :.
+                            @if($karya == null)
+                                <i class="icofont-close-circled text-danger"></i>
+                            @else
+                                {!! $karya->proposal == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                            @endif
+                        </span>
                       </p>
                     </div>
                     <div class="col-md-2">
@@ -129,7 +150,7 @@
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Nama Produk</label>
-                        <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya->nama}}">
+                        <input type="text" name="nama" class="form-control2" placeholder="Masukkan nama produk" value="{{$karya == null ? '' : $karya->nama}}">
                           <div class="row">
                               <div class="col-md-6">
                                   <label class="mt10">
@@ -137,16 +158,22 @@
                                       Kategori</label>
                                   <select name="kategori" class="form-control2" style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
                                       <option value="" selected disabled>Pilih Kategori</option>
-                                      @foreach($kategori_lomba as $key => $value)
-                                           <option {{$value->id === $karya->kategori ? 'selected' : ''}} value="{{$value->id}}">{{$value->kategori}}</option>
-                                      @endforeach
+                                      @if( $karya != null)
+                                          @foreach($kategori_lomba as $key => $value)
+                                              <option {{$value->id == $karya->kategori ? 'selected' : ''}} value="{{$value->id}}">{{$value->kategori}}</option>
+                                          @endforeach
+                                      @else
+                                          @foreach($kategori_lomba as $key => $value)
+                                              <option value="{{$value->id}}">{{$value->kategori}}</option>
+                                          @endforeach
+                                      @endif
                                   </select>
                               </div>
                           </div>
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Deskripsi Produk (sisa <span id="word_count_deskripsi"></span> karakter)</label>
-                        <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi 'produk'" class="form-control2">{{$karya->deskripsi}}</textarea>
+                        <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10" placeholder="Masukkan deskripsi 'produk'" class="form-control2">{{$karya == null ? '' : $karya->deskripsi}}</textarea>
                         <div class="row">
                           <div class="col-md-6">
                             <label class="mt10">
@@ -168,15 +195,15 @@
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Link Profil</label>
-                        <input type="text" name="link_profil" placeholder="Masukkan Link Profil" class="form-control2" value="">
+                        <input type="text" name="link_profil" placeholder="Masukkan Link Profil" class="form-control2" value="{{$karya == null ? '' : $karya->link_profil}}">
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Link Presentasi</label>
-                        <input type="text" name="link_presentation" placeholder="Masukkan Link presentation" class="form-control2" value="">
+                        <input type="text" name="link_presentation" placeholder="Masukkan Link presentation" class="form-control2" value="{{$karya == null ? '' : $karya->link_presentation}}">
                         <label class="mt10">
                             <i style="color: green" class="icofont-check-circled"></i>
                           Link Mockup</label>
-                        <input type="text" name="link_mockup" placeholder="Masukkan Link mockup" class="form-control2" value="">
+                        <input type="text" name="link_mockup" placeholder="Masukkan Link mockup" class="form-control2" value="{{$karya == null ? '' : $karya->link_mockup}}">
                         <br><br>
                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                       </form>
