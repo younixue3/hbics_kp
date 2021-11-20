@@ -4,32 +4,35 @@
         <div class="row frame frame2">
             <div class="container">
                 <div class="row">
-                     <div class="col-md-8">
-                      <div class="apaitu apaitu--profil">
-                        <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" data-wow-delay="0.5s" alt="">
-                        <div class="apaitu-mid">
-                          <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                            <i class="icofont-people"></i> {{$user->name}}
-                          </p>
-                          <br>
-                          <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
-                              TENTANG KAMI
-                          </p>
-                          <p class="namateam wow fadeInUp" data-wow-delay="2s">
-                            <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang : {{strToUpper($karya->jenjang)}}, Kategori: {{$kategori_lomba->where('id', $karya->kategori)->first()->kategori}}
-                          </p>
-                          <br>
-                          <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
-                            {{$user->desc}}
-                          </p>
+                    <div class="col-md-8">
+                        <div class="apaitu apaitu--profil">
+                            <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp"
+                                 data-wow-delay="0.5s" alt="">
+                            <div class="apaitu-mid">
+                                <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
+                                    <i class="icofont-people"></i> {{$user->name}}
+                                </p>
+                                <br>
+                                <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
+                                    TENTANG KAMI
+                                </p>
+                                <p class="namateam wow fadeInUp" data-wow-delay="2s">
+                                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
+                                    : {{strToUpper($karya->jenjang)}},
+                                    Kategori: {{$kategori_lomba->where('id', $karya->kategori)->first()->kategori}}
+                                </p>
+                                <br>
+                                <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
+                                    {{$user->desc}}
+                                </p>
+                            </div>
                         </div>
-                      </div>
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
                         @if ($karya->foto_tim != '')
-                          <img src="{{asset('uploads/karyas/'.$karya->foto_tim)}}" class="apaitu-profilpict" alt="">
+                            <img src="{{asset('uploads/karyas/'.$karya->foto_tim)}}" class="apaitu-profilpict" alt="">
                         @else
-                          <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
+                            <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                         @endif
                     </div>
                 </div>
@@ -62,20 +65,13 @@
         <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
-
-                            @foreach($foto_produk as $key => $value)
-{{--                                {{$value->foto}}--}}
-                                <div class="item">
-                                    <div class="slide">
-                                        <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
-                                    </div>
-                                </div>
-{{--                                <div class="item">--}}
-{{--                                    <div class="slide">--}}
-{{--                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-                            @endforeach
+                    @foreach($foto_produk as $key => $value)
+                        <div class="item">
+                            <div class="slide">
+                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
