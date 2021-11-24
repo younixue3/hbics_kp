@@ -18,7 +18,7 @@ class UsersSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('AdminKP2022'),
-                'role' => 'admin',
+                'role' => 'superadmin',
                 'provinsi_id' => 12,
                 'kota_kab_id' => 189,
                 'event_id' => null,

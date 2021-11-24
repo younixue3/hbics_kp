@@ -161,7 +161,7 @@
 						@endforeach
 						</tbody>
 					</table>
-{{--					{{$karyas->links()}}--}}
+					{{$karyas->links()}}
 				</div>
 			</div>
 		</div>

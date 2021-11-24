@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
+
 use Auth;
 use Closure;
 
-class CekAdmin
+class SuperAdmin
 {
     /**
      * Handle an incoming request.
@@ -15,7 +16,7 @@ class CekAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::User()->role != 'admin' && Auth::User()->role != 'superadmin') {
+        if (Auth::User()->role != 'superadmin') {
             abort(404);
         }
         return $next($request);

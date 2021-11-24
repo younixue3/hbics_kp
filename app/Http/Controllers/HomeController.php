@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role == 'admin')
+        if($user->role == 'admin' || $user->role == 'superadmin')
         {
             return view('admin.profil');
         }
@@ -85,7 +85,7 @@ class HomeController extends Controller
             }
             $user->update($input);
             $user->save();
-            return redirect('profils')->with('success', 'data profil berhasil diupdate');   
+            return redirect('profils')->with('success', 'data profil berhasil diupdate');
         }
         else
         {

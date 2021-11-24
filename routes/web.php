@@ -26,7 +26,7 @@ Route::post('/daftar/anggota', 'AnggotaKelompokController@index')->name('daftar/
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
 Auth::routes();
-Route::middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin', 'superadmin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('profils', 'HomeController@profil');
     Route::patch('profils/update', 'HomeController@profilUpdate');
@@ -102,11 +102,13 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('pengunjung/delete/{id}', 'PesertaController@delete_visitor')->name('delete_visitor');
     Route::get('pengunjung/change_role/{id}', 'PesertaController@change_role_visitor')->name('change_role_pengunjung');
     // PANITIA
-    Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
-    Route::get('panitia/{id}', 'DataPanitiaController@show_panitia')->name('show_panitia');
-    Route::put('panitia/update/{id}', 'DataPanitiaController@update_panitia')->name('update_panitia');
-    Route::get('panitia/delete/{id}', 'DataPanitiaController@delete_panitia')->name('delete_panitia');
-    Route::get('panitia/change_role/{id}', 'DataPanitiaController@change_role_panitia')->name('change_role_panitia');
+    Route::middleware(['superadmin'])->group(function(){
+        Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
+        Route::get('panitia/{id}', 'DataPanitiaController@show_panitia')->name('show_panitia');
+        Route::put('panitia/update/{id}', 'DataPanitiaController@update_panitia')->name('update_panitia');
+        Route::get('panitia/delete/{id}', 'DataPanitiaController@delete_panitia')->name('delete_panitia');
+        Route::get('panitia/change_role/{id}', 'DataPanitiaController@change_role_panitia')->name('change_role_panitia');
+    });
 });
     // MENU NON ADMIN
     // LANDING

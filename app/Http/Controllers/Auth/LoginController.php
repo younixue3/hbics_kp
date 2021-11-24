@@ -40,7 +40,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if(Auth::User()->role == 'admin')
+        if(Auth::User()->role == 'superadmin')
         {
             return 'dashboard';
         }
@@ -52,13 +52,13 @@ class LoginController extends Controller
     // public function redirectTo(){
 
     //     // User role
-    //     $role = Auth::user()->role; 
-    
+    //     $role = Auth::user()->role;
+
     //     // Check user role
-    //     if ($role == 'admin') 
+    //     if ($role == 'admin')
     //     {
     //         return redirect('profils');
-    //     } 
+    //     }
     //     elseif ($role == 'peserta' || $role == 'juri' || $role == 'pengunjung')
     //     {
     //         return redirect('beranda');
