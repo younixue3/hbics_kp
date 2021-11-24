@@ -28,14 +28,14 @@ class PesertaController extends Controller
 
     public function show_visitor ($id)
     {
-        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data = User::where('role', 'peserta')->findOrFail(intval($id));
         $datas = compact('data');
         return view('admin.visitor.edit', $datas);
     }
 
     public function update_visitor(Request $request, $id)
     {
-        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data = User::where('role', 'peserta')->findOrFail($id);
         $data->update(['name' => $request->name, 'email' => $request->email]);
         $data->save();
         return redirect('visitors');
@@ -43,7 +43,7 @@ class PesertaController extends Controller
 
     public function change_role_visitor(Request $request, $id)
     {
-        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data = User::where('role', 'peserta')->findOrFail($id);
         $data->update(['role' => 'admin']);
         $data->save();
         return redirect('visitors');
@@ -51,7 +51,7 @@ class PesertaController extends Controller
 
     public function delete_visitor($id)
     {
-        $data = User::where('role', 'pengunjung')->findOrFail($id);
+        $data = User::where('role', 'peserta')->findOrFail($id);
         $data->delete();
         return redirect('visitors');
     }
