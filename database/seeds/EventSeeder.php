@@ -13,7 +13,7 @@ class EventSeeder extends Seeder
     public function run()
     {
         DB::table('events')->insert([
-            ['tagline' => 'Enterpreneur Pelajar Indonesia Kreatif', "logo" => 'logo-5dd569d5156bc352e86f4420ed8dcf3f.png', 'deskripsi' => '<p class="MsoNormal" style="text-align:justify;text-indent:.5in"><i><span style="font-size:12.0pt;line-height:
+            ['tagline' => 'Enterpreneur Pelajar Indonesia Kreatif', "logo" => 'logo-67b406e197913faadc8f1d4790dbf22a.png', 'deskripsi' => '<p class="MsoNormal" style="text-align:justify;text-indent:.5in"><i><span style="font-size:12.0pt;line-height:
 115%;font-family:&quot;Times New Roman&quot;,serif">Kidspreneurship</span></i><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">
 merupakan event tahunan Sekolah Harapan Bangsa Balikpapan. <i>Kidsprenurship</i> sendiri lahir karena keprihatinan sekolah akan
 rendahnya angka wiraswasta di Indonesia di tahun 2013. Untuk itu Sekolah
