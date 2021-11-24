@@ -284,38 +284,39 @@ class ExpoController extends Controller
 
     public function virtualexpo()
     {
-        if (Auth::user()->role == 'admin') {
-            $jenjang = 'smp';
-            $kategori = 'kriya';
-            switch ($jenjang) {
-                case 'smp':
-                    $cjenjang = 'SMP/MTS';
-                    break;
-                case 'sma':
-                    $cjenjang = 'SMA/SMK/MAN';
-                    break;
-            }
-            switch ($kategori) {
-                case 'kriya':
-                    $ckategori = 'Kriya';
-                    break;
-                case 'fashion':
-                    $ckategori = 'Fashion';
-                    break;
-                case 'food-and-beverage':
-                    $ckategori = 'Food and beverage';
-                    break;
-                case 'aplikasi-dan-game':
-                    $ckategori = 'Aplikasi dan Game';
-                    break;
-                case 'desain-grafis':
-                    $ckategori = 'Desain Grafis';
-                    break;
-            }
+        if (Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin') {
+//            $jenjang = 'smp';
+//            $kategori = 'kriya';
+//            switch ($jenjang) {
+//                case 'smp':
+//                    $cjenjang = 'SMP/MTS';
+//                    break;
+//                case 'sma':
+//                    $cjenjang = 'SMA/SMK/MAN';
+//                    break;
+//            }
+//            switch ($kategori) {
+//                case 'kriya':
+//                    $ckategori = 'Kriya';
+//                    break;
+//                case 'fashion':
+//                    $ckategori = 'Fashion';
+//                    break;
+//                case 'food-and-beverage':
+//                    $ckategori = 'Food and beverage';
+//                    break;
+//                case 'aplikasi-dan-game':
+//                    $ckategori = 'Aplikasi dan Game';
+//                    break;
+//                case 'desain-grafis':
+//                    $ckategori = 'Desain Grafis';
+//                    break;
+//            }
             $now = \Carbon\Carbon::now();
-            $event = Event::where('status', 1)->latest()->first();
-            $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-            return view('expo.simulasi.expo-list', compact('event', 'karyas', 'jenjang', 'kategori', 'now'));
+            $event = Event::latest()->first();
+            $karyas = User::where('event_id', $event->id)->get();
+//            dd($karyas);
+            return view('expo.simulasi.expo-list', compact('event', 'karyas', 'now'));
         } else {
             abort(404);
         }

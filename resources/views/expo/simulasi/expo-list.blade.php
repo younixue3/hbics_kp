@@ -1,5 +1,6 @@
 @extends('layouts.layout-simulasi')
 @section('content')
+{{--    {{dd($karyas)}}--}}
 <div class="container-fluid">
     {{-- <a class="logo logo--stuck" href="{{url('beranda')}}">
         <img src="{{asset('images/logo.png')}}"/>
@@ -7,31 +8,32 @@
     <div class="row frame frame2" style="min-height:100vh;">
         <div class="container">
             <div class="row">
-                @if ($event->expo)
+{{--                {{dd($event->expo)}}--}}
+                @if ($event)
                     <div class="col-md-12">
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="drop-t">
-                                <b>{{strToUpper($jenjang)}}</b>
+{{--                                <b>{{strToUpper($jenjang)}}</b>--}}
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="drop-c" class="drop drop--hide">
-                                <a href="{{url('virtualexpo/smp/'.$kategori)}}" class="drop-link">SMP/MADRASAH</a>
-                                <a href="{{url('virtualexpo/sma/'.$kategori)}}" class="drop-link">SMA/SMK/MAN</a>
+{{--                                <a href="{{url('virtualexpo/smp/'.$kategori)}}" class="drop-link">SMP/MADRASAH</a>--}}
+{{--                                <a href="{{url('virtualexpo/sma/'.$kategori)}}" class="drop-link">SMA/SMK/MAN</a>--}}
                             </div>
                         </span>
                         <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="dropp-t">
-                                <b>{{strToUpper(str_replace('-', ' ', $kategori))}}</b>
+{{--                                <b>{{strToUpper(str_replace('-', ' ', $kategori))}}</b>--}}
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
-                                <a href="{{url('virtualexpo/'.$jenjang.'/desain-grafis')}}" class="drop-link">Desain Grafis</a>
-                                {{-- @if ($jenjang == 'smp') --}}
-                                <a href="{{url('virtualexpo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>
-                                {{-- @endif --}}
-                                <a href="{{url('virtualexpo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & beverage</a>
-                                <a href="{{url('virtualexpo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>
-                                <a href="{{url('virtualexpo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>
+{{--                                <a href="{{url('virtualexpo/'.$jenjang.'/desain-grafis')}}" class="drop-link">Desain Grafis</a>--}}
+{{--                                --}}{{-- @if ($jenjang == 'smp') --}}
+{{--                                <a href="{{url('virtualexpo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>--}}
+{{--                                --}}{{-- @endif --}}
+{{--                                <a href="{{url('virtualexpo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & beverage</a>--}}
+{{--                                <a href="{{url('virtualexpo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>--}}
+{{--                                <a href="{{url('virtualexpo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>--}}
                             </div>
                         </span>
                         <br/>
@@ -55,19 +57,19 @@
                                 @forelse ($karyas as $karya)
                                     <div class="list">
                                         <div class="list-imageframe">
-                                            @if ($karya->fotos->count() > 0)
-                                                <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">
-                                            @else
-                                                <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
-                                            @endif
+{{--                                            @if ($karya->fotos->count() > 0)--}}
+{{--                                                <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">--}}
+{{--                                            @else--}}
+{{--                                                <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">--}}
+{{--                                            @endif--}}
                                         </div>
                                         <div class="list-content">
-                                            <a style="margin-bottom: 0px;" href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>
-                                            <p class="list-keterangan">{{$karya->deskripsi}}</p>
-                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>
-                                            <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>
-                                            <br>
-                                            <a href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>
+{{--                                            <a style="margin-bottom: 0px;" href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>--}}
+{{--                                            <p class="list-keterangan">{{$karya->deskripsi}}</p>--}}
+{{--                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>--}}
+{{--                                            <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>--}}
+{{--                                            <br>--}}
+{{--                                            <a href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>--}}
                                         </div>
                                     </div>
                                 @empty
@@ -75,7 +77,7 @@
                                 @endforelse
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 @else
                     <div class="col-md-12 text-center">
                         <div class="news-info wow fadeInUp" style="padding: 20px 30px">
@@ -92,7 +94,7 @@
 </div>
 @endsection
 @section('script')
-<script>    
+<script>
     $('#drop-t').on('click', function(){
         $('#drop-c').toggleClass('drop--hide');
         $('#dropp-c').addClass('drop--hide');
