@@ -26,7 +26,7 @@ Route::post('/daftar/anggota', 'AnggotaKelompokController@index')->name('daftar/
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
 Auth::routes();
-Route::middleware(['auth', 'admin', 'superadmin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('profils', 'HomeController@profil');
     Route::patch('profils/update', 'HomeController@profilUpdate');
