@@ -54,7 +54,7 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'visitor' => \App\Http\Middleware\CekVisitor::class,
         'admin' => \App\Http\Middleware\CekAdmin::class,
-        'superadmin' => \App\Http\Middleware\Superadmin::class,
+        'superadmin' => \App\Http\Middleware\SuperAdmin::class,
         'peserta' => \App\Http\Middleware\CekPeserta::class,
         'pembayaran' => \App\Http\Middleware\Pembayaran::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
