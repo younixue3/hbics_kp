@@ -29,7 +29,8 @@
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
                         @if ($user->foto_profile != null)
-                            <img src="{{asset('Upload/foto_profil/'.$user->foto_profile)}}" class="apaitu-profilpict" alt="" style="object-fit: cover;">
+                            <img src="{{asset('Upload/foto_profil/'.$user->foto_profile)}}" class="apaitu-profilpict"
+                                 alt="" style="object-fit: cover;">
                         @else
                             <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                         @endif
@@ -196,16 +197,19 @@
                                 <div class="list">
                                     <div class="list-imageframe">
                                         @if ($value->foto->count() > 0)
-                                            <img src="{{url('Upload/karyafotos/'.$value->foto->first()->foto)}}" alt="" class="list-image">
+                                            <img src="{{url('Upload/karyafotos/'.$value->foto->first()->foto)}}" alt=""
+                                                 class="list-image">
                                         @else
                                             <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
                                         @endif
                                     </div>
                                     <div class="list-content">
-                                        <a style="margin-bottom: 0px;" href="{{route('detail-karya', $value->id)}}" class="list-title">{{$value->nama}}</a>
+                                        <a style="margin-bottom: 0px;" href="{{route('detail-karya', $value->id)}}"
+                                           class="list-title">{{$value->nama}}</a>
                                         <p class="list-keterangan">{{$value->deskripsi}}</p>
                                         <br>
-                                        <a href="{{route('detail-karya', $value->id)}}" class="list-button">Lihat selengkapnya</a>
+                                        <a href="{{route('detail-karya', $value->id)}}" class="list-button">Lihat
+                                            selengkapnya</a>
                                     </div>
                                 </div>
                             @empty
