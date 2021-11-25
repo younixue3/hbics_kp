@@ -454,17 +454,17 @@ class ExpoController extends Controller
 
     public function show($id)
     {
-        $user = Auth::user();
-        if ($user->role == 'admin' || $user->role == 'pengunjung') {
+        $auth = Auth::user();
+        if ($auth->role == 'admin' || $auth->role == 'pengunjung') {
             abort(404);
         }
         $event = Event::where('status', 1)->latest()->first();
         $karya = Karya::find($id);
         $karyas = Karya::get();
-//        dd($karya);
+        $user = User::find($karya->user_id);
         $foto_produk = KaryaFoto::where('karya_id', $id)->latest()->get();
         $kategori_lomba = KategoriLomba::get();
-        $data = compact('user', 'event', 'karya', 'kategori_lomba', 'foto_produk', 'karyas');
+        $data = compact('auth', 'user', 'event', 'karya', 'kategori_lomba', 'foto_produk', 'karyas');
         return view('expo.simulasi.expo-detail', $data);
     }
 }
