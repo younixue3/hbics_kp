@@ -7,7 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\AnggotaKelompok as AnggotaKelompok;
 
-class User extends Authenticatable
+use Illuminate\Database\Eloquent\Model;
+use App\Karya;
+
+class   User extends Authenticatable
 {
     use Notifiable;
 
@@ -37,14 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function karya()
-    {
-        return $this->hasOne('App\Karya');
-    }
-    public function komentar()
-    {
-        return $this->hasOne('App\Komentar');
-    }
+//    public function karya()
+//    {
+//        return $this->belongsTo(Karya::class);
+//    }
+//    public function komentar()
+//    {
+//        return $this->hasOne('App\Komentar');
+//    }
 //    public function anggota()
 //    {
 //        return $this->hasMany(AnggotaKelompok);

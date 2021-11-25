@@ -54,22 +54,22 @@
                         <br><br>
                         <div class="row">
                             <div class="col-md-12">
-                                @forelse ($karyas as $karya)
+{{--                                {{dd($karyas->first())}}--}}
+                                @forelse ($karya as $key => $value)
                                     <div class="list">
                                         <div class="list-imageframe">
-{{--                                            @if ($karya->fotos->count() > 0)--}}
-{{--                                                <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">--}}
-{{--                                            @else--}}
-{{--                                                <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">--}}
-{{--                                            @endif--}}
+{{--                                            {{dd($value)}}--}}
+                                            @if ($value->foto->count() > 0)
+                                                <img src="{{url('Upload/karyafotos/'.$value->foto->first()->foto)}}" alt="" class="list-image">
+                                            @else
+                                                <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
+                                            @endif
                                         </div>
                                         <div class="list-content">
-{{--                                            <a style="margin-bottom: 0px;" href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>--}}
-{{--                                            <p class="list-keterangan">{{$karya->deskripsi}}</p>--}}
-{{--                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>--}}
-{{--                                            <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>--}}
-{{--                                            <br>--}}
-{{--                                            <a href="{{url('virtualexpo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>--}}
+                                            <a style="margin-bottom: 0px;" href="{{route('detail-karya', $value->id)}}" class="list-title">{{$value->nama}}</a>
+                                            <p class="list-keterangan">{{$value->deskripsi}}</p>
+                                            <br>
+                                            <a href="{{url('virtualexpo/'.$value->id.'/'.str_replace(' ', '-', $value->nama))}}" class="list-button">Lihat selengkapnya</a>
                                         </div>
                                     </div>
                                 @empty

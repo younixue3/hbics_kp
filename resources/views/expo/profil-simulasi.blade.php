@@ -18,7 +18,6 @@
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    : {{strToUpper($karya->jenjang)}},
                                     Kategori: {{$kategori_lomba->where('id', $karya->kategori)->first()->kategori}}
                                 </p>
                                 <br>

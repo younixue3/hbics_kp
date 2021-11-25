@@ -19,10 +19,8 @@ class CreateKomentarsTable extends Migration
             $table->string('liked');
             $table->string('status');
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('karya_id');
-            $table->foreign('karya_id')->references('id')->on('karyas');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('user_id');
+            $table->bigInteger('karya_id');
         });
     }
 

@@ -17,6 +17,7 @@ class CreateKaryasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama')->nullable();
             $table->bigInteger('user_id')->nullable();
+            $table->bigInteger('event_id')->nullable();
             $table->unsignedBigInteger('kategori')->nullable();
             $table->text('foto_poster')->nullable();
             $table->text('deskripsi')->nullable();

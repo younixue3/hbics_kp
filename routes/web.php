@@ -93,8 +93,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::post('fotos/{galeri_tahun}', 'GaleriController@fotoStore');
     // EXTRAS
     Route::get('virtualexpo', 'ExpoController@virtualexpo');
-    Route::get('virtualexpo/{jenjang}/{kategori}', 'ExpoController@virtualexpoJenjangKategori');
-    Route::get('virtualexpo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'ExpoController@virtualexpoDetailProduct');
+    Route::get('virtualexpo/{id}', 'ExpoController@show')->name('detail-karya');
     // VISITORS
     Route::get('visitors', 'PesertaController@visitor')->name('visitor');
     Route::get('pengunjung/{id}', 'PesertaController@show_visitor')->name('show_visitor');
