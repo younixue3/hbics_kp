@@ -1,8 +1,8 @@
 @extends('layouts.layout-landing')
 @section('content')
-<a class="logo logo--stuck" href="{{url('/')}}">
-    <img src="{{asset('images/logo.png')}}"/>
-</a>
+    <a class="logo logo--stuck" href="{{url('/')}}">
+        <img src="{{asset('images/LOGO KP -02.png')}}"/>
+    </a>
 <div class="container-fluid">
     <div class="row frame frame2">
         <img src="{{asset('images/gif/11.gif')}}" class="circle circle--bottom-left" alt="">
@@ -35,7 +35,7 @@
                 </div>
                 @empty
                     Data kosong
-                @endforelse       
+                @endforelse
             </div>
         </div>
     </div>

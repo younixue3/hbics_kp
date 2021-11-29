@@ -1,7 +1,7 @@
 @extends('layouts.layout-landing')
 @section('content')
-<a class="logo logo--stuck" id="logo" href="{{url('/')}}">
-    <img src="{{asset('images/logo.png')}}"/>
+<a class="logo logo--stuck" href="{{url('/')}}">
+    <img src="{{asset('images/LOGO KP -02.png')}}"/>
 </a>
 <div class="container-fluid">
     <div class="row frame frame2">

@@ -1,8 +1,8 @@
 @extends('layouts.layout-landing')
 @section('content')
-<a class="logo logo--stuck" href="{{url('/')}}">
-    <img src="{{asset('images/logo.png')}}"/>
-</a>
+    <a class="logo logo--stuck" href="{{url('/')}}">
+        <img src="{{asset('images/LOGO KP -02.png')}}"/>
+    </a>
 <div class="container-fluid">
     <div class="row frame frame2">
         <img src="{{asset('images/gif/11.gif')}}" class="circle circle--bottom-left" alt="">
@@ -36,22 +36,22 @@
                         <a href="mailto:?Subject={{$data->judul}}&amp;Body={{$data->judul}} https://simplesharebuttons.com">
                             <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
                         </a>
-                     
+
                         <!-- Facebook -->
                         <a href="http://www.facebook.com/sharer.php?u=https://simplesharebuttons.com" target="_blank">
                             <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
                         </a>
-                        
+
                         <!-- Google+ -->
                         <a href="https://plus.google.com/share?url=https://simplesharebuttons.com" target="_blank">
                             <img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" />
                         </a>
-                        
+
                         <!-- LinkedIn -->
                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://simplesharebuttons.com" target="_blank">
                             <img src="https://simplesharebuttons.com/images/somacro/linkedin.png" alt="LinkedIn" />
                         </a>
-                        
+
                         <!-- Twitter -->
                         <a href="https://twitter.com/share?url=https://simplesharebuttons.com&amp;text=Simple%20Share%20Buttons&amp;hashtags=simplesharebuttons" target="_blank">
                             <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />

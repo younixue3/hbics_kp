@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <a class="logo logo--stuck" href="{{url('/')}}">
-        <img src="{{asset('images/logo.png')}}"/>
+        <img src="{{asset('images/LOGO KP -02.png')}}"/>
     </a>
     <div class="row frame frame2">
         <img src="{{asset('images/gif/2.gif')}}" class="arrow2 arrow2--top-right wow fadeInUp" data-wow-delay="2s" alt="">
