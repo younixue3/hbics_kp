@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('images/logo.png')}}">
+    <link rel="icon" href="{{asset('images/LOGO KP -02.png')}}">
     <title>KIDSPRENEURSHIP - Virtual Expo</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -72,7 +72,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
         <div class="container">
             <a class="navbar-brand" id="navbrand" href="{{url('beranda')}}">
-                <img src="{{asset('images/logo.png')}}"/>
+                <img src="{{asset('images/LOGO KP -02.png')}}"/>
                 <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,7 +146,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2021.</p>
+                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2K22.</p>
                     <p class="footer-text wow fadeInUp">
                         <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo - Indonesia
                     </p>

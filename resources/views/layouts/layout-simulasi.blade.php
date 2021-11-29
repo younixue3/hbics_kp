@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('images/logo.png')}}">
+    <link rel="icon" href="{{asset('images/LOGO KP -02.png')}}">
     <title>KIDSPRENEURSHIP - Simulasi Virtual Expo</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -55,7 +55,7 @@
             color: #ff6b3d;
             background-color: #ff7d555b;
         }
-        
+
     </style>
 </head>
 <body class="light">
@@ -110,7 +110,7 @@
                 <div class="sponsor-image-frame">
                     <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
-            @empty                
+            @empty
             @endforelse
         </div>
     </div>
@@ -124,7 +124,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2021.</p>
+                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2K22.</p>
                     <p class="footer-text wow fadeInUp">
                         <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo - Indonesia
                     </p>
@@ -185,7 +185,7 @@
             }
         }
     })
-    $(window).scroll(function() {    
+    $(window).scroll(function() {
     var scroll = $(window).scrollTop();
         if (scroll >= 500) {
             $(".navbarnya").addClass("fixed-top");
@@ -197,7 +197,7 @@
             $(".navbarnya").removeClass("navwhite");
             $("#navbreaker").removeClass("navbreaker--show");
         }
-    }); 
+    });
 </script>
 </body>
 </html>

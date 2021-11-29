@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('images/logo.png')}}">
+    <link rel="icon" href="{{asset('images/LOGO KP -02.png')}}">
     <title>KIDSPRENEURSHIP - Login</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">

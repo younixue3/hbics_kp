@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('images/logo.png')}}">
+    <link rel="icon" href="{{asset('images/LOGO KP -02.png')}}">
     <title>KIDSPRENEURSHIP</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -138,7 +138,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="footer-title wow fadeInUp" data-wow-delay="1s"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2021.</p>
+                    <p class="footer-title wow fadeInUp" data-wow-delay="1s"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2K22.</p>
                     <p class="footer-text wow fadeInUp" data-wow-delay="1s">
                         <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo - Indonesia
                     </p>
