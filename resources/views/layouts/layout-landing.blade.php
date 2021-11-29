@@ -36,7 +36,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
         <div class="container">
             <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('beranda')}}">
-                <img src="{{asset('images/logo.png')}}"/>
+                <img src="{{asset('images/LOGO KP -02.png')}}"/>
                 <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,7 +124,7 @@
                 <div class="sponsor-image-frame wow fadeInUp" data-wow-delay="1.3s">
                     <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
                 </div>
-            @empty                
+            @empty
             @endforelse
         </div>
     </div>
@@ -199,7 +199,7 @@
             }
         }
     })
-    $(window).scroll(function() {    
+    $(window).scroll(function() {
     var scroll = $(window).scrollTop();
         if (scroll >= 500) {
             $(".navbarnya").addClass("fixed-top");
@@ -213,7 +213,7 @@
             $(".navbarnya").removeClass("navwhite");
             $("#navbreaker").removeClass("navbreaker--show");
         }
-    }); 
+    });
 </script>
 </body>
 </html>

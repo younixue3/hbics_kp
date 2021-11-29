@@ -17,7 +17,7 @@
                     <div class="col-md-5">
                         <div class="text">
                             <p class="text-bg wow fadeInUp"><i class="icofont-light-bulb"></i> Kidspreneurship</p>
-                            <p class="text-sm wow fadeInUp">Festival EPIK 2K21 “Enterpreneur Pelajar Indonesia Kreatif”
+                            <p class="text-sm wow fadeInUp">Festival EPIK 2K22 “Entrepreneur Pelajar Indonesia Kreatif”
                                 <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
                             <div>
                                 <div class="radiobtn wow fadeInUp">
