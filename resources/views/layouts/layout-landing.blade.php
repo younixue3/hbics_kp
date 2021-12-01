@@ -86,6 +86,10 @@
                             @csrf
                         </form>
                     </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav">

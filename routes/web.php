@@ -18,7 +18,7 @@ Route::get('/logout', function() {
     Auth::logout();
     return redirect('login');
 });
-Route::get('/login', 'LoginController@index');
+Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/daftar', 'AuthLocal\RegisterController@index');
 Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
 Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
@@ -27,7 +27,7 @@ Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
 // MENU NON ADMIN
 // LANDING
-Route::get('', 'LandingController@beranda');
+Route::get('', 'LandingController@beranda')->name('beranda');
 Route::get('tentang-kami', 'LandingController@tentangKami');
 Route::get('timeline', 'LandingController@timeline');
 Route::get('kategori', 'LandingController@kategori');
