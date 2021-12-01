@@ -79,25 +79,12 @@
                     <li class="nav-item {{Request::is('post') || Request::is('post/*/*') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('post')}}">Berita</a>
                     </li>
-                    @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')
+                    @if (Auth::user() != null)
                     <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                    </li>
-                    @else
-                    <li class="nav-item dropdown {{Request::is('profil') ? 'active' : ''}}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Profil
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
                     </li>
                     @endif
                 </ul>

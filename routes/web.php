@@ -18,13 +18,30 @@ Route::get('/logout', function() {
     Auth::logout();
     return redirect('login');
 });
-Route::get('/', 'LoginController@index');
+Route::get('/login', 'LoginController@index');
 Route::get('/daftar', 'AuthLocal\RegisterController@index');
 Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
 Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
 Route::post('/daftar/anggota', 'AnggotaKelompokController@index')->name('daftar/anggota');
 Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
+// MENU NON ADMIN
+// LANDING
+Route::get('', 'LandingController@beranda');
+Route::get('tentang-kami', 'LandingController@tentangKami');
+Route::get('timeline', 'LandingController@timeline');
+Route::get('kategori', 'LandingController@kategori');
+Route::get('juri', 'LandingController@juri');
+Route::get('galeri', 'LandingController@galeri');
+Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
+Route::get('post', 'LandingController@post');
+Route::get('post/{id}/{slug}', 'LandingController@postDetail');
+// Route::post('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
+Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
+Route::get('expo/likes/{id}', 'LandingController@expoLikes');
+Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
+Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
+// EXPO
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
@@ -109,23 +126,6 @@ Route::middleware(['auth', 'admin'])->group(function(){
         Route::get('panitia/change_role/{id}', 'DataPanitiaController@change_role_panitia')->name('change_role_panitia');
     });
 });
-    // MENU NON ADMIN
-    // LANDING
-    Route::get('beranda', 'LandingController@beranda');
-    Route::get('tentang-kami', 'LandingController@tentangKami');
-    Route::get('timeline', 'LandingController@timeline');
-    Route::get('kategori', 'LandingController@kategori');
-    Route::get('juri', 'LandingController@juri');
-    Route::get('galeri', 'LandingController@galeri');
-    Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
-    Route::get('post', 'LandingController@post');
-    Route::get('post/{id}/{slug}', 'LandingController@postDetail');
-    // Route::post('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
-    Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
-    Route::get('expo/likes/{id}', 'LandingController@expoLikes');
-    Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
-    Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
-    // EXPO
 Route::get('pembayaran', 'ExpoController@pembayaran')->name('bukti_pembayaran');
 Route::put('pembayaran/post', 'ExpoController@postPembayaran')->name('post_pembayaran');
 Route::put('pembayaran/tahap_validasi', 'ExpoController@tahap_validasi')->name('tahap_validasi');
