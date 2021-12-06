@@ -35,9 +35,9 @@
                         <p class="apaitu-text wow fadeInUp" data-wow-delay="1s">
                             <b>Kidspreneurship</b> kembali hadir di tahun yang ke-8 dengan konsep dan
                             semangat yang baru. Berbeda dengan tahun-tahun sebelumnya, di
-                            tahun 2021 ini seluruh rangakain event Kidspreneurship akan
+                            tahun 2022 ini seluruh rangakain event Kidspreneurship akan
                             diselenggarakan secara daring. Dengan mengusung tema <b>“FESTIVAL
-                                EPIK 2K21 (Entrepreneur Pelajar Indonesia Kreatif)”</b>, Kidspreneurship
+                                EPIK 2K22 (Entrepreneur Pelajar Indonesia Kreatif)”</b>, Kidspreneurship
                             menggaet para Sobat Preneur Muda khususnya di tingkat SMP/MTS,
                             SMA/SMK/MAN se-Indonesia untuk berkompetisi dan menunjukkan
                             kreativitas mereka dalam menyusun konsep bisnis terbaik.
