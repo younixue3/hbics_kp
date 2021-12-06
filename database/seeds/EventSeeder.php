@@ -43,7 +43,7 @@ yang terstruktur sejak dini. <i>Business Model Canvas</i> merupakan <i>tools</i>
 yang dapat digunakan peserta dalam proses perencanaan proposal bisnis pada
 kompetisi <i>Kidspreneurship</i>.</span></p><p class="MsoNormal" style="text-align:justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-indent: 0.5in; font-size: 12pt; line-height: 115%; font-family: &quot;Times New Roman&quot;, serif;">Berkat
 dukungan masyarakat dan pemerintah daerah, event <i>Kidspreneurship</i>
-kembali hadir di tahun 2021. Di tahun penyelenggaraan yang ke-8, <i>Kidspreneurship</i> hadir dengan tema <b>“FESTIVAL EPIK </b></span><b style="text-indent: 0.5in; font-size: 1rem;"><span lang="IN" style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
+kembali hadir di tahun 2021. Di tahun penyelenggaraan yang ke-9, <i>Kidspreneurship</i> hadir dengan tema <b>“FESTIVAL EPIK </b></span><b style="text-indent: 0.5in; font-size: 1rem;"><span lang="IN" style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
 mso-ansi-language:IN">2K21 </span></b><b style="text-indent: 0.5in; font-size: 1rem;"><span style="font-size:12.0pt;
 line-height:115%;font-family:&quot;Times New Roman&quot;,serif">(Entrepreneur Pelajar
 Indonesia Kreatif)”, </span></b><span style="text-indent: 0.5in; font-size: 12pt; line-height: 115%; font-family: &quot;Times New Roman&quot;, serif;">yang rangkaian eventnya berlangsung sejak

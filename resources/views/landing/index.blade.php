@@ -33,7 +33,7 @@
                             APA ITU KIDSPRENEURSHIP ?
                         </p>
                         <p class="apaitu-text wow fadeInUp" data-wow-delay="1s">
-                            <b>Kidspreneurship</b> kembali hadir di tahun yang ke-8 dengan konsep dan
+                            <b>Kidspreneurship</b> kembali hadir di tahun yang ke-9 dengan konsep dan
                             semangat yang baru. Berbeda dengan tahun-tahun sebelumnya, di
                             tahun 2022 ini seluruh rangakain event Kidspreneurship akan
                             diselenggarakan secara daring. Dengan mengusung tema <b>“FESTIVAL
