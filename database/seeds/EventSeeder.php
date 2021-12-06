@@ -44,7 +44,7 @@ yang dapat digunakan peserta dalam proses perencanaan proposal bisnis pada
 kompetisi <i>Kidspreneurship</i>.</span></p><p class="MsoNormal" style="text-align:justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="text-indent: 0.5in; font-size: 12pt; line-height: 115%; font-family: &quot;Times New Roman&quot;, serif;">Berkat
 dukungan masyarakat dan pemerintah daerah, event <i>Kidspreneurship</i>
 kembali hadir di tahun 2022. Di tahun penyelenggaraan yang ke-9, <i>Kidspreneurship</i> hadir dengan tema <b>“FESTIVAL EPIK </b></span><b style="text-indent: 0.5in; font-size: 1rem;"><span lang="IN" style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
-mso-ansi-language:IN">2K21 </span></b><b style="text-indent: 0.5in; font-size: 1rem;"><span style="font-size:12.0pt;
+mso-ansi-language:IN">2K22 </span></b><b style="text-indent: 0.5in; font-size: 1rem;"><span style="font-size:12.0pt;
 line-height:115%;font-family:&quot;Times New Roman&quot;,serif">(Entrepreneur Pelajar
 Indonesia Kreatif)”, </span></b><span style="text-indent: 0.5in; font-size: 12pt; line-height: 115%; font-family: &quot;Times New Roman&quot;, serif;">yang rangkaian eventnya berlangsung sejak
 tanggal<b> 15 November 2021 </b>hingga<b> 11 Mei 2022.</b> Berbeda dari
@@ -86,14 +86,14 @@ Beverage<o:p></o:p></span></i></p>
 
 <p class="MsoNormal" style="text-align:justify;text-indent:.5in">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
 mso-bidi-font-weight:bold">Event Kidspreneurship <b>FESTIVAL EPIK </b></span><b><span lang="IN" style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
-mso-ansi-language:IN">2K21</span></b><b><span style="font-size:12.0pt;
+mso-ansi-language:IN">2K22</span></b><b><span style="font-size:12.0pt;
 line-height:115%;font-family:&quot;Times New Roman&quot;,serif"> “(Entrepreneur Pelajar
 Indonesia Kreatif)”</span></b><b><span style="font-size:12.0pt;line-height:
 115%;font-family:&quot;Times New Roman&quot;,serif;mso-ansi-language:IN"> </span></b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
 mso-bidi-font-weight:bold">juga menghadirkan sesuatu yang baru, yaitu dengan
 membuat semua proses penyelenggaraan event secara daring. Selain itu di <b>“FESTIVAL
 EPIK </b></span><b><span lang="IN" style="font-size:12.0pt;line-height:115%;
-font-family:&quot;Times New Roman&quot;,serif;mso-ansi-language:IN">2K21</span></b><b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">”
+font-family:&quot;Times New Roman&quot;,serif;mso-ansi-language:IN">2K22</span></b><b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">”
 </span></b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
 mso-bidi-font-weight:bold">akan diselenggarakan sesi </span><b><span style="font-size:12.0pt;line-height:
 115%;font-family:&quot;Times New Roman&quot;,serif">Virtual Expo </span></b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">untuk
@@ -101,7 +101,7 @@ menampilkan hasil karya dari para peserta yang nantinya dapat dengan mudah
 diakses oleh para pengunjung. Pada sesi <b>Virtual
 Expo</b>, pengunjung dapat ikut berpartisipasi dengan memberikan dukungan
 mereka terhadap karya-karya terbaik peserta. <i>Kidspreneurship</i> <b>“FESTIVAL EPIK </b></span><b><span lang="IN" style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
-mso-ansi-language:IN">2K21</span></b><b><span style="font-size:12.0pt;
+mso-ansi-language:IN">2K22</span></b><b><span style="font-size:12.0pt;
 line-height:115%;font-family:&quot;Times New Roman&quot;,serif">” </span></b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">diharapkan
 dapat menjadi wadah bagi para pelajar Indonesia untuk mengembangkan kemampuan
 serta kecakapan dalam berinovasi menghasilkan kreasi wirausaha baru. <o:p></o:p></span></p>
@@ -110,7 +110,7 @@ serta kecakapan dalam berinovasi menghasilkan kreasi wirausaha baru. <o:p></o:p>
 </span></i><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;
 mso-bidi-font-weight:bold">Festival EPIK </span><span lang="IN" style="font-size:
 12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif;mso-ansi-language:
-IN;mso-bidi-font-weight:bold">2K21</span><span lang="IN" style="font-size:12.0pt;
+IN;mso-bidi-font-weight:bold">2K22</span><span lang="IN" style="font-size:12.0pt;
 line-height:115%;font-family:&quot;Times New Roman&quot;,serif;mso-bidi-font-weight:bold">
 </span><b><span style="font-size:12.0pt;line-height:115%;font-family:&quot;Times New Roman&quot;,serif">“Indonesia
 Bisa, Berkarya Untuk Negeri”<o:p></o:p></span></b></p>', 'status' => 1, 'created_at' => today(), 'updated_at' => today()]
