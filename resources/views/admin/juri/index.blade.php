@@ -54,7 +54,7 @@
 						@php
 							$no = 1;
 						@endphp
-						@foreach($event->juris as $data)									
+						@foreach($juri as $data)
 							<tr>
 								<td>{{ $no++ }}</td>
 								<td><img style="width:50px;" class="img-responsive" src="{{asset('uploads/juris/'.$data->foto)}}" alt=""></td>
@@ -62,7 +62,7 @@
 									{{ $data->nama }}
 									<span style="font-size: 12px;opacity: 0.5;">
 										<br>
-										{{ $data->user->email }}
+										{{ $data->email }}
 									</span>
 								</td>
 								<td>
@@ -70,7 +70,7 @@
 								</td>
 								<td>{{strip_tags($data->quote)}}</td>
 								<td>
-									<a class="btn btn-sm btn-success" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/'.str_replace([' ', '.'], '-', $data->nama)) }}"><i class="fas fa-eye"></i></a>
+									<a class="btn btn-sm btn-success" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/show')}}"><i class="fas fa-eye"></i></a>
 									<a class="btn btn-sm btn-info" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/edit') }}"><i class="fas fa-edit"></i></a>
 									<a class="btn btn-sm btn-danger" href="{{ url('juris/'.$data->event_id.'/'.$data->id.'/delete') }}"><i class="fas fa-trash"></i></a>
 								</td>

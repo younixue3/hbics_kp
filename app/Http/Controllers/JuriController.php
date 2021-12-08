@@ -20,7 +20,8 @@ class JuriController extends Controller
     {
         //
         $event = Event::findOrFail($event_id);
-        return view('admin.juri.index', compact('event'));
+        $juri = Juri::where('event_id', $event_id)->get();
+        return view('admin.juri.index', compact('event', 'juri'));
     }
 
     /**
@@ -32,7 +33,7 @@ class JuriController extends Controller
     {
         //
         $event = Event::findOrFail($event_id);
-        return view('admin.juri.create', compact('event')); 
+        return view('admin.juri.create', compact('event'));
     }
 
     /**
@@ -49,8 +50,6 @@ class JuriController extends Controller
         $validatedData = $request->validate([
             'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
             'nama' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required',
             'url_profil' => 'required',
             'quote' => 'required',
             ]);
@@ -63,15 +62,9 @@ class JuriController extends Controller
         else{
             $input['foto'] = 'nopict.jpg';
         }
-        $newuser = new User();
-        $newuser->name = $input['nama'];
-        $newuser->role = 'juri';
-        $newuser->email = $input['email'];
-        $newuser->password = Hash::make($input['password']);
-        $newuser->save();
-        $input['user_id'] = $newuser->id;
         $input['event_id'] = $event->id;
         $data = Juri::create($input);
+//        dd($data);
         if($data)
         {
             return redirect('juris/'.$event->id)->with('success', 'Data berhasil diupload ke server');
@@ -127,45 +120,18 @@ class JuriController extends Controller
             'quote' => 'required',
             ]);
         $find = Juri::findOrFail($id);
-        $cekemail = User::where('email', $input['email'])->where('id', '!=' ,$find->user_id)->get();
-        if($cekemail->count() == 0)
-        {
-            if($input['password'] == '')
-            {
-                $input['password'] = $find->user->password;
-            }
-            else
-            {
-                $input['password'] = Hash::make($input['password']);
-            }
-            $user = User::findOrFail($find->user_id);
-            $user->password = $input['password'];
-            $user->email = $input['email'];
-            $user->save();
-            if($request->has('foto')){
-                $this->deletefoto($find->foto);
-                $foto = $input['foto'];
-                $fotoname = 'juri-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
-                $foto->move('uploads/juris', $fotoname);
-                $input['foto'] = $fotoname;        }
-            else{
-                $input['foto'] = $find->foto;
-            }
-            $find->update($input);
-            $find->save();
-            if($find)
-            {
-                return redirect('juris/'.$event_id)->with('success', 'Data berhasil diupdate di server');
-            }
-            else
-            {
-                return redirect('juris/'.$event_id)->with('fail', 'Data gagal diupdate di server');
-            }
+        if($request->has('foto')){
+            $this->deletefoto($find->foto);
+            $foto = $input['foto'];
+            $fotoname = 'juri-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
+            $foto->move('uploads/juris', $fotoname);
+            $input['foto'] = $fotoname;        }
+        else{
+            $input['foto'] = $find->foto;
         }
-        else
-        {
-            return redirect('juris/'.$event_id)->with('fail', 'Data gagal diupdate di server, email telah terdaftar di akun lainnya');
-        }
+        $find->update($input);
+        $find->save();
+        return redirect('juris/'.$event_id);
     }
 
     /**
@@ -176,15 +142,12 @@ class JuriController extends Controller
      */
     public function destroy($event_id, $id)
     {
-        //
         $juri = Juri::findOrFail($id);
-        $user = User::findOrFail($juri->user_id);
         if($juri->foto != '')
         {
             $this->deletefoto($juri->foto);
         }
         $juri->delete();
-        $user->delete();
         return redirect('juris/'.$event_id)->with('success', 'Data berhasil dihapus di server');
     }
     public function deletefoto($fotoname){

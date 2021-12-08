@@ -53,14 +53,6 @@
 							<input type="text" required placeholder="Masukkan Nama Event" class="form-control" name="nama" value="{{$data->nama}}">
 						</div>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="mail" required placeholder="Masukkan Email Juri" class="form-control" name="email" value="{{$data->user->email}}">
-						</div>
-						<div class="form-group">
-							<label>Password<span style="opacity:0.5; color:red;"> *isi hanya jika ingin mengganti password</span></label>
-							<input type="password" placeholder="{{$data->user->password}}" class="form-control" name="password">
-						</div>
-						<div class="form-group">
 							<label>Url Profil (Youtube)</label>
 							<textarea id="summernote" required placeholder="Tulis Isi Postingan" class="form-control" name="url_profil">{{$data->url_profil}}</textarea>
 						</div>

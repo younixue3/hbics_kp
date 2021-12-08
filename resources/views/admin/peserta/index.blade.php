@@ -161,7 +161,8 @@
 						@endforeach
 						</tbody>
 					</table>
-					{{$karyas->links()}}
+{{--                        {{dd($karyas)}}--}}
+					{{$karyas->links() }}
 				</div>
 			</div>
 		</div>

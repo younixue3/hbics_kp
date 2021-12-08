@@ -64,7 +64,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('juris/{event_id}/{id}/edit', 'JuriController@edit');
     Route::patch('juris/{event_id}/{id}', 'JuriController@update');
     Route::get('juris/{event_id}/{id}/delete', 'JuriController@destroy');
-    Route::get('juris/{event_id}/{id}/{slug}', 'JuriController@show');
+    Route::get('juris/{event_id}/{id}/show', 'JuriController@show');
     // SPONSOR
     Route::get('sponsors/{event_id}', 'SponsorController@index');
     Route::get('sponsors/{event_id}/create', 'SponsorController@create');

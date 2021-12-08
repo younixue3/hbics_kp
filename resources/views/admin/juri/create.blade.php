@@ -43,14 +43,6 @@
 							<input type="text" required placeholder="Masukkan Nama Juri" class="form-control" name="nama">
 						</div>
 						<div class="form-group">
-							<label>Email</label>
-							<input type="mail" required placeholder="Masukkan Email Juri" class="form-control" name="email">
-						</div>
-						<div class="form-group">
-							<label>Password</label>
-							<input type="password" required placeholder="Masukkan Password Juri" class="form-control" name="password">
-						</div>
-						<div class="form-group">
 							<label>Url Profil (Youtube)</label>
 							<input type="text" required placeholder="Masukkan Url Profil" class="form-control" name="url_profil">
 						</div>

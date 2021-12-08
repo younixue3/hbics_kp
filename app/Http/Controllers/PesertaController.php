@@ -59,7 +59,7 @@ class PesertaController extends Controller
     public function index($event_id)
     {
         $event = Event::findOrFail($event_id);
-        $karyas = User::where('role', 'peserta')->where('pembayaran', 'verified')->where('event_id', $event_id)->get();
+        $karyas = User::where('role', 'peserta')->where('pembayaran', 'verified')->where('event_id', $event_id)->paginate(10);
         $jumlah = $karyas->count();
         return view('admin.peserta.index', compact('event', 'karyas', 'jumlah'));
     }
