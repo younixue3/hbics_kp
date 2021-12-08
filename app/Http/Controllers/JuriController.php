@@ -115,7 +115,6 @@ class JuriController extends Controller
         $validatedData = $request->validate([
             'foto' => 'mimes:jpeg,bmp,png,jpg|max:2000',
             'nama' => 'required',
-            'email' => 'required',
             'url_profil' => 'required',
             'quote' => 'required',
             ]);
