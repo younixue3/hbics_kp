@@ -46,7 +46,7 @@ class LoginController extends Controller
         }
         else
         {
-            return 'beranda';
+            return '/';
         }
     }
     // public function redirectTo(){
