@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Juri;
 use Illuminate\Http\Request;
 use App\Event;
 use App\Karya;
@@ -215,8 +216,8 @@ class LandingController extends Controller
     }
     public function juri()
     {
-        $event = Event::where('status', 1)->latest()->first();
-        return view('landing.juri', compact('event'));
+        $juris = Juri::where('event_id', 1)->get();
+        return view('landing.juri', compact('juris'));
     }
     public function galeri()
     {

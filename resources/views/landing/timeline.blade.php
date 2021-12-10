@@ -28,7 +28,7 @@
                         </div>
                         <div class="timeline-content">
                             <p class="timeline-title">{{$timeline->nama}}</p>
-                            <p class="timeline-deadline">Tanggal Buka : {{$timeline->tanggal_mulai->format('d, M Y')}} - Tanggal Tutup : {{$timeline->tanggal_selesai->format('d, M Y')}}</p>
+                            <p class="timeline-deadline">Tanggal Buka : {{$timeline->tanggal_mulai->format('d M Y')}} - Tanggal Tutup : {{$timeline->tanggal_selesai->format('d M Y')}}</p>
                             <p class="timeline-text">{{$timeline->keterangan}}</p>
                         </div>
                     </div>

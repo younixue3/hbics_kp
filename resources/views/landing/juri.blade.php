@@ -17,7 +17,7 @@
         </div>
         <div class="container">
             <div class="row">
-                @forelse ($event->juris as $juri)
+                @forelse ($juris as $juri)
                 <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
                     <a class="juri" href="" data-toggle="modal" data-target="#juri-video{{$juri->id}}">
                         <div class="juri-image-frame">
@@ -26,7 +26,7 @@
                         <img src="{{asset('images/gif/7.gif')}}" class="juri-name-frame" alt="">
                         <p class="juri-name">{{$juri->nama}}</p>
                         <p class="juri-text text-center">
-                            {{$juri->quote}}
+                            {!! $juri->quote !!}
                         </p>
                     </a>
                 </div>
