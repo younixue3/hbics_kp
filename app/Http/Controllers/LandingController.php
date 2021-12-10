@@ -201,7 +201,7 @@ class LandingController extends Controller
     }
     public function tentangKami()
     {
-        $event = Event::where('status', 1)->latest()->first();
+        $event = Event::where('id', 1)->latest()->first();
         return view('landing.tentangkami', compact('event'));
     }
     public function timeline()

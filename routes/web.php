@@ -128,7 +128,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
 });
 Route::get('pembayaran', 'ExpoController@pembayaran')->name('bukti_pembayaran');
 Route::put('pembayaran/post', 'ExpoController@postPembayaran')->name('post_pembayaran');
-Route::put('pembayaran/tahap_validasi', 'ExpoController@tahap_validasi')->name('tahap_validasi');
+Route::get('pembayaran/tahap_validasi', 'ExpoController@tahap_validasi')->name('tahap_validasi');
 Route::middleware(['peserta', 'pembayaran'])->group(function(){
         Route::put('profil/update', 'ExpoController@update_profil_tim')->name('profil_update');
         Route::get('profil', 'ExpoController@profil');

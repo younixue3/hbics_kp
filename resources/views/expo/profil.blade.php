@@ -52,7 +52,6 @@
                         </span>,
                         Tentang Tim
                         <span class="alert alert-xs">
-{{--                            {{dd($user->desc == null)}}--}}
                             {!!$user->desc == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>'!!}
                         </span>,
                         Nama Produk

@@ -94,7 +94,7 @@ class ExpoController extends Controller
     public function profil()
     {
         $user = Auth::user();
-        $kategori_lomba = KategoriLomba::get();
+        $kategori_lomba = KategoriLomba::where('event_id', Auth::user()->event_id)->get();
         $karya = Karya::where('user_id', Auth::user()->id)->first();
         $data = compact('user', 'kategori_lomba', 'karya');
         return view('expo.profil', $data);

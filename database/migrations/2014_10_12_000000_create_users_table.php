@@ -17,7 +17,7 @@ class  CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->enum('role', ['superadmin', 'admin', 'peserta', 'juri'])->default('peserta');
-            $table->enum('jenjang', ['sd', 'smp', 'sma'])->nullable();
+            $table->enum('jenjang', ['tk', 'sd', 'smp', 'sma'])->nullable();
             $table->text('desc')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

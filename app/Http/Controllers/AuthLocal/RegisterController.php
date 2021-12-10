@@ -16,7 +16,6 @@ class RegisterController extends Controller
     {
         $provinsi = Provinsi::get();
         $acara = Event::get();
-//        dd($event);
         $data = compact('provinsi', 'acara');
         return view('auth.register', $data);
     }
@@ -29,7 +28,6 @@ class RegisterController extends Controller
 
     public function insert(Request $request)
     {
-//        return dd($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

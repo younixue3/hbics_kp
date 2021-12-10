@@ -67,6 +67,7 @@
                                     <div class="col-md-12">
                                         <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
                                             <option selected disabled>Pilih jenjang</option>
+                                            <option value="tk">TK</option>
                                             <option value="sd">SD</option>
                                             <option value="smp">SMP</option>
                                             <option value="sma">SMA</option>

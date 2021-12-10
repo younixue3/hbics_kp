@@ -18,6 +18,7 @@ class CreateKategoriLombaTable extends Migration
             $table->string('kategori');
             $table->text('photo');
             $table->text('desc');
+            $table->unsignedBigInteger('event_id')->nullable();
             $table->timestamps();
         });
     }
