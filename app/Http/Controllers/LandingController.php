@@ -10,6 +10,7 @@ use App\Post;
 use App\Komentar;
 use App\GaleriTahun;
 use App\KategoriLomba;
+use App\User;
 use Auth;
 
 class LandingController extends Controller
@@ -54,49 +55,15 @@ class LandingController extends Controller
     }
     public function expoJenjangKategori($jenjang, $kategori)
     {
-        if($jenjang == 'smp' || $jenjang == 'sma')
-        {
-            if($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-beverage' || $kategori == 'fashion' || $kategori == 'kriya')
-            {
-                switch ($jenjang) {
-                    case 'smp':
-                        $cjenjang = 'SMP/MTS';
-                        break;
-                    case 'sma':
-                        $cjenjang = 'SMA/SMK/MAN';
-                        break;
-                }
-                switch ($kategori) {
-                    case 'kriya':
-                        $ckategori = 'Kriya';
-                        break;
-                    case 'fashion':
-                        $ckategori = 'Fashion';
-                        break;
-                    case 'food-and-beverage':
-                        $ckategori = 'Food and beverage';
-                        break;
-                    case 'aplikasi-dan-game':
-                        $ckategori = 'Aplikasi dan Game';
-                        break;
-                    case 'desain-grafis':
-                        $ckategori = 'Desain Grafis';
-                        break;
-                }
-                $event = Event::where('status', 1)->latest()->first();
-                $now = \Carbon\Carbon::now();
-                $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-                return view('expo.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
-            }
-            else
-            {
-                abort(404);
-            }
-        }
-        else
-        {
-            abort(404);
-        }
+//        $event = Event::where('status', 1)->latest()->first();
+        $karya = User::whereExists(function ($query) {
+            $query->select(DB::raw())
+                ->from('karyas')
+                ->whereRaw('karyas.user_id = users.id');
+        })->latest()->first();
+        $now = \Carbon\Carbon::now();
+//        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
+        return view('expo.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
     }
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {

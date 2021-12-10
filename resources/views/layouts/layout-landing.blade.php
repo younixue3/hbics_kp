@@ -80,9 +80,16 @@
                         <a class="nav-link" href="{{url('post')}}">Berita</a>
                     </li>
                     @if (Auth::user() != null)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('profil')}}">Profil</a>
-                        </li>
+                        @if(Auth::user()->role == 'peserta' || Auth::user()->role == 'juri' )
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('profil')}}">Profil</a>
+                            </li>
+                        @elseif(Auth::user() == 'juri')
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('dashboard')}}">Dashboard</a>
+                            </li>
+                        @endif
                     <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

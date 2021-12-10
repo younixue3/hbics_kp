@@ -330,35 +330,14 @@ class ExpoController extends Controller
         if (Auth::user()->role == 'admin') {
             if ($jenjang == 'smp' || $jenjang == 'sma') {
                 if ($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-beverage' || $kategori == 'fashion' || $kategori == 'kriya') {
-                    switch ($jenjang) {
-                        case 'smp':
-                            $cjenjang = 'SMP/MTS';
-                            break;
-                        case 'sma':
-                            $cjenjang = 'SMA/SMK/MAN';
-                            break;
-                    }
-                    switch ($kategori) {
-                        case 'kriya':
-                            $ckategori = 'Kriya';
-                            break;
-                        case 'fashion':
-                            $ckategori = 'Fashion';
-                            break;
-                        case 'food-and-beverage':
-                            $ckategori = 'Food and beverage';
-                            break;
-                        case 'aplikasi-dan-game':
-                            $ckategori = 'Aplikasi dan Game';
-                            break;
-                        case 'desain-grafis':
-                            $ckategori = 'Desain Grafis';
-                            break;
-                    }
-                    $event = Event::where('status', 1)->latest()->first();
+                    $karya = User::whereExists(function ($query) {
+                        $query->select(Karya::raw(1))
+                            ->from('karyas')
+                            ->whereRaw('karyas.user_id = users.id');
+                    })->latest()->first();
                     $now = \Carbon\Carbon::now();
-                    $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-                    return view('expo.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
+//                    $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
+                    return view('expo.expo-list', compact('jenjang', 'kategori'));
                 } else {
                     abort(404);
                 }

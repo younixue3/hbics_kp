@@ -40,7 +40,7 @@ Route::get('post/{id}/{slug}', 'LandingController@postDetail');
 Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
 Route::get('expo/likes/{id}', 'LandingController@expoLikes');
 Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
-Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
+//Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
 // EXPO
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function(){

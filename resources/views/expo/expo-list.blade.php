@@ -75,7 +75,7 @@
                                 @endforelse
                             </div>
                         </div>
-                    </div>  
+                    </div>
                     @else
                     <div class="col-md-12 text-center">
                         <div class="news-info wow fadeInUp" style="padding: 20px 30px">
@@ -102,7 +102,7 @@
 </div>
 @endsection
 @section('script')
-<script>    
+<script>
     $('#drop-t').on('click', function(){
         $('#drop-c').toggleClass('drop--hide');
         $('#dropp-c').addClass('drop--hide');
