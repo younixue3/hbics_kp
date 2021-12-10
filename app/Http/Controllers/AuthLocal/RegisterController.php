@@ -15,7 +15,7 @@ class RegisterController extends Controller
     public function index()
     {
         $provinsi = Provinsi::get();
-        $acara = Event::get();
+        $acara = Event::where('status', 1)->get();
         $data = compact('provinsi', 'acara');
         return view('auth.register', $data);
     }
