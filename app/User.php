@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\AnggotaKelompok as AnggotaKelompok;
-
 use Illuminate\Database\Eloquent\Model;
 use App\Karya;
 
@@ -40,10 +39,10 @@ class   User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-//    public function karya()
-//    {
-//        return $this->belongsTo(Karya::class);
-//    }
+    public function karya()
+    {
+        return $this->hasOne('App\Karya', 'user_id', 'id');
+    }
 //    public function komentar()
 //    {
 //        return $this->hasOne('App\Komentar');

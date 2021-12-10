@@ -56,14 +56,13 @@ class LandingController extends Controller
     public function expoJenjangKategori($jenjang, $kategori)
     {
 //        $event = Event::where('status', 1)->latest()->first();
-        $karya = User::whereExists(function ($query) {
-            $query->select(DB::raw())
-                ->from('karyas')
-                ->whereRaw('karyas.user_id = users.id');
-        })->latest()->first();
+        $karya = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) {
+            $q->where('kategori', 1);
+        })->first();
+        dd($karya);
         $now = \Carbon\Carbon::now();
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-        return view('expo.expo-list', compact('jenjang', 'kategori', 'karyas', 'now', 'event'));
+        return view('expo.expo-list', compact('jenjang', 'kategori', 'now'));
     }
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
