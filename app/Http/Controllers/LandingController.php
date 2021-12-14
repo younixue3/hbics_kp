@@ -66,14 +66,18 @@ class LandingController extends Controller
     }
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
-//        dd('testing');
         $data = Karya::findOrFail($id);
-        $karyas = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
+        $karyas = User::where('jenjang', $jenjang)->where('id', '!=', $data->user_id)->whereHas('karya', function ($q) use ($kategori) {
             $q->where('kategori', $kategori);
         })->get();
-
-        $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
-        return view('expo.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike'));
+        if (Auth::user()) {
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike');
+        } else {
+            $statuslike = null;
+            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike');
+        }
+        return view('expo.expo-detail', $datas);
     }
     public function expoKomentar(Request $request, $id, $slug)
     {
