@@ -37,7 +37,7 @@
                         <div class="apaitu-mid">
                             <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
                                 <i class="icofont-people"></i> {{$data->nama_tim}}
-                            </p>   
+                            </p>
                             <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
                                 TENTANG KAMI
                             </p>
@@ -63,8 +63,9 @@
 </div>
 <div class="container-fluid">
     <div class="row frame">
-        @if ($data->fotos->count() != 0)
-            <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('uploads/karyafotos/'.$data->fotos->first()->foto)}}');background-size:cover;">
+{{--        {{dd($data)}}--}}
+        @if ($data->foto->count() != 0)
+            <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{url('Upload/karyafotos/'.$data->foto->first()->foto)}}');background-size:cover;">
         @else
             <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s" style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
         @endif
@@ -83,7 +84,7 @@
 <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
     <div class="row frame4 text-center" style="position: relative">
         <div class="row owl-carousel owl-theme" style="margin: 0px;">
-            @forelse ($data->fotos as $foto)
+            @forelse ($data->foto as $foto)
             <div class="item">
               <div class="slide">
                 <img src="{{url('uploads/karyafotos/'.$foto->foto)}}" class="slide-image" alt="">
@@ -194,14 +195,14 @@
             <div class="row">
                 <div class="col-md-12">
                     @if ($statuslike)
-                        <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i> <i class="icofont-like"></i> Batal Sukai Karya Ini</a>                        
+                        <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i> <i class="icofont-like"></i> Batal Sukai Karya Ini</a>
                         <div class="total wow fadeInUp">
-                            <p><i class="icofont-like"></i> Anda dan {{$data->likers->count()-1}} Lainnya menyukai karya ini</p>
+                            <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya menyukai karya ini</p>
                         </div>
                     @else
                         <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i class="icofont-like"></i> Sukai Karya Ini</a>
                         <div class="total wow fadeInUp">
-                            <p><i class="icofont-like"></i> {{$data->likers->count()}} Menyukai karya ini</p>
+                            <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
                         </div>
                     @endif
                     {{-- <div class="write wow fadeInUp">
@@ -235,20 +236,21 @@
                     </p>
                     @forelse ($karyas as $karya)
                         <div class="list">
+{{--                            {{dd($karya->karya->foto)}}--}}
                             <div class="list-imageframe">
-                                @if ($karya->fotos->count() > 0)
-                                    <img src="{{url('uploads/karyafotos/'.$karya->fotos->first()->foto)}}" alt="" class="list-image">
+                                @if ($karya->karya->foto->count() > 0)
+                                    <img src="{{url('uploads/karyafotos/'.$karya->karya->foto->first()->foto)}}" alt="" class="list-image">
                                 @else
                                     <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
                                 @endif
                             </div>
                             <div class="list-content">
-                                <a style="margin-bottom: 0px;" href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-title">{{$karya->nama}}</a>
-                                <p class="list-keterangan">{{$karya->deskripsi}}</p>
-                                <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->likers->count()}} orang</span>
-                                <span class="list-likers"><i class="icofont-comment"></i> {{$karya->komentars->count()}} Komentar</span>
+                                <a style="margin-bottom: 0px;" href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}" class="list-title">{{$karya->nama}}</a>
+                                <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
+                                <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->karya->likes->count()}} orang</span>
+                                <span class="list-likers"><i class="icofont-comment"></i> {{$karya->karya->komentars->count()}} Komentar</span>
                                 <br>
-                                <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->id.'/'.str_replace(' ', '-', $karya->nama))}}" class="list-button">Lihat selengkapnya</a>
+                                <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}" class="list-button">Lihat selengkapnya</a>
                             </div>
                         </div>
                     @empty
