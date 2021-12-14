@@ -20,6 +20,7 @@ class LandingController extends Controller
     {
 //        $this->middleware('auth');
     }
+
     public function beranda()
     {
         $event = Event::where('status', 1)->first();
@@ -29,6 +30,7 @@ class LandingController extends Controller
         // exit;
         return view('landing.index', compact('event', 'beritas', 'kategori'));
     }
+
     public function post()
     {
         $datas = Post::orderBy('created_at', 'desc')->paginate(5);
@@ -36,25 +38,25 @@ class LandingController extends Controller
         // exit;
         return view('landing.berita', compact('datas'));
     }
+
     public function postDetail($id)
     {
         $data = Post::findOrFail($id);
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         return view('landing.berita-detail', compact('data', 'beritas'));
     }
+
     public function expoJenjang($jenjang)
     {
-        if($jenjang == 'smp' || $jenjang == 'sma')
-        {
+        if ($jenjang == 'smp' || $jenjang == 'sma') {
             $kategori = KategoriLomba::where('event_id', 1)->get();
             $data = compact('kategori', 'jenjang');
             return view('landing.expo', $data);
-        }
-        else
-        {
+        } else {
             abort(404);
         }
     }
+
     public function expoJenjangKategori($jenjang, $kategori)
     {
         $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
@@ -64,6 +66,7 @@ class LandingController extends Controller
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
         return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event'));
     }
+
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
         $data = Karya::findOrFail($id);
@@ -79,100 +82,93 @@ class LandingController extends Controller
         }
         return view('expo.expo-detail', $datas);
     }
+
     public function expoKomentar(Request $request, $id, $slug)
     {
         $karya = Karya::findOrFail($id);
         $user = Auth::user();
         $validatedData = $request->validate([
             'komentar' => 'required|max:255',
-            ]);
+        ]);
         $cekkomen = Komentar::where('user_id', $user->id)->latest()->first();
         $input = $request->all();
-        if($cekkomen)
-        {
+        if ($cekkomen) {
             $cekkomen->komentar = $input['komentar'];
             $cekkomen->save();
             return redirect()->back()->with('success', 'Komentar anda berhasil diupdate');
-        }
-        else
-        {
+        } else {
             $input['user_id'] = $user->id;
             $input['karya_id'] = $karya->id;
             $input['liked'] = 0;
             $input['status'] = 1;
             $data = Komentar::create($input);
-            if($data)
-            {
+            if ($data) {
                 return redirect()->back()->with('success', 'Komentar anda berhasil dikirimkan');
-            }
-            else
-            {
+            } else {
                 return redirect()->back()->with('fail', 'Data gagal diupdate di server');
             }
         }
     }
+
     public function expoLikes($id)
     {
         $karya = Karya::find($id);
         $user = Auth::user();
         $cekkomen = Komentar::where('user_id', $user->id)->latest()->first();
-        if($cekkomen)
-        {
-            if($cekkomen->liked == 1)
-            {
+        if ($cekkomen) {
+            if ($cekkomen->liked == 1) {
                 $cekkomen->liked = 0;
                 $cekkomen->save();
                 return redirect()->back()->with('success', 'Anda telah batal menyukai karya ini');
-            }
-            else
-            {
+            } else {
                 $cekkomen->liked = 1;
                 $cekkomen->save();
                 return redirect()->back()->with('success', 'Anda telah menyukai karya ini');
             }
-        }
-        else
-        {
+        } else {
             $input['user_id'] = $user->id;
             $input['karya_id'] = $karya->id;
             $input['liked'] = 1;
             $input['status'] = 1;
             $input['komentar'] = '';
             $data = Komentar::create($input);
-            if($data)
-            {
+            if ($data) {
                 return redirect()->back()->with('success', 'Komentar anda berhasil dikirimkan');
-            }
-            else
-            {
+            } else {
                 return redirect()->back()->with('fail', 'Data gagal diupdate di server');
             }
         }
     }
+
     public function tentangKami()
     {
         $event = Event::where('id', 1)->latest()->first();
         return view('landing.tentangkami', compact('event'));
     }
+
     public function timeline()
     {
         $event = Event::where('status', 1)->latest()->first();
         return view('landing.timeline', compact('event'));
     }
+
     public function kategori()
     {
         return view('landing.kategori');
     }
+
     public function juri()
     {
         $juris = Juri::where('event_id', 1)->get();
         return view('landing.juri', compact('juris'));
     }
+
     public function galeri()
     {
         $galeris = GaleriTahun::orderBy('folder', 'desc')->paginate(6);
         return view('landing.galeri', compact('galeris'));
     }
+
     public function galeriDetail($id)
     {
         $galeri = GaleriTahun::findOrFail($id);
