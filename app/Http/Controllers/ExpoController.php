@@ -334,7 +334,7 @@ class ExpoController extends Controller
                         $query->select(Karya::raw(1))
                             ->from('karyas')
                             ->whereRaw('karyas.user_id = users.id');
-                    })->latest()->first();
+                    })->first();
                     $now = \Carbon\Carbon::now();
 //                    $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
                     return view('expo.expo-list', compact('jenjang', 'kategori'));

@@ -140,7 +140,7 @@
                 <div class="row">
                     @forelse ($event->juris as $juri)
                         <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
-                            <a class="juri" href="" data-toggle="modal" data-target="#juri-video{{$juri->id}}">
+                            <a class="juri" href="" data-toggle="modal" data-target="#juri-video">
                                 <div class="juri-image-frame">
                                     <img src="{{asset('uploads/juris/'.$juri->foto)}}" alt="" class="juri-image">
                                 </div>

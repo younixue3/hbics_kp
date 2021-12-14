@@ -15,7 +15,7 @@ class Event extends Model
     ];
     public function juris()
     {
-        return $this->hasMany('App\Juri');
+        return $this->hasMany('App\Juri', 'event_id', 'id');
     }
     public function timelines()
     {
@@ -23,22 +23,22 @@ class Event extends Model
     }
     public function karyas()
     {
-        return $this->hasMany('App\Karya')->orderBy('created_at', 'desc');
+        return $this->hasOne('App\Karya', 'event_id', 'id');
     }
     public function sponsors()
     {
         return $this->hasMany('App\Sponsor')->orderBy('created_at', 'desc');
     }
-    public function pendaftaran()
-    {
-        return $this->hasOne('App\Timeline')->where('kode', '#01');
-    }
-    public function pengisian()
-    {
-        return $this->hasOne('App\Timeline')->where('kode', '#03');
-    }
-    public function expo()
-    {
-        return $this->hasOne('App\Timeline')->where('kode', '#06');
-    }
+//    public function pendaftaran()
+//    {
+//        return $this->hasOne('App\Timeline')->where('kode', '#01');
+//    }
+//    public function pengisian()
+//    {
+//        return $this->hasOne('App\Timeline')->where('kode', '#03');
+//    }
+//    public function expo()
+//    {
+//        return $this->hasOne('App\Timeline')->where('kode', '#06');
+//    }
 }

@@ -47,8 +47,8 @@ class   User extends Authenticatable
 //    {
 //        return $this->hasOne('App\Komentar');
 //    }
-//    public function anggota()
-//    {
-//        return $this->hasMany(AnggotaKelompok);
-//    }
+    public function anggota()
+    {
+        return $this->hasMany('App\AnggotaKelompok', 'user_id', 'id');
+    }
 }

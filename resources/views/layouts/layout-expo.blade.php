@@ -87,26 +87,32 @@
                         <a class="nav-link" href="{{url('expo/smp/desain-grafis')}}">Virtual Expo</a>
                         {{-- <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a> --}}
                     </li>
-                    @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')
-                    <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
+                    @if(Auth::user())
+                        @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')
+                            <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
+                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown {{Request::is('profil') || Request::is('profil/*') ? 'active' : ''}}">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profil
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endif
                     @else
-                    <li class="nav-item dropdown {{Request::is('profil') || Request::is('profil/*') ? 'active' : ''}}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Profil
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('profil')}}">Profil</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav navbar-sec2">

@@ -22,7 +22,7 @@ class LandingController extends Controller
     }
     public function beranda()
     {
-        $event = Event::where('status', 1)->latest()->first();
+        $event = Event::where('status', 1)->first();
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         $kategori = KategoriLomba::get();
         // echo $event;
@@ -46,7 +46,9 @@ class LandingController extends Controller
     {
         if($jenjang == 'smp' || $jenjang == 'sma')
         {
-            return view('landing.expo', compact('jenjang'));
+            $kategori = KategoriLomba::where('event_id', 1)->get();
+            $data = compact('kategori', 'jenjang');
+            return view('landing.expo', $data);
         }
         else
         {
@@ -55,44 +57,21 @@ class LandingController extends Controller
     }
     public function expoJenjangKategori($jenjang, $kategori)
     {
-//        $event = Event::where('status', 1)->latest()->first();
-        $karya = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) {
-            $q->where('kategori', 1);
-        })->first();
-        dd($karya);
+        $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
+            $q->where('kategori', $kategori);
+        })->get();
         $now = \Carbon\Carbon::now();
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-        return view('expo.expo-list', compact('jenjang', 'kategori', 'now'));
+        return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event'));
     }
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
+//        dd('testing');
         $data = Karya::findOrFail($id);
-        $karyas = Karya::where('jenjang', $data->jenjang)->where('kategori', $data->kategori)->where('id', '!=', $id)->get();
-        switch ($data->jenjang) {
-            case 'SMP/MTS':
-                $jenjang = 'smp';
-                break;
-            case 'SMA/SMK/MAN':
-                $jenjang = 'sma';
-                break;
-        }
-        switch ($data->kategori) {
-            case 'Kriya':
-                $kategori = 'kriya';
-                break;
-            case 'Fashion':
-                $kategori = 'fashion';
-                break;
-            case 'Food and beverage':
-                $kategori = 'food-and-beverage';
-                break;
-            case 'Aplikasi dan Game':
-                $kategori = 'aplikasi-dan-game';
-                break;
-            case 'Desain Grafis':
-                $kategori = 'desain-grafis';
-                break;
-        }
+        $karyas = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
+            $q->where('kategori', $kategori);
+        })->get();
+
         $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
         return view('expo.expo-detail', compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike'));
     }

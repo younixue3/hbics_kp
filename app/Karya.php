@@ -13,4 +13,14 @@ class Karya extends Model
     {
         return $this->hasMany(KaryaFoto::class);
     }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Komentar')->where('liked', 1);
+    }
+
+    public function komentars()
+    {
+        return $this->hasMany('App\Komentar')->where('komentar', '!=', '');
+    }
 }
