@@ -31,7 +31,6 @@ class RegisterController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'event_id' => ['required'],
             'provinsi_id' => ['required'],
             'kota_kab_id' => ['required'],
             'password' => ['required', 'string'],
@@ -41,7 +40,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'jenjang' => $request->jenjang,
-                'event_id' => intval($request->event_id),
+                'event_id' => 1,
                 'provinsi_id' => intval($request->provinsi_id),
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),
