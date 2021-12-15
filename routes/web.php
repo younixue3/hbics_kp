@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\expo_v2\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,12 +131,16 @@ Route::get('pembayaran', 'ExpoController@pembayaran')->name('bukti_pembayaran');
 Route::put('pembayaran/post', 'ExpoController@postPembayaran')->name('post_pembayaran');
 Route::get('pembayaran/tahap_validasi', 'ExpoController@tahap_validasi')->name('tahap_validasi');
 Route::middleware(['peserta', 'pembayaran'])->group(function(){
-        Route::put('profil/update', 'ExpoController@update_profil_tim')->name('profil_update');
-        Route::get('profil', 'ExpoController@profil');
-        Route::post('karya/insert', 'ExpoController@insert_karya')->name('karya_insert');
-        Route::post('karya/foto/insert', 'ExpoController@insert_foto_karya')->name('foto_karya_insert');
-        Route::get('profil/simulasi', 'ExpoController@profilSimulasi');
-        Route::patch('karya', 'ExpoController@karyaUpdate');
-        Route::post('karya/foto', 'ExpoController@karyaFoto');
-        Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
-    });
+    Route::put('profil/update', 'ExpoController@update_profil_tim')->name('profil_update');
+    Route::get('profil', 'ExpoController@profil');
+    Route::post('karya/insert', 'ExpoController@insert_karya')->name('karya_insert');
+    Route::post('karya/foto/insert', 'ExpoController@insert_foto_karya')->name('foto_karya_insert');
+    Route::get('profil/simulasi', 'ExpoController@profilSimulasi');
+    Route::patch('karya', 'ExpoController@karyaUpdate');
+    Route::post('karya/foto', 'ExpoController@karyaFoto');
+    Route::get('karya/foto/{id}', 'ExpoController@karyaFotoDelete');
+});
+
+// Expo V2
+
+Route::get('expo_v2', [IndexController::class, 'index']);
