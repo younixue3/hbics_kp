@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
     <!-- font-family: 'Hind', sans-serif; -->
     <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
-    <link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('circle/css/style.css')}}" rel="stylesheet"><link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
     <style>
         .labeltext
         {
@@ -98,7 +98,27 @@
                     </li>
                     @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>
+{{--                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>--}}
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                                Daftar
+                            </a>
+
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <a href="#" class="button my-4 btn-warning mx-auto rounded font-40 h1 rounded-pill">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     @endif
                 </ul>
