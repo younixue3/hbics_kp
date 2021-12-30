@@ -30,8 +30,6 @@ class LandingController extends Controller
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         $kategori = KategoriLomba::get();
         dd($kategori);
-        // echo $event;
-        // exit;
         return view('landing.index', compact('event', 'beritas', 'kategori'));
     }
 

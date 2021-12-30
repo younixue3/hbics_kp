@@ -21,9 +21,11 @@
                                 <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
                             <div>
                                 <div class="radiobtn wow fadeInUp">
-                                    <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta" value="kelompok">
+                                    <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta"
+                                           value="kelompok">
                                     <label>Kelompok</label>
-                                    <input id="radio_individu" class="radio-choose" type="radio" name="kategori_peserta" value="individu">
+                                    <input id="radio_individu" class="radio-choose" type="radio" name="kategori_peserta"
+                                           value="individu">
                                     <label>Individu</label>
                                 </div>
                                 <div id="nama_anggota">
@@ -137,7 +139,8 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <a href="{{url('/login')}}" id="submit_storage" class="btn btn-blue btn-block wow fadeInUp">
+                                        <a href="{{url('/login')}}" id="submit_storage"
+                                           class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>
                                         <br>
@@ -173,15 +176,16 @@
             }
         });
         var counter = 1;
-        var arr = {data:{kelompok: null, anggota:[]}};
-
-        // $(document).ready(function(){
+        var arr = {data: {kelompok: null, anggota: []}};
         var status = 1;
         $('#submit_storage').click(function () {
             if (status == 1) {
                 console.log(counter);
                 for (var i = 1; ; i++) {
-                    arr.data.anggota.push({name: $('#array-nama-anggota' + i).val(), email: $('#array-email-anggota' + i).val()})
+                    arr.data.anggota.push({
+                        name: $('#array-nama-anggota' + i).val(),
+                        email: $('#array-email-anggota' + i).val()
+                    })
                     if (i == counter) break;
                 }
                 status = 0;
@@ -191,8 +195,17 @@
             $.ajax({
                 type: "POST",
                 url: window.location.origin + '/daftar/insert',
-                data: {name:$('#name').val(),email:$('#email').val(),event_id:$('#event_id').val(),provinsi_id:$('#provinsi').val(),kota_kab_id:$('#kota_kab').val(),password:$('#password').val(), kategori_peserta:$(".radio-choose:checked").val(), jenjang:$('#jenjang').val()},
-                success: function(data) {
+                data: {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    event_id: $('#event_id').val(),
+                    provinsi_id: $('#provinsi').val(),
+                    kota_kab_id: $('#kota_kab').val(),
+                    password: $('#password').val(),
+                    kategori_peserta: $(".radio-choose:checked").val(),
+                    jenjang: $('#jenjang').val()
+                },
+                success: function (data) {
                     arr.data.kelompok = data;
                     $.ajax({
                         type: "POST",
