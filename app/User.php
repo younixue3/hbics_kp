@@ -49,6 +49,6 @@ class   User extends Authenticatable
 //    }
     public function anggota()
     {
-        return $this->hasMany('App\AnggotaKelompok', 'user_id', 'id');
+        return $this->hasMany('App\AnggotaKelompok', 'kelompok_id', 'id');
     }
 }
