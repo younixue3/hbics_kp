@@ -99,7 +99,7 @@
                     @else
                         <li class="nav-item">
 {{--                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>--}}
-                            <a href="{{route('login')}}" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                            <a href="{{route('login')}}" class="nav-link">
                                 Daftar
                             </a>
 
