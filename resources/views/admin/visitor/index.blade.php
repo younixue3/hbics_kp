@@ -63,13 +63,15 @@
                                     @if($data->pembayaran != 'verified')
                                         <button type="button" class="btn-outline-danger btn" data-toggle="modal"
                                                 data-target=".bd-example-modal-lg-{{ $key }}">{{$data->pembayaran}}</button>
-                                        <div class="modal fade bd-example-modal-lg-{{ $key }}" tabindex="-1" role="dialog"
+                                        <div class="modal fade bd-example-modal-lg-{{ $key }}" tabindex="-1"
+                                             role="dialog"
                                              aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title">Verifikasi Pembayaran</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
@@ -77,25 +79,34 @@
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputEmail4">Nama</label>
-                                                                <input type="text" class="form-control" value="{{$data->name}}" disabled>
+                                                                <input type="text" class="form-control"
+                                                                       value="{{$data->name}}" disabled>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="inputPassword4">Email</label>
-                                                                <input type="email" class="form-control" value="{{$data->email}}" disabled>
+                                                                <input type="email" class="form-control"
+                                                                       value="{{$data->email}}" disabled>
                                                             </div>
                                                         </div>
                                                         <div>
                                                             @if($data->bukti_pembayaran == null)
-                                                                <div class="text-center" style="height: 400px;width:300px;background-color: #cfcfcf">Bukti Pembayaran Kosong</div>
+                                                                <div class="text-center"
+                                                                     style="height: 400px;width:300px;background-color: #cfcfcf">
+                                                                    Bukti Pembayaran Kosong
+                                                                </div>
                                                             @else
 
-                                                                <img class="" src="{{asset('Upload/paidbill/'.$data->bukti_pembayaran)}}">
+                                                                <img class=""
+                                                                     src="{{asset('Upload/paidbill/'.$data->bukti_pembayaran)}}">
                                                             @endif
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <a type="button" class="btn btn-primary" href="{{route('peserta/verifikasi', $data->id)}}">Verifikasi</a>
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                        <a type="button" class="btn btn-primary"
+                                                           href="{{route('peserta/verifikasi', $data->id)}}">Verifikasi</a>
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Batal
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,7 +131,8 @@
                                                href="{{route('show_visitor', $data->id)}}">Edit</a>
                                             @if(Auth::User()->role == 'superadmin')
                                                 <a class="dropdown-item bg-primary text-white"
-                                                   href="{{route('change_role_pengunjung', $data->id)}}">Jadikan Admin</a>
+                                                   href="{{route('change_role_pengunjung', $data->id)}}">Jadikan
+                                                    Admin</a>
                                             @else
                                             @endif
                                         </div>
