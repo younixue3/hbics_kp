@@ -8,18 +8,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 wow fadeInUp login-logo">
-                        @if ($event)
-                            <img src="{{asset('uploads/events/'.$event->logo)}}" alt="">
-                        @else
-                            <img src="{{asset('images/logo.png')}}" alt="">
-                        @endif
+{{--                        @if ($event)--}}
+{{--                            <img src="{{asset('uploads/events/'.$event->logo)}}" alt="">--}}
+{{--                        @else--}}
+{{--                            <img src="{{asset('images/logo.png')}}" alt="">--}}
+{{--                        @endif--}}
                     </div>
                     <div class="col-md-5">
                         <div class="text">
-                            <p class="text-bg wow fadeInUp"><i class="icofont-light-bulb"></i> Kidspreneurship</p>
-                            <p class="text-sm wow fadeInUp">Festival EPIK 2K22 “Entrepreneur Pelajar Indonesia Kreatif”
-                                <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
-                            <div>
+                            <p class="text-bg wow fadeInUp mb-3"><i class="icofont-light-bulb"></i>Lomba Pendukung</p>
                                 <div class="radiobtn wow fadeInUp">
                                     <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta"
                                            value="kelompok">
@@ -69,8 +66,8 @@
                                     <div class="col-md-12">
                                         <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
                                             <option selected disabled>Pilih jenjang</option>
-                                            <option value="smp">SMP</option>
-                                            <option value="sma">SMA</option>
+                                            <option value="tk">TK</option>
+                                            <option value="sd">SD</option>
                                         </select>
                                     </div>
                                 </div>
@@ -124,7 +121,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <a href="{{url('/login_lp')}}" id="submit_storage"
+                                        <a href="{{url('/login')}}" id="submit_storage"
                                            class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>

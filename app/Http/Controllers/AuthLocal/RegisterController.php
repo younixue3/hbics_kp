@@ -15,9 +15,15 @@ class RegisterController extends Controller
     public function index()
     {
         $provinsi = Provinsi::get();
-        $acara = Event::where('status', 1)->get();
-        $data = compact('provinsi', 'acara');
+        $data = compact('provinsi');
         return view('auth.register', $data);
+    }
+
+    public function index_lp()
+    {
+        $provinsi = Provinsi::get();
+        $data = compact('provinsi');
+        return view('auth.register_lp', $data);
     }
 
     public function get_kota(Request $request)
@@ -27,6 +33,39 @@ class RegisterController extends Controller
     }
 
     public function insert(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'provinsi_id' => ['required'],
+            'kota_kab_id' => ['required'],
+            'password' => ['required', 'string'],
+        ]);
+        if ($request->kategori_peserta == 'kelompok') {
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'jenjang' => $request->jenjang,
+                'event_id' => 1,
+                'provinsi_id' => intval($request->provinsi_id),
+                'kota_kab_id' => intval($request->kota_kab_id),
+                'password' => Hash::make($request->password),
+            ]);
+            return $user->id;
+        } else {
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'jenjang' => $request->jenjang,
+                'event_id' => intval($request->event_id),
+                'provinsi_id' => intval($request->provinsi_id),
+                'kota_kab_id' => intval($request->kota_kab_id),
+                'password' => Hash::make($request->password),
+            ]);
+        }
+    }
+
+    public function insert_lp(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

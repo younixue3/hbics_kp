@@ -107,14 +107,19 @@
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Pilih lomba yang ingin diikuti</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <a href="#" class="button my-4 btn-warning mx-auto rounded font-40 h1 rounded-pill">
-                                            </a>
+                                            @foreach($list_event as $key => $value)
+                                                <div class="mt-2">
+                                                    <a href="" class="button btn-warning px-2 mx-auto rounded" style="margin-top:10px;">
+                                                        {{$value->tagline}}
+                                                    </a>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
