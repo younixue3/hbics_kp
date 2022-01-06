@@ -124,7 +124,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <a href="{{url('/login_lp')}}" id="submit_storage"
+                                        <a href="{{route('login')}}" id="submit_storage"
                                            class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>
@@ -183,7 +183,7 @@
                 data: {
                     name: $('#name').val(),
                     email: $('#email').val(),
-                    event_id: $('#event_id').val(),
+                    event_id: 1,
                     provinsi_id: $('#provinsi').val(),
                     kota_kab_id: $('#kota_kab').val(),
                     password: $('#password').val(),

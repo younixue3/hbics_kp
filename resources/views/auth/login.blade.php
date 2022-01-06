@@ -5,19 +5,12 @@
 @endphp
 <div class="container-fluid">
     <div class="row login">
-        <div class="container">
+        <div class="container px-5">
             <div class="row">
-                <div class="col-md-5 wow fadeInUp login-logo">
-                    @if ($event)
-                        <img src="{{asset('uploads/events/'.$event->logo)}}" alt="">
-                    @else
-                        <img src="{{asset('images/logo.png')}}" alt="">
-                    @endif
-                </div>
-                <div class="col-md-5">
+                <div class="col">
                     <div class="text">
-                        <p class="text-bg wow fadeInUp" data-wow-delay="0.5s"><i class="icofont-light-bulb"></i> Kidspreneurship</p>
-                        <p class="text-sm wow fadeInUp" data-wow-delay="1s">Festival EPIK 2K22 “Entrepreneur Pelajar Indonesia Kreatif” <b>"Indonesia Bisa , Berkarya Untuk Negeri"</b></p>
+                        <p class="text-bg wow fadeInUp" data-wow-delay="0.5s"><i class="icofont-light-bulb"></i>Selamat datang</p>
+                        <p class="text-sm wow fadeInUp" data-wow-delay="1s">Silahkan masukkan Akun Lomba anda</p>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group row wow fadeInUp">
@@ -51,7 +44,7 @@
                                         {{ __('Login') }} <i class="icofont-hand-right"></i>
                                     </button>
                                     <br>
-                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('daftar')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>
+{{--                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('daftar')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>--}}
                                 </div>
                             </div>
                         </form>

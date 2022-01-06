@@ -99,7 +99,7 @@
                     @else
                         <li class="nav-item">
 {{--                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>--}}
-                            <a href="{{route('login')}}" class="nav-link">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
                                 Daftar
                             </a>
 
@@ -115,7 +115,7 @@
                                         <div class="modal-body">
                                             @foreach($list_event as $key => $value)
                                                 <div class="mt-2">
-                                                    <a href="" class="button btn-warning px-2 mx-auto rounded" style="margin-top:10px;">
+                                                    <a href="{{$value->tagline == "Enterpreneur Pelajar Indonesia Kreatif" ? url('/daftar') : url('/daftar_lp')}}" class="button btn-warning px-2 mx-auto rounded" style="margin-top:10px;">
                                                         {{$value->tagline}}
                                                     </a>
                                                 </div>
