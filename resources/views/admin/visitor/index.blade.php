@@ -62,8 +62,8 @@
                                 <td>
                                     @if($data->pembayaran != 'verified')
                                         <button type="button" class="btn-outline-danger btn" data-toggle="modal"
-                                                data-target=".bd-example-modal-lg">{{$data->pembayaran}}</button>
-                                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                                                data-target=".bd-example-modal-lg-{{ $key }}">{{$data->pembayaran}}</button>
+                                        <div class="modal fade bd-example-modal-lg-{{ $key }}" tabindex="-1" role="dialog"
                                              aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
@@ -88,7 +88,8 @@
                                                             @if($data->bukti_pembayaran == null)
                                                                 <div class="text-center" style="height: 400px;width:300px;background-color: #cfcfcf">Bukti Pembayaran Kosong</div>
                                                             @else
-                                                                <img src="{{$data->bukti_pembayaran}}">
+
+                                                                <img class="" src="{{asset('Upload/paidbill/'.$data->bukti_pembayaran)}}">
                                                             @endif
                                                         </div>
                                                     </div>
