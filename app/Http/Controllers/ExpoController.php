@@ -103,7 +103,11 @@ class ExpoController extends Controller
     public function pembayaran()
     {
         $user = Auth::user();
+        dd($user);
         $total_harga = number_format($user->anggota->count() * 300000);
+        if($user->event_id == 2) {
+
+        }
         $data = compact('user', 'total_harga');
         return view('expo.bukti_pembayaran', $data);
     }

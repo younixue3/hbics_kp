@@ -19,7 +19,7 @@ class   User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'desc', 'role', 'provinsi_id', 'kota_kab_id', 'event_id', 'kategori_peserta', 'pembayaran', 'foto_profile', 'jenjang'
+        'name', 'email', 'password', 'desc', 'role', 'provinsi_id', 'kota_kab_id', 'event_id', 'kategori_peserta', 'pembayaran', 'foto_profile', 'jenjang', 'kategori_lp', 'no_hp'
     ];
 
     /**
@@ -50,5 +50,10 @@ class   User extends Authenticatable
     public function anggota()
     {
         return $this->hasMany('App\AnggotaKelompok', 'kelompok_id', 'id');
+    }
+
+    public function kategori_lp()
+    {
+        return $this->hasOne('App\AnggotaKelompok', 'kategori_lp', 'id');
     }
 }

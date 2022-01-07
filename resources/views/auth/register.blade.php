@@ -183,6 +183,7 @@
                 data: {
                     name: $('#name').val(),
                     email: $('#email').val(),
+                    no_hp: $('#no_hp').val(),
                     event_id: 1,
                     provinsi_id: $('#provinsi').val(),
                     kota_kab_id: $('#kota_kab').val(),

@@ -59,6 +59,34 @@
                                         @enderror
                                     </div>
                                 </div>
+                            <div class="form-group row">
+                                <label for="no_hp" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class="icofont-ui-cell-phone"></i> {{ __('No Handphone') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <input placeholder="Masukkan No Handphone" id="no_hp"
+                                           class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
+                                           name="no_hp" value="" required>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="kategori_lp" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Kategori Lomba') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="kategori_lp" class="form-control2 wow fadeInUp" id="kategori_lp">
+                                        <option selected disabled>Pilih kategori</option>
+                                        @foreach($kategori_lp as $key => $value)
+                                            <option value="">{{$value->kategori}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                                 <div class="form-group row">
                                     <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
                                             class=""></i> {{ __('Jenjang') }}</label>
@@ -180,12 +208,17 @@
                 data: {
                     name: $('#name').val(),
                     email: $('#email').val(),
+                    no_hp: $('#no_hp').val(),
                     event_id: 2,
+                    kategori_lp: $('#kategori_lp').val(),
                     provinsi_id: $('#provinsi').val(),
                     kota_kab_id: $('#kota_kab').val(),
                     password: $('#password').val(),
                     kategori_peserta: $(".radio-choose:checked").val(),
                     jenjang: $('#jenjang').val(),
+                },
+                error: function (e) {
+                    console.log(e)
                 },
                 success: function (data) {
                     arr.data.kelompok = data;
