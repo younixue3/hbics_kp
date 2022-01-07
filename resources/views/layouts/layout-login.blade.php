@@ -19,9 +19,10 @@
     <link href="{{asset('circle/css/font-awesome.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('icofont/icofont.min.css')}}">
     <!-- font-family: 'Hind', sans-serif; -->
-    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700'
+          rel='stylesheet' type='text/css'>
 
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 </head>
 <body class="light">
 <!-- /logo -->

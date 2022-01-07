@@ -8,57 +8,57 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5 wow fadeInUp login-logo">
-{{--                        @if ($event)--}}
-{{--                            <img src="{{asset('uploads/events/'.$event->logo)}}" alt="">--}}
-{{--                        @else--}}
-{{--                            <img src="{{asset('images/logo.png')}}" alt="">--}}
-{{--                        @endif--}}
+                        {{--                        @if ($event)--}}
+                        {{--                            <img src="{{asset('uploads/events/'.$event->logo)}}" alt="">--}}
+                        {{--                        @else--}}
+                        {{--                            <img src="{{asset('images/logo.png')}}" alt="">--}}
+                        {{--                        @endif--}}
                     </div>
                     <div class="col-md-5">
                         <div class="text">
                             <p class="text-bg wow fadeInUp mb-3"><i class="icofont-light-bulb"></i>Lomba Pendukung</p>
-                                <div class="radiobtn wow fadeInUp">
-                                    <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta"
-                                           value="kelompok">
-                                    <label>Kelompok</label>
-                                    <input id="radio_individu" class="radio-choose" type="radio" name="kategori_peserta"
-                                           value="individu">
-                                    <label>Individu</label>
-                                </div>
-                                <div id="nama_anggota">
-                                </div>
-                                <input id="storage-array" type="hidden" value="">
-                                <div class="form-group row">
-                                    <label id="nama-kelompok" for="name"
-                                           class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class="icofont-id-card"></i> {{ __('Nama') }}</label>
-                                    <br>
-                                    <div class="col-md-12 wow fadeInUp">
-                                        <input placeholder="Masukkan Nama" id="name" type="text"
-                                               class="form-control2 @error('name') is-invalid @enderror" name="name"
-                                               value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
+                            <div class="radiobtn wow fadeInUp">
+                                <input id="radio_kelompok" class="radio-choose" type="radio" name="kategori_peserta"
+                                       value="kelompok">
+                                <label>Kelompok</label>
+                                <input id="radio_individu" class="radio-choose" type="radio" name="kategori_peserta"
+                                       value="individu">
+                                <label>Individu</label>
+                            </div>
+                            <div id="nama_anggota">
+                            </div>
+                            <input id="storage-array" type="hidden" value="">
+                            <div class="form-group row">
+                                <label id="nama-kelompok" for="name"
+                                       class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class="icofont-id-card"></i> {{ __('Nama') }}</label>
+                                <br>
+                                <div class="col-md-12 wow fadeInUp">
+                                    <input placeholder="Masukkan Nama" id="name" type="text"
+                                           class="form-control2 @error('name') is-invalid @enderror" name="name"
+                                           value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class="icofont-email"></i> {{ __('Email') }}</label>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <input placeholder="Masukkan Email" id="email" type="email"
-                                               class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
-                                               name="email" value="{{ old('email') }}" required autocomplete="email">
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class="icofont-email"></i> {{ __('Email') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <input placeholder="Masukkan Email" id="email" type="email"
+                                           class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
+                                           name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
+                            </div>
                             <div class="form-group row">
                                 <label for="no_hp" class="col-md-12 col-form-label wow fadeInUp"><i
                                         class="icofont-ui-cell-phone"></i> {{ __('No Handphone') }}</label>
@@ -87,76 +87,75 @@
                                     </select>
                                 </div>
                             </div>
-                                <div class="form-group row">
-                                    <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class=""></i> {{ __('Jenjang') }}</label>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
-                                            <option selected disabled>Pilih jenjang</option>
-                                            <option value="tk">TK</option>
-                                            <option value="sd">SD</option>
-                                        </select>
-                                    </div>
+                            <div class="form-group row">
+                                <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Jenjang') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
+                                        <option selected disabled>Pilih jenjang</option>
+                                        <option value="tk">TK</option>
+                                        <option value="sd">SD</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="provinsi" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class=""></i> {{ __('Provinsi') }}</label>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <select name="provinsi" class="form-control2 wow fadeInUp" id="provinsi">
-                                            @foreach($provinsi as $value)
-                                                <option value="{{$value->id}}">{{$value->provinsi}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="provinsi" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Provinsi') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="provinsi" class="form-control2 wow fadeInUp" id="provinsi">
+                                        @foreach($provinsi as $value)
+                                            <option value="{{$value->id}}">{{$value->provinsi}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="kota" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class=""></i> {{ __('Kota') }}</label>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <select name="kota" class="form-control2 wow fadeInUp" id="kota_kab">
-                                            <option disabled>Pilih Kota/Kabupaten</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="kota" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Kota') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="kota" class="form-control2 wow fadeInUp" id="kota_kab">
+                                        <option disabled>Pilih Kota/Kabupaten</option>
+                                    </select>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class="icofont-key-hole"></i> {{ __('Password') }}</label>
-                                    <br>
-                                    <div class="col-md-12">
-                                        <input placeholder="Masukkan Password" id="password" type="password"
-                                               class="form-control2 wow fadeInUp @error('password') is-invalid @enderror"
-                                               name="password" required autocomplete="new-password">
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                            </div>
+                            <div class="form-group row">
+                                <label for="password" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class="icofont-key-hole"></i> {{ __('Password') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <input placeholder="Masukkan Password" id="password" type="password"
+                                           class="form-control2 wow fadeInUp @error('password') is-invalid @enderror"
+                                           name="password" required autocomplete="new-password">
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
                                 </div>
-                                <div class="form-group row">
-                                    <label for="password-confirm" class="col-md-12 col-form-label wow fadeInUp"><i
-                                            class="icofont-key-hole"></i> {{ __('Konfirmasi Password') }}</label>
+                            </div>
+                            <div class="form-group row">
+                                <label for="password-confirm" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class="icofont-key-hole"></i> {{ __('Konfirmasi Password') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <input placeholder="Masukkan Konfirmasi Password" id="password-confirm"
+                                           type="password" class="form-control2 wow fadeInUp"
+                                           name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-12 text-center">
                                     <br>
-                                    <div class="col-md-12">
-                                        <input placeholder="Masukkan Konfirmasi Password" id="password-confirm"
-                                               type="password" class="form-control2 wow fadeInUp"
-                                               name="password_confirmation" required autocomplete="new-password">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-12 text-center">
-                                        <br>
-                                        <a href="{{route('login')}}" id="submit_storage"
-                                           class="btn btn-blue btn-block wow fadeInUp">
-                                            {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
-                                        </a>
-                                        <br>
-                                        <a style="color: #0f868a" class="wow fadeInUp" href="{{url('/')}}">Sudah
-                                            memiliki akun? <i class="icofont-rounded-right"></i></a>
-                                    </div>
+                                    <a href="{{route('login')}}" id="submit_storage"
+                                       class="btn btn-blue btn-block wow fadeInUp">
+                                        {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
+                                    </a>
+                                    <br>
+                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('/')}}">Sudah
+                                        memiliki akun? <i class="icofont-rounded-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -164,6 +163,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 @section('script')

@@ -35,11 +35,13 @@
                         @method('PUT')
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" value="{{$data->name}}" required placeholder="Masukkan Judul Postingan" class="form-control" name="name">
+                            <input type="text" value="{{$data->name}}" required placeholder="Masukkan Judul Postingan"
+                                   class="form-control" name="name">
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="text" value="{{$data->email}}" required placeholder="Masukkan Waktu Baca Postingan" class="form-control" name="email">
+                            <input type="text" value="{{$data->email}}" required
+                                   placeholder="Masukkan Waktu Baca Postingan" class="form-control" name="email">
                         </div>
                         <div class="form-group">
                             <a href="{{url()->previous()}}" class="btn btn-warning">Batal</a>

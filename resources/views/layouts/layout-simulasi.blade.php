@@ -19,13 +19,15 @@
     <link rel="stylesheet" href="{{asset('owl/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('owl/assets/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('icofont/icofont.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+          crossorigin="anonymous"/>
     <!-- font-family: 'Hind', sans-serif; -->
-    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:400,300,500,600,700|Hind+Guntur:300,400,500,700'
+          rel='stylesheet' type='text/css'>
     <link href="{{asset('circle/css/style.css')}}" rel="stylesheet">
     <style>
-        .likesbutton
-        {
+        .likesbutton {
             float: right;
             border: 1px solid #ffbb55;
             padding: 7px 15px 8px 19px;
@@ -37,21 +39,21 @@
             border-bottom-left-radius: 16px;
             transition: 0.5s;
         }
-        .likesbutton:hover
-        {
-            transform: scale(1.2)rotate(2deg);
+
+        .likesbutton:hover {
+            transform: scale(1.2) rotate(2deg);
             float: right;
             color: #ffb23d;
             background-color: #ffbb555b;
         }
-        .likesbutton--batal
-        {
+
+        .likesbutton--batal {
             border: 1px solid #ff7d55;
             color: #ff7d55;
             background-color: #ff7d5523;
         }
-        .likesbutton--batal:hover
-        {
+
+        .likesbutton--batal:hover {
             color: #ff6b3d;
             background-color: #ff7d555b;
         }
@@ -65,7 +67,8 @@
             <a class="navbar-brand" id="navbrand" href="{{url('beranda')}}">
                 <img src="{{asset('images/logo.png')}}"/>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -78,8 +81,9 @@
                         {{-- <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a> --}}
                     </li>
                     <li class="nav-item dropdown {{Request::is('profil') ? 'active' : ''}}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Profil
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profil
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Profil</a>
@@ -100,21 +104,21 @@
     $active = App\Event::where('status', 1)->latest()->first();
 @endphp
 @if ($active)
-<div class="sponsor">
-    <div class="container">
-        <p class="sponsor-title">
-            Support by:
-        </p>
-        <div class="sponsor-frame">
-            @forelse ($active->sponsors as $sponsor)
-                <div class="sponsor-image-frame">
-                    <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
-                </div>
-            @empty
-            @endforelse
+    <div class="sponsor">
+        <div class="container">
+            <p class="sponsor-title">
+                Support by:
+            </p>
+            <div class="sponsor-frame">
+                @forelse ($active->sponsors as $sponsor)
+                    <div class="sponsor-image-frame">
+                        <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
+                    </div>
+                @empty
+                @endforelse
+            </div>
         </div>
     </div>
-</div>
 @endif
 <div id="navbreaker"></div>
 <!-- /logo -->
@@ -124,9 +128,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-left">
-                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik 2K22.</p>
+                    <p class="footer-title wow fadeInUp"><i class="icofont-building-alt"></i> Kidspreneur Festival Epik
+                        2K22.</p>
                     <p class="footer-text wow fadeInUp">
-                        <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo - Indonesia
+                        <i class="icofont-google-map"></i> Indrakila Street No. 99 G - Balikpapan 76125 East Borneo -
+                        Indonesia
                     </p>
                     <p class="footer-text wow fadeInUp">
                         <i class="icofont-phone"></i> Telephone : +62542 8510 111
@@ -135,9 +141,13 @@
                         <i class="icofont-ui-dial-phone"></i> Telephone : +62812 5051 5333
                     </p>
                     <br>
-                    <a href="https://www.facebook.com/Harapan-Bangsa-Integrated-Christian-School-681743995288342/" target="_blank" class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-facebook"></i></a>
-                    <a href="https://www.instagram.com/kidspreneurship.hbics/" target="_blank" class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-instagram"></i></a>
-                    <a href="https://www.youtube.com/channel/UCHJ9hdRwx7ZD-VZBL_GX8Kw" target="_blank" class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-youtube-play"></i></a>
+                    <a href="https://www.facebook.com/Harapan-Bangsa-Integrated-Christian-School-681743995288342/"
+                       target="_blank" class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i
+                            class="icofont-facebook"></i></a>
+                    <a href="https://www.instagram.com/kidspreneurship.hbics/" target="_blank"
+                       class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCHJ9hdRwx7ZD-VZBL_GX8Kw" target="_blank"
+                       class="footer-sosmed wow fadeInUp" data-wow-delay="1.5s"><i class="icofont-youtube-play"></i></a>
                 </div>
                 <div class="col-md-3 text-left">
                     <p class="footer-title wow fadeInUp"><i class="icofont-link"></i> Link Terkait.</p>
@@ -169,30 +179,29 @@
 <script>
     new WOW().init();
     $('.owl-carousel').owlCarousel({
-        loop:true,
-        margin:0,
-        nav:true,
-        autoplay:false,
-        responsive:{
-            0:{
-                items:1
+        loop: true,
+        margin: 0,
+        nav: true,
+        autoplay: false,
+        responsive: {
+            0: {
+                items: 1
             },
-            600:{
-                items:1
+            600: {
+                items: 1
             },
-            1000:{
-                items:1
+            1000: {
+                items: 1
             }
         }
     })
-    $(window).scroll(function() {
-    var scroll = $(window).scrollTop();
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
         if (scroll >= 500) {
             $(".navbarnya").addClass("fixed-top");
             $(".navbarnya").addClass("navwhite");
             $("#navbreaker").addClass("navbreaker--show");
-        }
-        else {
+        } else {
             $(".navbarnya").removeClass("fixed-top");
             $(".navbarnya").removeClass("navwhite");
             $("#navbreaker").removeClass("navbreaker--show");

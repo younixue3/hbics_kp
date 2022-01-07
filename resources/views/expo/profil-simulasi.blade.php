@@ -29,7 +29,8 @@
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
                         @if ($user->foto_profile != null)
-                            <img src="{{asset('Upload/foto_profil/'.$user->foto_profile)}}" class="apaitu-profilpict" alt="" style="object-fit: cover;">
+                            <img src="{{asset('Upload/foto_profil/'.$user->foto_profile)}}" class="apaitu-profilpict"
+                                 alt="" style="object-fit: cover;">
                         @else
                             <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                         @endif

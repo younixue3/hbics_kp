@@ -237,7 +237,8 @@
                             @if($statuslike != null)
                                 @if ($statuslike)
                                     <a href="{{url('expo/likes/'.$data->id)}}"
-                                       class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i> <i
+                                       class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i>
+                                        <i
                                             class="icofont-like"></i> Batal Sukai Karya Ini</a>
                                     <div class="total wow fadeInUp">
                                         <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya
@@ -250,7 +251,7 @@
                                         <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
                                     </div>
                                 @endif
-                                @endif
+                            @endif
                             {{-- <div class="write wow fadeInUp">
                                 <form action="{{url('expo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
                                     @csrf
