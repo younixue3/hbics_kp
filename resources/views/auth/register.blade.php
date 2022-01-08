@@ -165,7 +165,7 @@
 
                 $('#kota_kab').html('<option disabled>Pilih Kota/Kabupaten</option>')
                 $.each(data, function (index, obj) {
-                    console.log(obj.kota)
+                    // console.log(obj.kota)
                     $('#kota_kab').append('<option value=' + obj.id + ' >' + obj.kota + '</option')
                 })
             })
@@ -180,7 +180,7 @@
         var status = 1;
         $('#submit_storage').click(function () {
             if (status == 1) {
-                console.log(counter);
+                // console.log(counter);
                 for (var i = 1; ; i++) {
                     arr.data.anggota.push({
                         name: $('#array-nama-anggota' + i).val(),
@@ -204,7 +204,7 @@
                         jenjang: $('#jenjang').val()
                     },
                     error: function (e) {
-                        console.log(e)
+                        // console.log(e)
                     },
                     success: function (data) {
                         if ($(".radio-choose:checked").val() == 'kelompok') {
@@ -225,13 +225,12 @@
             } else {
                 alert("data anda telah di input")
             }
-            console.log(arr.data.kelompok)
-
+            // console.log(arr.data.kelompok)
         });
         // });
         $('#radio_individu').click(function () {
             if ($('#radio_individu').is(':checked')) {
-                console.log('individu')
+                // console.log('individu')
                 $('#nama_anggota').html('')
                 $('#nama-kelompok').html('<i class="icofont-id-card"></i> {{ __('Nama') }}')
             }
@@ -239,14 +238,14 @@
         $('#radio_kelompok').click(function () {
             i = 1;
             if ($('#radio_kelompok').is(':checked')) {
-                console.log('kelompok')
+                // console.log('kelompok')
                 $('#nama-kelompok').html('<i class="icofont-id-card"></i> {{ __('Nama Kelompok') }}')
                 $('#nama_anggota').html('<input id="button-anggota" type="button" class="wow fadeInUp btn-danger" value="Add"><div class="form-group row"> <label for="name" class="col-md-12 col-form-label wow fadeInUp"><i class="icofont-id-card"></i> {{ __('Nama Anggota ') }}' + i + '</label><br> <div class="col-md-12 wow fadeInUp"> <input placeholder="Masukkan Nama" id="array-nama-anggota' + i + '" type="text" class="form-control2 @error('name') is-invalid @enderror" name="name_anggota' + i + '" value="{{ old('name') }}" required autocomplete="name" autofocus>@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>@enderror</div> </div><div class="form-group row"> <label for="name" class="col-md-12 col-form-label wow fadeInUp"><i class="icofont-email"></i> {{ __('Email Anggota ') }}' + i + '</label><br> <div class="col-md-12 wow fadeInUp"> <input placeholder="Masukkan Email" id="array-email-anggota' + i + '" type="email" class="form-control2 @error('name') is-invalid @enderror" name="name_email' + i + '" value="{{ old('email') }}" required autocomplete="name" autofocus></div> </div>')
                 $('#button-anggota').click(function () {
                     if (i == 5) {
                         alert("Anggota sudah memenuhi batas ketentuan");
                     } else {
-                        console.log(i++);
+                        // console.log(i++);
                         counter = i
                         $('#nama_anggota').append('<div class="form-group row"> <label for="name" class="col-md-12 col-form-label wow fadeInUp"><i class="icofont-id-card"></i> {{ __('Nama Anggota ') }}' + i + '</label><br> <div class="col-md-12 wow fadeInUp"> <input placeholder="Masukkan Nama" id="array-nama-anggota' + i + '" type="text" class="form-control2 @error('name') is-invalid @enderror" name="name_anggota' + i + '" value="{{ old('name') }}" required autocomplete="name" autofocus>@error('name')<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>@enderror</div> </div><div class="form-group row"> <label for="name" class="col-md-12 col-form-label wow fadeInUp"><i class="icofont-email"></i> {{ __('Email Anggota ') }}' + i + '</label><br> <div class="col-md-12 wow fadeInUp"> <input placeholder="Masukkan Email" id="array-email-anggota' + i + '" type="email" class="form-control2 @error('name') is-invalid @enderror" name="name_email' + i + '" value="{{ old('email') }}" required autocomplete="name" autofocus></div> </div>')
                     }
