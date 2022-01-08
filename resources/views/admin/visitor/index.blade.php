@@ -88,6 +88,43 @@
                                                                        value="{{$data->email}}" disabled>
                                                             </div>
                                                         </div>
+                                                        <div class="my-5">
+                                                            <h3 class="text-center">Struk pembayaran</h3>
+                                                            <table class="table" style="background-color: #e0e0e0">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Jumlah peserta</th>
+                                                                    <th></th>
+                                                                    <th>Harga satuan</th>
+                                                                    <th>Total</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ $data->kategori_peserta == 'individu' ? 1 : $data->anggota->count() }}
+                                                                    </td>
+                                                                    <td> x</td>
+                                                                    <td>Rp. {{ $harga_satuan->find($data->kategori_lp) == null ? number_format(300000) : $harga_satuan->find($data->kategori_lp)->harga }}</td>
+                                                                    <td>Rp.
+                                                                        @if($data->kategori_peserta == 'individu')
+                                                                            @if($harga_satuan->find($data->kategori_lp) == null)
+                                                                                {{number_format(300000)}}
+                                                                            @else
+                                                                        {{ $harga_satuan->find($data->kategori_lp)->harga }}
+                                                                                @endif
+                                                                        @else
+                                                                            @if($harga_satuan->find($data->kategori_lp) == null)
+                                                                                {{ number_format($data->anggota->count() * 300000) }}
+                                                                            @else
+                                                                                {{ $data->anggota->count() * $harga_satuan->find($data->kategori_lp)->harga }}
+                                                                            @endif
+                                                                            @endif
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                         <div>
                                                             @if($data->bukti_pembayaran == null)
                                                                 <div class="text-center h-50 w-50"

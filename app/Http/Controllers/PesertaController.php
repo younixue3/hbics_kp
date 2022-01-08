@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Event;
 use App\Karya;
 use App\User;
+use App\KategoriLp;
 
 class PesertaController extends Controller
 {
@@ -17,12 +18,13 @@ class PesertaController extends Controller
      */
     public function visitor(Request $request)
     {
+        $harga_satuan = KategoriLp::get();
         if ($request->cari != null) {
             $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'pengunjung')->paginate(20);
         } else {
             $datas = User::where('role', 'peserta')->paginate(20);
         }
-        $data = compact('datas');
+        $data = compact('datas', 'harga_satuan');
         return view('admin.visitor.index', $data);
     }
 
