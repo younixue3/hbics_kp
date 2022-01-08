@@ -82,7 +82,7 @@
                                     <select name="kategori_lp" class="form-control2 wow fadeInUp" id="kategori_lp">
                                         <option selected disabled>Pilih kategori</option>
                                         @foreach($kategori_lp as $key => $value)
-                                            <option value="">{{$value->kategori}}</option>
+                                            <option value="{{$value->id}}">{{$value->kategori}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -149,7 +149,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 text-center">
                                     <br>
-                                    <a href="{{route('login')}}" id="submit_storage"
+                                    <a href="#" id="submit_storage"
                                        class="btn btn-blue btn-block wow fadeInUp">
                                         {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                     </a>
@@ -199,36 +199,40 @@
                     if (i == counter) break;
                 }
                 status = 0;
+                $.ajax({
+                    type: "POST",
+                    url: window.location.origin + '/daftar/insert',
+                    data: {
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        no_hp: $('#no_hp').val(),
+                        event_id: 2,
+                        kategori_lp: $('#kategori_lp').val(),
+                        provinsi_id: $('#provinsi').val(),
+                        kota_kab_id: $('#kota_kab').val(),
+                        password: $('#password').val(),
+                        kategori_peserta: $(".radio-choose:checked").val(),
+                        jenjang: $('#jenjang').val(),
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        arr.data.kelompok = data;
+                        $.ajax({
+                            type: "POST",
+                            url: window.location.origin + '/daftar/anggota',
+                            data: arr,
+                            success: function () {
+                                window.location.replace(window.location.origin + '/login');
+                            },
+                        });
+                    }
+                });
             } else {
                 alert("data anda telah di input")
             }
-            $.ajax({
-                type: "POST",
-                url: window.location.origin + '/daftar/insert',
-                data: {
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    no_hp: $('#no_hp').val(),
-                    event_id: 2,
-                    kategori_lp: $('#kategori_lp').val(),
-                    provinsi_id: $('#provinsi').val(),
-                    kota_kab_id: $('#kota_kab').val(),
-                    password: $('#password').val(),
-                    kategori_peserta: $(".radio-choose:checked").val(),
-                    jenjang: $('#jenjang').val(),
-                },
-                error: function (e) {
-                    console.log(e)
-                },
-                success: function (data) {
-                    arr.data.kelompok = data;
-                    $.ajax({
-                        type: "POST",
-                        url: window.location.origin + '/daftar/anggota',
-                        data: arr
-                    });
-                }
-            });
             console.log(arr.data.kelompok)
 
         });

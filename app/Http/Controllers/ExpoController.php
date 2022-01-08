@@ -13,6 +13,7 @@ use App\User;
 use App\Komentar;
 use Carbon\Carbon;
 use App\KategoriLomba;
+use App\KategoriLp;
 use Illuminate\Support\Facades\Storage;
 
 class ExpoController extends Controller
@@ -103,12 +104,26 @@ class ExpoController extends Controller
     public function pembayaran()
     {
         $user = Auth::user();
-        dd($user);
-        $total_harga = number_format($user->anggota->count() * 300000);
-        if($user->event_id == 2) {
-
+//        dd($user);
+        $harga_satuan = number_format(300000);
+        if($user->kategori_peserta == "kelompok") {
+            if($user->event_id == 1) {
+                $total_harga = number_format($user->anggota->count() * 300000);
+            } else if ($user->event_id == 2) {
+                $kategori_lp = KategoriLp::find($user->kategori_lp);
+                $harga_satuan = number_format($kategori_lp->harga);
+                $total_harga = number_format($user->anggota->count() * $kategori_lp->harga);
+            }
+        } else {
+            if($user->event_id == 1) {
+                $total_harga = number_format(300000);
+            } else if ($user->event_id == 2) {
+                $kategori_lp = KategoriLp::find($user->kategori_lp);
+                $harga_satuan = number_format($kategori_lp->harga);
+                $total_harga = number_format($kategori_lp->harga);
+            }
         }
-        $data = compact('user', 'total_harga');
+        $data = compact('user', 'total_harga', 'harga_satuan');
         return view('expo.bukti_pembayaran', $data);
     }
 

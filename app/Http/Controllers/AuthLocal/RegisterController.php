@@ -37,7 +37,7 @@ class RegisterController extends Controller
 
     public function insert(Request $request)
     {
-        return dd($request);
+//        return response($request);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -54,6 +54,7 @@ class RegisterController extends Controller
                     'no_hp' => $request->no_hp,
                     'jenjang' => $request->jenjang,
                     'event_id' => intval($request->event_id),
+                    'kategori_peserta' => $request->kategori_peserta,
                     'kategori_lp' => $request->kategori_lp,
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
@@ -67,6 +68,7 @@ class RegisterController extends Controller
                     'no_hp' => $request->no_hp,
                     'jenjang' => $request->jenjang,
                     'event_id' => intval($request->event_id),
+                    'kategori_peserta' => $request->kategori_peserta,
                     'kategori_lp' => $request->kategori_lp,
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
@@ -80,6 +82,7 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'jenjang' => $request->jenjang,
                 'event_id' => intval($request->event_id),
+                'kategori_peserta' => $request->kategori_peserta,
                 'provinsi_id' => intval($request->provinsi_id),
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),
@@ -91,6 +94,7 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'jenjang' => $request->jenjang,
                 'event_id' => intval($request->event_id),
+                'kategori_peserta' => $request->kategori_peserta,
                 'provinsi_id' => intval($request->provinsi_id),
                 'kota_kab_id' => intval($request->kota_kab_id),
                 'password' => Hash::make($request->password),

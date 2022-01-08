@@ -35,10 +35,10 @@
                     <tbody>
                     <tr>
                         <td>
-                            {{ $user->anggota->count() }}
+                            {{ $user->kategori_peserta == 'individu' ? 1 : $user->anggota->count() }}
                         </td>
                         <td> x</td>
-                        <td>Rp. 300,000</td>
+                        <td>Rp. {{$harga_satuan}}</td>
                         <td>Rp. {{ $total_harga  }}</td>
                     </tr>
                     </tbody>

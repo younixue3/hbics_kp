@@ -90,13 +90,13 @@
                                                         </div>
                                                         <div>
                                                             @if($data->bukti_pembayaran == null)
-                                                                <div class="text-center"
-                                                                     style="height: 400px;width:300px;background-color: #cfcfcf">
+                                                                <div class="text-center h-50 w-50"
+                                                                     style="background-color: #cfcfcf">
                                                                     Bukti Pembayaran Kosong
                                                                 </div>
                                                             @else
 
-                                                                <img class=""
+                                                                <img class="h-50 w-50" style="object-fit: cover;"
                                                                      src="{{asset('Upload/paidbill/'.$data->bukti_pembayaran)}}">
                                                             @endif
                                                         </div>
