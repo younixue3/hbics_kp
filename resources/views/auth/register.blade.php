@@ -63,6 +63,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="no_hp" class="col-md-12 col-form-label wow fadeInUp"><i
+                                            class="icofont-ui-cell-phone"></i> {{ __('No Handphone') }}</label>
+                                    <br>
+                                    <div class="col-md-12">
+                                        <input placeholder="Masukkan No Handphone" id="no_hp"
+                                               class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
+                                               name="no_hp" value="" required>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
                                             class=""></i> {{ __('Jenjang') }}</label>
                                     <br>
@@ -124,7 +139,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <a href="{{route('login')}}" id="submit_storage"
+                                        <a href="#" id="submit_storage"
                                            class="btn btn-blue btn-block wow fadeInUp">
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>
@@ -174,32 +189,42 @@
                     if (i == counter) break;
                 }
                 status = 0;
+                $.ajax({
+                    type: "POST",
+                    url: window.location.origin + '/daftar/insert',
+                    data: {
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        no_hp: $('#no_hp').val(),
+                        event_id: 1,
+                        provinsi_id: $('#provinsi').val(),
+                        kota_kab_id: $('#kota_kab').val(),
+                        password: $('#password').val(),
+                        kategori_peserta: $(".radio-choose:checked").val(),
+                        jenjang: $('#jenjang').val()
+                    },
+                    error: function (e) {
+                        console.log(e)
+                    },
+                    success: function (data) {
+                        if ($(".radio-choose:checked").val() == 'kelompok') {
+                            arr.data.kelompok = data;
+                            $.ajax({
+                                type: "POST",
+                                url: window.location.origin + '/daftar/anggota',
+                                data: arr,
+                                success: function () {
+                                    window.location.replace(window.location.origin + '/login');
+                                },
+                            });
+                        } else {
+                            window.location.replace(window.location.origin + '/login');
+                        }
+                    }
+                });
             } else {
                 alert("data anda telah di input")
             }
-            $.ajax({
-                type: "POST",
-                url: window.location.origin + '/daftar/insert',
-                data: {
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    no_hp: $('#no_hp').val(),
-                    event_id: 1,
-                    provinsi_id: $('#provinsi').val(),
-                    kota_kab_id: $('#kota_kab').val(),
-                    password: $('#password').val(),
-                    kategori_peserta: $(".radio-choose:checked").val(),
-                    jenjang: $('#jenjang').val()
-                },
-                success: function (data) {
-                    arr.data.kelompok = data;
-                    $.ajax({
-                        type: "POST",
-                        url: window.location.origin + '/daftar/anggota',
-                        data: arr
-                    });
-                }
-            });
             console.log(arr.data.kelompok)
 
         });

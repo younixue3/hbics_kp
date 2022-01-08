@@ -80,6 +80,7 @@ class RegisterController extends Controller
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'no_hp' => $request->no_hp,
                 'jenjang' => $request->jenjang,
                 'event_id' => intval($request->event_id),
                 'kategori_peserta' => $request->kategori_peserta,
@@ -92,6 +93,7 @@ class RegisterController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'no_hp' => $request->no_hp,
                 'jenjang' => $request->jenjang,
                 'event_id' => intval($request->event_id),
                 'kategori_peserta' => $request->kategori_peserta,
