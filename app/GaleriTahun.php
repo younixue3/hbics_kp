@@ -8,6 +8,7 @@ class GaleriTahun extends Model
 {
     //
     protected $fillable = ['folder'];
+
     public function fotos()
     {
         return $this->hasMany('App\Foto', 'galeri_tahuns_id');

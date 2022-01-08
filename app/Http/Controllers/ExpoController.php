@@ -106,8 +106,8 @@ class ExpoController extends Controller
         $user = Auth::user();
 //        dd($user);
         $harga_satuan = number_format(300000);
-        if($user->kategori_peserta == "kelompok") {
-            if($user->event_id == 1) {
+        if ($user->kategori_peserta == "kelompok") {
+            if ($user->event_id == 1) {
                 $total_harga = number_format($user->anggota->count() * 300000);
             } else if ($user->event_id == 2) {
                 $kategori_lp = KategoriLp::find($user->kategori_lp);
@@ -115,7 +115,7 @@ class ExpoController extends Controller
                 $total_harga = number_format($user->anggota->count() * $kategori_lp->harga);
             }
         } else {
-            if($user->event_id == 1) {
+            if ($user->event_id == 1) {
                 $total_harga = number_format(300000);
             } else if ($user->event_id == 2) {
                 $kategori_lp = KategoriLp::find($user->kategori_lp);

@@ -34,7 +34,7 @@ class GaleriController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,48 +43,43 @@ class GaleriController extends Controller
         $input = $request->all();
         $validatedData = $request->validate([
             'folder' => 'required',
-            ]);
+        ]);
         $data = GaleriTahun::create($input);
-        if($data)
-        {
+        if ($data) {
             return redirect('galeris')->with('success', 'Data berhasil diupload ke server');
-        }
-        else
-        {
+        } else {
             return redirect('galeris')->with('fail', 'Data gagal diupload ke server');
         }
     }
+
     public function fotoStore(Request $request, $galeri_tahun)
     {
         $input = $request->all();
         $validatedData = $request->validate([
             'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
-            ]);
+        ]);
         $tahun = GaleriTahun::findOrFail($galeri_tahun);
         $input['galeri_tahuns_id'] = $tahun->id;
-        if($request->has('foto')){
+        if ($request->has('foto')) {
             $foto = $input['foto'];
-            $fotoname = 'galeri-'.md5(\Carbon\Carbon::now().$foto->getClientOriginalName()).'.'.$foto->getClientOriginalExtension();
+            $fotoname = 'galeri-' . md5(\Carbon\Carbon::now() . $foto->getClientOriginalName()) . '.' . $foto->getClientOriginalExtension();
             $foto->move('uploads/galeris', $fotoname);
             $input['foto'] = $fotoname;
-        }
-        else{
+        } else {
             $input['foto'] = 'nopict.jpg';
         }
         $data = Foto::create($input);
-        if($data)
-        {
-            return redirect('galeris/'.$tahun->id.'/edit')->with('success', 'Data berhasil diupload ke server');
-        }
-        else
-        {
-            return redirect('galeris/'.$tahun->id.'/edit')->with('fail', 'Data gagal diupload ke server');
+        if ($data) {
+            return redirect('galeris/' . $tahun->id . '/edit')->with('success', 'Data berhasil diupload ke server');
+        } else {
+            return redirect('galeris/' . $tahun->id . '/edit')->with('fail', 'Data gagal diupload ke server');
         }
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -97,7 +92,7 @@ class GaleriController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -110,8 +105,8 @@ class GaleriController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -122,30 +117,25 @@ class GaleriController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
         $data = GaleriTahun::findOrFail($id);
-        if($data->fotos->count() == 0)
-        {
+        if ($data->fotos->count() == 0) {
             $data->delete();
-            if($data)
-            {
+            if ($data) {
                 return redirect('galeris')->with('success', 'Data berhasil dihapus ke server');
-            }
-            else
-            {
+            } else {
                 return redirect('galeris')->with('fail', 'Data gagal dihapus ke server');
             }
-        }
-        else
-        {
-            return redirect('galeris')->with('fail', 'Data gagal dihapus ke server');            
+        } else {
+            return redirect('galeris')->with('fail', 'Data gagal dihapus ke server');
         }
     }
+
     public function fotoDestroy($id)
     {
         //
@@ -153,20 +143,19 @@ class GaleriController extends Controller
         $galeri_id = $data->galeri_tahuns_id;
         $this->deletefoto($data->foto);
         $data->delete();
-        if($data)
-        {
-            return redirect('galeris/'.$galeri_id.'/edit')->with('success', 'Data berhasil dihapus ke server');
-        }
-        else
-        {
-            return redirect('galeris/'.$galeri_id.'/edit')->with('fail', 'Data gagal dihapus ke server');
+        if ($data) {
+            return redirect('galeris/' . $galeri_id . '/edit')->with('success', 'Data berhasil dihapus ke server');
+        } else {
+            return redirect('galeris/' . $galeri_id . '/edit')->with('fail', 'Data gagal dihapus ke server');
         }
     }
-    public function deletefoto($fotoname){
+
+    public function deletefoto($fotoname)
+    {
         // path folder
         $path = 'uploads/galeris/';
         // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
-        if(\File::delete($path.$fotoname)){
+        if (\File::delete($path . $fotoname)) {
             return true;
         }
     }

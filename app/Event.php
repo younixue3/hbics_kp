@@ -13,18 +13,22 @@ class Event extends Model
         'deskripsi',
         'status'
     ];
+
     public function juris()
     {
         return $this->hasMany('App\Juri', 'event_id', 'id');
     }
+
     public function timelines()
     {
         return $this->hasMany('App\Timeline');
     }
+
     public function karyas()
     {
         return $this->hasOne('App\Karya', 'event_id', 'id');
     }
+
     public function sponsors()
     {
         return $this->hasMany('App\Sponsor')->orderBy('created_at', 'desc');

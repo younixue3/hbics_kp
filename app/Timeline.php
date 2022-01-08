@@ -16,6 +16,7 @@ class Timeline extends Model
         'keterangan'
     ];
     protected $dates = ['tanggal_mulai', 'tanggal_selesai'];
+
     public function event()
     {
         return $this->belongsTo('App\Event');

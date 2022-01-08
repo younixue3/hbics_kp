@@ -27,39 +27,33 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if($user->role == 'admin' || $user->role == 'superadmin')
-        {
+        if ($user->role == 'admin' || $user->role == 'superadmin') {
             return view('admin.profil');
-        }
-        else
-        {
+        } else {
             return redirect('beranda');
         }
     }
+
     public function profil()
     {
         $user = Auth::user();
-        if($user->role == 'admin')
-        {
+        if ($user->role == 'admin') {
             return view('admin.profil');
-        }
-        else
-        {
+        } else {
             return redirect('beranda');
         }
     }
+
     public function panduan()
     {
         $user = Auth::user();
-        if($user->role == 'admin')
-        {
+        if ($user->role == 'admin') {
             return view('admin.panduan');
-        }
-        else
-        {
+        } else {
             return redirect('beranda');
         }
     }
+
     public function profilUpdate(Request $request)
     {
         $input = $request->all();
@@ -73,22 +67,16 @@ class HomeController extends Controller
         // echo $input['password'];
         // exit;
         $cekemail = User::where('email', $input['email'])->where('id', '!=', $user->id)->get();
-        if($cekemail->count() == 0)
-        {
-            if($input['password'] == '')
-            {
+        if ($cekemail->count() == 0) {
+            if ($input['password'] == '') {
                 $input['password'] = $user->password;
-            }
-            else
-            {
+            } else {
                 $input['password'] = hash::make($input['password']);
             }
             $user->update($input);
             $user->save();
             return redirect('profils')->with('success', 'data profil berhasil diupdate');
-        }
-        else
-        {
+        } else {
             return redirect('profils')->with('fail', 'data profil gagal diupdate, email baru telah digunakan');
         }
     }

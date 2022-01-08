@@ -35,7 +35,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,32 +46,26 @@ class EventController extends Controller
             'tagline' => 'required',
             'deskripsi' => 'required',
             'status' => 'required',
-            ]);
-        if($request->has('logo')){
+        ]);
+        if ($request->has('logo')) {
             $logo = $input['logo'];
-            $logoname = 'logo-'.md5(\Carbon\Carbon::now().$logo->getClientOriginalName()).'.'.$logo->getClientOriginalExtension();
+            $logoname = 'logo-' . md5(\Carbon\Carbon::now() . $logo->getClientOriginalName()) . '.' . $logo->getClientOriginalExtension();
             $logo->move('uploads/events', $logoname);
             $input['logo'] = $logoname;
-        }
-        else{
+        } else {
             $input['logo'] = 'nopict.jpg';
         }
         $data = Event::create($input);
-        if($data->status == 1)
-        {
+        if ($data->status == 1) {
             $all = Event::where('status', 1)->where('id', '!=', $data->id)->get();
-            foreach($all as $event)
-            {
+            foreach ($all as $event) {
                 $event->status = 0;
                 $event->save();
             }
         }
-        if($data)
-        {
+        if ($data) {
             return redirect('events')->with('success', 'Data berhasil diupload ke server');
-        }
-        else
-        {
+        } else {
             return redirect('events')->with('fail', 'Data gagal diupload ke server');
         }
     }
@@ -79,7 +73,7 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -94,7 +88,7 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -103,24 +97,21 @@ class EventController extends Controller
         $data = Event::findOrFail($id);
         return view('admin.event.edit', compact('data'));
     }
+
     public function status($id)
     {
         //
         $data = Event::findOrFail($id);
-        if($data->status == 1)
-        {
+        if ($data->status == 1) {
             $data->status = 0;
             $data->save();
             $latest = Event::latest()->first();
             $latest->status = 1;
             $latest->save();
             return redirect('events')->with('success', 'Data berhasil diupdate menjadi non-aktif. Event aktif otomatis digeser pada data event terbaru');
-        }
-        else
-        {
+        } else {
             $all = Event::where('status', 1)->get();
-            foreach($all as $event)
-            {
+            foreach ($all as $event) {
                 $event->status = 0;
                 $event->save();
             }
@@ -130,11 +121,12 @@ class EventController extends Controller
         }
         return view('admin.event.edit', compact('data'));
     }
+
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -146,25 +138,22 @@ class EventController extends Controller
             'tagline' => 'required',
             'deskripsi' => 'required',
             'status' => 'required',
-            ]);
+        ]);
         $find = Event::findOrFail($id);
-        if($request->has('logo')){
+        if ($request->has('logo')) {
             $this->deletelogo($find->logo);
             $logo = $input['logo'];
-            $logoname = 'logo-'.md5(\Carbon\Carbon::now().$logo->getClientOriginalName()).'.'.$logo->getClientOriginalExtension();
+            $logoname = 'logo-' . md5(\Carbon\Carbon::now() . $logo->getClientOriginalName()) . '.' . $logo->getClientOriginalExtension();
             $logo->move('uploads/events', $logoname);
-            $input['logo'] = $logoname;        }
-        else{
+            $input['logo'] = $logoname;
+        } else {
             $input['logo'] = $find->logo;
         }
         $find->update($input);
         $find->save();
-        if($find)
-        {
+        if ($find) {
             return redirect('events')->with('success', 'Data berhasil diupdate di server');
-        }
-        else
-        {
+        } else {
             return redirect('events')->with('fail', 'Data gagal diupdate di server');
         }
     }
@@ -172,30 +161,29 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
         $data = Event::findOrFail($id);
-        if($data->juris->count() != 0 && $data->timelines->count() != 0 && $data->karyas->count() != 0)
-        {
+        if ($data->juris->count() != 0 && $data->timelines->count() != 0 && $data->karyas->count() != 0) {
             return redirect('events')->with('fail', 'Data gagal dihapus di server');
-        }
-        else
-        {
+        } else {
             $this->deletelogo($data->logo);
             $data->delete();
             return redirect('events')->with('success', 'Data berhasil dihapus di server');
         }
 
     }
-    public function deletelogo($logoname){
+
+    public function deletelogo($logoname)
+    {
         // path folder
         $path = 'uploads/events/';
         // delete gambar bisa jadikan if true or false misal false kasih konidisi etc
-        if(\File::delete($path.$logoname)){
+        if (\File::delete($path . $logoname)) {
             return true;
         }
     }

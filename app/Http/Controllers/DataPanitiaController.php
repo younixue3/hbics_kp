@@ -15,7 +15,7 @@ class DataPanitiaController extends Controller
     public function index(Request $request)
     {
         if ($request->cari != null) {
-            $datas = User::where('email', 'like', '%'.$request->cari)->orWhere('name', 'like', '%'.$request->cari.'%')->where('role', 'admin')->paginate(20);
+            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'admin')->paginate(20);
         } else {
             $datas = User::where('role', 'admin')->paginate(20);
         }
@@ -36,7 +36,7 @@ class DataPanitiaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class DataPanitiaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show_panitia($id)
@@ -60,7 +60,7 @@ class DataPanitiaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,8 +71,8 @@ class DataPanitiaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update_panitia(Request $request, $id)
@@ -86,7 +86,7 @@ class DataPanitiaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function delete_panitia($id)

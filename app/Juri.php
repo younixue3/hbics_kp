@@ -15,10 +15,12 @@ class Juri extends Model
         'url_profil',
         'quote'
     ];
+
     public function event()
     {
         return $this->belongsTo('App\Event');
     }
+
     public function user()
     {
         return $this->belongsTo('App\User');

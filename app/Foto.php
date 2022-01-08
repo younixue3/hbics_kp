@@ -11,6 +11,7 @@ class Foto extends Model
         'galeri_tahuns_id',
         'foto'
     ];
+
     public function folder()
     {
         return $this->belongsTo('App\GaleriTahun');
