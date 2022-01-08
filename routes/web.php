@@ -15,7 +15,7 @@ use \App\Http\Controllers\expo_v2\IndexController;
 |
 */
 
-Route::get('/logout', function() {
+Route::get('/logout', function () {
     Auth::logout();
     return redirect('login');
 });
@@ -45,7 +45,7 @@ Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori')
 Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
 // EXPO
 Auth::routes();
-Route::middleware(['auth', 'admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
     Route::get('profils', 'HomeController@profil');
     Route::patch('profils/update', 'HomeController@profilUpdate');
@@ -120,7 +120,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
     Route::get('pengunjung/delete/{id}', 'PesertaController@delete_visitor')->name('delete_visitor');
     Route::get('pengunjung/change_role/{id}', 'PesertaController@change_role_visitor')->name('change_role_pengunjung');
     // PANITIA
-    Route::middleware(['superadmin'])->group(function(){
+    Route::middleware(['superadmin'])->group(function () {
         Route::get('panitia', 'DataPanitiaController@index')->name('panitia');
         Route::get('panitia/{id}', 'DataPanitiaController@show_panitia')->name('show_panitia');
         Route::put('panitia/update/{id}', 'DataPanitiaController@update_panitia')->name('update_panitia');
@@ -131,7 +131,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
 Route::get('pembayaran', 'ExpoController@pembayaran')->name('bukti_pembayaran');
 Route::put('pembayaran/post', 'ExpoController@postPembayaran')->name('post_pembayaran');
 Route::get('pembayaran/tahap_validasi', 'ExpoController@tahap_validasi')->name('tahap_validasi');
-Route::middleware(['peserta', 'pembayaran'])->group(function(){
+Route::middleware(['peserta', 'pembayaran'])->group(function () {
     Route::put('profil/update', 'ExpoController@update_profil_tim')->name('profil_update');
     Route::get('profil', 'ExpoController@profil');
     Route::post('karya/insert', 'ExpoController@insert_karya')->name('karya_insert');
