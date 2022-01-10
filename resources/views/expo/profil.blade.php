@@ -200,7 +200,7 @@
                                                 <label class="mt10">
                                                     <i style="color: green" class="icofont-check-circled"></i>
                                                     Proposal
-{{--                                                    {{dd($karya)}}--}}
+                                                    {{--                                                    {{dd($karya)}}--}}
                                                     <a style="color: rgb(41, 91, 228)"
                                                        href="{{ $karya != null ? asset('Upload/proposal/' . $karya->proposal) : ''}}"
                                                        target="_blank">Lihat
@@ -265,8 +265,8 @@
                                                                  src="{{asset('Upload/karyafotos/' . $value->foto)}}">
                                                         </div>
                                                     @endforeach
-                                                    @else
-                                                    @endif
+                                                @else
+                                                @endif
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Upload Foto</button>
