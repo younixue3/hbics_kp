@@ -200,8 +200,9 @@
                                                 <label class="mt10">
                                                     <i style="color: green" class="icofont-check-circled"></i>
                                                     Proposal
+{{--                                                    {{dd($karya)}}--}}
                                                     <a style="color: rgb(41, 91, 228)"
-                                                       href="{{asset('Upload/proposal/' . $karya->proposal)}}"
+                                                       href="{{ $karya != null ? asset('Upload/proposal/' . $karya->proposal) : ''}}"
                                                        target="_blank">Lihat
                                                         proposal saat ini <i class="icofont-file"></i></a>
                                                 </label>
@@ -213,7 +214,7 @@
                                                     {{--                                                    {{dd($karya->foto_poster)}}--}}
                                                     Foto Poster
                                                     <a style="color: rgb(41, 91, 228)"
-                                                       href="{{asset('Upload/foto_poster/' . $karya->foto_poster)}}"
+                                                       href="{{$karya != null ? asset('Upload/foto_poster/' . $karya->foto_poster) : ''}}"
                                                        data-lightbox="foto_poster" data-title="">Lihat foto saat ini <i
                                                             class="icofont-image"></i></a>
                                                 </label>
@@ -257,12 +258,15 @@
                                         <input type="file" required multiple name="foto_karya[]" class="form-control2">
                                         <div class="my-5 border border-dark p-2 rounded">
                                             <div class="row">
-                                                @foreach($karya->foto as $key => $value)
-                                                    <div class="col-3">
-                                                        <img class="h-100 w-100" style="object-fit: cover"
-                                                             src="{{asset('Upload/karyafotos/' . $value->foto)}}">
-                                                    </div>
-                                                @endforeach
+                                                @if ($karya != null)
+                                                    @foreach($karya->foto as $key => $value)
+                                                        <div class="col-3">
+                                                            <img class="h-100 w-100" style="object-fit: cover"
+                                                                 src="{{asset('Upload/karyafotos/' . $value->foto)}}">
+                                                        </div>
+                                                    @endforeach
+                                                    @else
+                                                    @endif
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Upload Foto</button>
