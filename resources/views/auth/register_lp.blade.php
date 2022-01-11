@@ -69,7 +69,6 @@
                                         class=""></i> {{ __('Kategori Lomba') }}</label>
                                 <br>
                                 <div class="col-md-12">
-                                    {{dd($kategori_lp)}}
                                     <select name="kategori_lp" class="form-control2 wow fadeInUp" id="kategori_lp">
                                         <option selected disabled>Pilih kategori</option>
                                         @foreach($kategori_lp as $key => $value)
