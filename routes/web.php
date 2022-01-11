@@ -30,6 +30,7 @@ Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verif
 // MENU NON ADMIN
 // LANDING
 Route::get('', 'LandingController@beranda')->name('beranda');
+Route::get('beranda_lp', 'LandingController@beranda_lp')->name('beranda_lp');
 Route::get('tentang-kami', 'LandingController@tentangKami');
 Route::get('timeline', 'LandingController@timeline');
 Route::get('kategori', 'LandingController@kategori');

@@ -72,7 +72,7 @@
                                     <select name="kategori_lp" class="form-control2 wow fadeInUp" id="kategori_lp">
                                         <option selected disabled>Pilih kategori</option>
                                         @foreach($kategori_lp as $key => $value)
-                                            <option value="{{$value->id}}">{{$value->kategori}}</option>
+                                            <option id="kategori_lp_{{$value->id}}" value="{{$value->id}}">{{$value->kategori}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -169,6 +169,12 @@
                 })
             })
         })
+        $('#jenjang').change(function () {
+            if($(this).val() == 'sd') {
+                $('#kategori_lp_3').hide()
+            }
+        })
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

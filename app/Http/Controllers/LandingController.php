@@ -33,6 +33,15 @@ class LandingController extends Controller
         return view('landing.index', compact('event', 'beritas', 'kategori', 'list_event'));
     }
 
+    public function beranda_lp()
+    {
+        $event = Event::where('status', 1)->first();
+        $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
+        $kategori = KategoriLomba::where('event_id', 2)->get();
+        $list_event = Event::get();
+        return view('landing.index_lp', compact('event', 'beritas', 'kategori', 'list_event'));
+    }
+
     public function post()
     {
         $datas = Post::orderBy('created_at', 'desc')->paginate(5);
