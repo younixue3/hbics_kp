@@ -167,6 +167,8 @@
                                         <input type="text" name="nama" class="form-control2"
                                                placeholder="Masukkan nama produk"
                                                value="{{$karya == null ? '' : $karya->nama}}">
+                                        @if(Auth::user()->event_id == 2)
+                                            @else
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label class="mt10">
@@ -188,6 +190,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @endif
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
                                             Deskripsi Produk (sisa <span id="word_count_deskripsi"></span>

@@ -191,7 +191,11 @@ class ExpoController extends Controller
         $event = Event::where('status', 1)->latest()->first();
         $karya = Karya::where('user_id', $user->id)->first();
 //        dd($karya);
-        $foto_produk = KaryaFoto::where('karya_id', $karya->id)->latest()->get();
+        if ($karya != null) {
+            $foto_produk = KaryaFoto::where('karya_id', $karya->id)->latest()->get();
+        } else {
+            $foto_produk = null;
+        }
         $kategori_lomba = KategoriLomba::get();
         $data = compact('user', 'event', 'karya', 'kategori_lomba', 'foto_produk');
         return view('expo.profil-simulasi', $data);

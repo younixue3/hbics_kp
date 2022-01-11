@@ -18,7 +18,7 @@
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    Kategori: {{$kategori_lomba->where('id', $karya->kategori)->first()->kategori}}
+                                    Kategori: {{ $karya == null ? '' : $kategori_lomba->where('id', $karya->kategori)->first()->kategori }}
                                 </p>
                                 <br>
                                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
@@ -42,36 +42,40 @@
     <div class="container-fluid">
         <div class="row frame">
             {{--{{dd($foto_produk->first())}}--}}
-            @if($foto_produk->first() != null)
-                <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
-                     style="background-image: url('{{asset('Upload/karyafotos'). '/'.$foto_produk->first()->foto}}');background-size:cover;">
-                    @else
+            @if($foto_produk != null)
+                @if($foto_produk->first() != null)
+                    <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
+                         style="background-image: url('{{asset('Upload/karyafotos'). '/'.$foto_produk->first()->foto}}');background-size:cover;">
+                        @else
 
-                        <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
-                             style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
-                            @endif
-                        </div>
-                        <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
-                            <div class="deskripsi text-center">
-                                <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s"
-                                   style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$karya->nama}}</p>
-                                <p class="deskripsi-text wow fadeInUp" data-wow-delay="2s">
-                                    {{$karya->deskripsi}}
-                                </p>
+                            <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
+                                 style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
+                                @endif
                             </div>
-                        </div>
-                </div>
+                            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s" style="background-color: #FFDE5A">
+                                <div class="deskripsi text-center">
+                                    <p class="deskripsi-title wow fadeInUp" data-wow-delay="1s"
+                                       style="color: rgb(255, 255, 255); text-shadow: 1px #000000; margin-top:0px;">{{$karya->nama}}</p>
+                                    <p class="deskripsi-text wow fadeInUp" data-wow-delay="2s">
+                                        {{$karya->deskripsi}}
+                                    </p>
+                                </div>
+                            </div>
+                    </div>
+                @endif
         </div>
         <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
-                    @foreach($foto_produk as $key => $value)
-                        <div class="item">
-                            <div class="slide">
-                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+                    @if($foto_produk != null)
+                        @foreach($foto_produk as $key => $value)
+                            <div class="item">
+                                <div class="slide">
+                                    <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
@@ -91,7 +95,7 @@
                                     <a href="" data-toggle="modal" data-target="#c-video"><img
                                             src="{{asset('images/kenali/1.png')}}" alt="" class="kenali-logo"></a>
                                     <a href="" data-toggle="modal" data-target="#c-video" class="kenali-title">VIDEO
-                                        PROFIL @if($karya->link_profil != '') @endif</a>
+                                        PROFIL @if($karya != null) @if($karya->link_profil != '') @endif @endif</a>
                                     <div class="modal fade" id="c-video" style="margin-top: 150px;" tabindex="-1"
                                          role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -102,7 +106,9 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <iframe style="width: 100%;z-index:9999;" height="315"
+                                                            @if($karya != null)
                                                             src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_profil)}}"
+                                                            @endif
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe>
@@ -119,7 +125,7 @@
                                                                                                     alt=""
                                                                                                     class="kenali-logo"></a>
                                     <a href="" data-toggle="modal" data-target="#c-presentasi" class="kenali-title">VIDEO
-                                        PRESENTASI @if($karya->link_presentation != '') @endif</a>
+                                        PRESENTASI @if($karya != null) @if($karya->link_presentation != '') @endif @endif</a>
                                     <div class="modal fade" id="c-presentasi" style="margin-top: 150px;" tabindex="-1"
                                          role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -130,7 +136,9 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <iframe style="width: 100%;z-index:9999;" height="315"
+                                                            @if($karya != null)
                                                             src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_presentation)}}"
+                                                            @endif
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe>
@@ -144,7 +152,7 @@
                                     <a href="" data-toggle="modal" data-target="#c-mockup" class="kenali-title"><img
                                             src="{{asset('images/kenali/3.png')}}" alt="" class="kenali-logo"></a>
                                     <a href="" data-toggle="modal" data-target="#c-mockup" class="kenali-title">VIDEO
-                                        MOCK-UP @if($karya->link_mockup != '') @endif</a>
+                                        MOCK-UP @if($karya != null) @if($karya->link_mockup != '') @endif @endif</a>
                                     <div class="modal fade" id="c-mockup" style="margin-top: 150px;" tabindex="-1"
                                          role="dialog" aria-labelledby="videoLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -155,7 +163,9 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <iframe style="width: 100%;z-index:9999;" height="315"
+                                                            @if($karya != null)
                                                             src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->link_mockup)}}"
+                                                            @endif
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe>
@@ -166,26 +176,41 @@
                                 </div>
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="2.5s">
                                     <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                                    @if ($karya->proposal != null)
-                                        <a href="{{asset('Upload/proposal/'.$karya->proposal)}}" target="_blank"><img
-                                                src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                                        <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank"
-                                           class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
-                                    @else
-                                        <a href="" target="_blank"><img src="{{asset('images/kenali/4.png')}}" alt=""
-                                                                        class="kenali-logo"></a>
-                                        <a href="" target="_blank"
-                                           class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
+                                    @if($karya != null)
+                                        @if ($karya->proposal != null)
+                                            <a href="{{asset('Upload/proposal/'.$karya->proposal)}}"
+                                               target="_blank"><img
+                                                    src="{{asset('images/kenali/4.png')}}" alt=""
+                                                    class="kenali-logo"></a>
+                                            <a href="{{asset('uploads/karyas/'.$karya->proposal)}}" target="_blank"
+                                               class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
+                                        @else
+                                            <a href="" target="_blank"><img src="{{asset('images/kenali/4.png')}}"
+                                                                            alt=""
+                                                                            class="kenali-logo"></a>
+                                            <a href="" target="_blank"
+                                               class="kenali-title">PROPOSAL @if($karya->proposal != '') @endif</a>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
                                     <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
-                                    <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
-                                       data-lightbox="foto_poster1" data-title="{{$karya->foto_poster}}"><img
-                                            src="{{asset('images/kenali/5.pngvid')}}" alt="" class="kenali-logo"></a>
-                                    <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
-                                       data-lightbox="foto_poster2" data-title="{{$karya->foto_poster}}"
-                                       class="kenali-title">POSTER @if($karya->foto_poster != null) @endif</a>
+                                    @if($karya != null)
+                                        <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
+                                           data-lightbox="foto_poster1" data-title="{{$karya->foto_poster}}"><img
+                                                src="{{asset('images/kenali/5.pngvid')}}" alt=""
+                                                class="kenali-logo"></a>
+                                        <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
+                                           data-lightbox="foto_poster2" data-title="{{$karya->foto_poster}}"
+                                           class="kenali-title">POSTER</a>
+                                    @else
+                                        <a href="#" data-lightbox="foto_poster1" data-title="#"><img
+                                                src="{{asset('images/kenali/5.pngvid')}}" alt=""
+                                                class="kenali-logo"></a>
+                                        <a href="#"
+                                           data-lightbox="foto_poster2" data-title="#"
+                                           class="kenali-title">POSTER</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
