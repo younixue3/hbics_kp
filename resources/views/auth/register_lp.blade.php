@@ -65,18 +65,6 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
-                                        class=""></i> {{ __('Jenjang') }}</label>
-                                <br>
-                                <div class="col-md-12">
-                                    <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
-                                        <option selected disabled>Pilih jenjang</option>
-                                        <option value="tk">TK</option>
-                                        <option value="sd">SD</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="kategori_lp" class="col-md-12 col-form-label wow fadeInUp"><i
                                         class=""></i> {{ __('Kategori Lomba') }}</label>
                                 <br>
@@ -87,6 +75,18 @@
                                             <option id="kategori_lp_{{$value->id}}"
                                                     value="{{$value->id}}">{{$value->kategori}}</option>
                                         @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Jenjang') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
+                                        <option selected disabled>Pilih jenjang</option>
+                                        <option value="tk">TK</option>
+                                        <option value="sd">SD</option>
                                     </select>
                                 </div>
                             </div>
