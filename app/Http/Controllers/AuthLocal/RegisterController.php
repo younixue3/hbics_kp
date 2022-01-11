@@ -47,34 +47,18 @@ class RegisterController extends Controller
             'password' => ['required', 'string'],
         ]);
         if ($request->event_id == 2) {
-            if ($request->kategori_peserta == 'kelompok') {
-                $user = User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'no_hp' => $request->no_hp,
-                    'jenjang' => $request->jenjang,
-                    'event_id' => intval($request->event_id),
-                    'kategori_peserta' => $request->kategori_peserta,
-                    'kategori_lp' => $request->kategori_lp,
-                    'provinsi_id' => intval($request->provinsi_id),
-                    'kota_kab_id' => intval($request->kota_kab_id),
-                    'password' => Hash::make($request->password),
-                ]);
-                return $user->id;
-            } else {
-                User::create([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'no_hp' => $request->no_hp,
-                    'jenjang' => $request->jenjang,
-                    'event_id' => intval($request->event_id),
-                    'kategori_peserta' => $request->kategori_peserta,
-                    'kategori_lp' => $request->kategori_lp,
-                    'provinsi_id' => intval($request->provinsi_id),
-                    'kota_kab_id' => intval($request->kota_kab_id),
-                    'password' => Hash::make($request->password),
-                ]);
-            }
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'no_hp' => $request->no_hp,
+                'jenjang' => $request->jenjang,
+                'event_id' => intval($request->event_id),
+                'kategori_peserta' => 'individu',
+                'kategori_lp' => $request->kategori_lp,
+                'provinsi_id' => intval($request->provinsi_id),
+                'kota_kab_id' => intval($request->kota_kab_id),
+                'password' => Hash::make($request->password),
+            ]);
         }
         if ($request->kategori_peserta == 'kelompok') {
             $user = User::create([
