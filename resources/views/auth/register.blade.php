@@ -144,7 +144,7 @@
                                             {{ __('Mendaftar') }} <i class="icofont-hand-right"></i>
                                         </a>
                                         <br>
-                                        <a style="color: #0f868a" class="wow fadeInUp" href="{{url('/')}}">Sudah
+                                        <a style="color: #0f868a" class="wow fadeInUp" href="{{url('/login')}}">Sudah
                                             memiliki akun? <i class="icofont-rounded-right"></i></a>
                                     </div>
                                 </div>
