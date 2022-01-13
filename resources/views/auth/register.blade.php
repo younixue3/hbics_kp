@@ -207,7 +207,7 @@
                         // console.log(e)
                     },
                     success: function (data) {
-                        if ($(".radio-choose:checked").val() == 'kelompok') {
+                        if ($(".radio-choose:checked").val() == 'kelompok' || $(".radio-choose:checked").val() == null) {
                             arr.data.kelompok = data;
                             $.ajax({
                                 type: "POST",

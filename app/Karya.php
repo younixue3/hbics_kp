@@ -11,7 +11,7 @@ class Karya extends Model
 
     public function foto()
     {
-        return $this->hasMany(KaryaFoto::class);
+        return $this->hasMany('App\KaryaFoto', 'karya_id', 'id');
     }
 
     public function likes()

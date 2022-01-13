@@ -87,7 +87,7 @@
                         <a class="nav-link" href="{{url('beranda')}}">Beranda</a>
                     </li>
                     <li class="nav-item {{Request::is('expo/*') || Request::is('virtualexpo/*') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('expo/smp/desain-grafis')}}">Virtual Expo</a>
+                        <a class="nav-link" href="{{url('expo/smp/1')}}">Virtual Expo</a>
                         {{-- <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a> --}}
                     </li>
                     @if(Auth::user())

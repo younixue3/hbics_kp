@@ -70,26 +70,35 @@ class LandingController extends Controller
 
     public function expoJenjangKategori($jenjang, $kategori)
     {
+//        dd($jenjang);
         $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
             $q->where('kategori', $kategori);
         })->get();
+        if (Auth::user()->event_id == 1) {
+            $kategorinya = KategoriLomba::where('event_id', 1)->get();
+        } else {
+            $kategorinya = KategoriLomba::where('event_id', 2)->get();
+        }
+        $kategori_view = KategoriLomba::find($kategori)->kategori;
         $now = \Carbon\Carbon::now();
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-        return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event'));
+        return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event', 'kategori_view' ,'kategorinya'));
     }
 
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)
     {
         $data = Karya::findOrFail($id);
+        $this_user = User::find($data->user_id);
+        $kategori_lomba = KategoriLomba::get();
         $karyas = User::where('jenjang', $jenjang)->where('id', '!=', $data->user_id)->whereHas('karya', function ($q) use ($kategori) {
             $q->where('kategori', $kategori);
         })->get();
         if (Auth::user()) {
             $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
-            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike');
+            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba');
         } else {
             $statuslike = null;
-            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike');
+            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba');
         }
         return view('expo.expo-detail', $datas);
     }

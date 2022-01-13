@@ -38,24 +38,25 @@
                                  data-wow-delay="0.5s" alt="">
                             <div class="apaitu-mid">
                                 <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                                    <i class="icofont-people"></i> {{$data->nama_tim}}
+                                    <i class="icofont-people"></i> {{$this_user->name}}
                                 </p>
                                 <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
                                     TENTANG KAMI
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    : {{$data->jenjang}}, Kategori: {{$data->kategori}}
+                                    : {{strtoupper($this_user->jenjang)}}, Kategori: {{$kategori_lomba->where('id', $kategori)->first()->kategori}}
                                 </p>
                                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
-                                    {{$data->tentang_tim}}
+                                    {{$this_user->desc}}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
-                        @if ($data->foto_tim != '')
-                            <img src="{{url('uploads/karyas/'.$data->foto_tim)}}" class="apaitu-profilpict" alt="">
+{{--                        {{dd($this_user)}}--}}
+                        @if ($this_user->foto_profile != '')
+                            <img src="{{url('Upload/foto_profil/'.$this_user->foto_profile)}}" class="apaitu-profilpict" alt="" style="object-fit: cover">
                         @else
                             <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                         @endif
@@ -87,20 +88,17 @@
                         </div>
                 </div>
         </div>
-        <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
+        <div class="container-fluid wow fadeInUp" data-wow-delay="1s" style="height: 600px;">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
-                    @forelse ($data->foto as $foto)
+{{--                    {{dd($karyas->first()->karya->foto)}}--}}
+                    @foreach($data->foto as $key => $value)
                         <div class="item">
                             <div class="slide">
-                                <img src="{{url('uploads/karyafotos/'.$foto->foto)}}" class="slide-image" alt="">
+                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="" style="height: 600px; object-fit: cover">
                             </div>
                         </div>
-                    @empty
-                        <div class="sliding">
-                            <img src="{{asset('images/sample2.png')}}" class="slide-image" alt="">
-                        </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -196,9 +194,9 @@
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="2.5s">
                                     <img src="{{asset('images/gif/1.gif')}}" alt="" class="kenali-gif">
                                     {{-- BAIKIN PROPOSAL FILE --}}
-                                    <a href="{{asset('uploads/karyas/'.$data->proposal)}}" target="_blank"><img
+                                    <a href="{{asset('Upload/proposal/'.$data->proposal)}}" target="_blank"><img
                                             src="{{asset('images/kenali/4.png')}}" alt="" class="kenali-logo"></a>
-                                    <a href="{{asset('uploads/karyas/'.$data->proposal)}}" target="_blank"
+                                    <a href="{{asset('Upload/proposal/'.$data->proposal)}}" target="_blank"
                                        class="kenali-title">PROPOSAL</a>
                                 </div>
                                 <div class="kenali-frame text-center wow fadeInUp" data-wow-delay="3s">
@@ -217,7 +215,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <img style="width: 100%; height:auto;"
-                                                         src="{{asset('uploads/karyas/'.$data->foto_poster)}}" alt="">
+                                                         src="{{asset('Upload/foto_poster/'.$data->foto_poster)}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +232,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            @if($statuslike != null)
+{{--                            @if($statuslike != null)--}}
                                 @if ($statuslike)
                                     <a href="{{url('expo/likes/'.$data->id)}}"
                                        class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i>
@@ -251,7 +249,7 @@
                                         <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
                                     </div>
                                 @endif
-                            @endif
+{{--                            @endif--}}
                             {{-- <div class="write wow fadeInUp">
                                 <form action="{{url('expo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
                                     @csrf
@@ -286,7 +284,7 @@
                                     {{--                            {{dd($karya->karya->foto)}}--}}
                                     <div class="list-imageframe">
                                         @if ($karya->karya->foto->count() > 0)
-                                            <img src="{{url('uploads/karyafotos/'.$karya->karya->foto->first()->foto)}}"
+                                            <img src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
                                                  alt="" class="list-image">
                                         @else
                                             <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
