@@ -64,14 +64,14 @@
                     </div>
                 @endif
         </div>
-        <div class="container-fluid wow fadeInUp" data-wow-delay="1s">
+        <div class="container-fluid wow fadeInUp" data-wow-delay="1s" style="height: 600px">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
                     @if($foto_produk != null)
                         @foreach($foto_produk as $key => $value)
                             <div class="item">
                                 <div class="slide">
-                                    <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="">
+                                    <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="" style="height: 600px; object-fit: cover;">
                                 </div>
                             </div>
                         @endforeach
@@ -198,14 +198,14 @@
                                     @if($karya != null)
                                         <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
                                            data-lightbox="foto_poster1" data-title="{{$karya->foto_poster}}"><img
-                                                src="{{asset('images/kenali/5.pngvid')}}" alt=""
+                                                src="{{asset('images/kenali/5.png')}}" alt=""
                                                 class="kenali-logo"></a>
                                         <a href="{{asset('Upload/foto_poster/'.$karya->foto_poster)}}"
                                            data-lightbox="foto_poster2" data-title="{{$karya->foto_poster}}"
                                            class="kenali-title">POSTER</a>
                                     @else
                                         <a href="#" data-lightbox="foto_poster1" data-title="#"><img
-                                                src="{{asset('images/kenali/5.pngvid')}}" alt=""
+                                                src="{{asset('images/kenali/5.png')}}" alt=""
                                                 class="kenali-logo"></a>
                                         <a href="#"
                                            data-lightbox="foto_poster2" data-title="#"
