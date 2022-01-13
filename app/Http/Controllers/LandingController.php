@@ -16,11 +16,8 @@ use Auth;
 class LandingController extends Controller
 {
 
-    protected $testing;
-
     public function __construct()
-    {
-        $this->middleware('auth');
+    {;
     }
 
     public function beranda()

@@ -29,6 +29,12 @@ Route::get('/get_kota', 'AuthLocal\RegisterController@get_kota');
 Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verifikasi');
 // MENU NON ADMIN
 // LANDING
+Route::middleware(['auth'])->group(function () {
+    Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
+    Route::get('expo/likes/{id}', 'LandingController@expoLikes');
+    Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
+    Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
+});
 Route::get('', 'LandingController@beranda')->name('beranda');
 Route::get('beranda_lp', 'LandingController@beranda_lp')->name('beranda_lp');
 Route::get('tentang-kami', 'LandingController@tentangKami');
@@ -40,10 +46,6 @@ Route::get('galeri/{id}/{folder}', 'LandingController@galeriDetail');
 Route::get('post', 'LandingController@post');
 Route::get('post/{id}/{slug}', 'LandingController@postDetail');
 // Route::post('expo/komentar/{id}/{slug}', 'LandingController@expoKomentar');
-Route::get('expo/{jenjang}', 'LandingController@expoJenjang');
-Route::get('expo/likes/{id}', 'LandingController@expoLikes');
-Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
-Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
 // EXPO
 Auth::routes();
 Route::middleware(['auth', 'admin'])->group(function () {
