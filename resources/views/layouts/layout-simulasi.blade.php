@@ -64,7 +64,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
         <div class="container">
-            <a class="navbar-brand" id="navbrand" href="{{url('beranda')}}">
+            <a class="navbar-brand" id="navbrand" href="{{url('')}}">
                 <img src="{{asset('images/logo.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

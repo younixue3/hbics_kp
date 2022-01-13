@@ -38,7 +38,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
         <div class="container">
-            <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('beranda')}}">
+            <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('')}}">
                 <img src="{{asset('images/LOGO KP -02.png')}}"/>
                 <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>

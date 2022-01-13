@@ -73,7 +73,7 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
         <div class="container">
-            <a class="navbar-brand" id="navbrand" href="{{url('beranda')}}">
+            <a class="navbar-brand" id="navbrand" href="{{url('')}}">
                 <img src="{{asset('images/LOGO KP -02.png')}}"/>
                 <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
@@ -84,7 +84,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item {{Request::is('beranda') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('beranda')}}">Beranda</a>
+                        <a class="nav-link" href="{{url('')}}">Beranda</a>
                     </li>
                     <li class="nav-item {{Request::is('expo/*') || Request::is('virtualexpo/*') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('expo/smp/1')}}">Virtual Expo</a>
