@@ -15,9 +15,11 @@ use Auth;
 
 class LandingController extends Controller
 {
+    protected $testing;
 
-    public function __construct()
-    {;
+    public function __construct(array $testing = array())
+    {
+        $this->testing = Event::get();
     }
 
     public function beranda()
