@@ -40,17 +40,19 @@ class LandingController extends Controller
 
     public function post()
     {
+        $list_event = Event::get();
         $datas = Post::orderBy('created_at', 'desc')->paginate(5);
         // echo $event;
         // exit;
-        return view('landing.berita', compact('datas'));
+        return view('landing.berita', compact('datas', 'list_event'));
     }
 
     public function postDetail($id)
     {
         $data = Post::findOrFail($id);
+        $list_event = Event::get();
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
-        return view('landing.berita-detail', compact('data', 'beritas'));
+        return view('landing.berita-detail', compact('data', 'beritas', 'list_event'));
     }
 
     public function expoJenjang($jenjang)
