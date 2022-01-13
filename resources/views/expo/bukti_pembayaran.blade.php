@@ -39,7 +39,7 @@
                         </td>
                         <td> x</td>
                         <td>Rp. {{$harga_satuan}}</td>
-                        <td>Rp. 300,000</td>
+                        <td>Rp. {{$harga_total}}</td>
                     </tr>
                     </tbody>
                 </table>

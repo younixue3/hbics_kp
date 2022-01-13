@@ -110,11 +110,11 @@ class ExpoController extends Controller
         $harga_satuan = number_format(300000);
         if ($user->kategori_peserta == "kelompok") {
             if ($user->event_id == 1) {
-                $total_harga = number_format($user->anggota->count() * 300000);
+                $total_harga = number_format(300000);
             } else if ($user->event_id == 2) {
                 $kategori_lp = KategoriLp::find($user->kategori_lp);
                 $harga_satuan = number_format($kategori_lp->harga);
-                $total_harga = number_format($user->anggota->count() * $kategori_lp->harga);
+                $total_harga = number_format($kategori_lp->harga);
             }
         } else {
             if ($user->event_id == 1) {
