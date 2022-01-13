@@ -182,7 +182,7 @@ class LandingController extends Controller
     public function kategori()
     {
         $list_event = Event::get();
-        return view('landing.kategori', 'list_event');
+        return view('landing.kategori', compact('list_event'));
     }
 
     public function juri()
