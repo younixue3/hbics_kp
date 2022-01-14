@@ -186,15 +186,6 @@
         var status = 1;
         $('#submit_storage').click(function () {
             if (status == 1) {
-                // console.log(counter);
-                // for (var i = 1; ; i++) {
-                //     arr.data.anggota.push({
-                //         name: $('#array-nama-anggota' + i).val(),
-                //         email: $('#array-email-anggota' + i).val()
-                //     })
-                //     if (i == counter) break;
-                // }
-                // status = 0;
                 $.ajax({
                     type: "POST",
                     url: window.location.origin + '/daftar/insert',
@@ -219,8 +210,6 @@
             } else {
                 alert("data anda telah di input")
             }
-            // console.log(arr.data.kelompok)
-
         });
     </script>
 @endsection
