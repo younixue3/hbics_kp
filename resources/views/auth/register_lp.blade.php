@@ -187,14 +187,14 @@
         $('#submit_storage').click(function () {
             if (status == 1) {
                 // console.log(counter);
-                for (var i = 1; ; i++) {
-                    arr.data.anggota.push({
-                        name: $('#array-nama-anggota' + i).val(),
-                        email: $('#array-email-anggota' + i).val()
-                    })
-                    if (i == counter) break;
-                }
-                status = 0;
+                // for (var i = 1; ; i++) {
+                //     arr.data.anggota.push({
+                //         name: $('#array-nama-anggota' + i).val(),
+                //         email: $('#array-email-anggota' + i).val()
+                //     })
+                //     if (i == counter) break;
+                // }
+                // status = 0;
                 $.ajax({
                     type: "POST",
                     url: window.location.origin + '/daftar/insert',
@@ -210,7 +210,7 @@
                         jenjang: $('#jenjang').val(),
                     },
                     error: function (e) {
-                        // console.log(e)
+                        // alert(e, 'Pendaftaran gagal')
                     },
                     success: function (data) {
                         window.location.replace(window.location.origin + '/login');
