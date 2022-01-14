@@ -175,7 +175,7 @@ class LandingController extends Controller
     public function timeline()
     {
         $list_event = Event::get();
-        $event = Event::where('status', 1)->latest()->first();
+        $event = Event::where('status', 1)->first();
         return view('landing.timeline', compact('event', 'list_event'));
     }
 
