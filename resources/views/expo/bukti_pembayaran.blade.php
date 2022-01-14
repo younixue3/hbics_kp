@@ -38,7 +38,7 @@
                             {{ $user->kategori_peserta == 'individu' ? 1 : $user->anggota->count() }}
                         </td>
                         <td> x</td>
-                        <td>Rp. {{$harga_satuan}}</td>
+                        <td>Rp. {{$harga_satuan}} {{$user->kategori_peserta == 'individu' ? 'per Individu' : 'kelompok' }}</td>
                         <td>Rp. {{$total_harga}}</td>
                     </tr>
                     </tbody>
