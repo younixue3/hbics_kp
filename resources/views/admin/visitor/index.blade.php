@@ -116,9 +116,9 @@
                                                                             @endif
                                                                         @else
                                                                             @if($harga_satuan->find($data->kategori_lp) == null)
-                                                                                {{ number_format($data->anggota->count() * 300000) }}
+                                                                                {{ 300000) }}
                                                                             @else
-                                                                                {{ $data->anggota->count() * $harga_satuan->find($data->kategori_lp)->harga }}
+                                                                                {{ $harga_satuan->find($data->kategori_lp)->harga }}
                                                                             @endif
                                                                         @endif
                                                                     </td>
