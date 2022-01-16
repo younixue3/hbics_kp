@@ -116,7 +116,7 @@
                                                                             @endif
                                                                         @else
                                                                             @if($harga_satuan->find($data->kategori_lp) == null)
-                                                                                {{ 300000) }}
+                                                                                {{ number_format(300000) }}
                                                                             @else
                                                                                 {{ $harga_satuan->find($data->kategori_lp)->harga }}
                                                                             @endif
