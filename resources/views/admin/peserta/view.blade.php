@@ -254,9 +254,9 @@
                             <th>Total Likes</th>
                             <td>
                                 @if($data->karya == null)
-                                {{$data->karya->likers}}
-                                    @else
                                     0
+                                @else
+                                    {{$data->karya->likers}}
                                 @endif
                             </td>
                         </tr>
