@@ -123,7 +123,12 @@
                         <tr>
                             <th>Nama</th>
                             <td>
-
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
 								<span
                                     class="alert alert-sm @if($data->karya->nama == '') alert-danger @else alert-success @endif">
 									@if($data->karya->nama == '')
@@ -132,6 +137,7 @@
                                         {{$data->karya->nama}}
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         <tr>
