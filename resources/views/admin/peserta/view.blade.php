@@ -43,11 +43,11 @@
                             <th>Jenjang</th>
                             <td>
 								<span
-                                    class="alert alert-sm @if($data->karya->jenjang == '') alert-danger @else alert-success @endif">
-									@if($data->karya->jenjang == '')
+                                    class="alert alert-sm @if($data->jenjang == '') alert-danger @else alert-success @endif">
+									@if($data->jenjang == '')
                                         <i class="icofont-close-circled"></i>
                                     @else
-                                        {{$data->karya->jenjang}}
+                                        {{$data->jenjang}}
                                     @endif
 								</span>
                             </td>
@@ -56,8 +56,8 @@
                             <th>Kategori</th>
                             <td>
 								<span
-                                    class="alert alert-sm @if($data->karya->kategori == '') alert-danger @else alert-success @endif">
-									@if($data->karya->kategori == '')
+                                    class="alert alert-sm @if($data->karya == null && $data->karya->kategori == null) alert-danger @else alert-success @endif">
+									@if($data->karya == null && $data->karya->kategori == '')
                                         <i class="icofont-close-circled"></i>
                                     @else
                                         {{$data->karya->kategori}}
@@ -69,12 +69,12 @@
                             <th>Foto Tim</th>
                             <td>
 								<span
-                                    class="alert alert-sm @if($data->karya->foto_tim == '') alert-danger @else alert-success @endif">
-									@if($data->karya->foto_tim == '')
+                                    class="alert alert-sm @if($data->foto_profile == '') alert-danger @else alert-success @endif">
+									@if($data->foto_profile == '')
                                         <i class="icofont-close-circled"></i>
                                     @else
-                                        <a href="{{asset('uploads/karyas/'.$data->karya->foto_tim)}}"
-                                           target="_blank">{{$data->karya->foto_tim}}</a>
+                                        <a href="{{asset('uploads/karyas/'.$data->foto_profile)}}"
+                                           target="_blank">{{$data->foto_profile}}</a>
                                     @endif
 								</span>
                             </td>
@@ -97,11 +97,11 @@
                             <th>Tentang Tim</th>
                             <td>
 								<span
-                                    class="alert alert-sm @if($data->karya->tentang_tim == '') alert-danger @else alert-success @endif">
-									@if($data->karya->tentang_tim == '')
+                                    class="alert alert-sm @if($data->desc == '') alert-danger @else alert-success @endif">
+									@if($data->desc == '')
                                         <i class="icofont-close-circled"></i>
                                     @else
-                                        {{$data->karya->tentang_tim}}
+                                        {{$data->desc}}
                                     @endif
 								</span>
                             </td>
