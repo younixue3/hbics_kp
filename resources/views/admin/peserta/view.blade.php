@@ -19,7 +19,7 @@
 {{--                            {{asset('uploads/events/'.$data->karya->event->logo)}}--}}
                             <td><img src="{{$data->kategori_lp == null ? asset('uploads/events/'.\App\Event::find(1)->logo) : asset('uploads/events/'.\App\Event::find(2)->logo) }}" style="width: 50px;"
                                      alt=""></td>
-                            <td>{{$data->karya->event->tagline}}</td>
+                            <td>{{ $data->kategori_lp == null ? \App\Event::find(1)->tagline : \App\Event::find(2)->tagline }}</td>
                         </tr>
                     </table>
                     <br>
