@@ -15,8 +15,9 @@
                     <br><br>
                     <table class="table tabledetail">
                         <tr>
-                            {{dd($data->karya)}}
-                            <td><img src="{{asset('uploads/events/'.$data->karya->event->logo)}}" style="width: 50px;"
+{{--                            {{dd($data->kategori_lp)}}--}}
+{{--                            {{asset('uploads/events/'.$data->karya->event->logo)}}--}}
+                            <td><img src="{{$data->kategori_lp == null ? asset('uploads/events/'.\App\Event::find(1)->logo) : asset('uploads/events/'.\App\Event::find(2)->logo) }}" style="width: 50px;"
                                      alt=""></td>
                             <td>{{$data->karya->event->tagline}}</td>
                         </tr>
