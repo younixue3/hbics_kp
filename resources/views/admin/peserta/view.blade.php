@@ -55,14 +55,21 @@
                         <tr>
                             <th>Kategori</th>
                             <td>
-								<span
-                                    class="alert alert-sm @if($data->karya == null && $data->karya->kategori == null) alert-danger @else alert-success @endif">
-									@if($data->karya == null && $data->karya->kategori == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        {{$data->karya->kategori}}
-                                    @endif
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
 								</span>
+                                    @else
+                                    <span
+                                        class="alert alert-sm @if($data->karya->kategori == null) alert-danger @else alert-success @endif">
+									@if($data->karya == null && $data->karya->kategori == '')
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            {{$data->karya->kategori}}
+                                        @endif
+								</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
