@@ -14,9 +14,14 @@ class Karya extends Model
         return $this->hasMany('App\KaryaFoto', 'karya_id', 'id');
     }
 
+    public function event()
+    {
+        return $this->hasOne('App\Event', 'id', 'event_id');
+    }
+
     public function likes()
     {
-        return $this->hasMany('App\Komentar')->where('liked', 1);
+        return $this->hasMany('App\Komentar')->where('liked', 1)->count();
     }
 
     public function komentars()

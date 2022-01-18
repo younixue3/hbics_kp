@@ -15,6 +15,7 @@
                     <br><br>
                     <table class="table tabledetail">
                         <tr>
+{{--                            {{dd($data->karya->event->logo)}}--}}
                             <td><img src="{{asset('uploads/events/'.$data->karya->event->logo)}}" style="width: 50px;"
                                      alt=""></td>
                             <td>{{$data->karya->event->tagline}}</td>
@@ -195,7 +196,7 @@
                         <tr>
                             <th>Total Likes</th>
                             <td>
-                                {{$data->karya->likers->count()}}
+                                {{$data->karya->likers}}
                             </td>
                         </tr>
                     </table>
