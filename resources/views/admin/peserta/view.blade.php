@@ -89,15 +89,22 @@
                         <tr>
                             <th>Foto Poster</th>
                             <td>
-								<span
-                                    class="alert alert-sm @if($data->karya->foto_poster == '') alert-danger @else alert-success @endif">
-									@if($data->karya->foto_poster == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        <a href="{{asset('uploads/karyas/'.$data->karya->foto_poster)}}"
-                                           target="_blank">{{$data->karya->foto_poster}}</a>
-                                    @endif
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
 								</span>
+                                    @else
+                                    <span
+                                        class="alert alert-sm @if($data->karya->foto_poster == '') alert-danger @else alert-success @endif">
+									@if($data->karya->foto_poster == '')
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            <a href="{{asset('uploads/karyas/'.$data->karya->foto_poster)}}"
+                                               target="_blank">{{$data->karya->foto_poster}}</a>
+                                        @endif
+								</span>
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -116,6 +123,7 @@
                         <tr>
                             <th>Nama</th>
                             <td>
+
 								<span
                                     class="alert alert-sm @if($data->karya->nama == '') alert-danger @else alert-success @endif">
 									@if($data->karya->nama == '')
@@ -129,7 +137,13 @@
                         <tr>
                             <th>Deskripsi</th>
                             <td>
-								<span
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
+                                    <span
                                     class="alert alert-sm @if($data->karya->deskripsi == '') alert-danger @else alert-success @endif">
 									@if($data->karya->deskripsi == '')
                                         <i class="icofont-close-circled"></i>
@@ -137,11 +151,18 @@
                                         {{$data->karya->deskripsi}}
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         <tr>
                             <th>Link Profil</th>
                             <td>
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
 								<span
                                     class="alert alert-sm @if($data->karya->link_profil == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_profil == '')
@@ -151,11 +172,18 @@
                                            target="_blank">{{$data->karya->link_profil}}</a>
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         <tr>
                             <th>Link Presentation</th>
                             <td>
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
 								<span
                                     class="alert alert-sm @if($data->karya->link_presentation == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_presentation == '')
@@ -165,11 +193,18 @@
                                            target="_blank">{{$data->karya->link_presentation}}</a>
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         <tr>
                             <th>Link Mockup</th>
                             <td>
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
 								<span
                                     class="alert alert-sm @if($data->karya->link_mockup == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_mockup == '')
@@ -179,11 +214,18 @@
                                            target="_blank">{{$data->karya->link_mockup}}</a>
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         <tr>
                             <th>Proposal</th>
                             <td>
+                                @if($data->karya == null)
+                                    <span
+                                        class="alert alert-sm alert-danger">
+                                            <i class="icofont-close-circled"></i>
+								</span>
+                                @else
 								<span
                                     class="alert alert-sm @if($data->karya->proposal == '') alert-danger @else alert-success @endif">
 									@if($data->karya->proposal == '')
@@ -193,6 +235,7 @@
                                            target="_blank">{{$data->karya->proposal}}</a>
                                     @endif
 								</span>
+                                    @endif
                             </td>
                         </tr>
                         {{-- <tr>
@@ -204,7 +247,11 @@
                         <tr>
                             <th>Total Likes</th>
                             <td>
+                                @if($data->karya == null)
                                 {{$data->karya->likers}}
+                                    @else
+                                    0
+                                @endif
                             </td>
                         </tr>
                     </table>
