@@ -138,6 +138,22 @@
                                                                      src="{{asset('Upload/paidbill/'.$data->bukti_pembayaran)}}">
                                                             @endif
                                                         </div>
+                                                        @if($data->event_id == 2)
+                                                            <div>
+                                                                <h3>Bukti Akte</h3>
+                                                                @if($data->bukti_pembayaran == null)
+                                                                    <div class="text-center h-50 w-50"
+                                                                         style="background-color: #cfcfcf">
+                                                                        Bukti Akte Kosong
+                                                                    </div>
+                                                                @else
+
+                                                                    <img class="h-50 w-50" style="object-fit: cover;"
+                                                                         src="{{asset('Upload/buktiakte/'.$data->bukti_akte)}}">
+                                                                @endif
+                                                            </div>
+                                                        @else
+                                                        @endif
                                                     </div>
                                                     <div class="modal-footer">
                                                         <a type="button" class="btn btn-primary"
