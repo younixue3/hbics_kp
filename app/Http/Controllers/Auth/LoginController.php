@@ -40,12 +40,9 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        if(Auth::User()->role == 'superadmin' || Auth::User()->role == 'admin')
-        {
+        if (Auth::User()->role == 'superadmin' || Auth::User()->role == 'admin') {
             return 'dashboard';
-        }
-        else
-        {
+        } else {
             return '/';
         }
     }

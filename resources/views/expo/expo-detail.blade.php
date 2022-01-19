@@ -45,7 +45,8 @@
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    : {{strtoupper($this_user->jenjang)}}, Kategori: {{$kategori_lomba->where('id', $kategori)->first()->kategori}}
+                                    : {{strtoupper($this_user->jenjang)}},
+                                    Kategori: {{$kategori_lomba->where('id', $kategori)->first()->kategori}}
                                 </p>
                                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
                                     {{$this_user->desc}}
@@ -54,9 +55,10 @@
                         </div>
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
-{{--                        {{dd($this_user)}}--}}
+                        {{--                        {{dd($this_user)}}--}}
                         @if ($this_user->foto_profile != '')
-                            <img src="{{url('Upload/foto_profil/'.$this_user->foto_profile)}}" class="apaitu-profilpict" alt="" style="object-fit: cover">
+                            <img src="{{url('Upload/foto_profil/'.$this_user->foto_profile)}}" class="apaitu-profilpict"
+                                 alt="" style="object-fit: cover">
                         @else
                             <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
                         @endif
@@ -91,11 +93,12 @@
         <div class="container-fluid wow fadeInUp" data-wow-delay="1s" style="height: 600px;">
             <div class="row frame4 text-center" style="position: relative">
                 <div class="row owl-carousel owl-theme" style="margin: 0px;">
-{{--                    {{dd($karyas->first()->karya->foto)}}--}}
+                    {{--                    {{dd($karyas->first()->karya->foto)}}--}}
                     @foreach($data->foto as $key => $value)
                         <div class="item">
                             <div class="slide">
-                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="" style="height: 600px; object-fit: cover">
+                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt=""
+                                     style="height: 600px; object-fit: cover">
                             </div>
                         </div>
                     @endforeach
@@ -215,7 +218,8 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <img style="width: 100%; height:auto;"
-                                                         src="{{asset('Upload/foto_poster/'.$data->foto_poster)}}" alt="">
+                                                         src="{{asset('Upload/foto_poster/'.$data->foto_poster)}}"
+                                                         alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -232,24 +236,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-{{--                            @if($statuslike != null)--}}
-                                @if ($statuslike)
-                                    <a href="{{url('expo/likes/'.$data->id)}}"
-                                       class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i>
-                                        <i
-                                            class="icofont-like"></i> Batal Sukai Karya Ini</a>
-                                    <div class="total wow fadeInUp">
-                                        <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya
-                                            menyukai karya ini</p>
-                                    </div>
-                                @else
-                                    <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i
-                                            class="icofont-like"></i> Sukai Karya Ini</a>
-                                    <div class="total wow fadeInUp">
-                                        <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
-                                    </div>
-                                @endif
-{{--                            @endif--}}
+                            {{--                            @if($statuslike != null)--}}
+                            @if ($statuslike)
+                                <a href="{{url('expo/likes/'.$data->id)}}"
+                                   class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i>
+                                    <i
+                                        class="icofont-like"></i> Batal Sukai Karya Ini</a>
+                                <div class="total wow fadeInUp">
+                                    <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya
+                                        menyukai karya ini</p>
+                                </div>
+                            @else
+                                <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i
+                                        class="icofont-like"></i> Sukai Karya Ini</a>
+                                <div class="total wow fadeInUp">
+                                    <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
+                                </div>
+                            @endif
+                            {{--                            @endif--}}
                             {{-- <div class="write wow fadeInUp">
                                 <form action="{{url('expo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
                                     @csrf

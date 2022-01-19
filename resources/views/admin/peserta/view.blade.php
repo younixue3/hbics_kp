@@ -15,10 +15,12 @@
                     <br><br>
                     <table class="table tabledetail">
                         <tr>
-{{--                            {{dd($data->kategori_lp)}}--}}
-{{--                            {{asset('uploads/events/'.$data->karya->event->logo)}}--}}
-                            <td><img src="{{$data->kategori_lp == null ? asset('uploads/events/'.\App\Event::find(1)->logo) : asset('uploads/events/'.\App\Event::find(2)->logo) }}" style="width: 50px;"
-                                     alt=""></td>
+                            {{--                            {{dd($data->kategori_lp)}}--}}
+                            {{--                            {{asset('uploads/events/'.$data->karya->event->logo)}}--}}
+                            <td><img
+                                    src="{{$data->kategori_lp == null ? asset('uploads/events/'.\App\Event::find(1)->logo) : asset('uploads/events/'.\App\Event::find(2)->logo) }}"
+                                    style="width: 50px;"
+                                    alt=""></td>
                             <td>{{ $data->kategori_lp == null ? \App\Event::find(1)->tagline : \App\Event::find(2)->tagline }}</td>
                         </tr>
                     </table>
@@ -60,7 +62,7 @@
                                         class="alert alert-sm alert-danger">
                                             <i class="icofont-close-circled"></i>
 								</span>
-                                    @else
+                                @else
                                     <span
                                         class="alert alert-sm @if($data->karya->kategori == null) alert-danger @else alert-success @endif">
 									@if($data->karya == null && $data->karya->kategori == '')
@@ -94,7 +96,7 @@
                                         class="alert alert-sm alert-danger">
                                             <i class="icofont-close-circled"></i>
 								</span>
-                                    @else
+                                @else
                                     <span
                                         class="alert alert-sm @if($data->karya->foto_poster == '') alert-danger @else alert-success @endif">
 									@if($data->karya->foto_poster == '')
@@ -129,15 +131,15 @@
                                             <i class="icofont-close-circled"></i>
 								</span>
                                 @else
-								<span
-                                    class="alert alert-sm @if($data->karya->nama == '') alert-danger @else alert-success @endif">
+                                    <span
+                                        class="alert alert-sm @if($data->karya->nama == '') alert-danger @else alert-success @endif">
 									@if($data->karya->nama == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        {{$data->karya->nama}}
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            {{$data->karya->nama}}
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -150,14 +152,14 @@
 								</span>
                                 @else
                                     <span
-                                    class="alert alert-sm @if($data->karya->deskripsi == '') alert-danger @else alert-success @endif">
+                                        class="alert alert-sm @if($data->karya->deskripsi == '') alert-danger @else alert-success @endif">
 									@if($data->karya->deskripsi == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        {{$data->karya->deskripsi}}
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            {{$data->karya->deskripsi}}
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -169,16 +171,16 @@
                                             <i class="icofont-close-circled"></i>
 								</span>
                                 @else
-								<span
-                                    class="alert alert-sm @if($data->karya->link_profil == '') alert-danger @else alert-success @endif">
+                                    <span
+                                        class="alert alert-sm @if($data->karya->link_profil == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_profil == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        <a href="{{$data->karya->link_profil}}"
-                                           target="_blank">{{$data->karya->link_profil}}</a>
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            <a href="{{$data->karya->link_profil}}"
+                                               target="_blank">{{$data->karya->link_profil}}</a>
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -190,16 +192,16 @@
                                             <i class="icofont-close-circled"></i>
 								</span>
                                 @else
-								<span
-                                    class="alert alert-sm @if($data->karya->link_presentation == '') alert-danger @else alert-success @endif">
+                                    <span
+                                        class="alert alert-sm @if($data->karya->link_presentation == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_presentation == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        <a href="{{$data->karya->link_presentation}}"
-                                           target="_blank">{{$data->karya->link_presentation}}</a>
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            <a href="{{$data->karya->link_presentation}}"
+                                               target="_blank">{{$data->karya->link_presentation}}</a>
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -211,16 +213,16 @@
                                             <i class="icofont-close-circled"></i>
 								</span>
                                 @else
-								<span
-                                    class="alert alert-sm @if($data->karya->link_mockup == '') alert-danger @else alert-success @endif">
+                                    <span
+                                        class="alert alert-sm @if($data->karya->link_mockup == '') alert-danger @else alert-success @endif">
 									@if($data->karya->link_mockup == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        <a href="{{$data->karya->link_mockup}}"
-                                           target="_blank">{{$data->karya->link_mockup}}</a>
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            <a href="{{$data->karya->link_mockup}}"
+                                               target="_blank">{{$data->karya->link_mockup}}</a>
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         <tr>
@@ -232,16 +234,16 @@
                                             <i class="icofont-close-circled"></i>
 								</span>
                                 @else
-								<span
-                                    class="alert alert-sm @if($data->karya->proposal == '') alert-danger @else alert-success @endif">
+                                    <span
+                                        class="alert alert-sm @if($data->karya->proposal == '') alert-danger @else alert-success @endif">
 									@if($data->karya->proposal == '')
-                                        <i class="icofont-close-circled"></i>
-                                    @else
-                                        <a href="{{asset('uploads/karyas/'.$data->karya->proposal)}}"
-                                           target="_blank">{{$data->karya->proposal}}</a>
-                                    @endif
+                                            <i class="icofont-close-circled"></i>
+                                        @else
+                                            <a href="{{asset('uploads/karyas/'.$data->karya->proposal)}}"
+                                               target="_blank">{{$data->karya->proposal}}</a>
+                                        @endif
 								</span>
-                                    @endif
+                                @endif
                             </td>
                         </tr>
                         {{-- <tr>

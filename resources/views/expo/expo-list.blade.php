@@ -27,14 +27,15 @@
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
                                 @foreach($kategorinya as $value)
-                                    <a href="{{url('expo/'.$jenjang.'/'.$value->id)}}" class="drop-link">{{$value->kategori}}</a>
+                                    <a href="{{url('expo/'.$jenjang.'/'.$value->id)}}"
+                                       class="drop-link">{{$value->kategori}}</a>
                                 @endforeach
                                 {{-- @if ($jenjang == 'smp') --}}
-{{--                                <a href="{{url('expo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>--}}
-{{--                                --}}{{-- @endif --}}
-{{--                                <a href="{{url('expo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & Beverage</a>--}}
-{{--                                <a href="{{url('expo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>--}}
-{{--                                <a href="{{url('expo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>--}}
+                                {{--                                <a href="{{url('expo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>--}}
+                                {{--                                --}}{{-- @endif --}}
+                                {{--                                <a href="{{url('expo/'.$jenjang.'/food-and-beverage')}}" class="drop-link">Food & Beverage</a>--}}
+                                {{--                                <a href="{{url('expo/'.$jenjang.'/fashion')}}" class="drop-link">Fashion</a>--}}
+                                {{--                                <a href="{{url('expo/'.$jenjang.'/kriya')}}" class="drop-link">Kriya</a>--}}
                             </div>
                         </span>
                         </div>

@@ -84,7 +84,7 @@ class LandingController extends Controller
         $kategori_view = KategoriLomba::find($kategori)->kategori;
         $now = \Carbon\Carbon::now();
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
-        return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event', 'kategori_view' ,'kategorinya', 'list_event'));
+        return view('expo.expo-list', compact('jenjang', 'kategori', 'now', 'event', 'kategori_view', 'kategorinya', 'list_event'));
     }
 
     public function expoDetailProduct($jenjang, $kategori, $id, $slug)

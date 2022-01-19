@@ -37,15 +37,13 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-        if(Auth::User()->role == 'admin')
-        {
+        if (Auth::User()->role == 'admin') {
             return 'dashboard';
-        }
-        else
-        {
+        } else {
             return 'beranda';
         }
     }
+
     /**
      * Create a new controller instance.
      *
@@ -59,7 +57,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
 
@@ -78,7 +76,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)

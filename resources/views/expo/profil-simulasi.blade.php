@@ -71,7 +71,8 @@
                         @foreach($foto_produk as $key => $value)
                             <div class="item">
                                 <div class="slide">
-                                    <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt="" style="height: 600px; object-fit: cover;">
+                                    <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt=""
+                                         style="height: 600px; object-fit: cover;">
                                 </div>
                             </div>
                         @endforeach

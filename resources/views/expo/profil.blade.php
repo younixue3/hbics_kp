@@ -168,28 +168,29 @@
                                                placeholder="Masukkan nama produk"
                                                value="{{$karya == null ? '' : $karya->nama}}">
                                         @if(Auth::user()->event_id == 2)
-                                            @else
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label class="mt10">
-                                                    <i style="color: green" class="icofont-check-circled"></i>
-                                                    Kategori</label>
-                                                <select name="kategori" class="form-control2"
-                                                        style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
-                                                    <option value="" selected disabled>Pilih Kategori</option>
-                                                    @if( $karya != null)
-                                                        @foreach($kategori_lomba as $key => $value)
-                                                            <option
-                                                                {{$value->id == $karya->kategori ? 'selected' : ''}} value="{{$value->id}}">{{$value->kategori}}</option>
-                                                        @endforeach
-                                                    @else
-                                                        @foreach($kategori_lomba as $key => $value)
-                                                            <option value="{{$value->id}}">{{$value->kategori}}</option>
-                                                        @endforeach
-                                                    @endif
-                                                </select>
+                                        @else
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="mt10">
+                                                        <i style="color: green" class="icofont-check-circled"></i>
+                                                        Kategori</label>
+                                                    <select name="kategori" class="form-control2"
+                                                            style="padding-top: 5px !important; height:50px; padding-bottom:3px;">
+                                                        <option value="" selected disabled>Pilih Kategori</option>
+                                                        @if( $karya != null)
+                                                            @foreach($kategori_lomba as $key => $value)
+                                                                <option
+                                                                    {{$value->id == $karya->kategori ? 'selected' : ''}} value="{{$value->id}}">{{$value->kategori}}</option>
+                                                            @endforeach
+                                                        @else
+                                                            @foreach($kategori_lomba as $key => $value)
+                                                                <option
+                                                                    value="{{$value->id}}">{{$value->kategori}}</option>
+                                                            @endforeach
+                                                        @endif
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endif
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
@@ -204,7 +205,7 @@
                                             <input type="text" name="link_presentation"
                                                    placeholder="Masukkan Link presentation" class="form-control2"
                                                    value="{{$karya == null ? '' : $karya->link_presentation}}">
-                                            @else
+                                        @else
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label class="mt10">
@@ -225,7 +226,8 @@
                                                         Foto Poster
                                                         <a style="color: rgb(41, 91, 228)"
                                                            href="{{$karya != null ? asset('Upload/foto_poster/' . $karya->foto_poster) : ''}}"
-                                                           data-lightbox="foto_poster" data-title="">Lihat foto saat ini <i
+                                                           data-lightbox="foto_poster" data-title="">Lihat foto saat ini
+                                                            <i
                                                                 class="icofont-image"></i></a>
                                                     </label>
                                                     <input type="file" name="foto_poster" class="form-control2">
