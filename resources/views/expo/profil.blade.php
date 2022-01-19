@@ -193,55 +193,63 @@
                                         @endif
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
-                                            Deskripsi Produk (sisa <span id="word_count_deskripsi"></span>
-                                            karakter)</label>
-                                        <textarea id="textarea_deskripsi" name="deskripsi" maxlength="350" rows="10"
+                                            Deskripsi Produk</label>
+                                        <textarea id="textarea_deskripsi" name="deskripsi" rows="10"
                                                   placeholder="Masukkan deskripsi 'produk'"
                                                   class="form-control2">{{$karya == null ? '' : $karya->deskripsi}}</textarea>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label class="mt10">
-                                                    <i style="color: green" class="icofont-check-circled"></i>
-                                                    Proposal
-                                                    {{--                                                    {{dd($karya)}}--}}
-                                                    <a style="color: rgb(41, 91, 228)"
-                                                       href="{{ $karya != null ? asset('Upload/proposal/' . $karya->proposal) : ''}}"
-                                                       target="_blank">Lihat
-                                                        proposal saat ini <i class="icofont-file"></i></a>
-                                                </label>
-                                                <input type="file" name="proposal" class="form-control2">
+                                        @if(Auth::user()->event_id == 2)
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Link Presentasi</label>
+                                            <input type="text" name="link_presentation"
+                                                   placeholder="Masukkan Link presentation" class="form-control2"
+                                                   value="{{$karya == null ? '' : $karya->link_presentation}}">
+                                            @else
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="mt10">
+                                                        <i style="color: green" class="icofont-check-circled"></i>
+                                                        Proposal
+                                                        {{--                                                    {{dd($karya)}}--}}
+                                                        <a style="color: rgb(41, 91, 228)"
+                                                           href="{{ $karya != null ? asset('Upload/proposal/' . $karya->proposal) : ''}}"
+                                                           target="_blank">Lihat
+                                                            proposal saat ini <i class="icofont-file"></i></a>
+                                                    </label>
+                                                    <input type="file" name="proposal" class="form-control2">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="mt10">
+                                                        <i style="color: green" class="icofont-check-circled"></i>
+                                                        {{--                                                    {{dd($karya->foto_poster)}}--}}
+                                                        Foto Poster
+                                                        <a style="color: rgb(41, 91, 228)"
+                                                           href="{{$karya != null ? asset('Upload/foto_poster/' . $karya->foto_poster) : ''}}"
+                                                           data-lightbox="foto_poster" data-title="">Lihat foto saat ini <i
+                                                                class="icofont-image"></i></a>
+                                                    </label>
+                                                    <input type="file" name="foto_poster" class="form-control2">
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="mt10">
-                                                    <i style="color: green" class="icofont-check-circled"></i>
-                                                    {{--                                                    {{dd($karya->foto_poster)}}--}}
-                                                    Foto Poster
-                                                    <a style="color: rgb(41, 91, 228)"
-                                                       href="{{$karya != null ? asset('Upload/foto_poster/' . $karya->foto_poster) : ''}}"
-                                                       data-lightbox="foto_poster" data-title="">Lihat foto saat ini <i
-                                                            class="icofont-image"></i></a>
-                                                </label>
-                                                <input type="file" name="foto_poster" class="form-control2">
-                                            </div>
-                                        </div>
-                                        <label class="mt10">
-                                            <i style="color: green" class="icofont-check-circled"></i>
-                                            Link Profil</label>
-                                        <input type="text" name="link_profil" placeholder="Masukkan Link Profil"
-                                               class="form-control2"
-                                               value="{{$karya == null ? '' : $karya->link_profil}}">
-                                        <label class="mt10">
-                                            <i style="color: green" class="icofont-check-circled"></i>
-                                            Link Presentasi</label>
-                                        <input type="text" name="link_presentation"
-                                               placeholder="Masukkan Link presentation" class="form-control2"
-                                               value="{{$karya == null ? '' : $karya->link_presentation}}">
-                                        <label class="mt10">
-                                            <i style="color: green" class="icofont-check-circled"></i>
-                                            Link Mockup</label>
-                                        <input type="text" name="link_mockup" placeholder="Masukkan Link mockup"
-                                               class="form-control2"
-                                               value="{{$karya == null ? '' : $karya->link_mockup}}">
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Link Profil</label>
+                                            <input type="text" name="link_profil" placeholder="Masukkan Link Profil"
+                                                   class="form-control2"
+                                                   value="{{$karya == null ? '' : $karya->link_profil}}">
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Link Presentasi</label>
+                                            <input type="text" name="link_presentation"
+                                                   placeholder="Masukkan Link presentation" class="form-control2"
+                                                   value="{{$karya == null ? '' : $karya->link_presentation}}">
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Link Mockup</label>
+                                            <input type="text" name="link_mockup" placeholder="Masukkan Link mockup"
+                                                   class="form-control2"
+                                                   value="{{$karya == null ? '' : $karya->link_mockup}}">
+                                        @endif
                                         <br><br>
                                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                     </form>
@@ -307,14 +315,14 @@
             word_count_tentangkami.innerHTML = 360 - textarea_tentangkami.length;
             console.log(textarea_tentangkami.length);
         })
-        const textarea_deskripsi = document.getElementById('textarea_deskripsi').value;
-        const word_count_deskripsi = document.getElementById('word_count_deskripsi');
-        word_count_deskripsi.innerHTML = 350 - textarea_deskripsi.length;
-        $('#textarea_deskripsi').on('change keydown paste input', function () {
-            const textarea_deskripsi = document.getElementById('textarea_deskripsi').value;
-            word_count_deskripsi.innerHTML = 350 - textarea_deskripsi.length;
-            console.log(textarea_deskripsi.length);
-        })
+        // const textarea_deskripsi = document.getElementById('textarea_deskripsi').value;
+        // const word_count_deskripsi = document.getElementById('word_count_deskripsi');
+        // // word_count_deskripsi.innerHTML =  - textarea_deskripsi.length;
+        // $('#textarea_deskripsi').on('change keydown paste input', function () {
+        //     const textarea_deskripsi = document.getElementById('textarea_deskripsi').value;
+        //     word_count_deskripsi.innerHTML = 350 - textarea_deskripsi.length;
+        //     console.log(textarea_deskripsi.length);
+        // })
         $('#status').modal('show');
     </script>
 @endsection
