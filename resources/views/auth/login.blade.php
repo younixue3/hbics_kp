@@ -19,7 +19,7 @@
                                             class="icofont-email"></i> {{ __('Email') }}</label>
                                     <br>
                                     <div class="col-md-12">
-                                        <input id="email" placeholder="Masukkan email" type="email"
+                                        <input id="email" placeholder="Masukkan email" type="text"
                                                class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
                                                name="email" value="{{ old('email') }}" required autocomplete="email"
                                                autofocus>

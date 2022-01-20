@@ -39,9 +39,9 @@
                                         class="icofont-email"></i> {{ __('Email') }}</label>
                                 <br>
                                 <div class="col-md-12">
-                                    <input placeholder="Masukkan Email" id="email" type="email"
+                                    <input placeholder="Masukkan Email" id="email" type="text" disabled
                                            class="form-control2 wow fadeInUp @error('email') is-invalid @enderror"
-                                           name="email" value="{{ old('email') }}" required autocomplete="email">
+                                           name="email" value="" required autocomplete="email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -170,6 +170,21 @@
                 })
             })
         })
+
+        $(document).ready(function(){
+            $("#name").on("input", function(){
+                // Print entered value in a div box
+                // console.log('test')
+                    $('#email').val($('#name').val().replaceAll(' ', '') + '@kidspreneurship.co.id')
+                // $("#result").text($(this).val());
+            });
+        });
+
+        // $('#nama-kelompok').change(function () {
+        //     console.log('test');
+        //     // $('#email').val($('#nama-kelompok').val())
+        // })
+
         $(document).ready(function () {
             $('#kategori_lp_1').hide()
             $('#kategori_lp_2').hide()
@@ -234,9 +249,11 @@
                     },
                     error: function (e) {
                         // alert(e, 'Pendaftaran gagal')
+                        // console.log(e)
                     },
                     success: function (data) {
                         window.location.replace(window.location.origin + '/login');
+                        // console.log(data)
                     }
                 });
             } else {
