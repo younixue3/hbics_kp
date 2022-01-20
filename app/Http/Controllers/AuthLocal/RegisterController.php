@@ -29,6 +29,14 @@ class RegisterController extends Controller
         return view('auth.register_lp', $data);
     }
 
+    public function index_peserta()
+    {
+        $event = Event::get();
+//        dd($event);
+        $data = compact('event');
+        return view('auth.register_peserta', $data);
+    }
+
     public function get_kota(Request $request)
     {
         $kota = KotaKab::get()->where('provinsi_id', $request->provinsi);
