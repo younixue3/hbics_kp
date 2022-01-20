@@ -113,8 +113,22 @@ class ExpoController extends Controller
                 $total_harga = number_format(300000);
             } else if ($user->event_id == 2) {
                 $kategori_lp = KategoriLp::find($user->kategori_lp);
-                $harga_satuan = number_format($kategori_lp->harga);
-                $total_harga = number_format($kategori_lp->harga);
+                if($user->jenjang == 'sd') {
+                    if ($kategori_lp->id == 1) {
+                        $harga_satuan = number_format(50000);
+                    } elseif ($kategori_lp->id == 2) {
+                        $harga_satuan = number_format(30000);
+                    } elseif ($kategori_lp->id == 3) {
+                        $harga_satuan = number_format(70000);
+                    } elseif ($kategori_lp->id == 4) {
+                        $harga_satuan = number_format(30000);
+                    } elseif ($kategori_lp->id == 5) {
+                        $harga_satuan = number_format(30000);
+                    }
+                } else {
+                    $harga_satuan = number_format($kategori_lp->harga);
+                    $total_harga = number_format($kategori_lp->harga);
+                }
             }
         } else {
             if ($user->event_id == 1) {
