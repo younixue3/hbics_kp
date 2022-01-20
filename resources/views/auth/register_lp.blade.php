@@ -65,6 +65,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
+                                        class=""></i> {{ __('Jenjang') }}</label>
+                                <br>
+                                <div class="col-md-12">
+                                    <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
+                                        <option selected disabled>Pilih jenjang</option>
+                                        <option value="tk">TK</option>
+                                        <option value="sd">SD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="kategori_lp" class="col-md-12 col-form-label wow fadeInUp"><i
                                         class=""></i> {{ __('Kategori Lomba') }}</label>
                                 <br>
@@ -75,18 +87,6 @@
                                             <option id="kategori_lp_{{$value->id}}"
                                                     value="{{$value->id}}">{{$value->kategori}}</option>
                                         @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="jenjang" class="col-md-12 col-form-label wow fadeInUp"><i
-                                        class=""></i> {{ __('Jenjang') }}</label>
-                                <br>
-                                <div class="col-md-12">
-                                    <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
-                                        <option selected disabled>Pilih jenjang</option>
-                                        <option value="tk">TK</option>
-                                        <option value="sd">SD</option>
                                     </select>
                                 </div>
                             </div>
@@ -170,9 +170,41 @@
                 })
             })
         })
+        $(document).ready(function () {
+            $('#kategori_lp_1').hide()
+            $('#kategori_lp_2').hide()
+            $('#kategori_lp_3').hide()
+            $('#kategori_lp_4').hide()
+            $('#kategori_lp_5').hide()
+            $('#kategori_lp_6').hide()
+            $('#kategori_lp_7').hide()
+            $('#kategori_lp_8').hide()
+            $('#kategori_lp_9').hide()
+            $('#kategori_lp_10').hide()
+        })
         $('#jenjang').change(function () {
             if ($(this).val() == 'sd') {
+                $('#kategori_lp_1').hide()
+                $('#kategori_lp_2').hide()
                 $('#kategori_lp_3').hide()
+                $('#kategori_lp_4').hide()
+                $('#kategori_lp_5').hide()
+                $('#kategori_lp_6').show()
+                $('#kategori_lp_7').show()
+                $('#kategori_lp_8').show()
+                $('#kategori_lp_9').show()
+                $('#kategori_lp_10').show()
+            } else {
+                $('#kategori_lp_1').show()
+                $('#kategori_lp_2').show()
+                $('#kategori_lp_3').show()
+                $('#kategori_lp_4').show()
+                $('#kategori_lp_5').show()
+                $('#kategori_lp_6').hide()
+                $('#kategori_lp_7').hide()
+                $('#kategori_lp_8').hide()
+                $('#kategori_lp_9').hide()
+                $('#kategori_lp_10').hide()
             }
         })
 
