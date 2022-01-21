@@ -39,8 +39,8 @@
     <nav class="navbar navbar-expand-lg navbar-light navbarnya" style="background-color: #f7ba17 !important;">
         <div class="container">
             <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('')}}">
-                <img style="" src="{{asset('images/LOGO KP -02.png')}}"/>
-                <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
+                <img style="height: 40px" src="{{asset('images/LOGO KP -02.png')}}"/>
+                <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}" style="height: 30px !important;"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,7 +141,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <img style="height: 80px;" src="{{asset('images/sbhb.png')}}"/>
+                        <img style="height:60px;" src="{{asset('images/sbhb.png')}}"/>
                     </li>
                 </ul>
             </div>
