@@ -264,39 +264,42 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="panel">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h4><i class="icofont-image"></i> Data Foto Produk</h4>
-                                    <form action="{{route('foto_karya_insert')}}" method="POST"
-                                          enctype="multipart/form-data">
-                                        @csrf
-                                        <label class="mt10">Foto Produk <span></span></label>
-                                        <input type="file" required multiple name="foto_karya[]" class="form-control2">
-                                        <div class="my-5 border border-dark p-2 rounded">
-                                            <div class="row">
-                                                @if ($karya != null)
-                                                    @foreach($karya->foto as $key => $value)
-                                                        <div class="col-3">
-                                                            <img class="h-100 w-100" style="object-fit: cover"
-                                                                 src="{{asset('Upload/karyafotos/' . $value->foto)}}">
-                                                        </div>
-                                                    @endforeach
-                                                @else
-                                                @endif
+                    @if($user->event_id == 2)
+                        @else
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="icofont-image"></i> Data Foto Produk</h4>
+                                        <form action="{{route('foto_karya_insert')}}" method="POST"
+                                              enctype="multipart/form-data">
+                                            @csrf
+                                            <label class="mt10">Foto Produk <span></span></label>
+                                            <input type="file" required multiple name="foto_karya[]" class="form-control2">
+                                            <div class="my-5 border border-dark p-2 rounded">
+                                                <div class="row">
+                                                    @if ($karya != null)
+                                                        @foreach($karya->foto as $key => $value)
+                                                            <div class="col-3">
+                                                                <img class="h-100 w-100" style="object-fit: cover"
+                                                                     src="{{asset('Upload/karyafotos/' . $value->foto)}}">
+                                                            </div>
+                                                        @endforeach
+                                                    @else
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Upload Foto</button>
-                                    </form>
+                                            <button type="submit" class="btn btn-primary">Upload Foto</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="gal">
+                                <div class="row">
+                                    <div class="gal">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
