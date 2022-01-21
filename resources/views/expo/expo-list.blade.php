@@ -86,7 +86,7 @@
                                                     <div class="list-content">
                                                         <a style="margin-bottom: 0px;"
                                                            @if($jenjang == null)
-                                                               href="{{url('lomba_pendukung/detail/1')}}"
+                                                               href="{{url('lomba_pendukung/detail/'.$karya->id)}}"
                                                            class="list-title">{{$karya->name}}
                                                         @else
                                                             href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"

@@ -11,6 +11,7 @@ use App\Komentar;
 use App\GaleriTahun;
 use App\KategoriLomba;
 use App\User;
+use App\KategoriLp;
 use Auth;
 
 class LandingController extends Controller
@@ -100,12 +101,22 @@ class LandingController extends Controller
         return view('expo.expo-list', $data);
     }
 
-    function expoLombaPendukungDetail($kategori, $id)
+    function expoLombaPendukungDetail($id)
     {
 //        dd($kategori);
         $jenjang = null;
         $user = User::find($id);
-        dd($user);
+        $data = Karya::findOrFail($user->karya->id);
+//        dd($data);
+        $kategori_lomba = KategoriLp::get();
+        if (Auth::user()) {
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+//            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
+        } else {
+            $statuslike = null;
+//            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
+        }
+//        dd($user);
 //        if ($kategori == 'drawing_coloring') {
 //            $event = User::where('kategori_lp', 1)->orWhere('kategori_lp', 6)->get();
 //            $kategori_view = 'Drawing & Coloring';
@@ -128,9 +139,9 @@ class LandingController extends Controller
 //            abort(404);
 //        }
 //        dd($event);
-        $data = compact('user');
+        $datas = compact('user', 'kategori_lomba', 'statuslike', 'data');
 
-        return view('expo.play_youtube', $data);
+        return view('expo.play_youtube', $datas);
     }
 
     public function expoJenjangKategori($jenjang, $kategori)

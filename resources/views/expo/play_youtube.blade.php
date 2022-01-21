@@ -6,7 +6,7 @@
         </a> --}}
         <div class="row frame">
             <div class="container">
-                <a href="{{url('expo/'.$jenjang.'/'.$kategori)}}" class="btn btn-yellow wow fadeInUp"><i
+                <a href="{{url('')}}" class="btn btn-yellow wow fadeInUp"><i
                         class="icofont-long-arrow-left"></i> Kembali</a>
                 <br><br>
                 <div class="row">
@@ -38,26 +38,26 @@
                                  data-wow-delay="0.5s" alt="">
                             <div class="apaitu-mid">
                                 <p class="namateam namateam--new wow fadeInUp" data-wow-delay="1s">
-                                    <i class="icofont-people"></i> {{$this_user->name}}
+                                    <i class="icofont-people"></i> {{$user->name}}
                                 </p>
                                 <p class="apaitu-title wow fadeInUp" data-wow-delay="1.5s" style="margin-bottom:0px;">
                                     TENTANG KAMI
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
                                     <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    : {{strtoupper($this_user->jenjang)}},
-                                    Kategori: {{$kategori_lomba->where('id', $kategori)->first()->kategori}}
+                                    : {{strtoupper($user->jenjang)}},
+                                    Kategori: {{$kategori_lomba->find($user->kategori_lp)->kategori}}
                                 </p>
                                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">
-                                    {{$this_user->desc}}
+                                    {{$user->desc}}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="1s">
                         {{--                        {{dd($this_user)}}--}}
-                        @if ($this_user->foto_profile != '')
-                            <img src="{{url('Upload/foto_profil/'.$this_user->foto_profile)}}" class="apaitu-profilpict"
+                        @if ($user->foto_profile != '')
+                            <img src="{{url('Upload/foto_profil/'.$user->foto_profile)}}" class="apaitu-profilpict"
                                  alt="" style="object-fit: cover">
                         @else
                             <img src="{{asset('images/juri.png')}}" class="apaitu-profilpict" alt="">
@@ -67,9 +67,9 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row frame">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/774yPq9qWKE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="container-fluid mt-5">
+        <div class="m-auto" style="width: 700px; height:400px;">
+            <iframe style="width: 100%; height: 400px;" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $user->karya->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="container-fluid">
             <div class="row frame frame2">
