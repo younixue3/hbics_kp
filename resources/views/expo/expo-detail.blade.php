@@ -185,7 +185,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <iframe style="width: 100%;z-index:9999;" height="315"
-                                                            src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_mockup)}}"
+                                                                src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_mockup)}}"
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe>

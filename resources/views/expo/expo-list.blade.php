@@ -10,26 +10,50 @@
                     @if ($event)
                         {{--                    @if ($now >= $event->tanggal_mulai)--}}
                         <div class="col-md-12">
-                        <span class="kategoritext wow fadeInUp" style="position: relative;">
+                            @if($jenjang == null)
+                            @else
+                                <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="drop-t">
-                                <b>{{strToUpper($jenjang)}}</b>
+                                @if($jenjang == null)
+                                @else
+                                    <b>{{strToUpper($jenjang)}}</b>
+                                @endif
                                 <i class="icofont-rounded-down"></i>
                             </a>
-                            <div id="drop-c" class="drop drop--hide">
+                            @if($jenjang == null)
+                                    @else
+                                        <div id="drop-c" class="drop drop--hide">
                                 <a href="{{url('expo/smp/'.$kategori)}}" class="drop-link">SMP/MTS</a>
                                 <a href="{{url('expo/sma/'.$kategori)}}" class="drop-link">SMA/SMK/MAN</a>
                             </div>
+                                    @endif
                         </span>
+                            @endif
                             <span class="kategoritext wow fadeInUp" style="position: relative;">
                             <a href="#" id="dropp-t">
-                                <b>{{$kategori_view}}</b>
+                                    <b>{{$kategori_view}}</b>
                                 <i class="icofont-rounded-down"></i>
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
-                                @foreach($kategorinya as $value)
-                                    <a href="{{url('expo/'.$jenjang.'/'.$value->id)}}"
-                                       class="drop-link">{{$value->kategori}}</a>
-                                @endforeach
+                                @if($jenjang == null)
+                                    <a href="{{url('lomba_pendukung/drawing_coloring')}}"
+                                       class="drop-link">Drawing & Coloring</a>
+                                    <a href="{{url('lomba_pendukung/kids_warrior')}}"
+                                       class="drop-link">Kids Warrior</a>
+                                    <a href="{{url('lomba_pendukung/steam_challenge')}}"
+                                       class="drop-link">STEAM Challenge</a>
+                                    <a href="{{url('lomba_pendukung/story_telling')}}"
+                                       class="drop-link">Story Telling</a>
+                                    <a href="{{url('lomba_pendukung/food_platting')}}"
+                                       class="drop-link">Food Platting</a>
+                                    <a href="{{url('lomba_pendukung/food_presentation')}}"
+                                       class="drop-link">Food Platting</a>
+                                @else
+                                    @foreach($kategorinya as $value)
+                                        <a href="{{url('expo/'.$jenjang.'/'.$value->id)}}"
+                                           class="drop-link">{{$value->kategori}}</a>
+                                    @endforeach
+                                @endif
                                 {{-- @if ($jenjang == 'smp') --}}
                                 {{--                                <a href="{{url('expo/'.$jenjang.'/aplikasi-dan-game')}}" class="drop-link">Aplikasi & Game</a>--}}
                                 {{--                                --}}{{-- @endif --}}
@@ -43,30 +67,52 @@
                             <br><br>
                             <div class="row">
                                 <div class="col-md-12">
-                                    @if($event == null)
-                                        @forelse ($event as $karya)
-                                            {{--                                    {{dd($karya->karya->likes)}}--}}
-                                            <div class="list wow fadeInUp" data-wow-delay="0.5s">
-                                                <div class="list-imageframe">
-                                                    <img
-                                                        src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
-                                                        alt="" class="list-image">
+                                    @if($event != null)
+{{--                                        {{dd($event)}}--}}
+                                        @foreach ($event as $karya)
+{{--                                                                                {{dd($karya->karya)}}--}}
+                                        @if($karya->karya == null)
+                                            @else
+                                                <div class="list wow fadeInUp" data-wow-delay="0.5s">
+                                                    <div class="list-imageframe">
+                                                        @if($jenjang == null)
+                                                            <iframe style="width: 400px; height: 200px" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->karya->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                        @else
+                                                            <img
+                                                                src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
+                                                                alt="" class="list-image">
+                                                        @endif
+                                                    </div>
+                                                    <div class="list-content">
+                                                        <a style="margin-bottom: 0px;"
+                                                           @if($jenjang == null)
+                                                               href="{{url('lomba_pendukung/detail/1')}}"
+                                                           class="list-title">{{$karya->name}}
+                                                        @else
+                                                            href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
+                                                                class="list-title">{{$karya->karya->nama}}
+                                                            @endif
+                                                        </a>
+                                                        @if($jenjang == null)
+                                                            <p class="list-keterangan">{{$karya->desc}}</p>
+                                                        @else
+                                                            <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
+                                                        @endif
+                                                        <span class="list-likers"><i class="icofont-like"></i> Disukai oleh
+                                                        {{$karya->karya->likes->count()}}
+                                                        orang</span>
+                                                        <span class="list-likers"><i class="icofont-comment"></i>
+                                                        {{$karya->karya->komentars->count()}}
+                                                        Komentar</span>
+                                                        <br>
+                                                        {{--                                                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"--}}
+                                                        {{--                                                       class="list-button">Lihat selengkapnya</a>--}}
+                                                    </div>
                                                 </div>
-                                                <div class="list-content">
-                                                    <a style="margin-bottom: 0px;"
-                                                       href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                                       class="list-title">{{$karya->karya->nama}}</a>
-                                                    <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
-                                                    <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->karya->likes->count()}} orang</span>
-                                                    <span class="list-likers"><i class="icofont-comment"></i> {{$karya->karya->komentars->count()}} Komentar</span>
-                                                    <br>
-                                                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                                       class="list-button">Lihat selengkapnya</a>
-                                                </div>
-                                            </div>
-                                        @empty
-                                            Belum ada karya
-                                        @endforelse
+                                            @endif
+{{--                                        @empty--}}
+{{--                                            Belum ada karya--}}
+                                        @endforeach
                                     @else
                                     @endif
                                 </div>
@@ -86,7 +132,7 @@
                         <div class="col-md-12 text-center">
                             <div class="news-info wow fadeInUp" style="padding: 20px 30px">
                                 <p class="apaitu-title" style="margin-bottom:0px;font-size: 25px;">
-                                    VIRTUAL EXPO AKAN HADIR SEGERA
+                                    VIRTUAL ExPO AKAN HADIR SEGERA
                                 </p>
                             </div>
                             <img src="{{asset('images/gif/3.gif')}}" class="apaitu-image wow fadeInUp" alt="">

@@ -36,10 +36,10 @@
 
 <body class="light">
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light navbarnya">
+    <nav class="navbar navbar-expand-lg navbar-light navbarnya" style="background-color: #f7ba17 !important;">
         <div class="container">
             <a class="navbar-brand navbrand--hide" id="navbrand" href="{{url('')}}">
-                <img src="{{asset('images/LOGO KP -02.png')}}"/>
+                <img style="" src="{{asset('images/LOGO KP -02.png')}}"/>
                 <img class="navbar-sec navbar-sec--none" src="{{asset('images/sbhb.png')}}"/>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -49,57 +49,57 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item {{Request::is('beranda') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('')}}">Beranda</a>
+                        <a class="nav-link" href="{{url('')}}" style="color:#143359 !important;">Beranda</a>
                     </li>
                     {{-- <li class="nav-item {{Request::is('expo') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('expo')}}">Virtual Expo</a>
                     </li> --}}
                     <li class="nav-item dropdown {{Request::is('expo/*') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#143359 !important;">
                             Virtual Expo
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('expo/smp')}}">SMP/MTS</a>
-                            <a class="dropdown-item" href="{{url('expo/sma')}}">SMA/SMK/MAN</a>
-                            <a class="dropdown-item" href="{{url('expo/lomba_pendukung/drawing_coloring')}}">Lomba Pendukung</a>
+                            <a class="dropdown-item" href="{{url('expo/smp')}}" style="color:#143359 !important;">SMP/MTS</a>
+                            <a class="dropdown-item" href="{{url('expo/sma')}}" style="color:#143359 !important;">SMA/SMK/MAN</a>
+                            <a class="dropdown-item" href="{{url('lomba_pendukung/drawing_coloring')}}" style="color:#143359 !important;">Lomba Pendukung</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown {{Request::is('tentang-kami') || Request::is('timeline') || Request::is('kategori') || Request::is('juri') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#143359 !important;">
                             Tentang
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('tentang-kami')}}">Tentang Kami</a>
-                            <a class="dropdown-item" href="{{url('timeline')}}">Timeline</a>
-                            <a class="dropdown-item" href="{{url('kategori')}}">Kategori</a>
-                            <a class="dropdown-item" href="{{url('juri')}}">Juri</a>
+                            <a class="dropdown-item" href="{{url('tentang-kami')}}" style="color:#143359 !important;">Tentang Kami</a>
+                            <a class="dropdown-item" href="{{url('timeline')}}" style="color:#143359 !important;">Timeline</a>
+                            <a class="dropdown-item" href="{{url('kategori')}}" style="color:#143359 !important;">Kategori</a>
+                            <a class="dropdown-item" href="{{url('juri')}}" style="color:#143359 !important;">Juri</a>
                         </div>
                     </li>
                     {{-- <li class="nav-item {{Request::is('tentang-kami') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('tentang-kami')}}">Tentang Kami</a>
                     </li> --}}
                     <li class="nav-item {{Request::is('galeri') || Request::is('galeri/*') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('galeri')}}">Galeri</a>
+                        <a class="nav-link" href="{{url('galeri')}}" style="color:#143359 !important;">Galeri</a>
                     </li>
                     <li class="nav-item {{Request::is('post') || Request::is('post/*/*') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('post')}}">Berita</a>
+                        <a class="nav-link" href="{{url('post')}}" style="color:#143359 !important;">Berita</a>
                     </li>
                     @if (Auth::user() != null)
                         @if(Auth::user()->role == 'peserta' || Auth::user()->role == 'juri' )
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('profil')}}">Profil</a>
+                                <a class="nav-link" href="{{url('profil')}}" style="color:#143359 !important;">Profil</a>
                             </li>
                         @elseif(Auth::user() == 'juri')
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('dashboard')}}">Dashboard</a>
+                                <a class="nav-link" href="{{url('dashboard')}}" style="color:#143359 !important;">Dashboard</a>
                             </li>
                         @endif
                         <li class="nav-item {{Request::is('logout') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color:#143359 !important;">Logout</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
@@ -107,7 +107,7 @@
                     @else
                         <li class="nav-item">
                             {{--                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>--}}
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" style="color:#143359 !important;">
                                 Daftar
                             </a>
 

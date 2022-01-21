@@ -1,8 +1,6 @@
 @extends('layouts.layout-landing')
 @section('content')
     <div class="container-fluid" id="element">
-        <img src="{{asset('images/gif/9.gif')}}" class="greenarrow wow fadeInUp" data-wow-duration="2s" alt="">
-        <img src="{{asset('images/gif/1.gif')}}" class="gif1 wow fadeInUp" data-wow-duration="2s" alt="">
         <div class="row frame">
             <div class="container">
                 <div class="banner">
@@ -64,7 +62,7 @@
         <div class="row frame">
             <div class="container">
                 <div class="expo" data-toggle="modal" data-target="#jenjang">
-                    <div class="expo-image-frame">
+                    <div class="expo-image-frame hide-scrollbar">
                         <p class="expo-title wow fadeInUp" data-wow-delay="0.5s">
                             VIRTUAL EXPO
                         </p>
@@ -244,6 +242,17 @@
             </div>
         </div>
     </div>
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
 @endsection
 @section('script')
     <script>

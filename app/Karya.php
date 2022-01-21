@@ -21,7 +21,7 @@ class Karya extends Model
 
     public function likes()
     {
-        return $this->hasMany('App\Komentar')->where('liked', 1)->count();
+        return $this->hasMany('App\Komentar')->where('liked', 1);
     }
 
     public function komentars()

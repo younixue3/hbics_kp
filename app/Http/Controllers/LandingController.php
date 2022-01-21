@@ -71,11 +71,66 @@ class LandingController extends Controller
 
     public function expoLombaPendukung($kategori)
     {
-        dd($kategori);
-        $event = User::where('kategori_lp');
-        $data = compact('event');
+//        dd($kategori);
+        $jenjang = null;
+        if ($kategori == 'drawing_coloring') {
+            $event = User::where('kategori_lp', 1)->orWhere('kategori_lp', 6)->get();
+            $kategori_view = 'Drawing & Coloring';
+        } elseif ($kategori == 'kids_warrior') {
+            $event = User::where('kategori_lp', 3)->orWhere('kategori_lp', 8)->get();
+            $kategori_view = 'Kids Warrior';
+        } elseif ($kategori == 'steam_challenge') {
+            $event = User::where('kategori_lp', 4)->orWhere('kategori_lp', 9)->get();
+            $kategori_view = 'STEAM Challenge';
+        } elseif ($kategori == 'story_telling') {
+            $event = User::where('kategori_lp', 5)->orWhere('kategori_lp', 10)->get();
+            $kategori_view = 'Story Telling';
+        } elseif ($kategori == 'food_plating') {
+            $event = User::where('kategori_lp', 2)->get();
+            $kategori_view = 'Food Platting';
+        } elseif ($kategori == 'food_presentation') {
+            $event = User::where('kategori_lp', 7)->get();
+            $kategori_view = 'Food Presentation';
+        } else {
+            abort(404);
+        }
+//        dd($event);
+        $data = compact('event', 'jenjang', 'kategori_view');
 
         return view('expo.expo-list', $data);
+    }
+
+    function expoLombaPendukungDetail($kategori, $id)
+    {
+//        dd($kategori);
+        $jenjang = null;
+        $user = User::find($id);
+        dd($user);
+//        if ($kategori == 'drawing_coloring') {
+//            $event = User::where('kategori_lp', 1)->orWhere('kategori_lp', 6)->get();
+//            $kategori_view = 'Drawing & Coloring';
+//        } elseif ($kategori == 'kids_warrior') {
+//            $event = User::where('kategori_lp', 3)->orWhere('kategori_lp', 8)->get();
+//            $kategori_view = 'Kids Warrior';
+//        } elseif ($kategori == 'steam_challenge') {
+//            $event = User::where('kategori_lp', 4)->orWhere('kategori_lp', 9)->get();
+//            $kategori_view = 'STEAM Challenge';
+//        } elseif ($kategori == 'story_telling') {
+//            $event = User::where('kategori_lp', 5)->orWhere('kategori_lp', 10)->get();
+//            $kategori_view = 'Story Telling';
+//        } elseif ($kategori == 'food_plating') {
+//            $event = User::where('kategori_lp', 2)->get();
+//            $kategori_view = 'Food Platting';
+//        } elseif ($kategori == 'food_presentation') {
+//            $event = User::where('kategori_lp', 7)->get();
+//            $kategori_view = 'Food Presentation';
+//        } else {
+//            abort(404);
+//        }
+//        dd($event);
+        $data = compact('user');
+
+        return view('expo.play_youtube', $data);
     }
 
     public function expoJenjangKategori($jenjang, $kategori)

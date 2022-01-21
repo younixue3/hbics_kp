@@ -35,7 +35,7 @@
 }
     .form-control2:focus
     {
-        outline: none !important;   
+        outline: none !important;
     }
 .navbreaker
 {
@@ -1152,7 +1152,7 @@ a.page-link:hover
 }
     .list-imageframe
     {
-        width: 40%;
+        width: 50%;
         overflow: hidden;
     }
     .list-image
@@ -1744,7 +1744,7 @@ a.page-link:hover
     }
         .list-imageframe
         {
-            width: 100%;
+            width: 200%;
             overflow: hidden;
             margin-bottom: 20px;
         }

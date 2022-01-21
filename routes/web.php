@@ -35,7 +35,8 @@ Route::get('visitors/{id}', 'PesertaController@verifikasi')->name('peserta/verif
     Route::get('expo/likes/{id}', 'LandingController@expoLikes');
     Route::get('expo/{jenjang}/{kategori}', 'LandingController@expoJenjangKategori');
     Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
-    Route::get('expo/lomba_pendukung/{kategori}', 'LandingController@expoLombaPendukung');
+    Route::get('lomba_pendukung/{kategori}', 'LandingController@expoLombaPendukung');
+    Route::get('lomba_pendukung/{kategori}/{id}', 'LandingController@expoLombaPendukungDetail');
 //    Route::get('expo/{jenjang}/{kategori}/{product_kategori}/{slug}', 'LandingController@expoDetailProduct');
 //});
 Route::get('', 'LandingController@beranda')->name('beranda');
