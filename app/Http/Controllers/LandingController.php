@@ -69,18 +69,43 @@ class LandingController extends Controller
         }
     }
 
+    public function expoLombaPendukung($kategori)
+    {
+        dd($kategori);
+        $event = User::where('kategori_lp');
+        $data = compact('event');
+
+        return view('expo.expo-list', $data);
+    }
+
     public function expoJenjangKategori($jenjang, $kategori)
     {
         $list_event = Event::get();
-//        dd($jenjang);
-        $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
-            $q->where('kategori', $kategori);
-        })->get();
-        if (Auth::user()->event_id == 1) {
+//        dd($kategori);
+//        $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
+//            $q->where('kategori', $kategori);
+//        })->get();
+        if ($jenjang == 'smp' || $jenjang == 'sma') {
+//            $event = $karya
+//            if ($kategori == 'desain-grafis' || $kategori == 'aplikasi-dan-game' || $kategori == 'food-and-beverage' || $kategori == 'fashion' || $kategori == 'kriya') {
+            $event = User::where('jenjang', $jenjang)->whereHas('karya', function ($q) use ($kategori) {
+                $q->where('kategori', $kategori);
+            })->get();
             $kategorinya = KategoriLomba::where('event_id', 1)->get();
+//                dd($event);
+//                $now = \Carbon\Carbon::now();
+//                    $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
+//                return view('expo.expo-list', compact('jenjang', 'kategori', 'event'));
+//            } else {
+//                abort(404);
+//            }
         } else {
-            $kategorinya = KategoriLomba::where('event_id', 2)->get();
+            abort(404);
         }
+//        if (Auth::user()->event_id == 1) {
+//        } else {
+//            $kategorinya = KategoriLomba::where('event_id', 2)->get();
+//        }
         $kategori_view = KategoriLomba::find($kategori)->kategori;
         $now = \Carbon\Carbon::now();
 //        $karyas = Karya::where('event_id', $event->id)->where('jenjang', $cjenjang)->where('kategori', $ckategori)->get();
@@ -136,6 +161,9 @@ class LandingController extends Controller
 
     public function expoLikes($id)
     {
+        if (Auth::user() == null) {
+            return redirect(url('login'));
+        }
         $list_event = Event::get();
         $karya = Karya::find($id);
         $user = Auth::user();

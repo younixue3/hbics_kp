@@ -62,6 +62,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('expo/smp')}}">SMP/MTS</a>
                             <a class="dropdown-item" href="{{url('expo/sma')}}">SMA/SMK/MAN</a>
+                            <a class="dropdown-item" href="{{url('expo/lomba_pendukung/drawing_coloring')}}">Lomba Pendukung</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown {{Request::is('tentang-kami') || Request::is('timeline') || Request::is('kategori') || Request::is('juri') ? 'active' : ''}}">

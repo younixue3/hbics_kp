@@ -71,8 +71,10 @@
                                 <div class="col-md-12">
                                     <select name="jenjang" class="form-control2 wow fadeInUp" id="jenjang">
                                         <option selected disabled>Pilih jenjang</option>
-                                        <option value="tk">TK</option>
-                                        <option value="sd">SD</option>
+                                        <option value="tk_1">Usia 2-3 Tahun</option>
+                                        <option value="tk_2">Usia 4-6 Tahun</option>
+                                        <option value="sd_1">Kelas 1-3 SD</option>
+                                        <option value="sd_2">Kelas 4-6 SD</option>
                                     </select>
                                 </div>
                             </div>
@@ -198,7 +200,7 @@
             $('#kategori_lp_10').hide()
         })
         $('#jenjang').change(function () {
-            if ($(this).val() == 'sd') {
+            if ($(this).val() == 'tk_1') {
                 $('#kategori_lp_1').hide()
                 $('#kategori_lp_2').hide()
                 $('#kategori_lp_3').hide()
@@ -209,7 +211,29 @@
                 $('#kategori_lp_8').show()
                 $('#kategori_lp_9').show()
                 $('#kategori_lp_10').show()
-            } else {
+            } else if ($(this).val() == 'tk_2') {
+                $('#kategori_lp_1').show()
+                $('#kategori_lp_2').show()
+                $('#kategori_lp_3').show()
+                $('#kategori_lp_4').show()
+                $('#kategori_lp_5').show()
+                $('#kategori_lp_6').hide()
+                $('#kategori_lp_7').hide()
+                $('#kategori_lp_8').hide()
+                $('#kategori_lp_9').hide()
+                $('#kategori_lp_10').hide()
+            } else if ($(this).val() == 'sd_1') {
+                $('#kategori_lp_1').show()
+                $('#kategori_lp_2').show()
+                $('#kategori_lp_3').show()
+                $('#kategori_lp_4').show()
+                $('#kategori_lp_5').show()
+                $('#kategori_lp_6').hide()
+                $('#kategori_lp_7').hide()
+                $('#kategori_lp_8').hide()
+                $('#kategori_lp_9').hide()
+                $('#kategori_lp_10').hide()
+            } else if ($(this).val() == 'sd_2') {
                 $('#kategori_lp_1').show()
                 $('#kategori_lp_2').show()
                 $('#kategori_lp_3').show()

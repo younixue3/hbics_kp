@@ -43,29 +43,32 @@
                             <br><br>
                             <div class="row">
                                 <div class="col-md-12">
-                                    @forelse ($event as $karya)
-                                        {{--                                    {{dd($karya->karya->likes)}}--}}
-                                        <div class="list wow fadeInUp" data-wow-delay="0.5s">
-                                            <div class="list-imageframe">
-                                                <img
-                                                    src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
-                                                    alt="" class="list-image">
+                                    @if($event == null)
+                                        @forelse ($event as $karya)
+                                            {{--                                    {{dd($karya->karya->likes)}}--}}
+                                            <div class="list wow fadeInUp" data-wow-delay="0.5s">
+                                                <div class="list-imageframe">
+                                                    <img
+                                                        src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
+                                                        alt="" class="list-image">
+                                                </div>
+                                                <div class="list-content">
+                                                    <a style="margin-bottom: 0px;"
+                                                       href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
+                                                       class="list-title">{{$karya->karya->nama}}</a>
+                                                    <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
+                                                    <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->karya->likes->count()}} orang</span>
+                                                    <span class="list-likers"><i class="icofont-comment"></i> {{$karya->karya->komentars->count()}} Komentar</span>
+                                                    <br>
+                                                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
+                                                       class="list-button">Lihat selengkapnya</a>
+                                                </div>
                                             </div>
-                                            <div class="list-content">
-                                                <a style="margin-bottom: 0px;"
-                                                   href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                                   class="list-title">{{$karya->karya->nama}}</a>
-                                                <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
-                                                <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->karya->likes->count()}} orang</span>
-                                                <span class="list-likers"><i class="icofont-comment"></i> {{$karya->karya->komentars->count()}} Komentar</span>
-                                                <br>
-                                                <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                                   class="list-button">Lihat selengkapnya</a>
-                                            </div>
-                                        </div>
-                                    @empty
-                                        Belum ada karya
-                                    @endforelse
+                                        @empty
+                                            Belum ada karya
+                                        @endforelse
+                                    @else
+                                    @endif
                                 </div>
                             </div>
                         </div>
