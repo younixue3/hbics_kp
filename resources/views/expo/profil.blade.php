@@ -37,82 +37,85 @@
                         @endif
                     </div>
                     <div class="col-md-12">
-                        <div class="panel">
-                            <div class="row">
+                        @if($user->event_id == 2)
+                                    @else
+                            <div class="panel">
+                                <div class="row">
                                 <div class="col-md-10">
-                                    <p style="font-size: 12px; color: grey;">
-                                        <b>Kelengkapan data profil: </b> <br>
-                                        Foto Tim
-                                        <span class="alert alert-xs">
+                                        <p style="font-size: 12px; color: grey;">
+                                            <b>Kelengkapan data profil: </b> <br>
+                                            Foto Tim
+                                            <span class="alert alert-xs">
                             {!!$user->foto_profile == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>'!!}
                         </span>,
-                                        Foto Poster
-                                        <span class="alert alert-xs">
+                                            Foto Poster
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->foto_poster == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->foto_poster == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Tentang Tim
-                                        <span class="alert alert-xs">
+                                            Tentang Tim
+                                            <span class="alert alert-xs">
                             {!!$user->desc == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>'!!}
                         </span>,
-                                        Nama Produk
-                                        <span class="alert alert-xs">
+                                            Nama Produk
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->nama == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->nama == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Deskripsi
-                                        <span class="alert alert-xs">
+                                            Deskripsi
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->deskripsi == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->deskripsi == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Link Profil
-                                        <span class="alert alert-xs">
+                                            Link Profil
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->link_profil == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->link_profil == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Link Presentasi
-                                        <span class="alert alert-xs">
+                                            Link Presentasi
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->link_presentation == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->link_presentation == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Link Mockup
-                                        <span class="alert alert-xs">
+                                            Link Mockup
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->link_mockup == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->link_mockup == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>,
-                                        Proposal
-                                        <span class="alert alert-xs">
+                                            Proposal
+                                            <span class="alert alert-xs">
                             @if($karya == null)
-                                                <i class="icofont-close-circled text-danger"></i>
-                                            @else
-                                                {!! $karya->proposal == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
-                                            @endif
+                                                    <i class="icofont-close-circled text-danger"></i>
+                                                @else
+                                                    {!! $karya->proposal == null ? '<i class="icofont-close-circled text-danger"></i>' : '<i class="icofont-checked text-success"></i>' !!}
+                                                @endif
                         </span>
-                                    </p>
-                                </div>
+                                        </p>
+                                    </div>
                                 <div class="col-md-2">
                                     <a href="{{url('profil/simulasi')}}" target="_blank" class="btn btn-yellow">Lihat
                                         Simulasi Profil <i class="icofont-long-arrow-right"></i></a>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -137,16 +140,18 @@
                                                data-lightbox="foto_poster"
                                                data-title="">Lihat foto saat ini <i class="icofont-image"></i></a>
                                         </label>
-                                        <input type="file" name="foto_profile" class="form-control2"
+                                        <input type="file" name="foto_profile" class="form-control2 mb-3"
                                                placeholder="Masukkan foto tim">
-                                        <label class="mt10" id="tentangkamiLabel">
-                                            <i style="color: green" class="icofont-check-circled"></i>
-                                            Tentang Tim (sisa <span id="word_count_tentangkami"></span>
-                                            karakter)</label>
-                                        <textarea id="textarea_tentangkami" name="desc" maxlength="360" rows="10"
-                                                  placeholder="Masukkan deskripsi 'tentang tim'"
-                                                  class="form-control2">{{Auth::User()->desc}}</textarea>
-                                        <br>
+                                        @if($user->event_id == 2)
+                                            @else
+                                            <label class="mt10" id="tentangkamiLabel">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Tentang Tim (sisa <span id="word_count_tentangkami"></span>
+                                                karakter)</label>
+                                            <textarea id="textarea_tentangkami" name="desc" maxlength="360" rows="10"
+                                                      placeholder="Masukkan deskripsi 'tentang tim'"
+                                                      class="form-control2">{{Auth::User()->desc}}</textarea>
+                                        @endif
                                         <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                                     </form>
                                 </div>
@@ -157,18 +162,18 @@
                         <div class="panel">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4><i class="icofont-paint"></i> Data Produk</h4>
+                                    <h4><i class="icofont-paint"></i> Data {{$user->event_id == 2 ? 'Materi' : 'Produk'}}</h4>
                                     <form action="{{route('karya_insert')}}" method="POST"
                                           enctype="multipart/form-data">
                                         @csrf
-                                        <label class="mt10">
-                                            <i style="color: green" class="icofont-check-circled"></i>
-                                            Nama Produk</label>
-                                        <input type="text" name="nama" class="form-control2"
-                                               placeholder="Masukkan nama produk"
-                                               value="{{$karya == null ? '' : $karya->nama}}">
                                         @if(Auth::user()->event_id == 2)
                                         @else
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Nama Produk</label>
+                                            <input type="text" name="nama" class="form-control2"
+                                                   placeholder="Masukkan nama produk"
+                                                   value="{{$karya == null ? '' : $karya->nama}}">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <label class="mt10">
@@ -201,9 +206,9 @@
                                         @if(Auth::user()->event_id == 2)
                                             <label class="mt10">
                                                 <i style="color: green" class="icofont-check-circled"></i>
-                                                Link Presentasi</label>
+                                                Link {{$user->event_id == 2 ? 'Video' : 'Presentasi' }}</label>
                                             <input type="text" name="link_presentation"
-                                                   placeholder="Masukkan Link presentation" class="form-control2"
+                                                   placeholder="Masukkan Link {{$user->event_id == 2 ? 'video' : 'presentasi' }}" class="form-control2"
                                                    value="{{$karya == null ? '' : $karya->link_presentation}}">
                                         @else
                                             <div class="row">
