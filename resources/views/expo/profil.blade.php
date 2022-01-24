@@ -129,12 +129,12 @@
                                         @method('PUT')
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
-                                            Nama Tim</label>
+                                            Nama {{ Auth::user()->kategori_lp == null ? 'Tim' : 'Peserta' }}</label>
                                         <input type="text" name="nama_tim" class="form-control2"
                                                placeholder="Masukkan nama tim" disabled value="{{Auth::user()->name}}">
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
-                                            Foto Tim
+                                            Foto {{ Auth::user()->kategori_lp == null ? 'Tim' : 'Peserta' }}
                                             <a style="color: rgb(41, 91, 228)"
                                                href="{{asset('Upload/foto_profil/' . Auth::User()->foto_profile)}}"
                                                data-lightbox="foto_poster"
