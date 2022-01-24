@@ -4,6 +4,11 @@
         $event = \App\Event::where('status', 1)->latest()->first();
     @endphp
     <div class="container-fluid">
+        <div class="m-2">
+            <a href="{{url('/')}}" class="btn btn-danger btn-block wow fadeInUp p-2" style="width: 150px !important;">
+                {{ __('Back to Home') }}
+            </a>
+        </div>
         <div class="row login">
             <div class="container">
                 <div class="row">

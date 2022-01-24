@@ -48,9 +48,14 @@
                                 <div class="form-group row">
                                     <div class="col-md-12 text-center">
                                         <br>
-                                        <button type="submit" class="btn btn-blue btn-block wow fadeInUp">
-                                            {{ __('Login') }} <i class="icofont-hand-right"></i>
-                                        </button>
+                                        <div class="row container">
+                                            <button type="submit" class="btn btn-blue btn-block wow fadeInUp">
+                                                {{ __('Login') }} <i class="icofont-hand-right"></i>
+                                            </button>
+                                            <a href="{{url('/')}}" class="btn btn-danger btn-block wow fadeInUp">
+                                                {{ __('Back to Home') }}
+                                            </a>
+                                        </div>
                                         <br>
                                         {{--                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('daftar')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>--}}
                                     </div>
