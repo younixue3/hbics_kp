@@ -273,7 +273,7 @@
                     },
                     error: function (e) {
                         // alert(e, 'Pendaftaran gagal')
-                        console.log(e)
+                        // console.log(e)
                     },
                     success: function (data) {
                         window.location.replace(window.location.origin + '/login');
