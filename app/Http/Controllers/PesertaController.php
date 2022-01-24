@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\KategoriLomba;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Event;
@@ -18,13 +19,15 @@ class PesertaController extends Controller
      */
     public function visitor(Request $request)
     {
+//        dd(json_decode($request->filter));
+        $event_kp = KategoriLomba::where('event_id', 1)->get();
         $harga_satuan = KategoriLp::get();
         if ($request->cari != null) {
             $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'pengunjung')->paginate(20);
         } else {
             $datas = User::where('role', 'peserta')->paginate(20);
         }
-        $data = compact('datas', 'harga_satuan');
+        $data = compact('datas', 'harga_satuan', 'event_kp');
         return view('admin.visitor.index', $data);
     }
 

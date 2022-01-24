@@ -5,15 +5,86 @@
             <div class="overview-wrap">
                 <h2 class="title-1" style="margin-bottom:20px;">Data Visitor</h2>
                 <div style="float: right;margin-bottom: 10px;">
-                    <form action="{{route('visitor')}}">
-                        <span>
-                            <label for="cari"><i class="fas fa-search" style="font-size: 18px; margin-right: 5px;"></i></label>
-                            <input type="text" name="cari">
-                        </span>
-                        <span>
-                            <input type="submit" value="Cari">
-                        </span>
-                    </form>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Launch demo modal
+                    </button>
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <form action="{{route('visitor')}}" class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Filter Peserta</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h3>Filter by Lomba</h3>
+                                    <div>
+                                        <div class="mb-3 form-check">
+                                            <div>
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="width: 20px; height: 20px">
+                                                <label for="exampleCheck1" style="font-size: 20px !important;margin-left: 10px !important;">Kidspreneurship</label>
+                                            </div>
+                                            <div class="row">
+                                                @foreach($event_kp as $value)
+                                                    <div class="col-auto">
+                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                        <label for="exampleCheck1" style="margin-left: 10px !important;">{{$value->kategori}}</label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="width: 20px; height: 20px">
+                                                <label for="exampleCheck1" style="font-size: 20px !important;margin-left: 10px !important;">Lomba Pendukung</label>
+                                            </div>
+                                            <div class="row">
+{{--                                                @foreach($event_kp as $value)--}}
+                                                    <div class="col-auto">
+                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                        <label for="exampleCheck1" style="margin-left: 10px !important;">Story Telling</label>
+                                                    </div>
+                                                <div class="col-auto">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label for="exampleCheck1" style="margin-left: 10px !important;">STEAM Challenge</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label for="exampleCheck1" style="margin-left: 10px !important;">Food Plating</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label for="exampleCheck1" style="margin-left: 10px !important;">Kids Warrior</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label for="exampleCheck1" style="margin-left: 10px !important;">Drawing & Coloring</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <label for="exampleCheck1" style="margin-left: 10px !important;">Food Presentation</label>
+                                                </div>
+{{--                                                @endforeach--}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="text" name="filter_array" value="">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+{{--                    <form action="{{route('visitor')}}">--}}
+{{--                        <span>--}}
+{{--                            <label for="cari"><i class="fas fa-search" style="font-size: 18px; margin-right: 5px;"></i></label>--}}
+{{--                            <input type="text" name="cari">--}}
+{{--                        </span>--}}
+{{--                        <span>--}}
+{{--                            <input type="submit" value="Cari">--}}
+{{--                        </span>--}}
+{{--                    </form>--}}
                 </div>
             </div>
         </div>
@@ -203,4 +274,11 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $('.exampleCheck1').checked(function () {
+            console.log('clicked')
+        })
+    </script>
 @endsection
