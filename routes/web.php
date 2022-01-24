@@ -22,7 +22,7 @@ Route::get('/logout', function () {
 Route::get('/login', 'LoginController@index')->name('login');
 Route::get('/daftar', 'AuthLocal\RegisterController@index');
 Route::get('/daftar_lp', 'AuthLocal\RegisterController@index_lp');
-Route::get('/daftar_peserta', 'AuthLocal\RegisterController@index_peserta');
+Route::get('/daftar_peserta', 'AuthLocal\RegisterController@index_peserta')->name('daftar/pengunjung');
 Route::get('/login', 'AuthLocal\RegisterController@login')->name('login');
 Route::post('/daftar/insert', 'AuthLocal\RegisterController@insert')->name('daftar');
 Route::post('/daftar/anggota', 'AnggotaKelompokController@index')->name('daftar/anggota');

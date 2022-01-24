@@ -55,6 +55,11 @@
                                             <a href="{{url('/')}}" class="btn btn-danger btn-block wow fadeInUp">
                                                 {{ __('Back to Home') }}
                                             </a>
+                                            <div class="py-2" style="text-align: center !important;">
+                                                <a href="{{route('daftar/pengunjung')}}" class="" style="text-align: center !important;">
+                                                    {{ __('Daftar sebagai Pengunjung') }}
+                                                </a>
+                                            </div>
                                         </div>
                                         <br>
                                         {{--                                    <a style="color: #0f868a" class="wow fadeInUp" href="{{url('daftar')}}">Belum memiliki akun? <i class="icofont-rounded-right"></i></a>--}}
