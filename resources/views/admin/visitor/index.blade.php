@@ -142,16 +142,18 @@
                                                         @else
                                                         @endif
                                                         <div>
-                                                            <h3>Bukti Akte</h3>
-                                                            @if($data->bukti_pembayaran == null)
-                                                                <div class="text-center h-50 w-50"
-                                                                     style="background-color: #cfcfcf">
-                                                                    Bukti Akte Kosong
-                                                                </div>
-                                                            @else
+                                                            @if($data->event_id == 2)
+                                                                <h3>Bukti Akte</h3>
+                                                                @if($data->bukti_pembayaran == null)
+                                                                    <div class="text-center h-50 w-50"
+                                                                         style="background-color: #cfcfcf">
+                                                                        Bukti Akte Kosong
+                                                                    </div>
+                                                                @else
 
-                                                                <img class="h-50 w-50" style="object-fit: cover;"
-                                                                     src="{{asset('Upload/buktiakte/'.$data->bukti_akte)}}">
+                                                                    <img class="h-50 w-50" style="object-fit: cover;"
+                                                                         src="{{asset('Upload/buktiakte/'.$data->bukti_akte)}}">
+                                                                @endif
                                                             @endif
                                                         </div>
                                                     </div>
