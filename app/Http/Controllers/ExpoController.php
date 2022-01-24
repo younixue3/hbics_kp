@@ -149,14 +149,19 @@ class ExpoController extends Controller
         $user = User::findOrFail(Auth::user()->id);
 //        dd($user);
         $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
-        $filename_akte = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
+
         if ($request->bukti_pembayaran != null) {
 
             Storage::disk('upload')->putFileAs('paidbill', $request->bukti_pembayaran, $filename);
-            Storage::disk('upload')->putFileAs('buktiakte', $request->bukti_akte, $filename_akte);
 
             $user->bukti_pembayaran = $filename;
-            $user->bukti_akte = $filename_akte;
+
+            if (Auth::user()->event_id == 2) {
+                $filename_akte = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
+                Storage::disk('upload')->putFileAs('buktiakte', $request->bukti_akte, $filename_akte);
+                $user->bukti_akte = $filename_akte;
+            }
+
             $user->save();
             return redirect('/profil');
         } else {
