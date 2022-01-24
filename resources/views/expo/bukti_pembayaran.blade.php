@@ -47,13 +47,16 @@
             </div>
             <input class="form-control" type="file" name="bukti_pembayaran" required/>
         </div>
-        <img id="myImg"
-             src="{{$user->bukti_pembayaran != null ? asset('Upload/paidbill/'. $user->bukti_pembayaran) : '#'}}"
-             alt="your image" style="height: 500px;width: 400px; object-fit: cover;">
-        <div class="my-5">
-            <h3>Bukti Akte Lahir</h3>
-            <input class="form-control" type="file" name="bukti_akte" required/>
-        </div>
+        @if(Auth::user()->event_id != 2)
+            @else
+            <img id="myImg"
+                 src="{{$user->bukti_pembayaran != null ? asset('Upload/paidbill/'. $user->bukti_pembayaran) : '#'}}"
+                 alt="your image" style="height: 500px;width: 400px; object-fit: cover;">
+            <div class="my-5">
+                <h3>Bukti Akte Lahir</h3>
+                <input class="form-control" type="file" name="bukti_akte" required/>
+            </div>
+        @endif
         <input type="submit" class="btn btn-success" style="margin-top: 10px">
     </form>
 </div>
