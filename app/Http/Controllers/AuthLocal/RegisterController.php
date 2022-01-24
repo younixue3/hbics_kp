@@ -32,8 +32,9 @@ class RegisterController extends Controller
     public function index_peserta()
     {
         $event = Event::get();
+        $provinsi = Provinsi::get();
 //        dd($event);
-        $data = compact('event');
+        $data = compact('event', 'provinsi');
         return view('auth.register_peserta', $data);
     }
 
@@ -46,41 +47,36 @@ class RegisterController extends Controller
     public function insert(Request $request)
     {
 //        return response($request);
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'no_hp' => ['required'],
-            'provinsi_id' => ['required'],
-            'kota_kab_id' => ['required'],
-            'password' => ['required', 'string'],
-        ]);
-        if ($request->event_id == 2) {
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'no_hp' => $request->no_hp,
-                'jenjang' => $request->jenjang,
-                'event_id' => intval($request->event_id),
-                'kategori_peserta' => 'individu',
-                'kategori_lp' => $request->kategori_lp,
-                'provinsi_id' => intval($request->provinsi_id),
-                'kota_kab_id' => intval($request->kota_kab_id),
-                'password' => Hash::make($request->password),
+        if ($request->pengunjung) {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'provinsi_id' => ['required'],
+                'kota_kab_id' => ['required'],
+                'password' => ['required', 'string'],
             ]);
         } else {
-            if ($request->kategori_peserta == 'kelompok') {
-                $user = User::create([
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'no_hp' => ['required'],
+                'provinsi_id' => ['required'],
+                'kota_kab_id' => ['required'],
+                'password' => ['required', 'string'],
+            ]);
+        }
+        if ($request->event_id == 2) {
+            if ($request->pengunjung) {
+                User::create([
                     'name' => $request->name,
                     'email' => $request->email,
                     'no_hp' => $request->no_hp,
-                    'jenjang' => $request->jenjang,
                     'event_id' => intval($request->event_id),
-                    'kategori_peserta' => $request->kategori_peserta,
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
+                    'role' => 'pengunjung',
                     'password' => Hash::make($request->password),
                 ]);
-                return $user->id;
             } else {
                 User::create([
                     'name' => $request->name,
@@ -89,10 +85,51 @@ class RegisterController extends Controller
                     'jenjang' => $request->jenjang,
                     'event_id' => intval($request->event_id),
                     'kategori_peserta' => 'individu',
+                    'kategori_lp' => $request->kategori_lp,
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
                     'password' => Hash::make($request->password),
                 ]);
+            }
+        } else {
+            if ($request->pengunjung) {
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'no_hp' => $request->no_hp,
+                    'event_id' => intval($request->event_id),
+                    'role' => 'pengunjung',
+                    'provinsi_id' => intval($request->provinsi_id),
+                    'kota_kab_id' => intval($request->kota_kab_id),
+                    'password' => Hash::make($request->password),
+                ]);
+            } else {
+                if ($request->kategori_peserta == 'kelompok') {
+                    $user = User::create([
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'no_hp' => $request->no_hp,
+                        'jenjang' => $request->jenjang,
+                        'event_id' => intval($request->event_id),
+                        'kategori_peserta' => $request->kategori_peserta,
+                        'provinsi_id' => intval($request->provinsi_id),
+                        'kota_kab_id' => intval($request->kota_kab_id),
+                        'password' => Hash::make($request->password),
+                    ]);
+                    return $user->id;
+                } else {
+                    User::create([
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'no_hp' => $request->no_hp,
+                        'jenjang' => $request->jenjang,
+                        'event_id' => intval($request->event_id),
+                        'kategori_peserta' => 'individu',
+                        'provinsi_id' => intval($request->provinsi_id),
+                        'kota_kab_id' => intval($request->kota_kab_id),
+                        'password' => Hash::make($request->password),
+                    ]);
+                }
             }
         }
     }
