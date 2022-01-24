@@ -229,10 +229,10 @@
                 $('#kategori_lp_4').hide()
                 $('#kategori_lp_5').hide()
                 $('#kategori_lp_6').show()
-                $('#kategori_lp_7').show()
+                $('#kategori_lp_7').hide()
                 $('#kategori_lp_8').show()
                 $('#kategori_lp_9').hide()
-                $('#kategori_lp_10').hide()
+                $('#kategori_lp_10').show()
             } else if ($(this).val() == 'sd_2') {
                 $('#kategori_lp_1').hide()
                 $('#kategori_lp_2').hide()
@@ -240,10 +240,10 @@
                 $('#kategori_lp_4').hide()
                 $('#kategori_lp_5').hide()
                 $('#kategori_lp_6').hide()
-                $('#kategori_lp_7').hide()
+                $('#kategori_lp_7').show()
                 $('#kategori_lp_8').hide()
                 $('#kategori_lp_9').show()
-                $('#kategori_lp_10').show()
+                $('#kategori_lp_10').hide()
             }
         })
 
