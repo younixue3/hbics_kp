@@ -5,8 +5,8 @@
             <div class="overview-wrap">
                 <h2 class="title-1" style="margin-bottom:20px;">Data Visitor</h2>
                 <div style="float: right;margin-bottom: 10px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                        Launch demo modal
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" hidden>
+                        Filter
                     </button>
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -76,15 +76,15 @@
                             </form>
                         </div>
                     </div>
-{{--                    <form action="{{route('visitor')}}">--}}
-{{--                        <span>--}}
-{{--                            <label for="cari"><i class="fas fa-search" style="font-size: 18px; margin-right: 5px;"></i></label>--}}
-{{--                            <input type="text" name="cari">--}}
-{{--                        </span>--}}
-{{--                        <span>--}}
-{{--                            <input type="submit" value="Cari">--}}
-{{--                        </span>--}}
-{{--                    </form>--}}
+                    <form action="{{route('visitor')}}">
+                        <span>
+                            <label for="cari"><i class="fas fa-search" style="font-size: 18px; margin-right: 5px;"></i></label>
+                            <input type="text" name="cari">
+                        </span>
+                        <span>
+                            <input type="submit" value="Cari">
+                        </span>
+                    </form>
                 </div>
             </div>
         </div>
