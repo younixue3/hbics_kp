@@ -42,6 +42,11 @@
                             <div class="form-group row">
                                 <label for="email" class="col-md-12 col-form-label wow fadeInUp"><i
                                         class="icofont-email"></i> {{ __('Email') }}</label>
+                                <div class="wow fadeInUp px-4 mb-3" style="font-size: 13px !important;">
+                                    <i>
+                                        Email dibawah adalah email yang digunakan oleh peserta untuk mendaftar lomba
+                                    </i>
+                                </div>
                                 <br>
                                 <div class="col-md-12">
                                     <input placeholder="Masukkan Email" id="email" type="text" disabled
