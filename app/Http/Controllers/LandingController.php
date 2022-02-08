@@ -103,19 +103,20 @@ class LandingController extends Controller
 
     function expoLombaPendukungDetail($id)
     {
-//        dd($kategori);
+//        dd($id);
         $jenjang = null;
         $user = User::find($id);
         $data = Karya::findOrFail($user->karya->id);
 //        dd($data);
         $kategori_lomba = KategoriLp::get();
         if (Auth::user()) {
-            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $data->id)->where('liked', 1)->latest()->first();
 //            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
         } else {
             $statuslike = null;
 //            $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
         }
+//        dd($statuslike);
 //        dd($user);
 //        if ($kategori == 'drawing_coloring') {
 //            $event = User::where('kategori_lp', 1)->orWhere('kategori_lp', 6)->get();
@@ -188,12 +189,13 @@ class LandingController extends Controller
             $q->where('kategori', $kategori);
         })->get();
         if (Auth::user()) {
-            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $id)->where('liked', 1)->latest()->first();
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', 2)->where('liked', 1)->latest()->first();
             $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
         } else {
             $statuslike = null;
             $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
         }
+
         return view('expo.expo-detail', $datas);
     }
 
@@ -233,7 +235,8 @@ class LandingController extends Controller
         $list_event = Event::get();
         $karya = Karya::find($id);
         $user = Auth::user();
-        $cekkomen = Komentar::where('user_id', $user->id)->latest()->first();
+        $cekkomen = Komentar::where('user_id', $user->id)->where('karya_id', $id)->latest()->first();
+//        dd($cekkomen);
         if ($cekkomen) {
             if ($cekkomen->liked == 1) {
                 $cekkomen->liked = 0;
