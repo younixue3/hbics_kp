@@ -86,9 +86,14 @@
                     <li class="nav-item {{Request::is('beranda') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('')}}">Beranda</a>
                     </li>
+{{--                    {{dd(Request::route()->uri)}}--}}
                     <li class="nav-item {{Request::is('expo/*') || Request::is('virtualexpo/*') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('expo/smp/1')}}">Virtual Expo</a>
-                        {{-- <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a> --}}
+{{--                        <a class="nav-link" href="">Virtual Expo</a>--}}
+                        @if (Request::route()->uri == 'lomba_pendukung/detail/{id}' || Request::route()->uri == 'lomba_pendukung/{kategori}')
+                             <a class="nav-link" href="{{url('lomba_pendukung/drawing_coloring')}}">Virtual Expo</a>
+                        @else
+                             <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a>
+                        @endif
                     </li>
                     @if(Auth::user())
                         @if (Auth::user()->role == 'pengunjung' || Auth::user()->role == 'juri')

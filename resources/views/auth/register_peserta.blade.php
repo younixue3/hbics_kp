@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-md-5">
                         <div class="text">
-                            <p class="text-bg wow fadeInUp mb-3"><i class="icofont-light-bulb"></i>Daftar Peserta</p>
+                            <p class="text-bg wow fadeInUp mb-3"><i class="icofont-light-bulb"></i>Daftar Pengunjung</p>
                             <div class="form-group row">
                                 <label id="nama-kelompok" for="name"
                                        class="col-md-12 col-form-label wow fadeInUp"><i
@@ -58,19 +58,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="event_id" class="col-md-12 col-form-label wow fadeInUp"><i
-                                        class=""></i> {{ __('Kategori Lomba') }}</label>
-                                <br>
-                                <div class="col-md-12">
-                                    <select name="event_id" class="form-control2 wow fadeInUp" id="event_id">
-                                        <option selected disabled>Pilih event yang anda ikuti</option>
-                                        @foreach($event as $value)
-                                            <option value="{{$value->id}}">{{$value->tagline}}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -183,12 +170,12 @@
                         pengunjung: true
                     },
                     error: function (e) {
-                        console.log(e)
+                        // console.log(e)
                         // alert(e, 'Pendaftaran gagal')
                     },
                     success: function (data) {
-                        console.log(data)
-                        // window.location.replace(window.location.origin + '/login');
+                        // console.log(data)
+                        window.location.replace(window.location.origin + '/login');
                     }
                 });
             } else {

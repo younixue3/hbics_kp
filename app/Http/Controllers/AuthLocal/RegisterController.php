@@ -97,7 +97,6 @@ class RegisterController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'no_hp' => $request->no_hp,
-                    'event_id' => intval($request->event_id),
                     'role' => 'pengunjung',
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
