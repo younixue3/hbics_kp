@@ -189,7 +189,8 @@ class LandingController extends Controller
             $q->where('kategori', $kategori);
         })->get();
         if (Auth::user()) {
-            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', 2)->where('liked', 1)->latest()->first();
+//            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', 2)->where('liked', 1)->latest()->first();
+            $statuslike = Komentar::where('user_id', Auth::user()->id)->where('karya_id', $data->id)->where('liked', 1)->latest()->first();
             $datas = compact('data', 'jenjang', 'kategori', 'karyas', 'statuslike', 'this_user', 'kategori_lomba', 'list_event');
         } else {
             $statuslike = null;
