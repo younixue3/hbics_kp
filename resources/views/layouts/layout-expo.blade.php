@@ -92,7 +92,7 @@
                         @if (Request::route()->uri == 'lomba_pendukung/detail/{id}' || Request::route()->uri == 'lomba_pendukung/{kategori}')
                              <a class="nav-link" href="{{url('lomba_pendukung/drawing_coloring')}}">Virtual Expo</a>
                         @else
-                             <a class="nav-link" href="{{url('expo/'.$jenjang.'/'.$kategori)}}">Virtual Expo</a>
+                            <a class="nav-link" href="{{url('expo/smp/1')}}">Virtual Expo</a>
                         @endif
                     </li>
                     @if(Auth::user())
