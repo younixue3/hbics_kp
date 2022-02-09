@@ -256,6 +256,8 @@
                                                href="{{route('delete_visitor', $data->id)}}">Hapus</a>
                                             <a class="dropdown-item bg-warning text-white"
                                                href="{{route('show_visitor', $data->id)}}">Edit</a>
+                                            <a class="dropdown-item bg-warning text-white" {{ $data->karya != null ? '' : 'disabled'}}
+                                               href="{{ $data->karya != null ? asset('Upload/proposal/' . $data->karya->proposal) : ''}}" target="_blank">Lihat Proposal</a>
                                             @if(Auth::User()->role == 'superadmin')
                                                 <a class="dropdown-item bg-primary text-white"
                                                    href="{{route('change_role_pengunjung', $data->id)}}">Jadikan
