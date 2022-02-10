@@ -116,6 +116,9 @@
                         </li>
                     @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{url('login')}}" style="color:#143359 !important;">login</a>
+                        </li>
+                        <li class="nav-item">
                             {{--                            <a class="nav-link" href="{{ route('login') }}">Daftar</a>--}}
                             <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModalCenter"
                                style="color:#143359 !important;">
