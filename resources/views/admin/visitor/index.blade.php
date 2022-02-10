@@ -256,9 +256,15 @@
                                                href="{{route('delete_visitor', $data->id)}}">Hapus</a>
                                             <a class="dropdown-item bg-warning text-white"
                                                href="{{route('show_visitor', $data->id)}}">Edit</a>
-
-                                            <a class="dropdown-item bg-warning text-white"
-                                               href="{{ $data->karya ? '#' : asset('Upload/proposal/' . $data->karya->proposal)}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Proposal</a>
+{{--                                            {{$data->karya}}--}}
+                                            @if($data->karya == null)
+                                                @else
+                                                @if($data->karya->proposal == null)
+                                                    @else
+                                                    <a class="dropdown-item bg-warning text-white"
+                                                       href="{{ $data->karya != null ? asset('Upload/proposal/' . $data->karya->proposal) : '#'}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Proposal</a>
+                                                @endif
+                                            @endif
                                             @if(Auth::User()->role == 'superadmin')
                                                 <a class="dropdown-item bg-primary text-white"
                                                    href="{{route('change_role_pengunjung', $data->id)}}">Jadikan
