@@ -35,7 +35,7 @@
                     </button>
                 </div>
                 <div class="modal-body text-center">
-                    <h2>Sponsored By :</h2>
+                    <h2 class="text-white">Sponsored By :</h2>
                     <img src="{{asset('uploads/sponsors/'.$event->sponsors->first()->logo)}}" alt="" style="width: 100%;">
                 </div>
             </div>
