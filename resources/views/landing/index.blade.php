@@ -1,6 +1,7 @@
 @extends('layouts.layout-landing')
 @section('content')
     @if(today() > '2022-02-12')
+
     @else
         <div class="container-fluid p-5 h-75">
             <video autoplay muted controls loop>
@@ -8,6 +9,24 @@
             </video>
         </div>
     @endif
+    <div id="simpleModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h2>Sponsored By :</h2>
+                    <img src="{{asset('uploads/sponsors/'.$event->sponsors->first()->logo)}}" alt="" style="width: 100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container-fluid" id="element">
         <div class="row frame">
@@ -265,6 +284,7 @@
 @endsection
 @section('script')
     <script>
+        $("#simpleModal").modal('show');
         $(window).scroll(function () {
             var scroll = $(window).scrollTop();
             if (scroll >= 500) {

@@ -162,6 +162,27 @@
         </div>
     </nav>
 </div>
+@php
+    $active = App\Event::find(1)->first();
+@endphp
+@if ($active)
+    <div class="sponsor wow fadeInUp" data-wow-delay="1s">
+        <div class="container">
+            <p class="sponsor-title">
+                Support by:
+            </p>
+            <div class="sponsor-frame">
+                {{--                {{dd($active->sponsors)}}--}}
+                @forelse ($active->sponsors as $sponsor)
+                    <div class="sponsor-image-frame wow fadeInUp" data-wow-delay="1.3s">
+                        <img src="{{asset('uploads/sponsors/'.$sponsor->logo)}}" alt="" class="sponsor-image">
+                    </div>
+                @empty
+                @endforelse
+            </div>
+        </div>
+    </div>
+@endif
 <div id="navbreaker"></div>
 <!-- /logo -->
 @yield('content')

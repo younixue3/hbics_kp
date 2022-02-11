@@ -56,7 +56,7 @@ class GaleriController extends Controller
     {
         $input = $request->all();
         $validatedData = $request->validate([
-            'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
+            'foto' => 'required|mimes:jpeg,bmp,png,jpg',
         ]);
         $tahun = GaleriTahun::findOrFail($galeri_tahun);
         $input['galeri_tahuns_id'] = $tahun->id;
