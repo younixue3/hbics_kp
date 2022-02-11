@@ -1,7 +1,24 @@
 @extends('layouts.layout-landing')
 @section('content')
     @if(today() > '2022-02-12')
-
+        <div class="my-5 container">
+            <h1>Highlight Epik 2k22</h1>
+            <div class="row">
+        @foreach($galeri->fotos as $foto)
+            <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
+                <div class="galeri">
+                    <div class="galeri-imageframe">
+                        <a href="{{asset('uploads/galeris/'.$foto->foto)}}" data-lightbox="galeri">
+                            <img src="{{asset('uploads/galeris/'.$foto->foto)}}" alt=""
+                                 class="galeri-image">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+            </div>
+            <a class="btn btn-warning" href="{{url('galeri/'.$galeri->id.'/'.str_replace(' ', '', $galeri->folder))}}">Lihat Galeri</a>
+        </div>
     @else
         <div class="container-fluid p-5 h-75">
             <video autoplay muted controls loop>

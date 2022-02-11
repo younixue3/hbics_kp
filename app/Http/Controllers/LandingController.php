@@ -25,11 +25,12 @@ class LandingController extends Controller
 
     public function beranda()
     {
+        $galeri = GaleriTahun::find(1);
         $event = Event::where('status', 1)->first();
         $beritas = Post::take(4)->orderBy('created_at', 'desc')->get();
         $kategori = KategoriLomba::where('event_id', 1)->get();
         $list_event = Event::get();
-        return view('landing.index', compact('event', 'beritas', 'kategori', 'list_event'));
+        return view('landing.index', compact('event', 'beritas', 'kategori', 'list_event', 'galeri'));
     }
 
     public function beranda_lp()
