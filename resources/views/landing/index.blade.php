@@ -1,5 +1,14 @@
 @extends('layouts.layout-landing')
 @section('content')
+    @if(today() > '2022-02-12')
+    @else
+        <div class="container-fluid p-5 w-75">
+            <video autoplay muted controls loop>
+                <source src="{{asset('video/video_kp_opening.mp4')}}" type="video/mp4">
+            </video>
+        </div>
+    @endif
+
     <div class="container-fluid" id="element">
         <div class="row frame">
             <div class="container">
