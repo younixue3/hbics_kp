@@ -1,6 +1,6 @@
 @extends('layouts.layout-landing')
 @section('content')
-    @if(today() > '2022-02-12')
+    @if(today() > '2022-02-13')
         <div class="my-5 container">
             <h1>Highlight Epik 2k22</h1>
             <div class="row">
