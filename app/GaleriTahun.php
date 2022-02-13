@@ -13,4 +13,9 @@ class GaleriTahun extends Model
     {
         return $this->hasMany('App\Foto', 'galeri_tahuns_id');
     }
+
+    public function highlight()
+    {
+        return $this->hasMany('App\Foto', 'galeri_tahuns_id');
+    }
 }

@@ -4,7 +4,7 @@
         <div class="my-5 container">
             <h1>Highlight Epik 2k22</h1>
             <div class="row">
-        @foreach($galeri->fotos as $foto)
+        @foreach($galeri->highlight()->paginate(6) as $foto)
             <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
                 <div class="galeri">
                     <div class="galeri-imageframe">
