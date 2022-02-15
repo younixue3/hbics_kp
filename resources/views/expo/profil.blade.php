@@ -5,7 +5,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <a class="btn btn-warning" href="{{url('lomba_pendukung/detail/'. $user->id)}}">Lihat Video Saya</a>
+{{--                        {{dd($karya->kategori)}}--}}
+                        @if($karya == null)
+                            @else
+                            @if(Auth::user()->event_id == 2)
+                                <a class="btn btn-warning" href="{{url('lomba_pendukung/detail/'. $user->id)}}">Lihat Video Saya</a>
+                            @else
+                                {{--                            {{dd($user)}}--}}
+                                <a class="btn btn-warning" href="{{url('expo/' . $user->jenjang . '/' . $karya->kategori . '/' . $karya->id . '/' . str_replace(' ', '-', $karya->nama))}}">Lihat Video Saya</a>
+                            @endif
+                        @endif
                     </div>
                     <div class="col-md-12">
                         @if(session('success'))
