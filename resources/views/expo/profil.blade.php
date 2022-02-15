@@ -201,7 +201,7 @@
                                             <i style="color: green" class="icofont-check-circled"></i>
                                             Deskripsi</label>
                                         <textarea id="textarea_deskripsi" name="deskripsi" rows="10"
-                                                  placeholder="Masukkan deskripsi 'produk'"
+                                                  placeholder="Masukkan deskripsi"
                                                   class="form-control2">{{$karya == null ? '' : $karya->deskripsi}}</textarea>
                                         @if(Auth::user()->event_id == 2)
                                             <label class="mt10">
