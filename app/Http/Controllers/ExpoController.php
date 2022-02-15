@@ -77,9 +77,9 @@ class ExpoController extends Controller
             $proposal = today()->format('Y-m-d') . $request->proposal->GetClientOriginalName();
             Storage::disk('upload')->putFileAs('proposal', $request->proposal, $proposal);
         }
-        $karya = Karya::updateOrCreate(
-            ['user_id' => Auth::user()->id],
+        $karya = Karya::create(
             [
+                'user_id' => Auth::user()->id,
                 'nama' => $request->nama,
                 'event_id' => Auth::user()->event_id,
                 'kategori' => $request->kategori,
@@ -98,7 +98,8 @@ class ExpoController extends Controller
     {
         $user = Auth::user();
         $kategori_lomba = KategoriLomba::where('event_id', Auth::user()->event_id)->get();
-        $karya = Karya::where('user_id', Auth::user()->id)->first();
+        $karya = Karya::where('user_id', Auth::user()->id)->latest()->first();
+//        dd($karya);
         $data = compact('user', 'kategori_lomba', 'karya');
         return view('expo.profil', $data);
     }

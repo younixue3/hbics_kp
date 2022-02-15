@@ -42,7 +42,7 @@ class   User extends Authenticatable
 
     public function karya()
     {
-        return $this->hasOne('App\Karya', 'user_id', 'id');
+        return $this->hasOne('App\Karya', 'user_id', 'id')->latest();
     }
 //    public function komentar()
 //    {
