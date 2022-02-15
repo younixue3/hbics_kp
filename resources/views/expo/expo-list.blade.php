@@ -71,7 +71,7 @@
 {{--                                        {{dd($event)}}--}}
                                         @foreach ($event as $karya)
 {{--                                                                                {{dd($karya->karya)}}--}}
-                                        @if($karya->karya == null)
+                                        @if($karya->karya->nama == null)
                                             @else
                                                 <div class="list wow fadeInUp" data-wow-delay="0.5s">
                                                     <div class="list-imageframe">
