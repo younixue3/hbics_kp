@@ -1,15 +1,11 @@
 @extends('layouts.layout-expo')
 @section('content')
-
     <div class="container-fluid">
         <div class="row frame frame2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="status">
-                            <p class="status-text"><span class="status-grey"><i class="icofont-ui-calendar"></i> Waktu pengisian profil :</span>
-                                <span class="status-blue"></span></p>
-                        </div>
+                        <a class="btn btn-warning" href="{{url('lomba_pendukung/detail/'. $user->id)}}">Lihat Video Saya</a>
                     </div>
                     <div class="col-md-12">
                         @if(session('success'))
