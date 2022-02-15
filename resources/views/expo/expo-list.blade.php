@@ -78,9 +78,12 @@
                                                         @if($jenjang == null)
                                                             <iframe style="width: 400px; height: 200px" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->karya->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                         @else
-                                                            <img
-                                                                src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
-                                                                alt="" class="list-image">
+                                                            @if($karya->karya->foto == null)
+                                                                @else
+                                                                <img
+                                                                    src="{{url('Upload/karyafotos/'.$karya->karya->foto->first()->foto)}}"
+                                                                    alt="" class="list-image">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                     <div class="list-content">
