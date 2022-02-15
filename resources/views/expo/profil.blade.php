@@ -209,7 +209,7 @@
                                                 Link {{$user->event_id == 2 ? 'Video' : 'Presentasi' }}</label>
                                             <input type="text" name="link_presentation"
                                                    placeholder="Masukkan Link {{$user->event_id == 2 ? 'video' : 'presentasi' }}" class="form-control2"
-                                                   value="{{$karya == null ? '' : $karya->link_presentation}} {{$user->event_id == 2 ? 'required' : '' }}">
+                                                   value="{{$karya == null ? '' : $karya->link_presentation}}"{{$user->event_id == 2 ? 'required' : '' }}>
                                         @else
                                             <div class="row">
                                                 <div class="col-md-6">
