@@ -44,8 +44,7 @@
                                     TENTANG KAMI
                                 </p>
                                 <p class="namateam wow fadeInUp" data-wow-delay="2s">
-                                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i> Jenjang
-                                    : {{strtoupper($user->jenjang)}},
+                                    <i class="icofont-check wow fadeInUp" data-wow-delay="2s"></i>
                                     Kategori: {{$kategori_lomba->find($user->kategori_lp)->kategori}}
                                 </p>
                                 <p class="apaitu-text wow fadeInUp" data-wow-delay="2.5s">

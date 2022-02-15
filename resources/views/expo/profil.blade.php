@@ -199,7 +199,7 @@
                                         @endif
                                         <label class="mt10">
                                             <i style="color: green" class="icofont-check-circled"></i>
-                                            Deskripsi Produk</label>
+                                            Deskripsi</label>
                                         <textarea id="textarea_deskripsi" name="deskripsi" rows="10"
                                                   placeholder="Masukkan deskripsi 'produk'"
                                                   class="form-control2">{{$karya == null ? '' : $karya->deskripsi}}</textarea>
@@ -209,7 +209,7 @@
                                                 Link {{$user->event_id == 2 ? 'Video' : 'Presentasi' }}</label>
                                             <input type="text" name="link_presentation"
                                                    placeholder="Masukkan Link {{$user->event_id == 2 ? 'video' : 'presentasi' }}" class="form-control2"
-                                                   value="{{$karya == null ? '' : $karya->link_presentation}}">
+                                                   value="{{$karya == null ? '' : $karya->link_presentation}} {{$user->event_id == 2 ? 'required' : '' }}">
                                         @else
                                             <div class="row">
                                                 <div class="col-md-6">

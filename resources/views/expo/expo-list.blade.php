@@ -47,7 +47,7 @@
                                     <a href="{{url('lomba_pendukung/food_platting')}}"
                                        class="drop-link">Food Platting</a>
                                     <a href="{{url('lomba_pendukung/food_presentation')}}"
-                                       class="drop-link">Food Platting</a>
+                                       class="drop-link">Food Presentation</a>
                                 @else
                                     @foreach($kategorinya as $value)
                                         <a href="{{url('expo/'.$jenjang.'/'.$value->id)}}"
