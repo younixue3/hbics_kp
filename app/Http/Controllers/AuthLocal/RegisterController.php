@@ -89,7 +89,7 @@ class RegisterController extends Controller
                     'provinsi_id' => intval($request->provinsi_id),
                     'kota_kab_id' => intval($request->kota_kab_id),
                     'password' => Hash::make($request->password),
-                    'bukti_pembayaran' => '.',
+                    'bukti_pembayaran' => "verified",
                     'pembayaran' => 'verified'
                 ]);
             }
