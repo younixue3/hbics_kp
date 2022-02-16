@@ -27,12 +27,14 @@ class ExpoController extends Controller
         $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
         $user->desc = $request->desc;
         if ($request->foto_profile != null) {
-
             Storage::disk('upload')->putFileAs('foto_profil', $request->foto_profile, $filename);
 
             $user->foto_profile = $filename;
+        }
+        if ($request->akte != null) {
+            Storage::disk('upload')->putFileAs('akte', $request->akte, $filename);
 
-
+            $user->bukti_akte = $filename;
         }
         $user->save();
         return redirect('/profil');

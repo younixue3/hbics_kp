@@ -148,6 +148,16 @@
                                         <input type="file" name="foto_profile" class="form-control2 mb-3"
                                                placeholder="Masukkan foto tim">
                                         @if($user->event_id == 2)
+                                            <label class="mt10">
+                                                <i style="color: green" class="icofont-check-circled"></i>
+                                                Berkas Akte Lahir
+                                                <a style="color: rgb(41, 91, 228)"
+                                                   href="{{asset('Upload/akte/' . Auth::User()->bukti_akte)}}"
+                                                   data-lightbox="akte"
+                                                   data-title="">Lihat berkas akte<i class="icofont-image"></i></a>
+                                            </label>
+                                            <input type="file" name="akte" class="form-control2 mb-3"
+                                                   placeholder="Masukkan akte lahir">
                                             @else
                                             <label class="mt10" id="tentangkamiLabel">
                                                 <i style="color: green" class="icofont-check-circled"></i>
