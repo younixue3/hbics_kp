@@ -19,15 +19,19 @@ class PesertaController extends Controller
      */
     public function visitor(Request $request)
     {
-//        dd(json_decode($request->filter));
-        $event_kp = KategoriLomba::where('event_id', 1)->get();
+//        dd(json_decode($request->filter_lomba));
+//        $event_kp = KategoriLomba::where('event_id', 2)->get();
         $harga_satuan = KategoriLp::get();
         if ($request->cari != null) {
-            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'pengunjung')->paginate(20);
+            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'pengunjung');
         } else {
-            $datas = User::where('role', 'peserta')->paginate(20);
+            $datas = User::where('role', 'peserta');
         }
-        $data = compact('datas', 'harga_satuan', 'event_kp');
+        if ($request->filter_lomba != null) {
+            $datas = $datas->where('event_id', $request->filter_lomba);
+        }
+        $datas = $datas->paginate(20);
+        $data = compact('datas', 'harga_satuan');
         return view('admin.visitor.index', $data);
     }
 
