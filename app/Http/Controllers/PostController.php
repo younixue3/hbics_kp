@@ -39,7 +39,7 @@ class PostController extends Controller
     {
         $input = $request->all();
         $validatedData = $request->validate([
-            'foto' => 'required|mimes:jpeg,bmp,png,jpg|max:2000',
+            'foto' => 'required|mimes:jpeg,bmp,png,jpg',
             'judul' => 'required',
             'waktu' => 'required',
             'isi' => 'required',
