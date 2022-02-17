@@ -22,6 +22,9 @@ class ExpoController extends Controller
     public function update_profil_tim(Request $request)
     {
 //        dd($request);
+        if (auth() == null) {
+            return redirect(route('login'));
+        }
         $user = User::findOrFail(Auth::user()->id);
 //        dd($user);
         $filename = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
@@ -63,6 +66,9 @@ class ExpoController extends Controller
 
     public function insert_karya(Request $request)
     {
+        if (!auth()) {
+            return redirect(route('login'));
+        }
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();
         if ($get_karya == null) {
             $foto_poster = null;
