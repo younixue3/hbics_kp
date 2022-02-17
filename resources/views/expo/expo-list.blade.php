@@ -36,10 +36,6 @@
                             </a>
                             <div id="dropp-c" class="drop drop--hide">
                                 @if($jenjang == null)
-                                    <a href="{{url('lomba_pendukung/drawing_coloring')}}"
-                                       class="drop-link">Drawing & Coloring</a>
-                                    <a href="{{url('lomba_pendukung/kids_warrior')}}"
-                                       class="drop-link">Kids Warrior</a>
                                     <a href="{{url('lomba_pendukung/steam_challenge')}}"
                                        class="drop-link">STEAM Challenge</a>
                                     <a href="{{url('lomba_pendukung/story_telling')}}"
