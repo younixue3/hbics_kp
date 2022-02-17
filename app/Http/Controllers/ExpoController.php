@@ -66,8 +66,7 @@ class ExpoController extends Controller
 
     public function insert_karya(Request $request)
     {
-//        if (auth() == null) {
-        dd('peler');
+//        if (auth() == null) {\
 //            return redirect(route('login'));
 //        }
         $get_karya = Karya::where('user_id', Auth::user()->id)->first();
