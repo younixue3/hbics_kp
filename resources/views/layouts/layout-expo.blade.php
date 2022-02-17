@@ -89,7 +89,8 @@
 {{--                    {{dd(Request::route()->uri)}}--}}
                     <li class="nav-item {{Request::is('expo/*') || Request::is('virtualexpo/*') ? 'active' : ''}}">
 {{--                        <a class="nav-link" href="">Virtual Expo</a>--}}
-                        @if (Auth::user()->event_id == 2)
+
+                        @if (Request::segment(1) == 'lomba_pendukung')
                              <a class="nav-link" href="{{url('lomba_pendukung/drawing_coloring')}}">Virtual Expo</a>
                         @else
                             <a class="nav-link" href="{{url('expo/smp/1')}}">Virtual Expo</a>

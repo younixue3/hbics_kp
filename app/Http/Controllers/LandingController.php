@@ -104,7 +104,6 @@ class LandingController extends Controller
 
     function expoLombaPendukungDetail($id)
     {
-//        dd($id);
         $jenjang = null;
         $user = User::find($id);
         $data = Karya::findOrFail($user->karya->id);
