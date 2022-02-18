@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddJuaraToUsers extends Migration
+class AddJuaraToKaryas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddJuaraToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('karyas', function (Blueprint $table) {
             $table->string('juara')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddJuaraToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('karyas', function (Blueprint $table) {
             //
         });
     }

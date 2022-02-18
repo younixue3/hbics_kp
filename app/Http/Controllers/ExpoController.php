@@ -85,6 +85,10 @@ class ExpoController extends Controller
             $proposal = today()->format('Y-m-d') . $request->proposal->GetClientOriginalName();
             Storage::disk('upload')->putFileAs('proposal', $request->proposal, $proposal);
         }
+        if ($request->naskah != null) {
+            $naskah = today()->format('Y-m-d') . $request->naskah->GetClientOriginalName();
+            Storage::disk('upload')->putFileAs('naskah', $request->naskah, $naskah);
+        }
         $karya = Karya::create(
             [
                 'user_id' => Auth::user()->id,
@@ -93,6 +97,7 @@ class ExpoController extends Controller
                 'kategori' => $request->kategori,
                 'foto_poster' => $foto_poster,
                 'proposal' => $proposal,
+                'naskah' => $naskah,
                 'deskripsi' => $request->deskripsi,
                 'link_profil' => $request->link_profil,
                 'link_presentation' => $request->link_presentation,

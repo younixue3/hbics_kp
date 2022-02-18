@@ -225,6 +225,18 @@
                                             <input type="text" name="link_presentation"
                                                    placeholder="Masukkan Link {{$user->event_id == 2 ? 'video' : 'presentasi' }}" class="form-control2"
                                                    value="{{$karya == null ? '' : $karya->link_presentation}}"{{$user->event_id == 2 ? 'required' : '' }}>
+                                            @if(Auth::user()->kategori_lp == 5 || Auth::user()->kategori_lp == 7)
+                                                <label class="mt10">
+                                                    <i style="color: green" class="icofont-check-circled"></i>
+                                                    Naskah
+                                                    {{--                                                    {{dd($karya)}}--}}
+                                                    <a style="color: rgb(41, 91, 228)"
+                                                       href="{{ $karya != null ? asset('Upload/naskah/' . $karya->naskah) : ''}}"
+                                                       target="_blank">Lihat
+                                                        Naskah<i class="icofont-file"></i></a>
+                                                </label>
+                                                <input type="file" name="naskah" class="form-control2">
+                                                @endif
                                         @else
                                             <div class="row">
                                                 <div class="col-md-6">
