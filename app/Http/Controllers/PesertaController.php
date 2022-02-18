@@ -23,7 +23,7 @@ class PesertaController extends Controller
 //        $event_kp = KategoriLomba::where('event_id', 2)->get();
         $harga_satuan = KategoriLp::get();
         if ($request->cari != null) {
-            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', '!=', 'superadmin')->where('role', '!=', 'admin';
+            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', '!=', 'superadmin')->where('role', '!=', 'admin');
         } else {
             $datas = User::where('role', '!=', 'superadmin')->where('role', '!=', 'admin');
         }
