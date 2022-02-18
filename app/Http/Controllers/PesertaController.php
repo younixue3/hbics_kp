@@ -23,9 +23,9 @@ class PesertaController extends Controller
 //        $event_kp = KategoriLomba::where('event_id', 2)->get();
         $harga_satuan = KategoriLp::get();
         if ($request->cari != null) {
-            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', 'pengunjung')->orWhere('role', 'peserta');
+            $datas = User::where('email', 'like', '%' . $request->cari)->orWhere('name', 'like', '%' . $request->cari . '%')->where('role', '!=', 'superadmin')->where('role', '!=', 'admin';
         } else {
-            $datas = User::where('role', 'peserta')->orWhere('role', 'pengujung');
+            $datas = User::where('role', '!=', 'superadmin')->where('role', '!=', 'admin');
         }
         if ($request->filter_lomba != null) {
             $datas = $datas->where('event_id', $request->filter_lomba);
@@ -52,8 +52,7 @@ class PesertaController extends Controller
 
     public function change_role_visitor(Request $request, $id)
     {
-        dd($id);
-        $data = User::where('role', 'peserta')->orWhere('role', 'pengujung')->findOrFail($id);
+        $data = User::where('role', '!=', 'superadmin')->where('role', '!=', 'admin')->findOrFail($id);
         if ($request->admin == 1) {
             $data->update(['role' => 'admin', 'event_id' => 1]);
         } else if ($request->admin == 2) {
