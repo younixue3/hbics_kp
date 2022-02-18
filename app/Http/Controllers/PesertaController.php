@@ -57,6 +57,8 @@ class PesertaController extends Controller
             $data->update(['role' => 'admin', 'event_id' => 1]);
         } else if ($request->admin == 2) {
             $data->update(['role' => 'admin', 'event_id' => 2]);
+        } else if ($request->admin == 3) {
+            $data->update(['role' => 'pengujung', 'event_id' => null]);
         }
         $data->save();
         return redirect('visitors');

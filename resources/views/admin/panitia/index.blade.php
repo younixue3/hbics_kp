@@ -72,7 +72,7 @@
                                             <a class="dropdown-item bg-warning text-white"
                                                href="{{route('show_panitia', $data->id)}}">Edit</a>
                                             <a class="dropdown-item bg-primary text-white"
-                                               href="{{route('change_role_panitia', $data->id)}}">Jadikan Pengunjung</a>
+                                               href="{{route('change_role_panitia', $data->id)}}?admin=3">Jadikan Pengunjung</a>
                                         </div>
                                     </div>
                                 </td>
