@@ -73,9 +73,11 @@ class ExpoController extends Controller
         if ($get_karya == null) {
             $foto_poster = null;
             $proposal = null;
+            $naskah = null;
         } else {
             $foto_poster = $get_karya->foto_poster;
             $proposal = $get_karya->proposal;
+            $naskah = $get_karya->naskah;
         }
         if ($request->foto_poster != null) {
             $foto_poster = today()->format('Y-m-d') . rand('00000', '99999') . '.png';
