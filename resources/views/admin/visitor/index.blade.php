@@ -203,6 +203,11 @@
                                                     <a class="dropdown-item bg-warning text-white"
                                                        href="{{ $data->karya != null ? asset('Upload/proposal/' . $data->karya->proposal) : '#'}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Proposal</a>
                                                 @endif
+                                                    @if($data->karya->naskah == null)
+                                                    @else
+                                                        <a class="dropdown-item bg-warning text-white"
+                                                           href="{{ $data->karya != null ? asset('Upload/naskah/' . $data->karya->naskah) : '#'}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Naskah</a>
+                                                    @endif
                                             @endif
                                             @if(Auth::User()->role == 'superadmin')
                                                 <a class="dropdown-item bg-primary text-white"
