@@ -40,8 +40,6 @@
                                        class="drop-link">STEAM Challenge</a>
                                     <a href="{{url('lomba_pendukung/story_telling')}}"
                                        class="drop-link">Story Telling</a>
-                                    <a href="{{url('lomba_pendukung/food_platting')}}"
-                                       class="drop-link">Food Platting</a>
                                     <a href="{{url('lomba_pendukung/food_presentation')}}"
                                        class="drop-link">Food Presentation</a>
                                 @else
