@@ -87,7 +87,7 @@ class LandingController extends Controller
         } elseif ($kategori == 'story_telling') {
             $event = User::where('kategori_lp', 5)->orWhere('kategori_lp', 10)->get();
             $kategori_view = 'Story Telling';
-        } elseif ($kategori == 'food_plating') {
+        } elseif ($kategori == 'food_platting') {
             $event = User::where('kategori_lp', 2)->get();
             $kategori_view = 'Food Platting';
         } elseif ($kategori == 'food_presentation') {
