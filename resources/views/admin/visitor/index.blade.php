@@ -206,8 +206,11 @@
                                             @endif
                                             @if(Auth::User()->role == 'superadmin')
                                                 <a class="dropdown-item bg-primary text-white"
-                                                   href="{{route('change_role_pengunjung', $data->id)}}">Jadikan
-                                                    Admin</a>
+                                                   href="{{route('change_role_pengunjung', $data->id)}}?admin=1">Jadikan
+                                                    Admin KP</a>
+                                                <a class="dropdown-item bg-primary text-white"
+                                                   href="{{route('change_role_pengunjung', $data->id)}}?admin=2">Jadikan
+                                                    Admin LP</a>
                                             @else
                                             @endif
                                         </div>
@@ -217,7 +220,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{$datas->links()}}
+                    {{$datas->appends(request()->all())->links()}}
                 </div>
             </div>
         </div>

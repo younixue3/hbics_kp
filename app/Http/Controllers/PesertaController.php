@@ -52,8 +52,13 @@ class PesertaController extends Controller
 
     public function change_role_visitor(Request $request, $id)
     {
+//        dd($request);
         $data = User::where('role', 'peserta')->findOrFail($id);
-        $data->update(['role' => 'admin']);
+        if ($request->admin == 1) {
+            $data->update(['role' => 'admin', 'event_id' => 1]);
+        } else if ($request->admin == 2) {
+            $data->update(['role' => 'admin', 'event_id' => 2]);
+        }
         $data->save();
         return redirect('visitors');
     }
