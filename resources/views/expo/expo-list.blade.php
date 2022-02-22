@@ -62,53 +62,57 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @if($event != null)
-{{--                                        {{dd($event)}}--}}
+                                        {{--                                        {{dd($event)}}--}}
                                         @foreach ($event as $karya)
-{{--                                                                                {{dd($karya->karya)}}--}}
-                                        @if($karya->karya == null)
+                                            {{--                                                                                {{dd($karya->karya)}}--}}
+                                            @if($karya->karya == null)
                                             @else
-                                                <div class="list wow fadeInUp" data-wow-delay="0.5s">
-                                                    <div class="list-imageframe">
-                                                        @if($jenjang == null)
-                                                            <iframe style="width: 400px; height: 200px" src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->karya->link_presentation)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                        @else
-                                                            @if($karya->karya->foto->first() == null)
+                                                @if($karya->karya->nama == null)
+                                                @else
+                                                    <div class="list wow fadeInUp" data-wow-delay="0.5s">
+                                                        <div class="list-imageframe">
+                                                            @if($jenjang == null)
+                                                                <iframe style="width: 400px; height: 200px"
+                                                                        src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $karya->karya->link_presentation)}}"
+                                                                        title="YouTube video player" frameborder="0"
+                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                                        allowfullscreen></iframe>
+                                                            @else
+                                                                @if($karya->karya->foto->first() == null)
                                                                 @else
-                                                                <img
-                                                                    src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
-                                                                    alt="" class="list-image">
+                                                                    <img
+                                                                        src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
+                                                                        alt="" class="list-image">
+                                                                @endif
                                                             @endif
-                                                        @endif
-                                                    </div>
-                                                    <div class="list-content">
-                                                        <a style="margin-bottom: 0px;"
-                                                           @if($jenjang == null)
+                                                        </div>
+                                                        <div class="list-content">
+                                                            <a style="margin-bottom: 0px;"
+                                                               @if($jenjang == null)
                                                                href="{{url('lomba_pendukung/detail/'.$karya->id)}}"
-                                                           class="list-title">{{$karya->name}}
-                                                        @else
-                                                            href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                                                class="list-title">{{$karya->karya->nama}}
+                                                               class="list-title">{{$karya->name}}
+                                                                @else
+                                                                    href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}
+                                                                    "
+                                                                    class="list-title">{{$karya->karya->nama}}
+                                                                @endif
+                                                            </a>
+                                                            @if($jenjang == null)
+                                                                <p class="list-keterangan">{{$karya->desc}}</p>
+                                                            @else
+                                                                <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
                                                             @endif
-                                                        </a>
-                                                        @if($jenjang == null)
-                                                            <p class="list-keterangan">{{$karya->desc}}</p>
-                                                        @else
-                                                            <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
-                                                        @endif
-                                                        <span class="list-likers"><i class="icofont-like"></i> Disukai oleh
+                                                            <span class="list-likers"><i class="icofont-like"></i> Disukai oleh
                                                         {{$karya->karya->likes->count()}}
                                                         orang</span>
-                                                        <span class="list-likers"><i class="icofont-comment"></i>
+                                                            <span class="list-likers"><i class="icofont-comment"></i>
                                                         {{$karya->karya->komentars->count()}}
                                                         Komentar</span>
-                                                        <br>
-                                                        {{--                                                    <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"--}}
-                                                        {{--                                                       class="list-button">Lihat selengkapnya</a>--}}
+                                                            <br>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endif
                                             @endif
-{{--                                        @empty--}}
-{{--                                            Belum ada karya--}}
                                         @endforeach
                                     @else
                                     @endif
