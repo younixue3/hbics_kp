@@ -225,7 +225,7 @@
                                             <input type="text" name="link_presentation"
                                                    placeholder="Masukkan Link {{$user->event_id == 2 ? 'video' : 'presentasi' }}" class="form-control2"
                                                    value="{{$karya == null ? '' : $karya->link_presentation}}"{{$user->event_id == 2 ? 'required' : '' }}>
-                                            @if(Auth::user()->kategori_lp == 5 || Auth::user()->kategori_lp == 7)
+                                            @if(Auth::user()->kategori_lp == 5 || Auth::user()->kategori_lp == 10)
                                                 <label class="mt10">
                                                     <i style="color: green" class="icofont-check-circled"></i>
                                                     Naskah
