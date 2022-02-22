@@ -91,21 +91,37 @@ class ExpoController extends Controller
             $naskah = today()->format('Y-m-d') . $request->naskah->GetClientOriginalName();
             Storage::disk('upload')->putFileAs('naskah', $request->naskah, $naskah);
         }
-        $karya = Karya::create(
-            [
-                'user_id' => Auth::user()->id,
-                'nama' => $request->nama,
-                'event_id' => Auth::user()->event_id,
-                'kategori' => $request->kategori,
-                'foto_poster' => $foto_poster,
-                'proposal' => $proposal,
-                'naskah' => $naskah,
-                'deskripsi' => $request->deskripsi,
-                'link_profil' => $request->link_profil,
-                'link_presentation' => $request->link_presentation,
-                'link_mockup' => $request->link_mockup
-            ]
-        );
+        if ($get_karya->event_id == 1) {
+            $karya = Karya::updateOrCreate(
+                [
+                    'nama' => $request->nama,
+                    'event_id' => Auth::user()->event_id,
+                    'kategori' => $request->kategori,
+                    'foto_poster' => $foto_poster,
+                    'proposal' => $proposal,
+                    'deskripsi' => $request->deskripsi,
+                    'link_profil' => $request->link_profil,
+                    'link_presentation' => $request->link_presentation,
+                    'link_mockup' => $request->link_mockup
+                ]
+            );
+        } else {
+            $karya = Karya::create(
+                [
+                    'user_id' => Auth::user()->id,
+                    'nama' => $request->nama,
+                    'event_id' => Auth::user()->event_id,
+                    'kategori' => $request->kategori,
+                    'foto_poster' => $foto_poster,
+                    'proposal' => $proposal,
+                    'naskah' => $naskah,
+                    'deskripsi' => $request->deskripsi,
+                    'link_profil' => $request->link_profil,
+                    'link_presentation' => $request->link_presentation,
+                    'link_mockup' => $request->link_mockup
+                ]
+            );
+        }
         return redirect('/profil');
     }
 
