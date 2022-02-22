@@ -64,7 +64,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('expo/smp')}}" style="color:#143359 !important;">SMP/MTS</a>
                             <a class="dropdown-item" href="{{url('expo/sma')}}" style="color:#143359 !important;">SMA/SMK/MAN</a>
-                            <a class="dropdown-item" href="{{url('lomba_pendukung/drawing_coloring')}}"
+                            <a class="dropdown-item" href="{{url('lomba_pendukung/story_telling')}}"
                                style="color:#143359 !important;">Lomba Pendukung</a>
                         </div>
                     </li>
