@@ -91,9 +91,11 @@ class ExpoController extends Controller
             $naskah = today()->format('Y-m-d') . $request->naskah->GetClientOriginalName();
             Storage::disk('upload')->putFileAs('naskah', $request->naskah, $naskah);
         }
-        if ($get_karya->event_id == 1) {
+//        dd(Auth::user()->event_id);
+        if (Auth::user()->event_id === 1) {
             $karya = Karya::updateOrCreate(
                 [
+                    'user_id' => Auth::user()->id,
                     'nama' => $request->nama,
                     'event_id' => Auth::user()->event_id,
                     'kategori' => $request->kategori,
@@ -105,6 +107,7 @@ class ExpoController extends Controller
                     'link_mockup' => $request->link_mockup
                 ]
             );
+//            dd($karya);
         } else {
             $karya = Karya::create(
                 [
@@ -130,7 +133,6 @@ class ExpoController extends Controller
         $user = Auth::user();
         $kategori_lomba = KategoriLomba::where('event_id', Auth::user()->event_id)->get();
         $karya = Karya::where('user_id', Auth::user()->id)->latest()->first();
-//        dd($karya);
         $data = compact('user', 'kategori_lomba', 'karya');
         return view('expo.profil', $data);
     }
