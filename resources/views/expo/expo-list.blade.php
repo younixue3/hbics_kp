@@ -67,7 +67,7 @@
                                             {{--                                                                                {{dd($karya->karya)}}--}}
                                             @if($karya->karya == null)
                                             @else
-                                                @if($karya->karya->nama == null)
+                                                @if($karya->karya->nama == null && $karya->event_id == 1)
                                                 @else
                                                     <div class="list wow fadeInUp" data-wow-delay="0.5s">
                                                         <div class="list-imageframe">
