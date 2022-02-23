@@ -92,7 +92,7 @@
                         <a class="nav-link" href="{{url('post')}}" style="color:#143359 !important;">Berita</a>
                     </li>
                     @if (Auth::user() != null)
-                        @if(Auth::user()->role == 'peserta' || Auth::user()->role == 'juri' )
+                        @if(Auth::user()->role == 'peserta')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('profil')}}"
                                    style="color:#143359 !important;">Profil</a>
