@@ -72,7 +72,7 @@
             {{--        {{dd($data)}}--}}
             @if ($data->foto->count() != 0)
                 <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
-                     style="background-image: url('{{url('Upload/karyafotos/'.$data->foto->first()->foto)}}');background-size:cover;">
+                     style="background-image: url('{{url('uploads/karyafotos/'.$data->foto->first()->foto)}}');background-size:cover;">
                     @else
                         <div class="col-md-6 produk wow fadeInUp" data-wow-delay="0.5s"
                              style="background-image: url('{{asset('images/sample2.png')}}');background-size:cover;">
@@ -97,7 +97,7 @@
                     @foreach($data->foto as $key => $value)
                         <div class="item">
                             <div class="slide">
-                                <img src="{{asset('Upload/karyafotos/'.$value->foto)}}" class="slide-image" alt=""
+                                <img src="{{asset('uploads/karyafotos/'.$value->foto)}}" class="slide-image" alt=""
                                      style="height: 600px; object-fit: cover">
                             </div>
                         </div>
