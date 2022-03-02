@@ -203,10 +203,26 @@
                                                     <a class="dropdown-item bg-warning text-white"
                                                        href="{{ $data->karya != null ? asset('Upload/proposal/' . $data->karya->proposal) : '#'}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Proposal</a>
                                                 @endif
+                                                @if($data->karya->naskah == null)
+                                                @else
+                                                    <a class="dropdown-item bg-warning text-white"
+                                                       href="{{ $data->karya != null ? asset('Upload/naskah/' . $data->karya->naskah) : '#'}}"
+                                                       target="{{ $data->karya != null ? '_blank' : ''}}">Lihat
+                                                        Naskah</a>
+                                                @endif
                                                     @if($data->karya->naskah == null)
                                                     @else
                                                         <a class="dropdown-item bg-warning text-white"
-                                                           href="{{ $data->karya != null ? asset('Upload/naskah/' . $data->karya->naskah) : '#'}}" target="{{ $data->karya != null ? '_blank' : ''}}">Lihat Naskah</a>
+                                                           href="{{ $data->karya != null ? asset('Upload/naskah/' . $data->karya->naskah) : '#'}}"
+                                                           target="{{ $data->karya != null ? '_blank' : ''}}">Lihat
+                                                            Naskah</a>
+                                                    @endif
+                                                    @if($data->karya->link_presentation == null)
+                                                    @else
+                                                        <a class="dropdown-item bg-warning text-white"
+                                                           href="{{$data->karya->naskah}}"
+                                                           target="_blank">Lihat
+                                                            Video</a>
                                                     @endif
                                             @endif
                                             @if(Auth::User()->role == 'superadmin')

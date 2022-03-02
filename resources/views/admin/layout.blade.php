@@ -158,11 +158,6 @@
                            class="waves-effect {{Request::is('panitia') || Request::is('panitia/*') ? 'act' : ''}}"><i
                                 class="icofont-user-suited"></i><span> Data Panitia </span></a>
                     </li>
-                    <li>
-                        <a target="_blank" href="{{url('virtualexpo')}}"
-                           class="waves-effect {{Request::is('virtualexpo') || Request::is('virtualexpo/*') ? 'act' : ''}}"><i
-                                class="icofont-children-care"></i><span> Virtual Expo </span></a>
-                    </li>
                 </ul>
             </div>
             <div class="clearfix"></div>
