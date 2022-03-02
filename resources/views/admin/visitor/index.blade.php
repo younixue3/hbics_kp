@@ -210,17 +210,10 @@
                                                        target="{{ $data->karya != null ? '_blank' : ''}}">Lihat
                                                         Naskah</a>
                                                 @endif
-                                                    @if($data->karya->naskah == null)
-                                                    @else
-                                                        <a class="dropdown-item bg-warning text-white"
-                                                           href="{{ $data->karya != null ? asset('Upload/naskah/' . $data->karya->naskah) : '#'}}"
-                                                           target="{{ $data->karya != null ? '_blank' : ''}}">Lihat
-                                                            Naskah</a>
-                                                    @endif
                                                     @if($data->karya->link_presentation == null)
                                                     @else
                                                         <a class="dropdown-item bg-warning text-white"
-                                                           href="{{$data->karya->naskah}}"
+                                                           href="{{$data->karya->link_presentation}}"
                                                            target="_blank">Lihat
                                                             Video</a>
                                                     @endif
