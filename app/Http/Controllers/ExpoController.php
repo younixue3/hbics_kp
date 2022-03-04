@@ -46,7 +46,7 @@ class ExpoController extends Controller
     public function insert_foto_karya(Request $request)
     {
 //        dd($request->file('foto_karya'));
-        $get_karya = Karya::where('user_id', Auth::user()->id)->first();
+        $get_karya = Karya::where('user_id', Auth::user()->id)->latest()->first();
 
         if ($request->foto_karya != null) {
             foreach ($request->file('foto_karya') as $value) {
