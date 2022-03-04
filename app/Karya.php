@@ -11,7 +11,7 @@ class Karya extends Model
 
     public function foto()
     {
-        return $this->hasMany('App\KaryaFoto', 'karya_id', 'id');
+        return $this->hasMany('App\KaryaFoto', 'karya_id', 'id')->latest();
     }
 
     public function event()
