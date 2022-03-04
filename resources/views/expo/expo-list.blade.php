@@ -81,7 +81,7 @@
                                                                 @if($karya->karya->foto->first() == null)
                                                                 @else
                                                                     <img
-                                                                        src="{{asset('Upload/karyafotos/' . $karya->karya->foto->first()->foto)}}"
+                                                                        src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
                                                                         alt="" class="list-image">
                                                                 @endif
                                                             @endif
