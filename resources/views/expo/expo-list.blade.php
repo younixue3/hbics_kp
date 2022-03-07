@@ -76,8 +76,8 @@
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                         allowfullscreen></iframe>
                                                             @else
-                                                                @if($karya->foto == null)
-{{--                                                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">--}}
+                                                                @if($karya->foto_profile == null)
+                                                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
                                                                 @else
                                                                     <img
                                                                         src="{{asset('Upload/foto_profil/' . $karya->foto_profile)}}"
