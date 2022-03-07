@@ -185,7 +185,7 @@
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                     <iframe style="width: 100%;z-index:9999;" height="315"
-                                                                src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_mockup)}}"
+                                                            src="{{str_replace('.com/watch?v=', '-nocookie.com/embed/', $data->link_mockup)}}"
                                                             title="YouTube video player" frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                             allowfullscreen></iframe>
@@ -236,12 +236,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            @if (Auth::user())
+{{--                            @if (Auth::user())--}}
                                 @if (Auth::user()->role == 'peserta' || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
                                 @else
                                     @if ($statuslike)
                                         <a href="{{url('expo/likes/'.$data->id)}}"
-                                           class="likesbutton likesbutton--batal wow fadeInUp"><i class="icofont-close"></i>
+                                           class="likesbutton likesbutton--batal wow fadeInUp"><i
+                                                class="icofont-close"></i>
                                             <i
                                                 class="icofont-like"></i> Batal Sukai Karya Ini</a>
                                         <div class="total wow fadeInUp">
@@ -252,13 +253,14 @@
                                         <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i
                                                 class="icofont-like"></i> Sukai Karya Ini</a>
                                         <div class="total wow fadeInUp">
-                                            <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini</p>
+                                            <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini
+                                            </p>
                                         </div>
                                     @endif
                                 @endif
-                            @else
-                            @endif
-                                {{--                            @if($statuslike != null)--}}
+{{--                            @else--}}
+{{--                            @endif--}}
+                            {{--                            @if($statuslike != null)--}}
                             {{--                            @endif--}}
                             {{-- <div class="write wow fadeInUp">
                                 <form action="{{url('expo/komentar/'.$data->id.'/'.str_replace(' ', '-', $data->nama))}}" enctype="multipart/form-data" method="POST">
@@ -294,8 +296,9 @@
                                     {{--                            {{dd($karya->karya->foto)}}--}}
                                     <div class="list-imageframe">
                                         @if ($karya->karya->foto->count() > 0)
-                                            <img src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
-                                                 alt="" class="list-image">
+                                            <img
+                                                src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
+                                                alt="" class="list-image">
                                         @else
                                             <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
                                         @endif
