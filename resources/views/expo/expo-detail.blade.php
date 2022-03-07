@@ -289,12 +289,12 @@
                                 <div class="list">
                                     {{--                            {{dd($karya->karya->foto)}}--}}
                                     <div class="list-imageframe">
-                                        @if ($karya->karya->foto->count() > 0)
-                                            <img
-                                                src="{{asset('uploads/karyafotos/' . $karya->karya->foto->first()->foto)}}"
-                                                alt="" class="list-image">
-                                        @else
+                                        @if($karya->foto == null)
                                             <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
+                                        @else
+                                            <img
+                                                src="{{asset('Upload/foto_profil/' . $karya->foto_profile)}}"
+                                                alt="" class="list-image">
                                         @endif
                                     </div>
                                     <div class="list-content">
