@@ -78,6 +78,7 @@
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                         allowfullscreen></iframe>
                                                             @else
+                                                                {{dd($karya->karya->foto)}}
                                                                 @if($karya->karya->foto->first() == null)
                                                                 @else
                                                                     <img
@@ -94,7 +95,7 @@
                                                                 @else
                                                                     href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}
                                                                     "
-                                                                    class="list-title">{{$karya->karya->nama}}
+                                                                    class="list-title">{{$karya->nama}}
                                                                 @endif
                                                             </a>
                                                             @if($jenjang == null)
