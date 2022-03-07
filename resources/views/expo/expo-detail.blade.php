@@ -300,8 +300,11 @@
                                     <div class="list-content">
                                         <a style="margin-bottom: 0px;"
                                            href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
-                                           class="list-title">{{$karya->nama}}</a>
-
+                                           class="list-title">{{$karya->name}}</a>
+                                        <p class="list-keterangan">{{$karya->karya->deskripsi}}</p>
+                                        <span class="list-likers"><i class="icofont-like"></i> Disukai oleh {{$karya->karya->likes->count()}} orang</span>
+                                        <span class="list-likers"><i class="icofont-comment"></i> {{$karya->karya->komentars->count()}} Komentar</span>
+                                        <br>
                                         <a href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}"
                                            class="list-button">Lihat selengkapnya</a>
                                     </div>
