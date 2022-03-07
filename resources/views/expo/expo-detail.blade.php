@@ -254,7 +254,6 @@
                                         </p>
                                     </div>
                                 @endif
-                            @endif
                             {{--                            @if($statuslike != null)--}}
                             {{--                            @endif--}}
                             {{-- <div class="write wow fadeInUp">
