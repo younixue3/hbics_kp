@@ -62,9 +62,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     @if($event != null)
-                                        {{--                                        {{dd($event)}}--}}
                                         @foreach ($event as $karya)
-                                            {{--                                                                                {{dd($karya->karya)}}--}}
                                             @if($karya->karya == null)
                                             @else
                                                 @if($karya->karya->nama == null && $karya->event_id == 1)
@@ -78,7 +76,6 @@
                                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                                         allowfullscreen></iframe>
                                                             @else
-                                                                {{dd($karya->karya->foto)}}
                                                                 @if($karya->karya->foto->first() == null)
                                                                 @else
                                                                     <img

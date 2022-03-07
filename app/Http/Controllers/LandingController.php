@@ -96,7 +96,6 @@ class LandingController extends Controller
         } else {
             abort(404);
         }
-//        dd($event);
         $data = compact('event', 'jenjang', 'kategori_view');
 
         return view('expo.expo-list', $data);
