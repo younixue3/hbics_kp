@@ -94,10 +94,9 @@ class ExpoController extends Controller
 //        dd(Auth::user()->event_id);
         if (Auth::user()->event_id === 1) {
             $karya = Karya::updateOrCreate(
+                ['user_id' => Auth::user()->id],
                 [
-                    'user_id' => Auth::user()->id,
                     'nama' => $request->nama,
-                    'event_id' => Auth::user()->event_id,
                     'kategori' => $request->kategori,
                     'foto_poster' => $foto_poster,
                     'proposal' => $proposal,
