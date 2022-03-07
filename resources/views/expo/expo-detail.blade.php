@@ -236,29 +236,24 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            @if (Auth::user())
-                                @if (Auth::user()->role == 'peserta' || Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin')
+                                @if ($statuslike)
+                                    <a href="{{url('expo/likes/'.$data->id)}}"
+                                       class="likesbutton likesbutton--batal wow fadeInUp"><i
+                                            class="icofont-close"></i>
+                                        <i
+                                            class="icofont-like"></i> Batal Sukai Karya Ini</a>
+                                    <div class="total wow fadeInUp">
+                                        <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya
+                                            menyukai karya ini</p>
+                                    </div>
                                 @else
-                                    @if ($statuslike)
-                                        <a href="{{url('expo/likes/'.$data->id)}}"
-                                           class="likesbutton likesbutton--batal wow fadeInUp"><i
-                                                class="icofont-close"></i>
-                                            <i
-                                                class="icofont-like"></i> Batal Sukai Karya Ini</a>
-                                        <div class="total wow fadeInUp">
-                                            <p><i class="icofont-like"></i> Anda dan {{$data->likes->count()-1}} Lainnya
-                                                menyukai karya ini</p>
-                                        </div>
-                                    @else
-                                        <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i
-                                                class="icofont-like"></i> Sukai Karya Ini</a>
-                                        <div class="total wow fadeInUp">
-                                            <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini
-                                            </p>
-                                        </div>
-                                    @endif
+                                    <a href="{{url('expo/likes/'.$data->id)}}" class="likesbutton wow fadeInUp"><i
+                                            class="icofont-like"></i> Sukai Karya Ini</a>
+                                    <div class="total wow fadeInUp">
+                                        <p><i class="icofont-like"></i> {{$data->likes->count()}} Menyukai karya ini
+                                        </p>
+                                    </div>
                                 @endif
-                            @else
                             @endif
                             {{--                            @if($statuslike != null)--}}
                             {{--                            @endif--}}
