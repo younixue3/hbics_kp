@@ -77,7 +77,7 @@
                                                                         allowfullscreen></iframe>
                                                             @else
                                                                 @if($karya->foto == null)
-                                                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">
+{{--                                                                    <img src="{{asset('images/sample2.png')}}" alt="" class="list-image">--}}
                                                                 @else
                                                                     <img
                                                                         src="{{asset('Upload/foto_profil/' . $karya->foto_profile)}}"
