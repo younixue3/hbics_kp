@@ -92,7 +92,7 @@
                                                                 @else
                                                                     href="{{url('expo/'.$jenjang.'/'.$kategori.'/'.$karya->karya->id.'/'.str_replace(' ', '-', $karya->karya->nama))}}
                                                                     "
-                                                                    class="list-title">{{$karya->nama}}
+                                                                    class="list-title">{{$karya->name}}
                                                                 @endif
                                                             </a>
                                                             @if($jenjang == null)
