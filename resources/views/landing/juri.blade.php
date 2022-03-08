@@ -17,7 +17,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    @forelse ($juris as $juri)
+                    @foreach ($juris as $juri)
                         <div class="col-md-4 wow fadeInUp" data-wow-delay="1s">
                             <a class="juri" href="" data-toggle="modal" data-target="#juri-video{{$juri->id}}">
                                 <div class="juri-image-frame">
@@ -47,11 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                    @empty
-                        <div class="col-md-12">
-                            Data Kosong
-                        </div>
-                    @endforelse
+                    @endforeach
                 </div>
             </div>
         </div>
